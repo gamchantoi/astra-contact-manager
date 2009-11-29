@@ -1,0 +1,1433 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AstraModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="AstraModelStoreContainer">
+          <EntitySet Name="acc_PaymentsInTransactions" EntityType="AstraModel.Store.acc_PaymentsInTransactions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="acc_PaymentsMethods" EntityType="AstraModel.Store.acc_PaymentsMethods" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="acc_ProfilesInTransactions" EntityType="AstraModel.Store.acc_ProfilesInTransactions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="acc_ServicesInTransactions" EntityType="AstraModel.Store.acc_ServicesInTransactions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="acc_Transactions" EntityType="AstraModel.Store.acc_Transactions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Users" EntityType="AstraModel.Store.aspnet_Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="astra_Addresses" EntityType="AstraModel.Store.astra_Addresses" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="astra_Clients" EntityType="AstraModel.Store.astra_Clients" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="astra_ClientsDetails" EntityType="AstraModel.Store.astra_ClientsDetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="astra_ClientsInServices" EntityType="AstraModel.Store.astra_ClientsInServices" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="astra_Contracts" EntityType="AstraModel.Store.astra_Contracts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="astra_Hosts" EntityType="AstraModel.Store.astra_Hosts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="astra_Services" EntityType="AstraModel.Store.astra_Services" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="astra_ServicesInSystemServices" EntityType="AstraModel.Store.astra_ServicesInSystemServices" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="astra_Statuses" EntityType="AstraModel.Store.astra_Statuses" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="astra_Streets" EntityType="AstraModel.Store.astra_Streets" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="astra_SystemServices" EntityType="AstraModel.Store.astra_SystemServices" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="mkt_IPPools" EntityType="AstraModel.Store.mkt_IPPools" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="mkt_PPPProfiles" EntityType="AstraModel.Store.mkt_PPPProfiles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="mkt_PPPSecrets" EntityType="AstraModel.Store.mkt_PPPSecrets" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_acc_PaymentsInTransactions_acc_Transactions" Association="AstraModel.Store.FK_acc_PaymentsInTransactions_acc_Transactions">
+            <End Role="acc_Transactions" EntitySet="acc_Transactions" />
+            <End Role="acc_PaymentsInTransactions" EntitySet="acc_PaymentsInTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_acc_PaymentsInTransactions_astra_PaymentsMethods" Association="AstraModel.Store.FK_acc_PaymentsInTransactions_astra_PaymentsMethods">
+            <End Role="acc_PaymentsMethods" EntitySet="acc_PaymentsMethods" />
+            <End Role="acc_PaymentsInTransactions" EntitySet="acc_PaymentsInTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_acc_ProfilesInTransactions_acc_Transactions" Association="AstraModel.Store.FK_acc_ProfilesInTransactions_acc_Transactions">
+            <End Role="acc_Transactions" EntitySet="acc_Transactions" />
+            <End Role="acc_ProfilesInTransactions" EntitySet="acc_ProfilesInTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_acc_ProfilesInTransactions_mkt_PPPProfiles" Association="AstraModel.Store.FK_acc_ProfilesInTransactions_mkt_PPPProfiles">
+            <End Role="mkt_PPPProfiles" EntitySet="mkt_PPPProfiles" />
+            <End Role="acc_ProfilesInTransactions" EntitySet="acc_ProfilesInTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_acc_ServicesInTransactions_acc_Transactions" Association="AstraModel.Store.FK_acc_ServicesInTransactions_acc_Transactions">
+            <End Role="acc_Transactions" EntitySet="acc_Transactions" />
+            <End Role="acc_ServicesInTransactions" EntitySet="acc_ServicesInTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_acc_ServicesInTransactions_astra_Services" Association="AstraModel.Store.FK_acc_ServicesInTransactions_astra_Services">
+            <End Role="astra_Services" EntitySet="astra_Services" />
+            <End Role="acc_ServicesInTransactions" EntitySet="acc_ServicesInTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_acc_Transactions_aspnet_Users" Association="AstraModel.Store.FK_acc_Transactions_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="acc_Transactions" EntitySet="acc_Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_acc_Transactions_astra_Clients" Association="AstraModel.Store.FK_acc_Transactions_astra_Clients">
+            <End Role="astra_Clients" EntitySet="astra_Clients" />
+            <End Role="acc_Transactions" EntitySet="acc_Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_astra_Addresses_astra_Streets" Association="AstraModel.Store.FK_astra_Addresses_astra_Streets">
+            <End Role="astra_Streets" EntitySet="astra_Streets" />
+            <End Role="astra_Addresses" EntitySet="astra_Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_astra_Clients_aspnet_Users" Association="AstraModel.Store.FK_astra_Clients_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="astra_Clients" EntitySet="astra_Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_astra_Clients_astra_Addresses" Association="AstraModel.Store.FK_astra_Clients_astra_Addresses">
+            <End Role="astra_Addresses" EntitySet="astra_Addresses" />
+            <End Role="astra_Clients" EntitySet="astra_Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_astra_Clients_astra_ClientsDetails" Association="AstraModel.Store.FK_astra_Clients_astra_ClientsDetails">
+            <End Role="astra_ClientsDetails" EntitySet="astra_ClientsDetails" />
+            <End Role="astra_Clients" EntitySet="astra_Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_astra_Clients_astra_Contracts" Association="AstraModel.Store.FK_astra_Clients_astra_Contracts">
+            <End Role="astra_Contracts" EntitySet="astra_Contracts" />
+            <End Role="astra_Clients" EntitySet="astra_Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_astra_Clients_astra_Hosts" Association="AstraModel.Store.FK_astra_Clients_astra_Hosts">
+            <End Role="astra_Hosts" EntitySet="astra_Hosts" />
+            <End Role="astra_Clients" EntitySet="astra_Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_astra_Clients_astra_Statuses" Association="AstraModel.Store.FK_astra_Clients_astra_Statuses">
+            <End Role="astra_Statuses" EntitySet="astra_Statuses" />
+            <End Role="astra_Clients" EntitySet="astra_Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_astra_ClientsServicesActivities_aspnet_Users" Association="AstraModel.Store.FK_astra_ClientsServicesActivities_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="astra_ClientsInServices" EntitySet="astra_ClientsInServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_astra_ClientsServicesActivities_astra_Clients" Association="AstraModel.Store.FK_astra_ClientsServicesActivities_astra_Clients">
+            <End Role="astra_Clients" EntitySet="astra_Clients" />
+            <End Role="astra_ClientsInServices" EntitySet="astra_ClientsInServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_astra_ClientsServicesActivities_astra_Services" Association="AstraModel.Store.FK_astra_ClientsServicesActivities_astra_Services">
+            <End Role="astra_Services" EntitySet="astra_Services" />
+            <End Role="astra_ClientsInServices" EntitySet="astra_ClientsInServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_astra_Services_aspnet_Users" Association="AstraModel.Store.FK_astra_Services_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="astra_Services" EntitySet="astra_Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK_astra_ServicesInSystemServices_astra_Services" Association="AstraModel.Store.FK_astra_ServicesInSystemServices_astra_Services">
+            <End Role="astra_Services" EntitySet="astra_Services" />
+            <End Role="astra_ServicesInSystemServices" EntitySet="astra_ServicesInSystemServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_astra_ServicesInSystemServices_astra_SystemServices" Association="AstraModel.Store.FK_astra_ServicesInSystemServices_astra_SystemServices">
+            <End Role="astra_SystemServices" EntitySet="astra_SystemServices" />
+            <End Role="astra_ServicesInSystemServices" EntitySet="astra_ServicesInSystemServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mkt_PPPProfiles_mkt_IPPool" Association="AstraModel.Store.FK_mkt_PPPProfiles_mkt_IPPool">
+            <End Role="mkt_IPPools" EntitySet="mkt_IPPools" />
+            <End Role="mkt_PPPProfiles" EntitySet="mkt_PPPProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mkt_PPPSecrets_astra_Clients" Association="AstraModel.Store.FK_mkt_PPPSecrets_astra_Clients">
+            <End Role="astra_Clients" EntitySet="astra_Clients" />
+            <End Role="mkt_PPPSecrets" EntitySet="mkt_PPPSecrets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mkt_PPPSecrets_mkt_PPPProfiles" Association="AstraModel.Store.FK_mkt_PPPSecrets_mkt_PPPProfiles">
+            <End Role="mkt_PPPProfiles" EntitySet="mkt_PPPProfiles" />
+            <End Role="mkt_PPPSecrets" EntitySet="mkt_PPPSecrets" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="acc_PaymentsInTransactions">
+          <Key>
+            <PropertyRef Name="TransactionId" />
+          </Key>
+          <Property Name="MethodId" Type="int" Nullable="false" />
+          <Property Name="TransactionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="acc_PaymentsMethods">
+          <Key>
+            <PropertyRef Name="MethodId" />
+          </Key>
+          <Property Name="MethodId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="128" />
+          <Property Name="Visible" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="acc_ProfilesInTransactions">
+          <Key>
+            <PropertyRef Name="TransactionId" />
+          </Key>
+          <Property Name="ProfileId" Type="int" Nullable="false" />
+          <Property Name="TransactionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="acc_ServicesInTransactions">
+          <Key>
+            <PropertyRef Name="TransactionId" />
+          </Key>
+          <Property Name="ServiceId" Type="int" Nullable="false" />
+          <Property Name="TransactionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="acc_Transactions">
+          <Key>
+            <PropertyRef Name="TransactionId" />
+          </Key>
+          <Property Name="TransactionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Sum" Type="money" Nullable="false" />
+          <Property Name="Balance" Type="money" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="aspnet_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="LoweredUserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="MobileAlias" Type="nvarchar" MaxLength="16" />
+          <Property Name="IsAnonymous" Type="bit" Nullable="false" />
+          <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="astra_Addresses">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="StreetId" Type="int" Nullable="false" />
+          <Property Name="Building" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Room" Type="nvarchar" MaxLength="8" />
+          <Property Name="Details" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="astra_Clients">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ContractId" Type="int" />
+          <Property Name="AddressId" Type="int" />
+          <Property Name="DetailId" Type="int" />
+          <Property Name="HostId" Type="int" />
+          <Property Name="Balance" Type="money" Nullable="false" />
+          <Property Name="Credit" Type="money" Nullable="false" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="astra_ClientsDetails">
+          <Key>
+            <PropertyRef Name="DetailId" />
+          </Key>
+          <Property Name="DetailId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PassportID" Type="nvarchar" MaxLength="8" />
+          <Property Name="PassportDeliveryDate" Type="date" />
+          <Property Name="PassportComment" Type="nvarchar" MaxLength="128" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="MiddleName" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="astra_ClientsInServices">
+          <Key>
+            <PropertyRef Name="ActivityId" />
+          </Key>
+          <Property Name="ActivityId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceId" Type="int" Nullable="false" />
+          <Property Name="ClientId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="astra_Contracts">
+          <Key>
+            <PropertyRef Name="ContractId" />
+          </Key>
+          <Property Name="ContractId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ContractNumber" Type="nvarchar" MaxLength="64" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ExpiredDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="astra_Hosts">
+          <Key>
+            <PropertyRef Name="HostId" />
+          </Key>
+          <Property Name="HostId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="UserPassword" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="astra_Services">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SystemData" Type="nvarchar" MaxLength="16" />
+          <Property Name="IsRegular" Type="bit" Nullable="false" />
+          <Property Name="Visible" Type="bit" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="128" />
+          <Property Name="Cost" Type="money" Nullable="false" />
+          <Property Name="LastUpdatedDate" Type="date" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="astra_ServicesInSystemServices">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+            <PropertyRef Name="SystemServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="int" Nullable="false" />
+          <Property Name="SystemServiceId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="astra_Statuses">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="16" />
+          <Property Name="DisplayName" Type="nvarchar" Nullable="false" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="astra_Streets">
+          <Key>
+            <PropertyRef Name="StreetId" />
+          </Key>
+          <Property Name="StreetId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="Tag" Type="nvarchar" Nullable="false" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="astra_SystemServices">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="mkt_IPPools">
+          <Key>
+            <PropertyRef Name="PoolId" />
+          </Key>
+          <Property Name="PoolId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="Addresses" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="NextPool" Type="int" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mkt_PPPProfiles">
+          <Key>
+            <PropertyRef Name="ProfileId" />
+          </Key>
+          <Property Name="ProfileId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="LocalAddress" Type="nvarchar" MaxLength="16" />
+          <Property Name="RemoteAddress" Type="int" />
+          <Property Name="RateLimit" Type="nvarchar" MaxLength="64" />
+          <Property Name="Cost" Type="money" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="mkt_PPPSecrets">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" />
+          <Property Name="Password" Type="nvarchar" MaxLength="128" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="64" />
+          <Property Name="Service" Type="nvarchar" MaxLength="16" />
+          <Property Name="CallerId" Type="nvarchar" MaxLength="32" />
+          <Property Name="Profile" Type="int" />
+          <Property Name="LocalAddress" Type="nvarchar" MaxLength="16" />
+          <Property Name="RemoteAddress" Type="nvarchar" MaxLength="16" />
+          <Property Name="DHCPAddress" Type="nvarchar" MaxLength="16" />
+          <Property Name="MACAddress" Type="nvarchar" MaxLength="16" />
+          <Property Name="Routes" Type="nvarchar" MaxLength="16" />
+          <Property Name="LimitBytesIn" Type="nvarchar" MaxLength="64" />
+          <Property Name="LimitBytesOut" Type="nvarchar" MaxLength="64" />
+          <Property Name="Disabled" Type="bit" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_acc_PaymentsInTransactions_acc_Transactions">
+          <End Role="acc_Transactions" Type="AstraModel.Store.acc_Transactions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="acc_PaymentsInTransactions" Type="AstraModel.Store.acc_PaymentsInTransactions" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="acc_Transactions">
+              <PropertyRef Name="TransactionId" />
+            </Principal>
+            <Dependent Role="acc_PaymentsInTransactions">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_acc_PaymentsInTransactions_astra_PaymentsMethods">
+          <End Role="acc_PaymentsMethods" Type="AstraModel.Store.acc_PaymentsMethods" Multiplicity="1" />
+          <End Role="acc_PaymentsInTransactions" Type="AstraModel.Store.acc_PaymentsInTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="acc_PaymentsMethods">
+              <PropertyRef Name="MethodId" />
+            </Principal>
+            <Dependent Role="acc_PaymentsInTransactions">
+              <PropertyRef Name="MethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_acc_ProfilesInTransactions_acc_Transactions">
+          <End Role="acc_Transactions" Type="AstraModel.Store.acc_Transactions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="acc_ProfilesInTransactions" Type="AstraModel.Store.acc_ProfilesInTransactions" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="acc_Transactions">
+              <PropertyRef Name="TransactionId" />
+            </Principal>
+            <Dependent Role="acc_ProfilesInTransactions">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_acc_ProfilesInTransactions_mkt_PPPProfiles">
+          <End Role="mkt_PPPProfiles" Type="AstraModel.Store.mkt_PPPProfiles" Multiplicity="1" />
+          <End Role="acc_ProfilesInTransactions" Type="AstraModel.Store.acc_ProfilesInTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mkt_PPPProfiles">
+              <PropertyRef Name="ProfileId" />
+            </Principal>
+            <Dependent Role="acc_ProfilesInTransactions">
+              <PropertyRef Name="ProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_acc_ServicesInTransactions_acc_Transactions">
+          <End Role="acc_Transactions" Type="AstraModel.Store.acc_Transactions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="acc_ServicesInTransactions" Type="AstraModel.Store.acc_ServicesInTransactions" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="acc_Transactions">
+              <PropertyRef Name="TransactionId" />
+            </Principal>
+            <Dependent Role="acc_ServicesInTransactions">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_acc_ServicesInTransactions_astra_Services">
+          <End Role="astra_Services" Type="AstraModel.Store.astra_Services" Multiplicity="1" />
+          <End Role="acc_ServicesInTransactions" Type="AstraModel.Store.acc_ServicesInTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="astra_Services">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="acc_ServicesInTransactions">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_acc_Transactions_aspnet_Users">
+          <End Role="aspnet_Users" Type="AstraModel.Store.aspnet_Users" Multiplicity="1" />
+          <End Role="acc_Transactions" Type="AstraModel.Store.acc_Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="acc_Transactions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_acc_Transactions_astra_Clients">
+          <End Role="astra_Clients" Type="AstraModel.Store.astra_Clients" Multiplicity="1" />
+          <End Role="acc_Transactions" Type="AstraModel.Store.acc_Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="astra_Clients">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="acc_Transactions">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_astra_Addresses_astra_Streets">
+          <End Role="astra_Streets" Type="AstraModel.Store.astra_Streets" Multiplicity="1" />
+          <End Role="astra_Addresses" Type="AstraModel.Store.astra_Addresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="astra_Streets">
+              <PropertyRef Name="StreetId" />
+            </Principal>
+            <Dependent Role="astra_Addresses">
+              <PropertyRef Name="StreetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_astra_Clients_aspnet_Users">
+          <End Role="aspnet_Users" Type="AstraModel.Store.aspnet_Users" Multiplicity="1" />
+          <End Role="astra_Clients" Type="AstraModel.Store.astra_Clients" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="astra_Clients">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_astra_Clients_astra_Addresses">
+          <End Role="astra_Addresses" Type="AstraModel.Store.astra_Addresses" Multiplicity="0..1" />
+          <End Role="astra_Clients" Type="AstraModel.Store.astra_Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="astra_Addresses">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="astra_Clients">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_astra_Clients_astra_ClientsDetails">
+          <End Role="astra_ClientsDetails" Type="AstraModel.Store.astra_ClientsDetails" Multiplicity="0..1" />
+          <End Role="astra_Clients" Type="AstraModel.Store.astra_Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="astra_ClientsDetails">
+              <PropertyRef Name="DetailId" />
+            </Principal>
+            <Dependent Role="astra_Clients">
+              <PropertyRef Name="DetailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_astra_Clients_astra_Contracts">
+          <End Role="astra_Contracts" Type="AstraModel.Store.astra_Contracts" Multiplicity="0..1" />
+          <End Role="astra_Clients" Type="AstraModel.Store.astra_Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="astra_Contracts">
+              <PropertyRef Name="ContractId" />
+            </Principal>
+            <Dependent Role="astra_Clients">
+              <PropertyRef Name="ContractId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_astra_Clients_astra_Hosts">
+          <End Role="astra_Hosts" Type="AstraModel.Store.astra_Hosts" Multiplicity="0..1" />
+          <End Role="astra_Clients" Type="AstraModel.Store.astra_Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="astra_Hosts">
+              <PropertyRef Name="HostId" />
+            </Principal>
+            <Dependent Role="astra_Clients">
+              <PropertyRef Name="HostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_astra_Clients_astra_Statuses">
+          <End Role="astra_Statuses" Type="AstraModel.Store.astra_Statuses" Multiplicity="1" />
+          <End Role="astra_Clients" Type="AstraModel.Store.astra_Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="astra_Statuses">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="astra_Clients">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_astra_ClientsServicesActivities_aspnet_Users">
+          <End Role="aspnet_Users" Type="AstraModel.Store.aspnet_Users" Multiplicity="1" />
+          <End Role="astra_ClientsInServices" Type="AstraModel.Store.astra_ClientsInServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="astra_ClientsInServices">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_astra_ClientsServicesActivities_astra_Clients">
+          <End Role="astra_Clients" Type="AstraModel.Store.astra_Clients" Multiplicity="1" />
+          <End Role="astra_ClientsInServices" Type="AstraModel.Store.astra_ClientsInServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="astra_Clients">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="astra_ClientsInServices">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_astra_ClientsServicesActivities_astra_Services">
+          <End Role="astra_Services" Type="AstraModel.Store.astra_Services" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="astra_ClientsInServices" Type="AstraModel.Store.astra_ClientsInServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="astra_Services">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="astra_ClientsInServices">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_astra_Services_aspnet_Users">
+          <End Role="aspnet_Users" Type="AstraModel.Store.aspnet_Users" Multiplicity="1" />
+          <End Role="astra_Services" Type="AstraModel.Store.astra_Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="astra_Services">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_astra_ServicesInSystemServices_astra_Services">
+          <End Role="astra_Services" Type="AstraModel.Store.astra_Services" Multiplicity="1" />
+          <End Role="astra_ServicesInSystemServices" Type="AstraModel.Store.astra_ServicesInSystemServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="astra_Services">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="astra_ServicesInSystemServices">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_astra_ServicesInSystemServices_astra_SystemServices">
+          <End Role="astra_SystemServices" Type="AstraModel.Store.astra_SystemServices" Multiplicity="1" />
+          <End Role="astra_ServicesInSystemServices" Type="AstraModel.Store.astra_ServicesInSystemServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="astra_SystemServices">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="astra_ServicesInSystemServices">
+              <PropertyRef Name="SystemServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mkt_PPPProfiles_mkt_IPPool">
+          <End Role="mkt_IPPools" Type="AstraModel.Store.mkt_IPPools" Multiplicity="0..1" />
+          <End Role="mkt_PPPProfiles" Type="AstraModel.Store.mkt_PPPProfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mkt_IPPools">
+              <PropertyRef Name="PoolId" />
+            </Principal>
+            <Dependent Role="mkt_PPPProfiles">
+              <PropertyRef Name="RemoteAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mkt_PPPSecrets_astra_Clients">
+          <End Role="astra_Clients" Type="AstraModel.Store.astra_Clients" Multiplicity="1" />
+          <End Role="mkt_PPPSecrets" Type="AstraModel.Store.mkt_PPPSecrets" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="astra_Clients">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="mkt_PPPSecrets">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mkt_PPPSecrets_mkt_PPPProfiles">
+          <End Role="mkt_PPPProfiles" Type="AstraModel.Store.mkt_PPPProfiles" Multiplicity="0..1" />
+          <End Role="mkt_PPPSecrets" Type="AstraModel.Store.mkt_PPPSecrets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mkt_PPPProfiles">
+              <PropertyRef Name="ProfileId" />
+            </Principal>
+            <Dependent Role="mkt_PPPSecrets">
+              <PropertyRef Name="Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AstraModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="AstraEntities">
+          <EntitySet Name="ASPUserSet" EntityType="AstraModel.ASPUser" />
+          <EntitySet Name="AddressSet" EntityType="AstraModel.Address" />
+          <EntitySet Name="ClientSet" EntityType="AstraModel.Client" />
+          <EntitySet Name="ClientDetailSet" EntityType="AstraModel.ClientDetail" />
+          <EntitySet Name="ContractSet" EntityType="AstraModel.Contract" />
+          <EntitySet Name="HostSet" EntityType="AstraModel.Host" />
+          <EntitySet Name="ServiceSet" EntityType="AstraModel.Service" />
+          <EntitySet Name="SystemServiceSet" EntityType="AstraModel.SystemService" />
+          <EntitySet Name="PoolSet" EntityType="AstraModel.Pool" />
+          <EntitySet Name="ProfileSet" EntityType="AstraModel.Profile" />
+          <EntitySet Name="PPPSecretSet" EntityType="AstraModel.PPPSecret" />
+          <AssociationSet Name="FK_astra_Clients_aspnet_Users" Association="AstraModel.FK_astra_Clients_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="ASPUserSet" />
+            <End Role="astra_Clients" EntitySet="ClientSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_astra_Services_aspnet_Users" Association="AstraModel.FK_astra_Services_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="ASPUserSet" />
+            <End Role="astra_Services" EntitySet="ServiceSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_astra_Clients_astra_Addresses" Association="AstraModel.FK_astra_Clients_astra_Addresses">
+            <End Role="astra_Addresses" EntitySet="AddressSet" />
+            <End Role="astra_Clients" EntitySet="ClientSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_astra_Clients_astra_ClientsDetails" Association="AstraModel.FK_astra_Clients_astra_ClientsDetails">
+            <End Role="astra_ClientsDetails" EntitySet="ClientDetailSet" />
+            <End Role="astra_Clients" EntitySet="ClientSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_astra_Clients_astra_Contracts" Association="AstraModel.FK_astra_Clients_astra_Contracts">
+            <End Role="astra_Contracts" EntitySet="ContractSet" />
+            <End Role="astra_Clients" EntitySet="ClientSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_astra_Clients_astra_Hosts" Association="AstraModel.FK_astra_Clients_astra_Hosts">
+            <End Role="astra_Hosts" EntitySet="HostSet" />
+            <End Role="astra_Clients" EntitySet="ClientSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mkt_PPPSecrets_astra_Clients" Association="AstraModel.FK_mkt_PPPSecrets_astra_Clients">
+            <End Role="astra_Clients" EntitySet="ClientSet" />
+            <End Role="mkt_PPPSecrets" EntitySet="PPPSecretSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mkt_PPPProfiles_mkt_IPPool" Association="AstraModel.FK_mkt_PPPProfiles_mkt_IPPool">
+            <End Role="mkt_IPPools" EntitySet="PoolSet" />
+            <End Role="mkt_PPPProfiles" EntitySet="ProfileSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mkt_PPPSecrets_mkt_PPPProfiles" Association="AstraModel.FK_mkt_PPPSecrets_mkt_PPPProfiles">
+            <End Role="mkt_PPPProfiles" EntitySet="ProfileSet" />
+            <End Role="mkt_PPPSecrets" EntitySet="PPPSecretSet" />
+          </AssociationSet>
+          <AssociationSet Name="astra_ServicesInSystemServices" Association="AstraModel.astra_ServicesInSystemServices">
+            <End Role="astra_Services" EntitySet="ServiceSet" />
+            <End Role="astra_SystemServices" EntitySet="SystemServiceSet" />
+          </AssociationSet>
+          <EntitySet Name="PaymentMethodSet" EntityType="AstraModel.PaymentMethod" />
+          <EntitySet Name="AccountTransactionSet" EntityType="AstraModel.AccountTransaction" />
+          <EntitySet Name="ClientInServicesSet" EntityType="AstraModel.ClientInServices" />
+          <EntitySet Name="StatusSet" EntityType="AstraModel.Status" />
+          <EntitySet Name="StreetSet" EntityType="AstraModel.Street" />
+          <AssociationSet Name="FK_acc_Transactions_aspnet_Users" Association="AstraModel.FK_acc_Transactions_aspnet_Users">
+            <End Role="ASPUser" EntitySet="ASPUserSet" />
+            <End Role="acc_Transactions" EntitySet="AccountTransactionSet" /></AssociationSet>
+          <AssociationSet Name="FK_acc_Transactions_astra_Clients" Association="AstraModel.FK_acc_Transactions_astra_Clients">
+            <End Role="Client" EntitySet="ClientSet" />
+            <End Role="acc_Transactions" EntitySet="AccountTransactionSet" /></AssociationSet>
+          <AssociationSet Name="FK_astra_ClientsServicesActivities_aspnet_Users1" Association="AstraModel.FK_astra_ClientsServicesActivities_aspnet_Users1">
+            <End Role="ASPUser" EntitySet="ASPUserSet" />
+            <End Role="astra_ClientsInServices" EntitySet="ClientInServicesSet" /></AssociationSet>
+          <AssociationSet Name="FK_astra_Addresses_astra_Streets" Association="AstraModel.FK_astra_Addresses_astra_Streets">
+            <End Role="astra_Streets" EntitySet="StreetSet" />
+            <End Role="Address" EntitySet="AddressSet" /></AssociationSet>
+          <AssociationSet Name="FK_astra_Clients_astra_Statuses" Association="AstraModel.FK_astra_Clients_astra_Statuses">
+            <End Role="astra_Statuses" EntitySet="StatusSet" />
+            <End Role="Client" EntitySet="ClientSet" /></AssociationSet>
+          <AssociationSet Name="FK_astra_ClientsServicesActivities_astra_Clients1" Association="AstraModel.FK_astra_ClientsServicesActivities_astra_Clients1">
+            <End Role="Client" EntitySet="ClientSet" />
+            <End Role="astra_ClientsInServices" EntitySet="ClientInServicesSet" /></AssociationSet>
+          <AssociationSet Name="FK_astra_ClientsServicesActivities_astra_Services1" Association="AstraModel.FK_astra_ClientsServicesActivities_astra_Services1">
+            <End Role="Service" EntitySet="ServiceSet" />
+            <End Role="astra_ClientsInServices" EntitySet="ClientInServicesSet" /></AssociationSet>
+          <AssociationSet Name="acc_PaymentsInTransactions" Association="AstraModel.acc_PaymentsInTransactions">
+            <End Role="acc_Transactions" EntitySet="AccountTransactionSet" />
+            <End Role="acc_PaymentsMethods" EntitySet="PaymentMethodSet" /></AssociationSet>
+          <AssociationSet Name="acc_ProfilesInTransactions" Association="AstraModel.acc_ProfilesInTransactions">
+            <End Role="acc_Transactions" EntitySet="AccountTransactionSet" />
+            <End Role="Profile" EntitySet="ProfileSet" /></AssociationSet>
+          <AssociationSet Name="acc_ServicesInTransactions" Association="AstraModel.acc_ServicesInTransactions">
+            <End Role="acc_Transactions" EntitySet="AccountTransactionSet" />
+            <End Role="Service" EntitySet="ServiceSet" /></AssociationSet></EntityContainer>
+        <EntityType Name="ASPUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="LoweredUserName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="MobileAlias" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="astra_Clients" Relationship="AstraModel.FK_astra_Clients_aspnet_Users" FromRole="aspnet_Users" ToRole="astra_Clients" />
+          <NavigationProperty Name="astra_Services" Relationship="AstraModel.FK_astra_Services_aspnet_Users" FromRole="aspnet_Users" ToRole="astra_Services" />
+          <NavigationProperty Name="acc_Transactions" Relationship="AstraModel.FK_acc_Transactions_aspnet_Users" FromRole="ASPUser" ToRole="acc_Transactions" />
+          <NavigationProperty Name="astra_ClientsInServices" Relationship="AstraModel.FK_astra_ClientsServicesActivities_aspnet_Users1" FromRole="ASPUser" ToRole="astra_ClientsInServices" /></EntityType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Building" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Details" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="astra_Clients" Relationship="AstraModel.FK_astra_Clients_astra_Addresses" FromRole="astra_Addresses" ToRole="astra_Clients" />
+          <Property Name="Room" Type="String" Nullable="true" />
+          <NavigationProperty Name="astra_Streets" Relationship="AstraModel.FK_astra_Addresses_astra_Streets" FromRole="Address" ToRole="astra_Streets" /></EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Balance" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Credit" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="aspnet_Users" Relationship="AstraModel.FK_astra_Clients_aspnet_Users" FromRole="astra_Clients" ToRole="aspnet_Users" />
+          <NavigationProperty Name="astra_Addresses" Relationship="AstraModel.FK_astra_Clients_astra_Addresses" FromRole="astra_Clients" ToRole="astra_Addresses" />
+          <NavigationProperty Name="astra_ClientsDetails" Relationship="AstraModel.FK_astra_Clients_astra_ClientsDetails" FromRole="astra_Clients" ToRole="astra_ClientsDetails" />
+          <NavigationProperty Name="astra_Contracts" Relationship="AstraModel.FK_astra_Clients_astra_Contracts" FromRole="astra_Clients" ToRole="astra_Contracts" />
+          <NavigationProperty Name="astra_Hosts" Relationship="AstraModel.FK_astra_Clients_astra_Hosts" FromRole="astra_Clients" ToRole="astra_Hosts" />
+          <NavigationProperty Name="mkt_PPPSecrets" Relationship="AstraModel.FK_mkt_PPPSecrets_astra_Clients" FromRole="astra_Clients" ToRole="mkt_PPPSecrets" />
+          <NavigationProperty Name="acc_Transactions" Relationship="AstraModel.FK_acc_Transactions_astra_Clients" FromRole="Client" ToRole="acc_Transactions" />
+          <NavigationProperty Name="astra_Statuses" Relationship="AstraModel.FK_astra_Clients_astra_Statuses" FromRole="Client" ToRole="astra_Statuses" />
+          <NavigationProperty Name="astra_ClientsInServices" Relationship="AstraModel.FK_astra_ClientsServicesActivities_astra_Clients1" FromRole="Client" ToRole="astra_ClientsInServices" /></EntityType>
+        <EntityType Name="ClientDetail">
+          <Key>
+            <PropertyRef Name="DetailId" />
+          </Key>
+          <Property Name="DetailId" Type="Int32" Nullable="false" />
+          <Property Name="PassportID" Type="String" MaxLength="8" Unicode="true" FixedLength="false" />
+          <Property Name="PassportDeliveryDate" Type="DateTime" />
+          <Property Name="PassportComment" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="MiddleName" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="astra_Clients" Relationship="AstraModel.FK_astra_Clients_astra_ClientsDetails" FromRole="astra_ClientsDetails" ToRole="astra_Clients" />
+        </EntityType>
+        <EntityType Name="Contract">
+          <Key>
+            <PropertyRef Name="ContractId" />
+          </Key>
+          <Property Name="ContractId" Type="Int32" Nullable="false" />
+          <Property Name="ContractNumber" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="Comment" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CreateDate" Type="DateTime" />
+          <Property Name="ExpiredDate" Type="DateTime" />
+          <NavigationProperty Name="astra_Clients" Relationship="AstraModel.FK_astra_Clients_astra_Contracts" FromRole="astra_Contracts" ToRole="astra_Clients" />
+        </EntityType>
+        <EntityType Name="Host">
+          <Key>
+            <PropertyRef Name="HostId" />
+          </Key>
+          <Property Name="HostId" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="UserPassword" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="astra_Clients" Relationship="AstraModel.FK_astra_Clients_astra_Hosts" FromRole="astra_Hosts" ToRole="astra_Clients" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+          <Property Name="SystemData" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="IsRegular" Type="Boolean" Nullable="false" />
+          <Property Name="Visible" Type="Boolean" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="Comment" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="Cost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="aspnet_Users" Relationship="AstraModel.FK_astra_Services_aspnet_Users" FromRole="astra_Services" ToRole="aspnet_Users" />
+          <NavigationProperty Name="astra_SystemServices" Relationship="AstraModel.astra_ServicesInSystemServices" FromRole="astra_Services" ToRole="astra_SystemServices" />
+          <NavigationProperty Name="astra_ClientsInServices" Relationship="AstraModel.FK_astra_ClientsServicesActivities_astra_Services1" FromRole="Service" ToRole="astra_ClientsInServices" />
+          <NavigationProperty Name="acc_Transactions" Relationship="AstraModel.acc_ServicesInTransactions" FromRole="Service" ToRole="acc_Transactions" /></EntityType>
+        <EntityType Name="SystemService">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="astra_Services" Relationship="AstraModel.astra_ServicesInSystemServices" FromRole="astra_SystemServices" ToRole="astra_Services" />
+        </EntityType>
+        <EntityType Name="Pool">
+          <Key>
+            <PropertyRef Name="PoolId" />
+          </Key>
+          <Property Name="PoolId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="Addresses" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="NextPool" Type="Int32" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="mkt_PPPProfiles" Relationship="AstraModel.FK_mkt_PPPProfiles_mkt_IPPool" FromRole="mkt_IPPools" ToRole="mkt_PPPProfiles" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="ProfileId" />
+          </Key>
+          <Property Name="ProfileId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="LocalAddress" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="RateLimit" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="mkt_IPPools" Relationship="AstraModel.FK_mkt_PPPProfiles_mkt_IPPool" FromRole="mkt_PPPProfiles" ToRole="mkt_IPPools" />
+          <NavigationProperty Name="mkt_PPPSecrets" Relationship="AstraModel.FK_mkt_PPPSecrets_mkt_PPPProfiles" FromRole="mkt_PPPProfiles" ToRole="mkt_PPPSecrets" />
+          <NavigationProperty Name="acc_Transactions" Relationship="AstraModel.acc_ProfilesInTransactions" FromRole="Profile" ToRole="acc_Transactions" /></EntityType>
+        <EntityType Name="PPPSecret">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="Service" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="CallerId" Type="String" MaxLength="32" Unicode="true" FixedLength="false" />
+          <Property Name="LocalAddress" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="RemoteAddress" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="DHCPAddress" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="MACAddress" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="Routes" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="LimitBytesIn" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="LimitBytesOut" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="astra_Clients" Relationship="AstraModel.FK_mkt_PPPSecrets_astra_Clients" FromRole="mkt_PPPSecrets" ToRole="astra_Clients" />
+          <NavigationProperty Name="mkt_PPPProfiles" Relationship="AstraModel.FK_mkt_PPPSecrets_mkt_PPPProfiles" FromRole="mkt_PPPSecrets" ToRole="mkt_PPPProfiles" />
+          <Property Name="Name" Type="String" Nullable="true" />
+          <Property Name="Password" Type="String" Nullable="true" />
+          <Property Name="Disabled" Type="Boolean" Nullable="true" /></EntityType>
+        <Association Name="FK_astra_Clients_aspnet_Users">
+          <End Role="aspnet_Users" Type="AstraModel.ASPUser" Multiplicity="1" />
+          <End Role="astra_Clients" Type="AstraModel.Client" Multiplicity="0..1" />
+        <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" /></Principal>
+            <Dependent Role="astra_Clients">
+              <PropertyRef Name="UserId" /></Dependent></ReferentialConstraint></Association>
+        <Association Name="FK_astra_Services_aspnet_Users">
+          <End Role="aspnet_Users" Type="AstraModel.ASPUser" Multiplicity="1" />
+          <End Role="astra_Services" Type="AstraModel.Service" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_astra_Clients_astra_Addresses">
+          <End Role="astra_Addresses" Type="AstraModel.Address" Multiplicity="0..1" />
+          <End Role="astra_Clients" Type="AstraModel.Client" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_astra_Clients_astra_ClientsDetails">
+          <End Role="astra_ClientsDetails" Type="AstraModel.ClientDetail" Multiplicity="0..1" />
+          <End Role="astra_Clients" Type="AstraModel.Client" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_astra_Clients_astra_Contracts">
+          <End Role="astra_Contracts" Type="AstraModel.Contract" Multiplicity="0..1" />
+          <End Role="astra_Clients" Type="AstraModel.Client" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_astra_Clients_astra_Hosts">
+          <End Role="astra_Hosts" Type="AstraModel.Host" Multiplicity="0..1" />
+          <End Role="astra_Clients" Type="AstraModel.Client" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_mkt_PPPSecrets_astra_Clients">
+          <End Role="astra_Clients" Type="AstraModel.Client" Multiplicity="1" />
+          <End Role="mkt_PPPSecrets" Type="AstraModel.PPPSecret" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="astra_Clients">
+              <PropertyRef Name="UserId" /></Principal>
+            <Dependent Role="mkt_PPPSecrets">
+              <PropertyRef Name="UserId" /></Dependent></ReferentialConstraint></Association>
+        <Association Name="FK_mkt_PPPProfiles_mkt_IPPool">
+          <End Role="mkt_IPPools" Type="AstraModel.Pool" Multiplicity="0..1" />
+          <End Role="mkt_PPPProfiles" Type="AstraModel.Profile" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_mkt_PPPSecrets_mkt_PPPProfiles">
+          <End Role="mkt_PPPProfiles" Type="AstraModel.Profile" Multiplicity="0..1" />
+          <End Role="mkt_PPPSecrets" Type="AstraModel.PPPSecret" Multiplicity="*" />
+        </Association>
+        <Association Name="astra_ServicesInSystemServices">
+          <End Role="astra_Services" Type="AstraModel.Service" Multiplicity="*" />
+          <End Role="astra_SystemServices" Type="AstraModel.SystemService" Multiplicity="*" />
+        </Association>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="MethodId" /></Key>
+          <Property Name="MethodId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Comment" Type="String" Nullable="true" />
+          <Property Name="Visible" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="acc_Transactions" Relationship="AstraModel.acc_PaymentsInTransactions" FromRole="acc_PaymentsMethods" ToRole="acc_Transactions" /></EntityType>
+        <EntityType Name="AccountTransaction">
+          <Key>
+            <PropertyRef Name="TransactionId" /></Key>
+          <Property Name="TransactionId" Type="Int32" Nullable="false" />
+          <Property Name="Sum" Type="Decimal" Nullable="false" />
+          <Property Name="Balance" Type="Decimal" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Comment" Type="String" Nullable="true" />
+          <NavigationProperty Name="aspnet_Users" Relationship="AstraModel.FK_acc_Transactions_aspnet_Users" FromRole="acc_Transactions" ToRole="ASPUser" />
+          <NavigationProperty Name="astra_Clients" Relationship="AstraModel.FK_acc_Transactions_astra_Clients" FromRole="acc_Transactions" ToRole="Client" />
+          <NavigationProperty Name="acc_PaymentsMethods" Relationship="AstraModel.acc_PaymentsInTransactions" FromRole="acc_Transactions" ToRole="acc_PaymentsMethods" />
+          <NavigationProperty Name="mkt_PPPProfiles" Relationship="AstraModel.acc_ProfilesInTransactions" FromRole="acc_Transactions" ToRole="Profile" />
+          <NavigationProperty Name="astra_Services" Relationship="AstraModel.acc_ServicesInTransactions" FromRole="acc_Transactions" ToRole="Service" /></EntityType>
+        <EntityType Name="ClientInServices">
+          <Key>
+            <PropertyRef Name="ActivityId" /></Key>
+          <Property Name="ActivityId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="aspnet_Users" Relationship="AstraModel.FK_astra_ClientsServicesActivities_aspnet_Users1" FromRole="astra_ClientsInServices" ToRole="ASPUser" />
+          <NavigationProperty Name="astra_Clients" Relationship="AstraModel.FK_astra_ClientsServicesActivities_astra_Clients1" FromRole="astra_ClientsInServices" ToRole="Client" />
+          <NavigationProperty Name="astra_Services" Relationship="AstraModel.FK_astra_ClientsServicesActivities_astra_Services1" FromRole="astra_ClientsInServices" ToRole="Service" /></EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusId" /></Key>
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="astra_Clients" Relationship="AstraModel.FK_astra_Clients_astra_Statuses" FromRole="astra_Statuses" ToRole="Client" />
+          <Property Name="DisplayName" Type="String" Nullable="false" /></EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="StreetId" /></Key>
+          <Property Name="StreetId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Tag" Type="String" Nullable="false" />
+          <NavigationProperty Name="astra_Addresses" Relationship="AstraModel.FK_astra_Addresses_astra_Streets" FromRole="astra_Streets" ToRole="Address" /></EntityType>
+        <Association Name="FK_acc_Transactions_aspnet_Users">
+          <End Type="AstraModel.ASPUser" Role="ASPUser" Multiplicity="1" />
+          <End Type="AstraModel.AccountTransaction" Role="acc_Transactions" Multiplicity="*" /></Association>
+        <Association Name="FK_acc_Transactions_astra_Clients">
+          <End Type="AstraModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="AstraModel.AccountTransaction" Role="acc_Transactions" Multiplicity="*" /></Association>
+        <Association Name="FK_astra_ClientsServicesActivities_aspnet_Users1">
+          <End Type="AstraModel.ASPUser" Role="ASPUser" Multiplicity="1" />
+          <End Type="AstraModel.ClientInServices" Role="astra_ClientsInServices" Multiplicity="*" /></Association>
+        <Association Name="FK_astra_Addresses_astra_Streets">
+          <End Type="AstraModel.Street" Role="astra_Streets" Multiplicity="1" />
+          <End Type="AstraModel.Address" Role="Address" Multiplicity="*" /></Association>
+        <Association Name="FK_astra_Clients_astra_Statuses">
+          <End Type="AstraModel.Status" Role="astra_Statuses" Multiplicity="1" />
+          <End Type="AstraModel.Client" Role="Client" Multiplicity="*" /></Association>
+        <Association Name="FK_astra_ClientsServicesActivities_astra_Clients1">
+          <End Type="AstraModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="AstraModel.ClientInServices" Role="astra_ClientsInServices" Multiplicity="*" /></Association>
+        <Association Name="FK_astra_ClientsServicesActivities_astra_Services1">
+          <End Type="AstraModel.Service" Role="Service" Multiplicity="1" />
+          <End Type="AstraModel.ClientInServices" Role="astra_ClientsInServices" Multiplicity="*" /></Association>
+        <Association Name="acc_PaymentsInTransactions">
+          <End Type="AstraModel.AccountTransaction" Role="acc_Transactions" Multiplicity="*" />
+          <End Type="AstraModel.PaymentMethod" Role="acc_PaymentsMethods" Multiplicity="0..1" /></Association>
+        <Association Name="acc_ProfilesInTransactions">
+          <End Type="AstraModel.AccountTransaction" Role="acc_Transactions" Multiplicity="*" />
+          <End Type="AstraModel.Profile" Role="Profile" Multiplicity="0..1" /></Association>
+        <Association Name="acc_ServicesInTransactions">
+          <End Type="AstraModel.AccountTransaction" Role="acc_Transactions" Multiplicity="*" />
+          <End Type="AstraModel.Service" Role="Service" Multiplicity="0..1" /></Association></Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="AstraModelStoreContainer" CdmEntityContainer="AstraEntities">
+          <EntitySetMapping Name="ASPUserSet">
+            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.ASPUser)">
+              <MappingFragment StoreEntitySet="aspnet_Users">
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LoweredUserName" ColumnName="LoweredUserName" />
+                <ScalarProperty Name="MobileAlias" ColumnName="MobileAlias" />
+                <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AddressSet">
+            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.Address)">
+              <MappingFragment StoreEntitySet="astra_Addresses">
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientSet">
+            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.Client)">
+              <MappingFragment StoreEntitySet="astra_Clients">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientDetailSet">
+            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.ClientDetail)">
+              <MappingFragment StoreEntitySet="astra_ClientsDetails">
+                <ScalarProperty Name="DetailId" ColumnName="DetailId" />
+                <ScalarProperty Name="PassportID" ColumnName="PassportID" />
+                <ScalarProperty Name="PassportDeliveryDate" ColumnName="PassportDeliveryDate" />
+                <ScalarProperty Name="PassportComment" ColumnName="PassportComment" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContractSet">
+            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.Contract)">
+              <MappingFragment StoreEntitySet="astra_Contracts">
+                <ScalarProperty Name="ContractId" ColumnName="ContractId" />
+                <ScalarProperty Name="ContractNumber" ColumnName="ContractNumber" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HostSet">
+            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.Host)">
+              <MappingFragment StoreEntitySet="astra_Hosts">
+                <ScalarProperty Name="HostId" ColumnName="HostId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceSet">
+            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.Service)">
+              <MappingFragment StoreEntitySet="astra_Services">
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="SystemData" ColumnName="SystemData" />
+                <ScalarProperty Name="IsRegular" ColumnName="IsRegular" />
+                <ScalarProperty Name="Visible" ColumnName="Visible" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemServiceSet">
+            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.SystemService)">
+              <MappingFragment StoreEntitySet="astra_SystemServices">
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PoolSet">
+            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.Pool)">
+              <MappingFragment StoreEntitySet="mkt_IPPools">
+                <ScalarProperty Name="PoolId" ColumnName="PoolId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Addresses" ColumnName="Addresses" />
+                <ScalarProperty Name="NextPool" ColumnName="NextPool" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProfileSet">
+            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.Profile)">
+              <MappingFragment StoreEntitySet="mkt_PPPProfiles">
+                <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LocalAddress" ColumnName="LocalAddress" />
+                <ScalarProperty Name="RateLimit" ColumnName="RateLimit" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PPPSecretSet">
+            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.PPPSecret)">
+              <MappingFragment StoreEntitySet="mkt_PPPSecrets">
+                <ScalarProperty Name="Disabled" ColumnName="Disabled" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Service" ColumnName="Service" />
+                <ScalarProperty Name="CallerId" ColumnName="CallerId" />
+                <ScalarProperty Name="LocalAddress" ColumnName="LocalAddress" />
+                <ScalarProperty Name="RemoteAddress" ColumnName="RemoteAddress" />
+                <ScalarProperty Name="DHCPAddress" ColumnName="DHCPAddress" />
+                <ScalarProperty Name="MACAddress" ColumnName="MACAddress" />
+                <ScalarProperty Name="Routes" ColumnName="Routes" />
+                <ScalarProperty Name="LimitBytesIn" ColumnName="LimitBytesIn" />
+                <ScalarProperty Name="LimitBytesOut" ColumnName="LimitBytesOut" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_astra_Clients_aspnet_Users" TypeName="AstraModel.FK_astra_Clients_aspnet_Users" StoreEntitySet="astra_Clients">
+            <EndProperty Name="aspnet_Users">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="astra_Clients">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_astra_Services_aspnet_Users" TypeName="AstraModel.FK_astra_Services_aspnet_Users" StoreEntitySet="astra_Services">
+            <EndProperty Name="aspnet_Users">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="astra_Services">
+              <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_astra_Clients_astra_Addresses" TypeName="AstraModel.FK_astra_Clients_astra_Addresses" StoreEntitySet="astra_Clients">
+            <EndProperty Name="astra_Addresses">
+              <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+            </EndProperty>
+            <EndProperty Name="astra_Clients">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+            <Condition ColumnName="AddressId" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_astra_Clients_astra_ClientsDetails" TypeName="AstraModel.FK_astra_Clients_astra_ClientsDetails" StoreEntitySet="astra_Clients">
+            <EndProperty Name="astra_ClientsDetails">
+              <ScalarProperty Name="DetailId" ColumnName="DetailId" />
+            </EndProperty>
+            <EndProperty Name="astra_Clients">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+            <Condition ColumnName="DetailId" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_astra_Clients_astra_Contracts" TypeName="AstraModel.FK_astra_Clients_astra_Contracts" StoreEntitySet="astra_Clients">
+            <EndProperty Name="astra_Contracts">
+              <ScalarProperty Name="ContractId" ColumnName="ContractId" />
+            </EndProperty>
+            <EndProperty Name="astra_Clients">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+            <Condition ColumnName="ContractId" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_astra_Clients_astra_Hosts" TypeName="AstraModel.FK_astra_Clients_astra_Hosts" StoreEntitySet="astra_Clients">
+            <EndProperty Name="astra_Hosts">
+              <ScalarProperty Name="HostId" ColumnName="HostId" />
+            </EndProperty>
+            <EndProperty Name="astra_Clients">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+            <Condition ColumnName="HostId" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_mkt_PPPSecrets_astra_Clients" TypeName="AstraModel.FK_mkt_PPPSecrets_astra_Clients" StoreEntitySet="mkt_PPPSecrets">
+            <EndProperty Name="astra_Clients">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="mkt_PPPSecrets">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_mkt_PPPProfiles_mkt_IPPool" TypeName="AstraModel.FK_mkt_PPPProfiles_mkt_IPPool" StoreEntitySet="mkt_PPPProfiles">
+            <EndProperty Name="mkt_IPPools">
+              <ScalarProperty Name="PoolId" ColumnName="RemoteAddress" />
+            </EndProperty>
+            <EndProperty Name="mkt_PPPProfiles">
+              <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+            </EndProperty>
+            <Condition ColumnName="RemoteAddress" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_mkt_PPPSecrets_mkt_PPPProfiles" TypeName="AstraModel.FK_mkt_PPPSecrets_mkt_PPPProfiles" StoreEntitySet="mkt_PPPSecrets">
+            <EndProperty Name="mkt_PPPProfiles">
+              <ScalarProperty Name="ProfileId" ColumnName="Profile" />
+            </EndProperty>
+            <EndProperty Name="mkt_PPPSecrets">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+            <Condition ColumnName="Profile" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="astra_ServicesInSystemServices" TypeName="AstraModel.astra_ServicesInSystemServices" StoreEntitySet="astra_ServicesInSystemServices">
+            <EndProperty Name="astra_Services">
+              <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+            </EndProperty>
+            <EndProperty Name="astra_SystemServices">
+              <ScalarProperty Name="ServiceId" ColumnName="SystemServiceId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="PaymentMethodSet">
+            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.PaymentMethod)">
+              <MappingFragment StoreEntitySet="acc_PaymentsMethods">
+                <ScalarProperty Name="Visible" ColumnName="Visible" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MethodId" ColumnName="MethodId" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="AccountTransactionSet">
+            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.AccountTransaction)">
+              <MappingFragment StoreEntitySet="acc_Transactions">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Sum" ColumnName="Sum" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ClientInServicesSet">
+            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.ClientInServices)">
+              <MappingFragment StoreEntitySet="astra_ClientsInServices">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="StatusSet">
+            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.Status)">
+              <MappingFragment StoreEntitySet="astra_Statuses">
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="StreetSet">
+            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.Street)">
+              <MappingFragment StoreEntitySet="astra_Streets">
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StreetId" ColumnName="StreetId" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="FK_acc_Transactions_aspnet_Users" TypeName="AstraModel.FK_acc_Transactions_aspnet_Users" StoreEntitySet="acc_Transactions">
+            <EndProperty Name="acc_Transactions">
+              <ScalarProperty Name="TransactionId" ColumnName="TransactionId" /></EndProperty>
+            <EndProperty Name="ASPUser">
+              <ScalarProperty Name="UserId" ColumnName="UserId" /></EndProperty></AssociationSetMapping>
+          <AssociationSetMapping Name="FK_acc_Transactions_astra_Clients" TypeName="AstraModel.FK_acc_Transactions_astra_Clients" StoreEntitySet="acc_Transactions">
+            <EndProperty Name="acc_Transactions">
+              <ScalarProperty Name="TransactionId" ColumnName="TransactionId" /></EndProperty>
+            <EndProperty Name="Client">
+              <ScalarProperty Name="UserId" ColumnName="ClientId" /></EndProperty></AssociationSetMapping>
+          <AssociationSetMapping Name="FK_astra_ClientsServicesActivities_aspnet_Users1" TypeName="AstraModel.FK_astra_ClientsServicesActivities_aspnet_Users1" StoreEntitySet="astra_ClientsInServices">
+            <EndProperty Name="astra_ClientsInServices">
+              <ScalarProperty Name="ActivityId" ColumnName="ActivityId" /></EndProperty>
+            <EndProperty Name="ASPUser">
+              <ScalarProperty Name="UserId" ColumnName="UserId" /></EndProperty></AssociationSetMapping>
+          <AssociationSetMapping Name="FK_astra_Addresses_astra_Streets" TypeName="AstraModel.FK_astra_Addresses_astra_Streets" StoreEntitySet="astra_Addresses">
+            <EndProperty Name="Address">
+              <ScalarProperty Name="AddressId" ColumnName="AddressId" /></EndProperty>
+            <EndProperty Name="astra_Streets">
+              <ScalarProperty Name="StreetId" ColumnName="StreetId" /></EndProperty></AssociationSetMapping>
+          <AssociationSetMapping Name="FK_astra_Clients_astra_Statuses" TypeName="AstraModel.FK_astra_Clients_astra_Statuses" StoreEntitySet="astra_Clients">
+            <EndProperty Name="Client">
+              <ScalarProperty Name="UserId" ColumnName="UserId" /></EndProperty>
+            <EndProperty Name="astra_Statuses">
+              <ScalarProperty Name="StatusId" ColumnName="StatusId" /></EndProperty></AssociationSetMapping>
+          <AssociationSetMapping Name="FK_astra_ClientsServicesActivities_astra_Clients1" TypeName="AstraModel.FK_astra_ClientsServicesActivities_astra_Clients1" StoreEntitySet="astra_ClientsInServices">
+            <EndProperty Name="astra_ClientsInServices">
+              <ScalarProperty Name="ActivityId" ColumnName="ActivityId" /></EndProperty>
+            <EndProperty Name="Client">
+              <ScalarProperty Name="UserId" ColumnName="ClientId" /></EndProperty></AssociationSetMapping>
+          <AssociationSetMapping Name="FK_astra_ClientsServicesActivities_astra_Services1" TypeName="AstraModel.FK_astra_ClientsServicesActivities_astra_Services1" StoreEntitySet="astra_ClientsInServices">
+            <EndProperty Name="astra_ClientsInServices">
+              <ScalarProperty Name="ActivityId" ColumnName="ActivityId" /></EndProperty>
+            <EndProperty Name="Service">
+              <ScalarProperty Name="ServiceId" ColumnName="ServiceId" /></EndProperty></AssociationSetMapping>
+          <AssociationSetMapping Name="acc_PaymentsInTransactions" TypeName="AstraModel.acc_PaymentsInTransactions" StoreEntitySet="acc_PaymentsInTransactions">
+            <EndProperty Name="acc_PaymentsMethods">
+              <ScalarProperty Name="MethodId" ColumnName="MethodId" /></EndProperty>
+            <EndProperty Name="acc_Transactions">
+              <ScalarProperty Name="TransactionId" ColumnName="TransactionId" /></EndProperty>
+            <Condition ColumnName="MethodId" IsNull="false" /></AssociationSetMapping>
+          <AssociationSetMapping Name="acc_ProfilesInTransactions" TypeName="AstraModel.acc_ProfilesInTransactions" StoreEntitySet="acc_ProfilesInTransactions">
+            <EndProperty Name="Profile">
+              <ScalarProperty Name="ProfileId" ColumnName="ProfileId" /></EndProperty>
+            <EndProperty Name="acc_Transactions">
+              <ScalarProperty Name="TransactionId" ColumnName="TransactionId" /></EndProperty>
+            <Condition ColumnName="ProfileId" IsNull="false" /></AssociationSetMapping>
+          <AssociationSetMapping Name="acc_ServicesInTransactions" TypeName="AstraModel.acc_ServicesInTransactions" StoreEntitySet="acc_ServicesInTransactions">
+            <EndProperty Name="Service">
+              <ScalarProperty Name="ServiceId" ColumnName="ServiceId" /></EndProperty>
+            <EndProperty Name="acc_Transactions">
+              <ScalarProperty Name="TransactionId" ColumnName="TransactionId" /></EndProperty>
+            <Condition ColumnName="ServiceId" IsNull="false" /></AssociationSetMapping></EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="AstraEntities">
+        <EntityTypeShape EntityType="AstraModel.ASPUser" Width="1.5" PointX="3.125" PointY="10.25" Height="3.1340950520833317" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstraModel.Address" Width="1.5" PointX="5.75" PointY="0.75" Height="2.5571907552083335" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstraModel.Client" Width="1.75" PointX="3" PointY="3.25" Height="3.5186979166666656" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstraModel.ClientDetail" Width="1.5" PointX="0.75" PointY="5.875" Height="2.7494921875000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstraModel.Contract" Width="1.5" PointX="0.75" PointY="3.25" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstraModel.Host" Width="1.5" PointX="0.75" PointY="0.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstraModel.Service" Width="1.5" PointX="0.75" PointY="11.5" Height="3.518697916666671" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstraModel.SystemService" Width="1.5" PointX="3.125" PointY="13.75" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstraModel.Pool" Width="1.5" PointX="8.25" PointY="9.125" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstraModel.Profile" Width="1.5" PointX="8.125" PointY="3.875" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstraModel.PPPSecret" Width="1.5" PointX="5.75" PointY="3.875" Height="4.2879036458333335" IsExpanded="true" />
+        <AssociationConnector Association="AstraModel.FK_astra_Clients_aspnet_Users" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.875" PointY="10.25" />
+          <ConnectorPoint PointX="3.875" PointY="6.7686979166666656" />
+          </AssociationConnector>
+        <AssociationConnector Association="AstraModel.FK_astra_Services_aspnet_Users" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.125" PointY="12.442047526041666" />
+          <ConnectorPoint PointX="2.25" PointY="12.442047526041666" />
+          </AssociationConnector>
+        <AssociationConnector Association="AstraModel.FK_astra_Clients_astra_Addresses" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.75" PointY="2.8939900130208338" />
+          <ConnectorPoint PointX="4.71875" PointY="2.8939900130208338" />
+          <ConnectorPoint PointX="4.71875" PointY="3.25" />
+          </AssociationConnector>
+        <AssociationConnector Association="AstraModel.FK_astra_Clients_astra_ClientsDetails" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="6.3218489583333328" />
+          <ConnectorPoint PointX="3" PointY="6.3218489583333328" />
+          </AssociationConnector>
+        <AssociationConnector Association="AstraModel.FK_astra_Clients_astra_Contracts" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="4.3362939453125" />
+          <ConnectorPoint PointX="3" PointY="4.3362939453125" />
+          </AssociationConnector>
+        <AssociationConnector Association="AstraModel.FK_astra_Clients_astra_Hosts" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.74723751953125" />
+          <ConnectorPoint PointX="3.03125" PointY="2.74723751953125" />
+          <ConnectorPoint PointX="3.03125" PointY="3.25" />
+          </AssociationConnector>
+        <AssociationConnector Association="AstraModel.FK_mkt_PPPSecrets_astra_Clients" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.75" PointY="5.3218489583333328" />
+          <ConnectorPoint PointX="5.75" PointY="5.3218489583333328" />
+          </AssociationConnector>
+        <AssociationConnector Association="AstraModel.FK_mkt_PPPProfiles_mkt_IPPool" ManuallyRouted="false">
+          <ConnectorPoint PointX="8.9375" PointY="9.125" />
+          <ConnectorPoint PointX="8.9375" PointY="6.8167936197916674" />
+          </AssociationConnector>
+        <AssociationConnector Association="AstraModel.FK_mkt_PPPSecrets_mkt_PPPProfiles" ManuallyRouted="false">
+          <ConnectorPoint PointX="8.125" PointY="5.3458968098958337" />
+          <ConnectorPoint PointX="7.25" PointY="5.3458968098958337" />
+          </AssociationConnector>
+        <AssociationConnector Association="AstraModel.astra_ServicesInSystemServices" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="14.384348958333336" />
+          <ConnectorPoint PointX="3.125" PointY="14.384348958333336" />
+          </AssociationConnector>
+        <EntityTypeShape EntityType="AstraModel.PaymentMethod" Width="1.5" PointX="8.25" PointY="12.125" Height="1.9802864583333326" />
+        <EntityTypeShape EntityType="AstraModel.AccountTransaction" Width="1.5" PointX="5.75" PointY="9.125" Height="2.9417936197916665" />
+        <EntityTypeShape EntityType="AstraModel.ClientInServices" Width="1.5" PointX="0.75" PointY="9" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="AstraModel.Status" Width="1.5" PointX="3.125" PointY="0.75" Height="1.787985026041667" />
+        <EntityTypeShape EntityType="AstraModel.Street" Width="1.5" PointX="8.125" PointY="0.75" Height="1.7879850260416674" />
+        <AssociationConnector Association="AstraModel.FK_acc_Transactions_aspnet_Users" >
+          <ConnectorPoint PointX="4.625" PointY="11.158396809895834" />
+          <ConnectorPoint PointX="5.75" PointY="11.158396809895834" />
+          </AssociationConnector>
+        <AssociationConnector Association="AstraModel.FK_acc_Transactions_astra_Clients" >
+          <ConnectorPoint PointX="4.71875" PointY="6.7686979166666656" />
+          <ConnectorPoint PointX="4.71875" PointY="9.890625" />
+          <ConnectorPoint PointX="5.75" PointY="9.890625" />
+          </AssociationConnector>
+        <AssociationConnector Association="AstraModel.FK_astra_ClientsServicesActivities_aspnet_Users1" >
+          <ConnectorPoint PointX="3.125" PointY="10.615143229166666" />
+          <ConnectorPoint PointX="2.25" PointY="10.615143229166666" />
+          </AssociationConnector>
+        <AssociationConnector Association="AstraModel.FK_astra_Addresses_astra_Streets" >
+          <ConnectorPoint PointX="8.125" PointY="1.6439925130208337" />
+          <ConnectorPoint PointX="7.25" PointY="1.6439925130208337" />
+          </AssociationConnector>
+        <AssociationConnector Association="AstraModel.FK_astra_Clients_astra_Statuses" >
+          <ConnectorPoint PointX="3.875" PointY="2.537985026041667" />
+          <ConnectorPoint PointX="3.875" PointY="3.25" />
+          </AssociationConnector>
+        <AssociationConnector Association="AstraModel.FK_astra_ClientsServicesActivities_astra_Clients1" >
+          <ConnectorPoint PointX="3.03125" PointY="6.7686979166666656" />
+          <ConnectorPoint PointX="3.03125" PointY="9.59375" />
+          <ConnectorPoint PointX="2.25" PointY="9.59375" /></AssociationConnector>
+        <AssociationConnector Association="AstraModel.FK_astra_ClientsServicesActivities_astra_Services1" >
+          <ConnectorPoint PointX="1.5" PointY="11.5" />
+          <ConnectorPoint PointX="1.5" PointY="10.980286458333332" />
+          </AssociationConnector>
+        <AssociationConnector Association="AstraModel.acc_PaymentsInTransactions" >
+          <ConnectorPoint PointX="6.77343875" PointY="12.066793619791667" />
+          <ConnectorPoint PointX="6.77343875" PointY="13.115143229166666" />
+          <ConnectorPoint PointX="8.25" PointY="13.115143229166666" /></AssociationConnector>
+        <AssociationConnector Association="AstraModel.acc_ProfilesInTransactions" >
+          <ConnectorPoint PointX="6.5" PointY="9.125" />
+          <ConnectorPoint PointX="6.5" PointY="8.75" />
+          <ConnectorPoint PointX="8.375" PointY="8.75" />
+          <ConnectorPoint PointX="8.375" PointY="6.8167936197916674" /></AssociationConnector>
+        <AssociationConnector Association="AstraModel.acc_ServicesInTransactions" >
+          <ConnectorPoint PointX="6.230466875" PointY="12.066793619791667" />
+          <ConnectorPoint PointX="6.230466875" PointY="13.567047526041666" />
+          <ConnectorPoint PointX="2.25" PointY="13.567047526041666" />
+          </AssociationConnector></Diagram></edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

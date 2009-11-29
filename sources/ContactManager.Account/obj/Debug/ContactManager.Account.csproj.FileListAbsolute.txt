@@ -1,0 +1,7 @@
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager.Account\bin\ContactManager.Account.dll
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager.Account\bin\ContactManager.Account.pdb
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager.Account\bin\ContactManager.Models.dll
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager.Account\bin\ContactManager.Models.pdb
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager.Account\obj\Debug\ResolveAssemblyReference.cache
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager.Account\obj\Debug\ContactManager.Account.dll
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager.Account\obj\Debug\ContactManager.Account.pdb

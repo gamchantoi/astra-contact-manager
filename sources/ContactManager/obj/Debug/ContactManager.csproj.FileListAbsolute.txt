@@ -1,0 +1,11 @@
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager\bin\ContactManager.dll
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager\bin\ContactManager.pdb
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager\bin\ContactManager.Models.dll
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager\bin\SharpSSH.dll
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager\bin\DiffieHellman.dll
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager\bin\Org.Mentalis.Security.dll
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager\bin\ContactManager.Models.pdb
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager\bin\SharpSSH.pdb
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager\obj\Debug\ResolveAssemblyReference.cache
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager\obj\Debug\ContactManager.dll
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager\obj\Debug\ContactManager.pdb

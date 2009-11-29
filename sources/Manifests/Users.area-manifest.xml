@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<AreaInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ContentFiles>
+    <string>Views\Detail\Create.aspx</string>
+    <string>Views\Detail\Edit.aspx</string>
+    <string>Views\Status\Edit.aspx</string>
+    <string>Views\Status\Index.aspx</string>
+    <string>Views\User\Create.aspx</string>
+    <string>Views\User\Edit.aspx</string>
+    <string>Views\User\Index.aspx</string>
+    <string>Views\User\Load.aspx</string>
+    <string>Views\User\Services.aspx</string>
+    <string>Web.config</string>
+    <string>Views\Web.config</string>
+  </ContentFiles>
+  <Name>Users</Name>
+  <Path>D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager.Users\</Path>
+  <Type>Child</Type>
+</AreaInfo>
