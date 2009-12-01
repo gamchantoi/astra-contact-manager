@@ -33,6 +33,6 @@
     <string>Views\Web.config</string>
   </ContentFiles>
   <Name>ContactManager.Web</Name>
-  <Path>D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager.Web\</Path>
+  <Path>D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Web\</Path>
   <Type>Parent</Type>
 </AreaInfo>

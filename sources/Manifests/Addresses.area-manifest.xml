@@ -7,6 +7,6 @@
     <string>Views\Web.config</string>
   </ContentFiles>
   <Name>Addresses</Name>
-  <Path>D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager.Addresses\</Path>
+  <Path>D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Addresses\</Path>
   <Type>Child</Type>
 </AreaInfo>

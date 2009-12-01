@@ -8,6 +8,6 @@
     <string>Views\Web.config</string>
   </ContentFiles>
   <Name>Hosts</Name>
-  <Path>D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager.Hosts\</Path>
+  <Path>D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Hosts\</Path>
   <Type>Child</Type>
 </AreaInfo>

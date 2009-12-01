@@ -83,7 +83,7 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ContactManager.Clients\ContactManager.Clients.csproj">
+    <ProjectReference Include="..\ContactManager.Users\ContactManager.Users.csproj">
       <Project>{3714F4A7-571B-47C4-925A-527F67F45637}</Project>
       <Name>ContactManager.Clients</Name>
     </ProjectReference>

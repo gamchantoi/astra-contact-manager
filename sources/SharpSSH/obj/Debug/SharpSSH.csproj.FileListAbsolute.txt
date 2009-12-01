@@ -12,3 +12,10 @@ D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\SharpSSH\obj\Debug
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\SharpSSH\obj\Debug\SharpSSH.csproj.GenerateResource.Cache
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\SharpSSH\obj\Debug\SharpSSH.dll
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\SharpSSH\obj\Debug\SharpSSH.pdb
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\bin\Debug\SharpSSH.dll
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\bin\Debug\SharpSSH.pdb
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\SharpSSH\obj\Debug\ResolveAssemblyReference.cache
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\SharpSSH\obj\Debug\Tamir.SharpSsh.jsch.examples.InputForm.resources
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\SharpSSH\obj\Debug\SharpSSH.csproj.GenerateResource.Cache
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\SharpSSH\obj\Debug\SharpSSH.dll
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\SharpSSH\obj\Debug\SharpSSH.pdb

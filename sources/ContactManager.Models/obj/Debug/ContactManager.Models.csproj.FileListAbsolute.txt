@@ -4,3 +4,9 @@ D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager.Mod
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager.Models\obj\Debug\ResolveAssemblyReference.cache
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager.Models\obj\Debug\ContactManager.Models.dll
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager.Models\obj\Debug\ContactManager.Models.pdb
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Models\bin\Debug\ContactManager.Models.dll.config
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Models\bin\Debug\ContactManager.Models.dll
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Models\bin\Debug\ContactManager.Models.pdb
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Models\obj\Debug\ResolveAssemblyReference.cache
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Models\obj\Debug\ContactManager.Models.dll
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Models\obj\Debug\ContactManager.Models.pdb

@@ -11,3 +11,16 @@ D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager.SSH
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager.SSH\obj\Debug\ContactManager.SSH.pdb
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager.SSH\bin\Debug\Hosts.dll
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager.SSH\bin\Debug\Hosts.pdb
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.SSH\bin\Debug\ContactManager.SSH.dll
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.SSH\bin\Debug\ContactManager.SSH.pdb
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.SSH\bin\Debug\ContactManager.Models.dll
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.SSH\bin\Debug\Hosts.dll
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.SSH\bin\Debug\SharpSSH.dll
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.SSH\bin\Debug\Org.Mentalis.Security.dll
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.SSH\bin\Debug\DiffieHellman.dll
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.SSH\bin\Debug\ContactManager.Models.pdb
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.SSH\bin\Debug\SharpSSH.pdb
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.SSH\bin\Debug\Hosts.pdb
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.SSH\obj\Debug\ResolveAssemblyReference.cache
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.SSH\obj\Debug\ContactManager.SSH.dll
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.SSH\obj\Debug\ContactManager.SSH.pdb
