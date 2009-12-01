@@ -23,7 +23,6 @@ D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager.Web
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\trunk\ContactManager.Web\obj\Debug\ContactManager.Web.pdb
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Web\bin\ContactManager.Web.dll
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Web\bin\ContactManager.Web.pdb
-D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Web\bin\ContactManager.Account.dll
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Web\bin\ContactManager.Models.dll
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Web\bin\Hosts.dll
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Web\bin\PPP.dll
@@ -38,9 +37,10 @@ D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.W
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Web\bin\SharpSSH.pdb
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Web\bin\Hosts.pdb
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Web\bin\PPP.pdb
-D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Web\bin\ContactManager.Account.pdb
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Web\bin\Services.pdb
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Web\bin\ContactManager.SSH.pdb
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Web\obj\Debug\ResolveAssemblyReference.cache
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Web\obj\Debug\ContactManager.Web.dll
 D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Web\obj\Debug\ContactManager.Web.pdb
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Web\bin\Account.dll
+D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Web\bin\Account.pdb

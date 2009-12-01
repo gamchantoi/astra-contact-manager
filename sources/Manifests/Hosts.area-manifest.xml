@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
 <AreaInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ContentFiles>
-    <string>Views\Host\Create.aspx</string>
-    <string>Views\Host\Edit.aspx</string>
-    <string>Views\Host\Index.aspx</string>
     <string>Web.config</string>
     <string>Views\Web.config</string>
   </ContentFiles>

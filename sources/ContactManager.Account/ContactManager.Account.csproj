@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ContactManager.Account</RootNamespace>
-    <AssemblyName>ContactManager.Account</AssemblyName>
+    <AssemblyName>Account</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
   </PropertyGroup>
@@ -81,9 +81,6 @@
     <Content Include="Views\AccountTransactions\Index.aspx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />
-    <Content Include="Views\Shared\Error.aspx" />
-    <Content Include="Views\Shared\LogOnUserControl.ascx" />
-    <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -102,21 +99,10 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target> -->
-  <!-- To enable MVC area subproject support, uncomment the following two lines:
-  <UsingTask TaskName="Microsoft.Web.Mvc.Build.CreateAreaManifest" AssemblyName="Microsoft.Web.Mvc.Build, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
-  <UsingTask TaskName="Microsoft.Web.Mvc.Build.CopyAreaManifests" AssemblyName="Microsoft.Web.Mvc.Build, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
-  -->
   <Target Name="AfterBuild" DependsOnTargets="AfterBuildCompiler">
     <PropertyGroup>
       <AreasManifestDir>$(ProjectDir)\..\Manifests</AreasManifestDir>
     </PropertyGroup>
-    <!-- If this is an area child project, uncomment the following line:
-    <CreateAreaManifest AreaName="$(AssemblyName)" AreaType="Child" AreaPath="$(ProjectDir)" ManifestPath="$(AreasManifestDir)" ContentFiles="@(Content)" />
-    -->
-    <!-- If this is an area parent project, uncomment the following lines:
-    <CreateAreaManifest AreaName="$(AssemblyName)" AreaType="Parent" AreaPath="$(ProjectDir)" ManifestPath="$(AreasManifestDir)" ContentFiles="@(Content)" />
-    <CopyAreaManifests ManifestPath="$(AreasManifestDir)" CrossCopy="false" RenameViews="true" />
-    -->
   </Target>
   <Target Name="AfterBuildCompiler" Condition="'$(MvcBuildViews)'=='true'">
     <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)\..\$(ProjectName)" />

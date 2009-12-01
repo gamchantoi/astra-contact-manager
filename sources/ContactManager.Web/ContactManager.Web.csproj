@@ -87,6 +87,31 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\PasswordGenerator.js" />
     <Content Include="Scripts\StyleSetter.js" />
+    <Content Include="Areas\Addresses\Views\Address\Create.aspx" />
+    <Content Include="Areas\Addresses\Views\Address\Index.aspx" />
+    <!--<Content Include="Views\Areas\ContactManager.Addresses\Address\Index.aspx" />
+    <Content Include="Views\Areas\ContactManager.Hosts\Host\Create.aspx" />
+    <Content Include="Views\Areas\ContactManager.Hosts\Host\Edit.aspx" />
+    <Content Include="Views\Areas\ContactManager.Hosts\Host\Index.aspx" />-->
+    <Content Include="Areas\PPP\Views\Pool\Create.aspx" />
+    <Content Include="Areas\PPP\Views\Pool\Edit.aspx" />
+    <Content Include="Areas\PPP\Views\Pool\Index.aspx" />
+    <Content Include="Areas\PPP\Views\Profile\Create.aspx" />
+    <Content Include="Areas\PPP\Views\Profile\Edit.aspx" />
+    <Content Include="Areas\PPP\Views\Profile\Index.aspx" />
+    <Content Include="Areas\Services\Views\Service\Activities.aspx" />
+    <Content Include="Areas\Services\Views\Service\Create.aspx" />
+    <Content Include="Areas\Services\Views\Service\Edit.aspx" />
+    <Content Include="Areas\Services\Views\Service\Index.aspx" />
+    <Content Include="Areas\Users\Views\Detail\Create.aspx" />
+    <Content Include="Areas\Users\Views\Detail\Edit.aspx" />
+    <Content Include="Areas\Users\Views\Status\Edit.aspx" />
+    <Content Include="Areas\Users\Views\Status\Index.aspx" />
+    <Content Include="Areas\Users\Views\User\Create.aspx" />
+    <Content Include="Areas\Users\Views\User\Edit.aspx" />
+    <Content Include="Areas\Users\Views\User\Index.aspx" />
+    <Content Include="Areas\Users\Views\User\Load.aspx" />
+    <Content Include="Areas\Users\Views\User\Services.aspx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\jquery-1.3.2.js" />
@@ -139,6 +164,21 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Addresses\Web.config" />
+    <Content Include="Areas\PPP\Web.config" />
+    <Content Include="Areas\Services\Web.config" />
+    <Content Include="Areas\Users\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Hosts\Views\Host\Create.aspx" />
+    <Content Include="Areas\Hosts\Views\Host\Edit.aspx" />
+    <Content Include="Areas\Hosts\Views\Host\Index.aspx" />
+    <Content Include="Areas\Hosts\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Hosts\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -147,9 +187,10 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target> -->
-  <!-- To enable MVC area subproject support, uncomment the following two lines: -->
+  <!-- To enable MVC area subproject support, uncomment the following two lines: 
   <UsingTask TaskName="Microsoft.Web.Mvc.Build.CreateAreaManifest" AssemblyName="Microsoft.Web.Mvc.Build, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
   <UsingTask TaskName="Microsoft.Web.Mvc.Build.CopyAreaManifests" AssemblyName="Microsoft.Web.Mvc.Build, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+  -->
   <Target Name="AfterBuild" DependsOnTargets="AfterBuildCompiler">
     <PropertyGroup>
       <AreasManifestDir>$(ProjectDir)\..\Manifests</AreasManifestDir>
@@ -157,9 +198,10 @@
     <!-- If this is an area child project, uncomment the following line:
     <CreateAreaManifest AreaName="$(AssemblyName)" AreaType="Child" AreaPath="$(ProjectDir)" ManifestPath="$(AreasManifestDir)" ContentFiles="@(Content)" />
     -->
-    <!-- If this is an area parent project, uncomment the following lines: -->
+    <!-- If this is an area parent project, uncomment the following lines:
     <CreateAreaManifest AreaName="$(AssemblyName)" AreaType="Parent" AreaPath="$(ProjectDir)" ManifestPath="$(AreasManifestDir)" ContentFiles="@(Content)" />
     <CopyAreaManifests ManifestPath="$(AreasManifestDir)" CrossCopy="false" RenameViews="true" />
+      -->
   </Target>
   <Target Name="AfterBuildCompiler" Condition="'$(MvcBuildViews)'=='true'">
     <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)\..\$(ProjectName)" />

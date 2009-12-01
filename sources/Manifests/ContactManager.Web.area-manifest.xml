@@ -7,6 +7,27 @@
     <string>Global.asax</string>
     <string>Scripts\PasswordGenerator.js</string>
     <string>Scripts\StyleSetter.js</string>
+    <string>Views\Areas\Addresses\Address\Create.aspx</string>
+    <string>Views\Areas\Addresses\Address\Index.aspx</string>
+    <string>Views\Areas\PPP\Pool\Create.aspx</string>
+    <string>Views\Areas\PPP\Pool\Edit.aspx</string>
+    <string>Views\Areas\PPP\Pool\Index.aspx</string>
+    <string>Views\Areas\PPP\Profile\Create.aspx</string>
+    <string>Views\Areas\PPP\Profile\Edit.aspx</string>
+    <string>Views\Areas\PPP\Profile\Index.aspx</string>
+    <string>Views\Areas\Services\Service\Activities.aspx</string>
+    <string>Views\Areas\Services\Service\Create.aspx</string>
+    <string>Views\Areas\Services\Service\Edit.aspx</string>
+    <string>Views\Areas\Services\Service\Index.aspx</string>
+    <string>Views\Areas\Users\Detail\Create.aspx</string>
+    <string>Views\Areas\Users\Detail\Edit.aspx</string>
+    <string>Views\Areas\Users\Status\Edit.aspx</string>
+    <string>Views\Areas\Users\Status\Index.aspx</string>
+    <string>Views\Areas\Users\User\Create.aspx</string>
+    <string>Views\Areas\Users\User\Edit.aspx</string>
+    <string>Views\Areas\Users\User\Index.aspx</string>
+    <string>Views\Areas\Users\User\Load.aspx</string>
+    <string>Views\Areas\Users\User\Services.aspx</string>
     <string>Web.config</string>
     <string>Content\Site.css</string>
     <string>Scripts\jquery-1.3.2.js</string>
@@ -31,6 +52,15 @@
     <string>Views\Shared\LogOnUserControl.ascx</string>
     <string>Views\Shared\Site.Master</string>
     <string>Views\Web.config</string>
+    <string>Views\Areas\Addresses\Web.config</string>
+    <string>Views\Areas\PPP\Web.config</string>
+    <string>Views\Areas\Services\Web.config</string>
+    <string>Views\Areas\Users\Web.config</string>
+    <string>Areas\Hosts\Views\Host\Create.aspx</string>
+    <string>Areas\Hosts\Views\Host\Edit.aspx</string>
+    <string>Areas\Hosts\Views\Host\Index.aspx</string>
+    <string>Areas\Hosts\Views\Web.config</string>
+    <string>Areas\Hosts\Web.config</string>
   </ContentFiles>
   <Name>ContactManager.Web</Name>
   <Path>D:\Docs\Visual Studio 2008\Projects\AstraContactManager\sources\ContactManager.Web\</Path>
