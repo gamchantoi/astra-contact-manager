@@ -26,44 +26,30 @@ namespace ContactManager.Addresses.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(Address address)
+        public ActionResult Create([Bind(Exclude = "AddressId")]Address address)
         {
-            try
-            {
-                // TODO: Add insert logic here
-
+            if (_addressService.Create(address))
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            FillViewData(address);
+            return View(address);
         }
 
-        //
-        // GET: /Address/Edit/5
 
         public ActionResult Edit(int id)
         {
-            return View();
+            Address _address = _addressService.GetAddress(id);
+            FillViewData(_address);
+            return View(_address);
         }
 
-        //
-        // POST: /Address/Edit/5
-
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Address address)
         {
-            try
-            {
-                // TODO: Add update logic here
-
+            
+            if (_addressService.Edit(address))
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            FillViewData(address);
+            return View(address);
         }
 
         private void FillViewData(Address address)
