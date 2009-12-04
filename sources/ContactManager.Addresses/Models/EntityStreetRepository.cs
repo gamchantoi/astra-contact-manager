@@ -23,5 +23,19 @@ namespace ContactManager.Addresses.Models
         {
             return _entities.StreetSet.ToList();
         }
+
+        public Street GetStreet(int id)
+        {
+            Street street = (from m in _entities.StreetSet where id == m.StreetId select m).FirstOrDefault();
+            return street;
+        }
+
+        public Street Edit(Street street)
+        {
+            Street _street = GetStreet(street.StreetId);
+            _entities.ApplyPropertyChanges(_street.EntityKey.EntitySetName, street);
+            _entities.SaveChanges();
+            return street;
+        }
     }
 }
