@@ -176,7 +176,7 @@ namespace ContactManager.Users.Models
 
         public bool ClearAllData()
         {
-            foreach (var transaction in _entities.AccountTransactionSet.ToList())
+            foreach (var transaction in _entities.TransactionSet.ToList())
             {
                 _entities.DeleteObject(transaction);
             }
@@ -192,7 +192,7 @@ namespace ContactManager.Users.Models
             {
                 _entities.DeleteObject(pool);
             }
-            foreach (var transaction in _entities.AccountTransactionSet.ToList())
+            foreach (var transaction in _entities.TransactionSet.ToList())
             {
                 _entities.DeleteObject(transaction);
             }

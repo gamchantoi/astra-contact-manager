@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager.Services", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager.Synchronization", "ContactManager.Synchronization\ContactManager.Synchronization.csproj", "{992422D0-1AAD-4B19-AE12-115F4AB7342B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager.Account", "ContactManager.Account\ContactManager.Account.csproj", "{10900875-21DD-4898-9C44-7BA74FA4B0DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager.Accounts", "ContactManager.Accounts\ContactManager.Accounts.csproj", "{10900875-21DD-4898-9C44-7BA74FA4B0DF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager.Hosts", "ContactManager.Hosts\ContactManager.Hosts.csproj", "{9FCC78FF-0A44-4A92-BFDC-D2C758246777}"
 EndProject

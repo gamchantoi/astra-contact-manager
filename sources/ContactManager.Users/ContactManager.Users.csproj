@@ -87,9 +87,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ContactManager.Account\ContactManager.Account.csproj">
+    <ProjectReference Include="..\ContactManager.Accounts\ContactManager.Accounts.csproj">
       <Project>{10900875-21DD-4898-9C44-7BA74FA4B0DF}</Project>
-      <Name>ContactManager.Account</Name>
+      <Name>ContactManager.Accounts</Name>
     </ProjectReference>
     <ProjectReference Include="..\ContactManager.Addresses\ContactManager.Addresses.csproj">
       <Project>{6A200617-E0CC-465C-A8F9-626CE89DA86C}</Project>

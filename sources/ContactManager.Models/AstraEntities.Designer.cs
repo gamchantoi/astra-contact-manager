@@ -19,19 +19,19 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_mkt_PPPProfiles_mkt_IPPool", "mkt_IPPools", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ContactManager.Models.Pool), "mkt_PPPProfiles", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Profile))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_mkt_PPPSecrets_mkt_PPPProfiles", "mkt_PPPProfiles", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ContactManager.Models.Profile), "mkt_PPPSecrets", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.PPPSecret))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "astra_ServicesInSystemServices", "astra_Services", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Service), "astra_SystemServices", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.SystemService))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_acc_Transactions_aspnet_Users", "ASPUser", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.ASPUser), "acc_Transactions", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.AccountTransaction))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_acc_Transactions_astra_Clients", "Client", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.Client), "acc_Transactions", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.AccountTransaction))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_acc_Transactions_aspnet_Users", "ASPUser", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.ASPUser), "acc_Transactions", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Transaction))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_acc_Transactions_astra_Clients", "Client", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.Client), "acc_Transactions", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Transaction))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_ClientsServicesActivities_aspnet_Users1", "ASPUser", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.ASPUser), "astra_ClientsInServices", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.ClientInServices))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Addresses_astra_Streets", "astra_Streets", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.Street), "Address", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Address))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Clients_astra_Statuses", "astra_Statuses", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.Status), "Client", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Client))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_ClientsServicesActivities_astra_Clients1", "Client", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.Client), "astra_ClientsInServices", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.ClientInServices))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_ClientsServicesActivities_astra_Services1", "Service", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.Service), "astra_ClientsInServices", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.ClientInServices))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "acc_PaymentsInTransactions", "acc_Transactions", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.AccountTransaction), "acc_PaymentsMethods", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ContactManager.Models.PaymentMethod))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "acc_ProfilesInTransactions", "acc_Transactions", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.AccountTransaction), "Profile", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ContactManager.Models.Profile))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "acc_ServicesInTransactions", "acc_Transactions", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.AccountTransaction), "Service", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ContactManager.Models.Service))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "acc_PaymentsInTransactions", "acc_Transactions", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Transaction), "acc_PaymentsMethods", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ContactManager.Models.PaymentMethod))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "acc_ProfilesInTransactions", "acc_Transactions", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Transaction), "Profile", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ContactManager.Models.Profile))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "acc_ServicesInTransactions", "acc_Transactions", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Transaction), "Service", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ContactManager.Models.Service))]
 
 // Original file name:
-// Generation date: 11/27/2009 11:24:45 AM
+// Generation date: 12/5/2009 12:10:47 PM
 namespace ContactManager.Models
 {
     
@@ -246,20 +246,20 @@ namespace ContactManager.Models
         }
         private global::System.Data.Objects.ObjectQuery<PaymentMethod> _PaymentMethodSet;
         /// <summary>
-        /// There are no comments for AccountTransactionSet in the schema.
+        /// There are no comments for TransactionSet in the schema.
         /// </summary>
-        public global::System.Data.Objects.ObjectQuery<AccountTransaction> AccountTransactionSet
+        public global::System.Data.Objects.ObjectQuery<Transaction> TransactionSet
         {
             get
             {
-                if ((this._AccountTransactionSet == null))
+                if ((this._TransactionSet == null))
                 {
-                    this._AccountTransactionSet = base.CreateQuery<AccountTransaction>("[AccountTransactionSet]");
+                    this._TransactionSet = base.CreateQuery<Transaction>("[TransactionSet]");
                 }
-                return this._AccountTransactionSet;
+                return this._TransactionSet;
             }
         }
-        private global::System.Data.Objects.ObjectQuery<AccountTransaction> _AccountTransactionSet;
+        private global::System.Data.Objects.ObjectQuery<Transaction> _TransactionSet;
         /// <summary>
         /// There are no comments for ClientInServicesSet in the schema.
         /// </summary>
@@ -390,11 +390,11 @@ namespace ContactManager.Models
             base.AddObject("PaymentMethodSet", paymentMethod);
         }
         /// <summary>
-        /// There are no comments for AccountTransactionSet in the schema.
+        /// There are no comments for TransactionSet in the schema.
         /// </summary>
-        public void AddToAccountTransactionSet(AccountTransaction accountTransaction)
+        public void AddToTransactionSet(Transaction transaction)
         {
-            base.AddObject("AccountTransactionSet", accountTransaction);
+            base.AddObject("TransactionSet", transaction);
         }
         /// <summary>
         /// There are no comments for ClientInServicesSet in the schema.
@@ -675,17 +675,17 @@ namespace ContactManager.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<AccountTransaction> acc_Transactions
+        public global::System.Data.Objects.DataClasses.EntityCollection<Transaction> acc_Transactions
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<AccountTransaction>("AstraModel.FK_acc_Transactions_aspnet_Users", "acc_Transactions");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Transaction>("AstraModel.FK_acc_Transactions_aspnet_Users", "acc_Transactions");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<AccountTransaction>("AstraModel.FK_acc_Transactions_aspnet_Users", "acc_Transactions", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Transaction>("AstraModel.FK_acc_Transactions_aspnet_Users", "acc_Transactions", value);
                 }
             }
         }
@@ -1285,17 +1285,17 @@ namespace ContactManager.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<AccountTransaction> acc_Transactions
+        public global::System.Data.Objects.DataClasses.EntityCollection<Transaction> acc_Transactions
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<AccountTransaction>("AstraModel.FK_acc_Transactions_astra_Clients", "acc_Transactions");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Transaction>("AstraModel.FK_acc_Transactions_astra_Clients", "acc_Transactions");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<AccountTransaction>("AstraModel.FK_acc_Transactions_astra_Clients", "acc_Transactions", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Transaction>("AstraModel.FK_acc_Transactions_astra_Clients", "acc_Transactions", value);
                 }
             }
         }
@@ -2243,17 +2243,17 @@ namespace ContactManager.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<AccountTransaction> acc_Transactions
+        public global::System.Data.Objects.DataClasses.EntityCollection<Transaction> acc_Transactions
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<AccountTransaction>("AstraModel.acc_ServicesInTransactions", "acc_Transactions");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Transaction>("AstraModel.acc_ServicesInTransactions", "acc_Transactions");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<AccountTransaction>("AstraModel.acc_ServicesInTransactions", "acc_Transactions", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Transaction>("AstraModel.acc_ServicesInTransactions", "acc_Transactions", value);
                 }
             }
         }
@@ -2764,17 +2764,17 @@ namespace ContactManager.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<AccountTransaction> acc_Transactions
+        public global::System.Data.Objects.DataClasses.EntityCollection<Transaction> acc_Transactions
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<AccountTransaction>("AstraModel.acc_ProfilesInTransactions", "acc_Transactions");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Transaction>("AstraModel.acc_ProfilesInTransactions", "acc_Transactions");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<AccountTransaction>("AstraModel.acc_ProfilesInTransactions", "acc_Transactions", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Transaction>("AstraModel.acc_ProfilesInTransactions", "acc_Transactions", value);
                 }
             }
         }
@@ -3346,47 +3346,47 @@ namespace ContactManager.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<AccountTransaction> acc_Transactions
+        public global::System.Data.Objects.DataClasses.EntityCollection<Transaction> acc_Transactions
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<AccountTransaction>("AstraModel.acc_PaymentsInTransactions", "acc_Transactions");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Transaction>("AstraModel.acc_PaymentsInTransactions", "acc_Transactions");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<AccountTransaction>("AstraModel.acc_PaymentsInTransactions", "acc_Transactions", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Transaction>("AstraModel.acc_PaymentsInTransactions", "acc_Transactions", value);
                 }
             }
         }
     }
     /// <summary>
-    /// There are no comments for AstraModel.AccountTransaction in the schema.
+    /// There are no comments for AstraModel.Transaction in the schema.
     /// </summary>
     /// <KeyProperties>
     /// TransactionId
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="AstraModel", Name="AccountTransaction")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="AstraModel", Name="Transaction")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class AccountTransaction : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class Transaction : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new AccountTransaction object.
+        /// Create a new Transaction object.
         /// </summary>
         /// <param name="transactionId">Initial value of TransactionId.</param>
         /// <param name="sum">Initial value of Sum.</param>
         /// <param name="balance">Initial value of Balance.</param>
         /// <param name="date">Initial value of Date.</param>
-        public static AccountTransaction CreateAccountTransaction(int transactionId, decimal sum, decimal balance, global::System.DateTime date)
+        public static Transaction CreateTransaction(int transactionId, decimal sum, decimal balance, global::System.DateTime date)
         {
-            AccountTransaction accountTransaction = new AccountTransaction();
-            accountTransaction.TransactionId = transactionId;
-            accountTransaction.Sum = sum;
-            accountTransaction.Balance = balance;
-            accountTransaction.Date = date;
-            return accountTransaction;
+            Transaction transaction = new Transaction();
+            transaction.TransactionId = transactionId;
+            transaction.Sum = sum;
+            transaction.Balance = balance;
+            transaction.Date = date;
+            return transaction;
         }
         /// <summary>
         /// There are no comments for Property TransactionId in the schema.

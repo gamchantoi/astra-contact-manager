@@ -28,7 +28,7 @@ namespace ContactManager.Addresses.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create([Bind(Exclude = "AddressId")]Address address)
         {
-            if (_addressService.Create(address))
+            if (_addressService.CreateAddress(address))
                 return RedirectToAction("Index");
             FillViewData(address);
             return View(address);
@@ -46,7 +46,7 @@ namespace ContactManager.Addresses.Controllers
         public ActionResult Edit(Address address)
         {
             
-            if (_addressService.Edit(address))
+            if (_addressService.EditAddress(address))
                 return RedirectToAction("Index");
             FillViewData(address);
             return View(address);

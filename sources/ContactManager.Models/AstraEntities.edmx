@@ -689,16 +689,16 @@
             <End Role="astra_SystemServices" EntitySet="SystemServiceSet" />
           </AssociationSet>
           <EntitySet Name="PaymentMethodSet" EntityType="AstraModel.PaymentMethod" />
-          <EntitySet Name="AccountTransactionSet" EntityType="AstraModel.AccountTransaction" />
+          <EntitySet Name="TransactionSet" EntityType="AstraModel.Transaction" />
           <EntitySet Name="ClientInServicesSet" EntityType="AstraModel.ClientInServices" />
           <EntitySet Name="StatusSet" EntityType="AstraModel.Status" />
           <EntitySet Name="StreetSet" EntityType="AstraModel.Street" />
           <AssociationSet Name="FK_acc_Transactions_aspnet_Users" Association="AstraModel.FK_acc_Transactions_aspnet_Users">
             <End Role="ASPUser" EntitySet="ASPUserSet" />
-            <End Role="acc_Transactions" EntitySet="AccountTransactionSet" /></AssociationSet>
+            <End Role="acc_Transactions" EntitySet="TransactionSet" /></AssociationSet>
           <AssociationSet Name="FK_acc_Transactions_astra_Clients" Association="AstraModel.FK_acc_Transactions_astra_Clients">
             <End Role="Client" EntitySet="ClientSet" />
-            <End Role="acc_Transactions" EntitySet="AccountTransactionSet" /></AssociationSet>
+            <End Role="acc_Transactions" EntitySet="TransactionSet" /></AssociationSet>
           <AssociationSet Name="FK_astra_ClientsServicesActivities_aspnet_Users1" Association="AstraModel.FK_astra_ClientsServicesActivities_aspnet_Users1">
             <End Role="ASPUser" EntitySet="ASPUserSet" />
             <End Role="astra_ClientsInServices" EntitySet="ClientInServicesSet" /></AssociationSet>
@@ -715,13 +715,13 @@
             <End Role="Service" EntitySet="ServiceSet" />
             <End Role="astra_ClientsInServices" EntitySet="ClientInServicesSet" /></AssociationSet>
           <AssociationSet Name="acc_PaymentsInTransactions" Association="AstraModel.acc_PaymentsInTransactions">
-            <End Role="acc_Transactions" EntitySet="AccountTransactionSet" />
+            <End Role="acc_Transactions" EntitySet="TransactionSet" />
             <End Role="acc_PaymentsMethods" EntitySet="PaymentMethodSet" /></AssociationSet>
           <AssociationSet Name="acc_ProfilesInTransactions" Association="AstraModel.acc_ProfilesInTransactions">
-            <End Role="acc_Transactions" EntitySet="AccountTransactionSet" />
+            <End Role="acc_Transactions" EntitySet="TransactionSet" />
             <End Role="Profile" EntitySet="ProfileSet" /></AssociationSet>
           <AssociationSet Name="acc_ServicesInTransactions" Association="AstraModel.acc_ServicesInTransactions">
-            <End Role="acc_Transactions" EntitySet="AccountTransactionSet" />
+            <End Role="acc_Transactions" EntitySet="TransactionSet" />
             <End Role="Service" EntitySet="ServiceSet" /></AssociationSet></EntityContainer>
         <EntityType Name="ASPUser">
           <Key>
@@ -930,7 +930,7 @@
           <Property Name="Comment" Type="String" Nullable="true" />
           <Property Name="Visible" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="acc_Transactions" Relationship="AstraModel.acc_PaymentsInTransactions" FromRole="acc_PaymentsMethods" ToRole="acc_Transactions" /></EntityType>
-        <EntityType Name="AccountTransaction">
+        <EntityType Name="Transaction">
           <Key>
             <PropertyRef Name="TransactionId" /></Key>
           <Property Name="TransactionId" Type="Int32" Nullable="false" />
@@ -967,10 +967,10 @@
           <NavigationProperty Name="astra_Addresses" Relationship="AstraModel.FK_astra_Addresses_astra_Streets" FromRole="astra_Streets" ToRole="Address" /></EntityType>
         <Association Name="FK_acc_Transactions_aspnet_Users">
           <End Type="AstraModel.ASPUser" Role="ASPUser" Multiplicity="1" />
-          <End Type="AstraModel.AccountTransaction" Role="acc_Transactions" Multiplicity="*" /></Association>
+          <End Type="AstraModel.Transaction" Role="acc_Transactions" Multiplicity="*" /></Association>
         <Association Name="FK_acc_Transactions_astra_Clients">
           <End Type="AstraModel.Client" Role="Client" Multiplicity="1" />
-          <End Type="AstraModel.AccountTransaction" Role="acc_Transactions" Multiplicity="*" /></Association>
+          <End Type="AstraModel.Transaction" Role="acc_Transactions" Multiplicity="*" /></Association>
         <Association Name="FK_astra_ClientsServicesActivities_aspnet_Users1">
           <End Type="AstraModel.ASPUser" Role="ASPUser" Multiplicity="1" />
           <End Type="AstraModel.ClientInServices" Role="astra_ClientsInServices" Multiplicity="*" /></Association>
@@ -987,13 +987,13 @@
           <End Type="AstraModel.Service" Role="Service" Multiplicity="1" />
           <End Type="AstraModel.ClientInServices" Role="astra_ClientsInServices" Multiplicity="*" /></Association>
         <Association Name="acc_PaymentsInTransactions">
-          <End Type="AstraModel.AccountTransaction" Role="acc_Transactions" Multiplicity="*" />
+          <End Type="AstraModel.Transaction" Role="acc_Transactions" Multiplicity="*" />
           <End Type="AstraModel.PaymentMethod" Role="acc_PaymentsMethods" Multiplicity="0..1" /></Association>
         <Association Name="acc_ProfilesInTransactions">
-          <End Type="AstraModel.AccountTransaction" Role="acc_Transactions" Multiplicity="*" />
+          <End Type="AstraModel.Transaction" Role="acc_Transactions" Multiplicity="*" />
           <End Type="AstraModel.Profile" Role="Profile" Multiplicity="0..1" /></Association>
         <Association Name="acc_ServicesInTransactions">
-          <End Type="AstraModel.AccountTransaction" Role="acc_Transactions" Multiplicity="*" />
+          <End Type="AstraModel.Transaction" Role="acc_Transactions" Multiplicity="*" />
           <End Type="AstraModel.Service" Role="Service" Multiplicity="0..1" /></Association></Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1232,8 +1232,8 @@
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="MethodId" ColumnName="MethodId" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="AccountTransactionSet">
-            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.AccountTransaction)">
+          <EntitySetMapping Name="TransactionSet">
+            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.Transaction)">
               <MappingFragment StoreEntitySet="acc_Transactions">
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -1382,7 +1382,7 @@
           <ConnectorPoint PointX="3.125" PointY="14.384348958333336" />
           </AssociationConnector>
         <EntityTypeShape EntityType="AstraModel.PaymentMethod" Width="1.5" PointX="8.25" PointY="12.125" Height="1.9802864583333326" />
-        <EntityTypeShape EntityType="AstraModel.AccountTransaction" Width="1.5" PointX="5.75" PointY="9.125" Height="2.9417936197916665" />
+        <EntityTypeShape EntityType="AstraModel.Transaction" Width="1.5" PointX="5.75" PointY="9.125" Height="2.9417936197916665" />
         <EntityTypeShape EntityType="AstraModel.ClientInServices" Width="1.5" PointX="0.75" PointY="9" Height="1.9802864583333317" />
         <EntityTypeShape EntityType="AstraModel.Status" Width="1.5" PointX="3.125" PointY="0.75" Height="1.787985026041667" />
         <EntityTypeShape EntityType="AstraModel.Street" Width="1.5" PointX="8.125" PointY="0.75" Height="1.7879850260416674" />
