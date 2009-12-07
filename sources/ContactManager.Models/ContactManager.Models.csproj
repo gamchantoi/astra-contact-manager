@@ -53,7 +53,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountTransaction.cs" />
     <Compile Include="Address.cs" />
     <Compile Include="AstraEntities.Designer.cs">
       <AutoGen>True</AutoGen>

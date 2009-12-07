@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using ContactManager.Account.Interfaces;
-using ContactManager.Account.Models;
+using ContactManager.Accounts.Interfaces;
+using ContactManager.Accounts.Services;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
 using System.Web.Security;
@@ -19,19 +19,19 @@ namespace ContactManager.Users.Models
         private readonly IMembershipService _accountService;
         private readonly IClientService _clientService;
         private readonly ISecretService _pppSecretService;
-        private readonly IAccountTransactionService _transactionService;
+        private readonly ITransactionService _transactionService;
         private const string PATTERN = @"[\(*\)*\[*\]*]";
 
         #region Constructors
         public ContactService(IValidationDictionary validationDictionary)
             : this(validationDictionary, new AccountMembershipService()
                    , new ClientService(validationDictionary), new SecretService(validationDictionary)
-                   , new AccountTransactionService(validationDictionary))
+                   , new TransactionService(validationDictionary))
         { }
 
         public ContactService(IValidationDictionary validationDictionary, IMembershipService accountService
                               , IClientService clientService, ISecretService pppSecretService
-                              , IAccountTransactionService transactionService)
+                              , ITransactionService transactionService)
         {
             _validationDictionary = validationDictionary;
             _accountService = accountService;

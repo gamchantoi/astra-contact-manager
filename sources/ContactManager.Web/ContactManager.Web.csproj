@@ -89,10 +89,6 @@
     <Content Include="Scripts\StyleSetter.js" />
     <Content Include="Areas\Addresses\Views\Address\Create.aspx" />
     <Content Include="Areas\Addresses\Views\Address\Index.aspx" />
-    <!--<Content Include="Views\Areas\ContactManager.Addresses\Address\Index.aspx" />
-    <Content Include="Views\Areas\ContactManager.Hosts\Host\Create.aspx" />
-    <Content Include="Views\Areas\ContactManager.Hosts\Host\Edit.aspx" />
-    <Content Include="Views\Areas\ContactManager.Hosts\Host\Index.aspx" />-->
     <Content Include="Areas\PPP\Views\Pool\Create.aspx" />
     <Content Include="Areas\PPP\Views\Pool\Edit.aspx" />
     <Content Include="Areas\PPP\Views\Pool\Index.aspx" />
@@ -138,9 +134,9 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ContactManager.Account\ContactManager.Account.csproj">
+    <ProjectReference Include="..\ContactManager.Accounts\ContactManager.Accounts.csproj">
       <Project>{10900875-21DD-4898-9C44-7BA74FA4B0DF}</Project>
-      <Name>ContactManager.Account</Name>
+      <Name>ContactManager.Accounts</Name>
     </ProjectReference>
     <ProjectReference Include="..\ContactManager.Hosts\ContactManager.Hosts.csproj">
       <Project>{9FCC78FF-0A44-4A92-BFDC-D2C758246777}</Project>

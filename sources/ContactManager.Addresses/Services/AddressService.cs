@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using ContactManager.Addresses.Interfaces;
 using ContactManager.Addresses.Models;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
 
 namespace ContactManager.Addresses.Services
 {
-    public class AddressService
+    public class AddressService : IAddressService
     {
         private readonly IValidationDictionary _validationDictionary;
         private readonly EntityAddressRepository _addressRepository;
@@ -47,11 +46,10 @@ namespace ContactManager.Addresses.Services
 
         public Street GetStreet(int id)
         {
-            Street street = _streetRepository.GetStreet(id);
-            return street;
+            return _streetRepository.GetStreet(id);
         }
 
-        public bool Create(Address address)
+        public bool CreateAddress(Address address)
         {
             try
             {
@@ -65,7 +63,7 @@ namespace ContactManager.Addresses.Services
             }
         }
 
-        public bool Edit(Address address)
+        public bool EditAddress(Address address)
         {
             try
             {
@@ -81,11 +79,7 @@ namespace ContactManager.Addresses.Services
 
         public Address GetAddress(int id)
         {
-            Address address = _addressRepository.GetAddress(id);
-            address.astra_StreetsReference.Load();
-            Street street = GetStreet(address.astra_Streets.StreetId);
-            address.Street = street;
-            return address;
+            return _addressRepository.GetAddress(id);
         }
     }
 }
