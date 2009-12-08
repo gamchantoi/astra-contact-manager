@@ -70,7 +70,7 @@ namespace ContactManager.Accounts.Models
         public SelectList ListPaymentMethods(int? selectedId)
         {
             var list = ListPaymentMethods();
-            var paymentMethod = new PaymentMethod { MethodId = 0, Name = "Pleace select", Visible = true };
+            var paymentMethod = new PaymentMethod { MethodId = 0, Name = "Please select", Visible = true };
             list.Add(paymentMethod);
             if (selectedId.HasValue)
                 return new SelectList(list, "MethodId", "Name", selectedId.Value);
