@@ -27,17 +27,17 @@ namespace ContactManager.Accounts.Models
         public List<Transaction> ListTransaction()
         {
             var list = _entities.TransactionSet.ToList();
-            foreach (var item in list)
-            {
-                item.astra_ClientsReference.Load();
-                item.astra_ClientsReference.Value.aspnet_UsersReference.Load();
-                item.astra_ClientsReference.Value.UserName =
-                    item.astra_ClientsReference.Value.aspnet_UsersReference.Value.UserName;
-                item.aspnet_UsersReference.Load();
-                item.acc_PaymentsMethodsReference.Load();
-                item.astra_ServicesReference.Load();
-                item.mkt_PPPProfilesReference.Load();
-            }
+            //foreach (var item in list)
+            //{
+            //    item.astra_ClientsReference.Load();
+            //    item.astra_ClientsReference.Value.aspnet_UsersReference.Load();
+            //    item.astra_ClientsReference.Value.UserName =
+            //        item.astra_ClientsReference.Value.aspnet_UsersReference.Value.UserName;
+            //    item.aspnet_UsersReference.Load();
+            //    item.acc_PaymentsMethodsReference.Load();
+            //    item.astra_ServicesReference.Load();
+            //    item.mkt_PPPProfilesReference.Load();
+            //}
             return list;
         }
 
@@ -47,17 +47,17 @@ namespace ContactManager.Accounts.Models
             user.acc_Transactions.Load();
             var list = user.acc_Transactions.ToList();
             //var list = _entities.AccountTransactionSet.Where(t => t.astra_ClientsReference.Value.UserId == userId).ToList();
-            foreach (var item in list)
-            {
-                item.astra_ClientsReference.Load();
-                item.astra_ClientsReference.Value.aspnet_UsersReference.Load();
-                item.astra_ClientsReference.Value.UserName =
-                    item.astra_ClientsReference.Value.aspnet_UsersReference.Value.UserName;
-                item.aspnet_UsersReference.Load();
-                item.acc_PaymentsMethodsReference.Load();
-                item.astra_ServicesReference.Load();
-                item.mkt_PPPProfilesReference.Load();
-            }
+            //foreach (var item in list)
+            //{
+            //    item.astra_ClientsReference.Load();
+            //    item.astra_ClientsReference.Value.aspnet_UsersReference.Load();
+            //    item.astra_ClientsReference.Value.UserName =
+            //        item.astra_ClientsReference.Value.aspnet_UsersReference.Value.UserName;
+            //    item.aspnet_UsersReference.Load();
+            //    item.acc_PaymentsMethodsReference.Load();
+            //    item.astra_ServicesReference.Load();
+            //    item.mkt_PPPProfilesReference.Load();
+            //}
             return list;
         }
 

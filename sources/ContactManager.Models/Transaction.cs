@@ -23,6 +23,8 @@ namespace ContactManager.Models
 
         public string TransactionName()
         {
+            if (EntityKey == null) return string.Empty;
+
             var retVal = string.Empty;
             astra_ServicesReference.Load();
             mkt_PPPProfilesReference.Load();
