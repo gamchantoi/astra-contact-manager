@@ -3,7 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <table class="data-table" cellpadding="0" cellspacing="0">
         <tr>
-            <th></th>
             <th>
                 ClientName
             </th>
@@ -30,10 +29,6 @@
     <% foreach (var item in Model) { %>
     
         <tr>
-            <td>
-                <%= Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) %> |
-                <%= Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })%>
-            </td>
             <td>
                 <%= Html.Encode(item.ClientName) %>
             </td>
