@@ -24,7 +24,6 @@
         <tr>
             <td>
                 <%= Html.ActionLink("Edit", "Edit", new { id=item.MethodId }) %> |
-                <%= Html.ActionLink("Details", "Details", new { id=item.MethodId })%>
             </td>
             <td>
                 <%= Html.Encode(item.MethodId) %>
