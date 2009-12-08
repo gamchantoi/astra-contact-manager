@@ -177,6 +177,9 @@
     <Content Include="Areas\Hosts\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Accounts\Views\PaymentMethod\Create.aspx" />
+    <Content Include="Areas\Accounts\Views\PaymentMethod\Edit.aspx" />
+    <Content Include="Areas\Accounts\Views\PaymentMethod\Index.aspx" />
     <Content Include="Areas\Accounts\Web.config" />
   </ItemGroup>
   <ItemGroup>

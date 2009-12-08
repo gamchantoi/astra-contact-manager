@@ -58,6 +58,7 @@
 
     <p>
         <%= Html.ActionLink("Create New", "Create") %>
+        <%= Html.ActionLink("Payments Methods", "Index", "PaymentMethod")%>
     </p>
 
 </asp:Content>
