@@ -35,7 +35,7 @@
                 <%= Html.MenuItem("Pools", "Index", "Pool", "PPP")%>
                 <%= Html.MenuItem("Sync", "Index", "Sync", "")%>
                 <%= Html.MenuItem("Active Connections", "Index", "ActiveConnections", "")%>
-                <%= Html.MenuItem("Transactions", "Index", "Transactions", "Accounts")%>
+                <%= Html.MenuItem("Transactions", "Index", "Transaction", "Accounts")%>
                 <%= Html.MenuItem("Services", "Index", "Service", "Services")%>
                 <%= Html.MenuItem("Home", "Index", "Home", "")%>
             </ul>
