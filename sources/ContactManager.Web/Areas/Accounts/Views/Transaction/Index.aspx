@@ -57,7 +57,7 @@
     </table>
 
     <p>
-        <%= Html.ActionLink("Create New", "Create") %>
+        <%= Html.ActionLink("Create New", "Create") %>&nbsp;|&nbsp;
         <%= Html.ActionLink("Payments Methods", "Index", "PaymentMethod")%>
     </p>
 
