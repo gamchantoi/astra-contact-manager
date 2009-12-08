@@ -79,10 +79,7 @@
     <Compile Include="ViewModels\TransactionVewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\AccountTransactions\CreateTransactionMethod.aspx" />
-    <Content Include="Views\AccountTransactions\Index.aspx" />
     <Content Include="Web.config" />
-    <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ContactManager.Models\ContactManager.Models.csproj">

@@ -13,20 +13,17 @@ namespace ContactManager.Accounts.Controllers
     public class TransactionController : Controller
     {        
         private readonly ITransactionService _service;
-        //private readonly IMembershipService _mservice;
 
         public TransactionController()
         {
             IValidationDictionary validationDictionary = new ModelStateWrapper(ModelState);
             _service = new TransactionService(validationDictionary);
-            //_mservice = new AccountMembershipService();
         }
 
         [Authorize]
         public ActionResult Index()
         {
             var _userHelper = new UserHelper();
-            //var user = _mservice.GetCurrentUser();
             var isAdmin = _userHelper.IsUserInRole("admin");
             ViewData["IsAdmin"] = isAdmin;
 
