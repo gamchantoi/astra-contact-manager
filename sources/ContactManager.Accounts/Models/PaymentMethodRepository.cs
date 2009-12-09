@@ -8,7 +8,7 @@ using ContactManager.Models;
 
 namespace ContactManager.Accounts.Models
 {
-    public class PaymentMethodRepository : IEntityPaymentMethodRepository
+    public class PaymentMethodRepository : IPaymentMethodRepository
     {
         private AstraEntities _entities = new AstraEntities();
 
@@ -16,8 +16,7 @@ namespace ContactManager.Accounts.Models
 
         public List<PaymentMethod> ListPaymentMethods()
         {
-            var paymentMethod = _entities.PaymentMethodSet.ToList();
-            return paymentMethod;
+            return _entities.PaymentMethodSet.ToList();
         }
 
         #endregion
@@ -25,7 +24,7 @@ namespace ContactManager.Accounts.Models
         #region Create(PaymentMethod paymentMethod)
 
 
-        public void Create(PaymentMethod paymentMethod)
+        public void CreatePaymentMethod(PaymentMethod paymentMethod)
         {
             _entities.AddToPaymentMethodSet(paymentMethod);
             _entities.SaveChanges();

@@ -5,6 +5,7 @@ using ContactManager.Accounts.Interfaces;
 using ContactManager.Accounts.Models;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
+using ContactManager.Models.ViewModels;
 
 namespace ContactManager.Accounts.Services
 {
@@ -12,9 +13,6 @@ namespace ContactManager.Accounts.Services
     {
         private IValidationDictionary _validationDictionary;
         private readonly ITransactionRepository _repository;
-        //private readonly IMembershipService _accountService;
-        //private readonly IAccountTransactionMethodService _methodService;
-        private readonly UserHelper _helper;
 
         #region Constructors
         public TransactionService(IValidationDictionary validationDictionary)
@@ -25,10 +23,7 @@ namespace ContactManager.Accounts.Services
         {
             _validationDictionary = validationDictionary;
             _repository = new EntityTransactionRepository(entirties);
-            //_accountService = new AccountMembershipService();
-            //_methodService = new AccountTransactionMethodService(validationDictionary);
-            _helper = new UserHelper();
-        }
+            PaymentMethodService = new PaymentMethodService();        }
         #endregion
 
         #region IAccountTransactionService Members
@@ -43,41 +38,12 @@ namespace ContactManager.Accounts.Services
             return _repository.ListTransaction(userId);
         }
 
-        public bool CreateTransaction(Client client)
+        public bool CreateTransaction(LoadMoneyViewModel model)
         {
-            if (client.Load == 0)
-                return false;
-
-            var userId = _helper.CurrentUserId;
-            return CreateTransaction(client, client.MethodId, null, null, client.Load, userId, "");
-        }   
-
-        public bool CreateTransaction(Client client, Service service, Guid userId)
-        {
-            return false;
-            //return CreateTransaction(client, _methodService.GetServiceMethod().MethodId, service.ServiceId, null, - service.Cost, userId, "");
+            throw new System.NotImplementedException();
         }
 
-        private bool CreateTransaction(Client client, int methodId, int? serviceId, int? profileId, decimal sum, Guid userId, string comment)
-        {
-            //todo: implement ProfileID if needed
-
-            var transaction = new Transaction
-                                  {
-                                      Sum = sum,
-                                      Balance = client.Balance,
-                                      Date = DateTime.Now,
-                                      Comment = comment
-                                  };
-            _repository.CreateTransaction(transaction);
-
-            return true;
-        }
-
-        public bool DeleteTransactions(Guid userId)
-        {
-            return _repository.DeleteTransactions(userId);
-        }
+        public PaymentMethodService PaymentMethodService { get; private set; }
 
         public void ProcessClientPayment()
         {

@@ -52,7 +52,7 @@ namespace ContactManager.Users.Models
                 return CreateClient(client);
             else
             {
-                client.Balance = client.Balance + client.Load;
+                //client.Balance = client.Balance + client.Load;
                 Entities.ApplyPropertyChanges(_client.EntityKey.EntitySetName, client);
                 _client.LastUpdatedDate = DateTime.Now;
                 Entities.SaveChanges();

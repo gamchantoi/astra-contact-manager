@@ -188,19 +188,7 @@ namespace ContactManager.Users.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult Load(Guid id)
         {
-            var ddHelper = new DropDownHelper();
-            var client = _service.GetContact(id);
-
-            client.astra_ClientsDetailsReference.Load();
-            ViewData["UserId"] = id;
-            ViewData["UserName"] = client.UserName;
-            ViewData["Balance"] = client.Balance;
-            //ViewData["Methods"] = ddHelper.GetAccountActivitiesMethods(null);
-
-            var details = client.astra_ClientsDetailsReference.Value;
-            if (details != null)
-                ViewData["UserDetail"] = string.Format("{0} {1} {2}", details.LastName, details.FirstName, details.MiddleName);
-            return View(client.astra_ClientsDetailsReference.Value);
+            return View(_service.LoadMoneyService.GetViewModel(id));
         }
 
         [Authorize(Roles = "admin")]
@@ -211,7 +199,7 @@ namespace ContactManager.Users.Controllers
             client.MethodId = MethodId;
             client.Load = Load;
             client.Comment = Comment;
-            _service.LoadMoney(client);
+            //_service.LoadMoney(client);
             return View("Index", PrepareIndex(false));
         }
 

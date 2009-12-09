@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using System.Web.UI.MobileControls;
 using ContactManager.Accounts.Interfaces;
 using ContactManager.Models;
 
@@ -9,25 +7,18 @@ namespace ContactManager.Accounts.Models
 {
     public class PaymentMethodService : IPaymentMethodService
     {
-        private IEntityPaymentMethodRepository _paymentMethodRepository = new PaymentMethodRepository();
-
-        #region ListPaymentMethods()
+        private readonly IPaymentMethodRepository _paymentMethodRepository = new PaymentMethodRepository();
 
         public List<PaymentMethod> ListPaymentMethods()
         {
             return _paymentMethodRepository.ListPaymentMethods();
         }
 
-        #endregion
-
-        #region Create(PaymentMethod paymentMethod)
-
-
         public bool Create(PaymentMethod paymentMethod)
         {
             try
             {
-                _paymentMethodRepository.Create(paymentMethod);
+                _paymentMethodRepository.CreatePaymentMethod(paymentMethod);
                 return true;
             }
             catch
@@ -37,20 +28,10 @@ namespace ContactManager.Accounts.Models
 
         }
 
-        #endregion
-
-        #region PaymentMethod GetPaymentMethod(int id)
-
-
         public PaymentMethod GetPaymentMethod(int id)
         {
             return _paymentMethodRepository.GetPaymentMethod(id);
         }
-
-        #endregion
-
-        #region EditPaymentMethod(PaymentMethod paymentMethod)
-
 
         public bool EditPaymentMethod(PaymentMethod paymentMethod)
         {
@@ -65,15 +46,14 @@ namespace ContactManager.Accounts.Models
             }
         }
 
-        #endregion
-
         public SelectList ListPaymentMethods(int? selectedId)
         {
             var list = ListPaymentMethods();
-            var paymentMethod = new PaymentMethod { MethodId = 0, Name = "Please select", Visible = true };
-            list.Add(paymentMethod);
             if (selectedId.HasValue)
                 return new SelectList(list, "MethodId", "Name", selectedId.Value);
+
+            var paymentMethod = new PaymentMethod { MethodId = 0, Name = "Please select", Visible = true };
+            list.Add(paymentMethod);
             return new SelectList(list, "MethodId", "Name");
         }
     }
