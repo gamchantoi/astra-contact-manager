@@ -82,6 +82,8 @@
     <Compile Include="Models\StatusService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routes.cs" />
+    <Compile Include="Interfaces\ILoadMoneyService.cs" />
+    <Compile Include="Services\LoadMoneyService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />

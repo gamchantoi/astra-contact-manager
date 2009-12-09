@@ -6,6 +6,8 @@ namespace ContactManager.Users.Interfaces
 {
     public interface IContactService
     {
+        ILoadMoneyService LoadMoneyService { get; }
+
         bool CreateContact(Client client);
         bool CreateContact(PPPSecret pppSecret);        
         bool DeleteContact(Guid id);
@@ -24,7 +26,7 @@ namespace ContactManager.Users.Interfaces
 
         bool DeleteAllData();
 
-        bool LoadMoney(Client client);
+        //bool LoadMoney(Client client);
 
         bool UpdateSecret(PPPSecret secret);
 

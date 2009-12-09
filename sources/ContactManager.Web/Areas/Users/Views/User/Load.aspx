@@ -1,40 +1,34 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.ClientDetail>" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" 
+Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.ViewModels.LoadMoneyViewModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <%= Html.ValidationSummary("Edit was unsuccessful. Please correct the errors and try again.") %>
     <% using (Html.BeginForm())
        {%>
-    <%= Html.Hidden("UserId", ViewData["UserId"])%>
+    <%= Html.HiddenFor(model => model.UserId) %>
     <fieldset>
-        <legend>Load money for
-            <%= ViewData["UserName"]%></legend>
+        <legend>Load Modey for:
+            <%= Html.DisplayFor(model => model.FullName)%></legend>
         <p>
-            <label for="Details">
-                Details:</label>
-            <span id="Details">
-                <%= Html.Encode(ViewData["UserDetail"] ?? "No details")%>
-            </span>
+            <%= Html.LabelFor(model => model.Balance) %>
+            <%= Html.DisplayFor(model => model.Balance, String.Format("{0:F}", Model.Balance)) %>
         </p>
         <p>
-            <label for="Balance">
-                Balance:</label>
-            <%= Html.Encode(String.Format("{0:F}", ViewData["Balance"]) + " + ")%>
-            <%= Html.TextBox("Load", 0) %>
+            <%= Html.LabelFor(model => model.Sum) %>
+            <%= Html.TextBoxFor(model => model.Sum)%>
+            <%= Html.ValidationMessageFor(model => model.Sum)%>
         </p>
         <p>
-            <label for="MethodId">
-                Payment Method:</label>
-            <%= Html.DropDownList("MethodId", (SelectList)ViewData["Methods"])%>
-            <%= Html.ValidationMessage("MethodId", "*")%>
+            <%= Html.Label("Method") %>
+            <%= Html.DropDownListFor(model => model.MethodId, Model.LoadMethods) %>
+            <%= Html.ValidationMessageFor(model => model.MethodId) %>
         </p>
         <p>
-            <label for="Comment">
-                Comment:</label>
-            <%= Html.TextBox("Comment")%>
-            <%= Html.ValidationMessage("Comment", "*")%>
+            <%= Html.LabelFor(model => model.Comment) %>
+            <%= Html.TextBoxFor(model => model.Comment) %>
+            <%= Html.ValidationMessageFor(model => model.Comment) %>
         </p>
         <p>
-            <input type="submit" value="Load" />
+            <input type="submit" value="Save" />
         </p>
     </fieldset>
     <% } %>

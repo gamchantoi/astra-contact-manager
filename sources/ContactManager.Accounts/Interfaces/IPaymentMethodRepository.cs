@@ -1,13 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ContactManager.Models;
 
 namespace ContactManager.Accounts.Interfaces
 {
-    interface IEntityPaymentMethodRepository
+    interface IPaymentMethodRepository
     {
         List<PaymentMethod> ListPaymentMethods();
-        void Create(ContactManager.Models.PaymentMethod paymentMethod);
+        void CreatePaymentMethod(PaymentMethod paymentMethod);
         PaymentMethod GetPaymentMethod(int id);
         PaymentMethod EditPaymentMethod(PaymentMethod paymentMethod);
     }

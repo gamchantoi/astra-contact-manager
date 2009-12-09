@@ -68,10 +68,15 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\PaymentMethodController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Helpers\UserHelper.cs" />
+    <Compile Include="Interfaces\IPaymentMethodRepository.cs" />
+    <Compile Include="Interfaces\IPaymentMethodService.cs" />
     <Compile Include="Interfaces\ITransactionRepository.cs" />
     <Compile Include="Interfaces\ITransactionService.cs" />
+    <Compile Include="Models\PaymentMethodRepository.cs" />
+    <Compile Include="Models\PaymentMethodService.cs" />
     <Compile Include="Routes.cs" />
     <Compile Include="Services\TransactionService.cs" />
     <Compile Include="Models\EntityTransactionRepository.cs" />

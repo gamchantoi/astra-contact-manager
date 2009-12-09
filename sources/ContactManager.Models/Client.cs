@@ -5,6 +5,15 @@ namespace ContactManager.Models
 {
     public partial class Client
     {
+        public Client()
+        {
+            OnUserIdChanged();
+            if (EntityKey == null) return;
+            aspnet_UsersReference.Load();
+            UserName = aspnet_UsersReference.Value.UserName;
+        }
+
+
         public string UserName { get; set; }
         public string SecretStatus { get; set; }
         public string Comment { get; set; }
@@ -27,7 +36,7 @@ namespace ContactManager.Models
             if (pppSecret != null)
             {
                 Comment = pppSecret.Comment;
-                if(pppSecret.Disabled.HasValue)
+                if (pppSecret.Disabled.HasValue)
                     SecretStatus = pppSecret.Disabled.Value ? "Active" : "Disabled";
 
                 pppSecret.mkt_PPPProfilesReference.Load();
@@ -41,7 +50,7 @@ namespace ContactManager.Models
 
             astra_ClientsDetailsReference.Load();
             var details = astra_ClientsDetailsReference.Value;
-            if (details != null) 
+            if (details != null)
             {
                 FullName = string.Format("{0} {1} {2}", details.LastName, details.FirstName, details.MiddleName);
             }
@@ -72,17 +81,20 @@ namespace ContactManager.Models
             StatusId = astra_StatusesReference.Value.StatusId;
         }
 
-        public void LoadDetailsReferences() 
+        public void LoadDetailsReferences()
         {
             aspnet_UsersReference.Load();
             UserName = aspnet_UsersReference.Value.UserName;
-            //this.UserId = this.aspnet_UsersReference.Value.UserId;
-            astra_AddressesReference.Load();
             astra_ClientsDetailsReference.Load();
+            if (astra_ClientsDetailsReference.Value != null)
+                FullName = string.Format("{0} {1} {2}", astra_ClientsDetailsReference.Value.LastName,
+                    astra_ClientsDetailsReference.Value.FirstName,
+                    astra_ClientsDetailsReference.Value.MiddleName);
+            astra_AddressesReference.Load();
             astra_ContractsReference.Load();
         }
 
-        public List<ClientInServices> LoadServicesActivities() 
+        public List<ClientInServices> LoadServicesActivities()
         {
             astra_ClientsInServices.Load();
             foreach (var item in astra_ClientsInServices)

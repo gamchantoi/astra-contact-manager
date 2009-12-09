@@ -10,6 +10,7 @@ using ContactManager.PPP.Intefaces;
 using ContactManager.PPP.Models;
 using ContactManager.Users.Interfaces;
 using ContactManager.Users.Models;
+using ContactManager.Users.Services;
 
 namespace ContactManager.Users.Models
 {
@@ -38,6 +39,7 @@ namespace ContactManager.Users.Models
             _clientService = clientService;
             _pppSecretService = pppSecretService;
             _transactionService = transactionService;
+            LoadMoneyService = new LoadMoneyService(validationDictionary, _clientService);
         }
         #endregion
 
@@ -85,6 +87,8 @@ namespace ContactManager.Users.Models
         }
 
         #region IContactService Members
+
+        public ILoadMoneyService LoadMoneyService{ get; private set; }
 
         public bool CreateContact(Client client)
         {
@@ -325,20 +329,20 @@ namespace ContactManager.Users.Models
             return true;
         }
 
-        public bool LoadMoney(Client client) 
-        {
-            try
-            {
-                _clientService.EditClient(client);
-                _transactionService.CreateTransaction(client);
-            }
-            catch (Exception ex)
-            {
-                _validationDictionary.AddError("_FORM", "Money not loaded. " + ex.Message);
-                return false;
-            }
-            return true;
-        }
+        //public bool LoadMoney(Client client) 
+        //{
+        //    try
+        //    {
+        //        _clientService.EditClient(client);
+        //        //_transactionService.CreateTransaction(client);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _validationDictionary.AddError("_FORM", "Money not loaded. " + ex.Message);
+        //        return false;
+        //    }
+        //    return true;
+        //}
 
         public bool UpdateSecret(PPPSecret secret)
         {

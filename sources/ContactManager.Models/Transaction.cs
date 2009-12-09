@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace ContactManager.Models
+﻿namespace ContactManager.Models
 {
     partial class Transaction
     {
@@ -21,7 +16,7 @@ namespace ContactManager.Models
         public Client Client { get; set; }
         public ASPUser User { get; set; }
 
-        public string TransactionName()
+        public string GetTransactionName()
         {
             if (EntityKey == null) return string.Empty;
 

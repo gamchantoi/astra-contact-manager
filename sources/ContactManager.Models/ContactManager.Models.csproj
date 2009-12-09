@@ -71,6 +71,7 @@
     <Compile Include="Transaction.cs" />
     <Compile Include="Validation\IValidationDictionary.cs" />
     <Compile Include="Validation\ModelStateWrapper.cs" />
+    <Compile Include="ViewModels\LoadMoneyViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="AstraEntities.edmx">
