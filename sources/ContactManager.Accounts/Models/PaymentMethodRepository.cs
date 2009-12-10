@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using ContactManager.Accounts.Interfaces;
 using ContactManager.Models;
 
@@ -10,7 +7,12 @@ namespace ContactManager.Accounts.Models
 {
     public class PaymentMethodRepository : IPaymentMethodRepository
     {
-        private AstraEntities _entities = new AstraEntities();
+        private readonly AstraEntities _entities;
+
+        public PaymentMethodRepository()
+        {
+            _entities = new AstraEntities();
+        }
 
         #region ListPaymentMethods()
 

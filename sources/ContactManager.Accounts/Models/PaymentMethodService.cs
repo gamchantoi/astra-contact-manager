@@ -7,7 +7,12 @@ namespace ContactManager.Accounts.Models
 {
     public class PaymentMethodService : IPaymentMethodService
     {
-        private readonly IPaymentMethodRepository _paymentMethodRepository = new PaymentMethodRepository();
+        private readonly IPaymentMethodRepository _paymentMethodRepository;
+
+        public PaymentMethodService()
+        {
+            _paymentMethodRepository = new PaymentMethodRepository();
+        }
 
         public List<PaymentMethod> ListPaymentMethods()
         {

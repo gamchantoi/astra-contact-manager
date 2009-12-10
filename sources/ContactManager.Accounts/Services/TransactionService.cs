@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using ContactManager.Accounts.Helpers;
 using ContactManager.Accounts.Interfaces;
 using ContactManager.Accounts.Models;
 using ContactManager.Models;
@@ -14,6 +13,7 @@ namespace ContactManager.Accounts.Services
         private IValidationDictionary _validationDictionary;
         private readonly ITransactionRepository _repository;
 
+
         #region Constructors
         public TransactionService(IValidationDictionary validationDictionary)
             : this(validationDictionary, new AstraEntities())
@@ -23,7 +23,8 @@ namespace ContactManager.Accounts.Services
         {
             _validationDictionary = validationDictionary;
             _repository = new EntityTransactionRepository(entirties);
-            PaymentMethodService = new PaymentMethodService();        }
+            PaymentMethodService = new PaymentMethodService();
+        }
         #endregion
 
         #region IAccountTransactionService Members
@@ -38,16 +39,27 @@ namespace ContactManager.Accounts.Services
             return _repository.ListTransaction(userId);
         }
 
-        public bool CreateTransaction(LoadMoneyViewModel model)
+        public Transaction GetTransaction(LoadMoneyViewModel model)
         {
-            throw new System.NotImplementedException();
+            return new Transaction
+                       {
+                           Sum = model.Sum,
+                           Comment = model.Comment,
+                           Balance = model.Balance
+                       };
         }
 
+        
         public PaymentMethodService PaymentMethodService { get; private set; }
 
         public void ProcessClientPayment()
         {
             _repository.ProcessClientPayment();
+        }
+
+        public void CreateTransaction(Transaction transaction)
+        {
+            _repository.CreateTransaction(transaction);
         }
 
         #endregion

@@ -6,6 +6,7 @@ using ContactManager.Clients;
 using ContactManager.Hosts.Helpers;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
+using ContactManager.Models.ViewModels;
 using ContactManager.PPP.Intefaces;
 using ContactManager.PPP.Models;
 using ContactManager.PPP.SSH;
@@ -193,14 +194,12 @@ namespace ContactManager.Users.Controllers
 
         [Authorize(Roles = "admin")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Load(Guid UserId, int MethodId, Decimal Load, string Comment)
+        public ActionResult Load(LoadMoneyViewModel model)
         {
-            var client = _service.GetContact(UserId);
-            client.MethodId = MethodId;
-            client.Load = Load;
-            client.Comment = Comment;
-            //_service.LoadMoney(client);
-            return View("Index", PrepareIndex(false));
+            if (_service.LoadMoneyService.LoadMoney(model))
+                return View("Index", PrepareIndex(false));
+            LoadMoneyViewModel loadModel = _service.LoadMoneyService.GetViewModel(model.UserId);
+            return View(loadModel);
         }
 
         [Authorize(Roles = "admin")]

@@ -2,6 +2,7 @@
 Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.ViewModels.LoadMoneyViewModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+ <%= Html.ValidationSummary("Operation was unsuccessful. Please view details and try again.")%>
     <% using (Html.BeginForm())
        {%>
     <%= Html.HiddenFor(model => model.UserId) %>
