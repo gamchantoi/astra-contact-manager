@@ -70,7 +70,10 @@ namespace ContactManager.Accounts.Models
             //if (transaction.ServiceId.HasValue)
             //    transaction.astra_Services =
             //        _entities.ServiceSet.Where(s => s.ServiceId == transaction.ServiceId.Value).FirstOrDefault();
-
+            transaction.User = _entities.ASPUserSet.Where(u => u.UserId == transaction.Client.UserId).FirstOrDefault();
+            //transaction.aspnet_UsersReference.Load();
+            transaction.aspnet_Users = _entities.ASPUserSet.Where(u => u.UserId == transaction.Client.UserId).FirstOrDefault();
+            transaction.astra_Clients = _entities.ClientSet.Where(c => c.UserId == transaction.Client.UserId).FirstOrDefault();
             transaction.Date = DateTime.Now;
             _entities.AddToTransactionSet(transaction);
             _entities.SaveChanges();

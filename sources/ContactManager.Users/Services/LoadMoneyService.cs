@@ -26,7 +26,7 @@ namespace ContactManager.Users.Services
             _validationDictionary = validationDictionary;
             _clientService = clientService;
             _transactionService = new TransactionService(validationDictionary);
-        } 
+        }
         #endregion
 
         public LoadMoneyViewModel GetViewModel(Guid UserId)
@@ -44,19 +44,31 @@ namespace ContactManager.Users.Services
             return model;
         }
 
-        //public bool LoadMoney(Client client)
-        //{
-        //    try
-        //    {
-        //        _clientService.EditClient(client);
-        //        _transactionService.CreateTransaction(client);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _validationDictionary.AddError("_FORM", "Money not loaded. " + ex.Message);
-        //        return false;
-        //    }
-        //    return true;
-        //}
+        public bool LoadMoney(LoadMoneyViewModel model)
+        {
+            try
+            {
+                if (model.MethodId != 0)
+                {
+                    var client = _clientService.GetClient(model.UserId);
+                    model.Balance = client.Balance;
+                    client.Balance = client.Balance + model.Sum;
+                    _clientService.EditClient(client);
+                    var transaction = _transactionService.GetTransaction(model);
+                    
+                    transaction.Client = client;
+                   _transactionService.CreateTransaction(transaction);
+                    return true;
+                }
+                _validationDictionary.AddError("MethodId", "Please select Method");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                _validationDictionary.AddError("_FORM", "Money not loaded. " + ex.Message);
+                return false;
+            }
+            
+        }
     }
 }
