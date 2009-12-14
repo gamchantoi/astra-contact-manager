@@ -70,16 +70,16 @@
     <Compile Include="DropDownHelper.cs" />
     <Compile Include="Interfaces\IClientRepository.cs" />
     <Compile Include="Interfaces\IClientService.cs" />
-    <Compile Include="Interfaces\IContactService.cs" />
+    <Compile Include="Interfaces\IUserFasade.cs" />
     <Compile Include="Interfaces\IMembershipService.cs" />
-    <Compile Include="Models\AccountMembershipService.cs" />
-    <Compile Include="Models\ClientService.cs" />
-    <Compile Include="Models\ContactService.cs" />
+    <Compile Include="Services\MembershipService.cs" />
+    <Compile Include="Services\ClientService.cs" />
+    <Compile Include="Services\UserFasade.cs" />
     <Compile Include="Models\EntityClientRepository.cs" />
     <Compile Include="Models\EntityStatusRepository.cs" />
     <Compile Include="Interfaces\IStatusService.cs" />
     <Compile Include="Interfaces\IStatusRepository.cs" />
-    <Compile Include="Models\StatusService.cs" />
+    <Compile Include="Services\StatusService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routes.cs" />
     <Compile Include="Interfaces\ILoadMoneyService.cs" />
@@ -117,6 +117,9 @@
       <Project>{CCE5B7F0-9B7F-4F96-95A5-CF0C0E1D0755}</Project>
       <Name>ContactManager.SSH</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

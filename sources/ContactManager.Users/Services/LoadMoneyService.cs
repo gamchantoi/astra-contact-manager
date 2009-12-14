@@ -1,10 +1,10 @@
 ﻿using System;
 using ContactManager.Accounts.Interfaces;
 using ContactManager.Accounts.Services;
+using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.Models.ViewModels;
 using ContactManager.Users.Interfaces;
-using ContactManager.Users.Models;
 
 namespace ContactManager.Users.Services
 {
@@ -16,16 +16,15 @@ namespace ContactManager.Users.Services
 
         #region Constructors
         public LoadMoneyService(IValidationDictionary validationDictionary)
-            : this(validationDictionary, new ClientService(validationDictionary))
+            : this(validationDictionary, new AstraEntities())
         {
         }
 
-        public LoadMoneyService(IValidationDictionary validationDictionary,
-            IClientService clientService)
+        public LoadMoneyService(IValidationDictionary validationDictionary, AstraEntities entities)
         {
             _validationDictionary = validationDictionary;
-            _clientService = clientService;
-            _transactionService = new TransactionService(validationDictionary);
+            _clientService = new ClientService(validationDictionary, entities);
+            _transactionService = new TransactionService(validationDictionary, entities);
         }
         #endregion
 
@@ -48,27 +47,43 @@ namespace ContactManager.Users.Services
         {
             try
             {
-                if (model.MethodId != 0)
+                if (model.MethodId == 0)
                 {
-                    var client = _clientService.GetClient(model.UserId);
-                    model.Balance = client.Balance;
-                    client.Balance = client.Balance + model.Sum;
-                    _clientService.EditClient(client);
-                    var transaction = _transactionService.GetTransaction(model);
-                    
-                    transaction.Client = client;
-                   _transactionService.CreateTransaction(transaction);
-                    return true;
+                    _validationDictionary.AddError("MethodId", "Please select Peyment Method");
+                    return false;
                 }
-                _validationDictionary.AddError("MethodId", "Please select Method");
-                return false;
+
+                var client = _clientService.GetClient(model.UserId);
+                model.Balance = client.Balance;
+
+                //var transaction = _transactionService.GetTransaction(model);
+                //transaction.Client = client;
+
+                var transaction = new Transaction
+                  {
+                      Sum = model.Sum,
+                      Comment = model.Comment,
+                      Balance = model.Balance,
+                      acc_PaymentsMethods =
+                          _transactionService.PaymentMethodService.GetPaymentMethod(model.MethodId),
+                      //astra_Clients = client,
+                      Client = client
+                  };
+
+
+                //transaction.aspnet_Users = _userFasade.MembershipService.;
+                _transactionService.CreateTransaction(transaction);
+                
+                client.Balance = client.Balance + model.Sum;
+                _clientService.EditClient(client);
+                return true;
             }
             catch (Exception ex)
             {
-                _validationDictionary.AddError("_FORM", "Money not loaded. " + ex.Message);
+                _validationDictionary.AddError("_FORM", "Money is not loaded. " + ex.Message);
                 return false;
             }
-            
+
         }
     }
 }

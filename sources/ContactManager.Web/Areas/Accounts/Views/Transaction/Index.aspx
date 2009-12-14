@@ -30,7 +30,7 @@
     
         <tr>
             <td>
-                <%= Html.Encode(item.ClientName) %>
+                <%= Html.Encode(item.ClientUserName) %>
             </td>
             <td>
                 <%= Html.Encode(item.Sum) %>
@@ -42,7 +42,7 @@
                 <%= Html.Encode(item.Comment) %>
             </td>
             <td>
-                <%= Html.Encode(item.UserName) %>
+                <%= Html.Encode(item.UserUserName) %>
             </td>
             <td>
                 <%= Html.Encode(item.TransactionName) %>

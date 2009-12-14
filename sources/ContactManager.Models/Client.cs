@@ -5,16 +5,19 @@ namespace ContactManager.Models
 {
     public partial class Client
     {
-        public Client()
+        public string UserName
         {
-            OnUserIdChanged();
-            if (EntityKey == null) return;
-            aspnet_UsersReference.Load();
-            UserName = aspnet_UsersReference.Value.UserName;
+            get
+            {
+                if (EntityKey == null) return UserName;
+                if(!aspnet_UsersReference.IsLoaded)
+                    aspnet_UsersReference.Load();
+                return aspnet_UsersReference.Value.UserName;
+
+            } 
+            set { }
         }
 
-
-        public string UserName { get; set; }
         public string SecretStatus { get; set; }
         public string Comment { get; set; }
         public string Role { get; set; }

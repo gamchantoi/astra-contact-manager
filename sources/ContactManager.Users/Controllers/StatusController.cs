@@ -2,7 +2,7 @@ using System.Web.Mvc;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.Users.Interfaces;
-using ContactManager.Users.Models;
+using ContactManager.Users.Services;
 
 namespace ContactManager.Users.Controllers
 {

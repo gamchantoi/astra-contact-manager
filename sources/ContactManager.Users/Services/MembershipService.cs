@@ -6,24 +6,26 @@ using System.Web;
 using ContactManager.Models;
 using ContactManager.Users.Interfaces;
 
-namespace ContactManager.Users.Models
+namespace ContactManager.Users.Services
 {
-    public class AccountMembershipService : IMembershipService
+    class MembershipService : IMembershipService
     {
         private readonly MembershipProvider _provider;
         private readonly AstraEntities _entities;
 
-        public AccountMembershipService()
-            : this(null, new AstraEntities())
-        {
-        }
+        #region Constructors
+        public MembershipService()
+            : this(new AstraEntities()) { }
 
-        public AccountMembershipService(MembershipProvider provider, AstraEntities entities)
+        public MembershipService(AstraEntities entities)
+            : this(null, entities) { }
+
+        public MembershipService(MembershipProvider provider, AstraEntities entities)
         {
             _provider = provider ?? Membership.Provider;
             _entities = entities;
-        }
-
+        } 
+        #endregion
 
         #region IMembershipService Members
 
@@ -47,7 +49,7 @@ namespace ContactManager.Users.Models
             return _provider.ValidateUser(userName, password);
         }
 
-        public MembershipCreateStatus CreateUser(string userName, string password, string email)
+        private MembershipCreateStatus CreateUser(string userName, string password, string email)
         {
             MembershipCreateStatus status;
             var user = _provider.CreateUser(userName, password, email, null, null, true, null, out status);
@@ -55,7 +57,7 @@ namespace ContactManager.Users.Models
             return status;
         }
 
-        public MembershipCreateStatus CreateUser(string userName, string password, string email, string role)
+        private MembershipCreateStatus CreateUser(string userName, string password, string email, string role)
         {
             var status = CreateUser(userName, password, email);
             if (status == MembershipCreateStatus.Success)
@@ -75,7 +77,7 @@ namespace ContactManager.Users.Models
 
         public bool ChangePassword(string userName, string oldPassword, string newPassword)
         {
-            MembershipUser currentUser = _provider.GetUser(userName, true /* userIsOnline */);
+            var currentUser = _provider.GetUser(userName, true /* userIsOnline */);
             return currentUser.ChangePassword(oldPassword, newPassword);
         }
 

@@ -19,9 +19,7 @@ namespace ContactManager.Users.Interfaces
 
         List<ASPUser> ListUsers(string role);
         List<ASPUser> ListUsers();
-        //List<MembershipUser> ListUsers(string role);
 
-        MembershipCreateStatus CreateUser(string userName, string password, string email);
         MembershipCreateStatus CreateUser(Client client);
         MembershipUser GetUser(Guid id);
         MembershipUser GetUser(string name);

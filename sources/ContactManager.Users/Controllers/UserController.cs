@@ -13,7 +13,7 @@ using ContactManager.PPP.SSH;
 using ContactManager.Services.Interfaces;
 using ContactManager.Services.Models;
 using ContactManager.Users.Interfaces;
-using ContactManager.Users.Models;
+using ContactManager.Users.Services;
 
 namespace ContactManager.Users.Controllers
 {
@@ -21,7 +21,7 @@ namespace ContactManager.Users.Controllers
     public class UserController : Controller
     {
         private readonly IValidationDictionary validationDictionary;
-        private readonly IContactService _service;
+        private readonly IUserFasade _service;
         private readonly IServiceService _serviceService;
         private readonly IClientInServicesService _serviceActivity;
         private readonly ISshSecretService _sshSecretService;
@@ -31,7 +31,7 @@ namespace ContactManager.Users.Controllers
         public UserController()
         {
             validationDictionary = new ModelStateWrapper(ModelState);
-            _service = new ContactService(validationDictionary);
+            _service = new UserFasade(validationDictionary);
             _serviceService = new ServiceService(validationDictionary);
             _serviceActivity = new ClientInServicesService(validationDictionary);
             _sshSecretService = new SshSecretService(validationDictionary, true);

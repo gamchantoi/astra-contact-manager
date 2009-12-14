@@ -2,8 +2,9 @@
 using System.Globalization;
 using System.Security.Principal;
 using System.Web.Mvc;
+using ContactManager.Models.Validation;
 using ContactManager.Users.Interfaces;
-using ContactManager.Users.Models;
+using ContactManager.Users.Services;
 using ContactManager.Web.Interfaces;
 using ContactManager.Web.Models;
 
@@ -13,21 +14,16 @@ namespace ContactManager.Web.Controllers
     public class AccountController : Controller
     {
 
-        // This constructor is used by the MVC framework to instantiate the controller using
-        // the default forms authentication and membership providers.
-
         public AccountController()
             : this(null, null)
         {
         }
 
-        // This constructor is not used by the MVC framework but is instead provided for ease
-        // of unit testing this type. See the comments at the end of this file for more
-        // information.
-        public AccountController(IFormsAuthentication formsAuth, IMembershipService service)
+        public AccountController(IFormsAuthentication formsAuth, IUserFasade fasade)
         {
             FormsAuth = formsAuth ?? new FormsAuthenticationService();
-            MembershipService = service ?? new AccountMembershipService();
+            var _fasade = fasade ?? new UserFasade(new ModelStateWrapper(ModelState));
+            MembershipService = _fasade.MembershipService;
         }
 
         public IFormsAuthentication FormsAuth
@@ -53,16 +49,6 @@ namespace ContactManager.Web.Controllers
             Justification = "Needs to take same parameter type as Controller.Redirect()")]
         public ActionResult LogOn(string userName, string password, bool rememberMe, string returnUrl)
         {
-            //IValidationDictionary validationDictionary = new ModelStateWrapper(this.ModelState);
-            //var service = new ContactService(validationDictionary, new AccountMembershipService(),
-            //new ClientService(validationDictionary), new PPPSecretService(validationDictionary));
-            //var client = new Client
-            //{
-            //    UserName = "admin",
-            //    Role = "admin",
-            //    Password = "159753"                
-            //};
-            //service.CreateContact(client);
 
             if (!ValidateLogOn(userName, password))
             {

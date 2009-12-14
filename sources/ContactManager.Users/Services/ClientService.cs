@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.Users.Interfaces;
+using ContactManager.Users.Models;
 
-namespace ContactManager.Users.Models
+namespace ContactManager.Users.Services
 {
-    public class ClientService : IClientService
+    class ClientService : IClientService
     {
         private readonly IValidationDictionary _validationDictionary;
         private readonly IClientRepository _repository;
@@ -14,14 +15,15 @@ namespace ContactManager.Users.Models
 
         #region Constructors
         public ClientService(IValidationDictionary validationDictionary)
-            : this(validationDictionary, new EntityClientRepository())
+            : this(validationDictionary, new AstraEntities())
         { }
 
-        public ClientService(IValidationDictionary validationDictionary, IClientRepository repository)
+        public ClientService(IValidationDictionary validationDictionary, 
+            AstraEntities entities)
         {
             _validationDictionary = validationDictionary;
-            _repository = repository;
-            _statusService = new StatusService(validationDictionary, repository.Entities);
+            _repository = new EntityClientRepository(entities);
+            _statusService = new StatusService(validationDictionary, entities);
         } 
         #endregion
 
