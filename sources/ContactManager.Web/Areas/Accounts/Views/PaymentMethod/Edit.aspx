@@ -1,18 +1,12 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.PaymentMethod>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>
-        Edit</h2>
+
     <% using (Html.BeginForm())
        {%>
     <fieldset>
-        <legend>Fields</legend>
+        <legend>Edit payment method</legend>
         <%= Html.Hidden("MethodId",Model.MethodId) %>
-        <%--            <p>
-                <%= Html.LabelFor(model => model.MethodId) %>
-                <%= Html.TextBoxFor(model => model.MethodId) %>
-                <%= Html.ValidationMessageFor(model => model.MethodId) %>
-            </p>--%>
         <p>
             <%= Html.LabelFor(model => model.Name) %>
             <%= Html.TextBoxFor(model => model.Name) %>
@@ -24,9 +18,9 @@
             <%= Html.ValidationMessageFor(model => model.Comment) %>
         </p>
         <p>
-            <%= Html.LabelFor(model => model.Visible) %>
-            <%= Html.TextBoxFor(model => model.Visible) %>
-            <%= Html.ValidationMessageFor(model => model.Visible) %>
+            <label for="Visible">
+                Visible:</label>
+            <%= Html.CheckBox("Visible")%>
         </p>
         <p>
             <input type="submit" value="Save" />
