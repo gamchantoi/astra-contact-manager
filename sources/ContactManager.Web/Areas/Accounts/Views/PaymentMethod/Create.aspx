@@ -2,18 +2,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Create</h2>
-
 
     <% using (Html.BeginForm()) {%>
 
         <fieldset>
-            <legend>Fields</legend>
-<%--            <p>
-                <%= Html.LabelFor(model => model.MethodId) %>
-                <%= Html.TextBoxFor(model => model.MethodId) %>
-                <%= Html.ValidationMessageFor(model => model.MethodId) %>
-            </p>--%>
+            <legend>Create payment method:</legend>
             <p>
                 <%= Html.LabelFor(model => model.Name) %>
                 <%= Html.TextBoxFor(model => model.Name) %>
@@ -24,11 +17,11 @@
                 <%= Html.TextBoxFor(model => model.Comment) %>
                 <%= Html.ValidationMessageFor(model => model.Comment) %>
             </p>
-            <p>
-                <%= Html.LabelFor(model => model.Visible) %>
-                <%= Html.TextBoxFor(model => model.Visible) %>
-                <%= Html.ValidationMessageFor(model => model.Visible) %>
-            </p>
+        <p>
+            <label for="Visible">
+                Visible:</label>
+            <%= Html.CheckBox("Visible")%>
+        </p>
             <p>
                 <input type="submit" value="Create" />
             </p>
