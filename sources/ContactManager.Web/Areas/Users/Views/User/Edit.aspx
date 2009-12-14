@@ -1,5 +1,6 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Client>" %>
-<%@ Import Namespace="ContactManager.Users.Models"%>
+<%@ Import Namespace="ContactManager.Users.Services"%>
+
 
 <%@ Import Namespace="ContactManager.Models" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">

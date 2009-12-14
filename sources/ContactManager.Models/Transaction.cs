@@ -2,20 +2,8 @@
 {
     partial class Transaction
     {
-        public Transaction()
-        {
-            if (EntityKey == null) return;
-
-            astra_ClientsReference.Load();
-            Client = astra_ClientsReference.Value;
-
-            aspnet_UsersReference.Load();
-            User = aspnet_UsersReference.Value;
-        }
-
         public Client Client { get; set; }
         public ASPUser User { get; set; }
-
         public string GetTransactionName()
         {
             if (EntityKey == null) return string.Empty;
@@ -34,5 +22,28 @@
 
             return retVal;
         }
+        //public string GetClientName()
+        //{
+        //    if (EntityKey == null) return string.Empty;
+
+        //    var retVal = string.Empty;
+        //    astra_ClientsReference.Load();
+
+        //    if (astra_ClientsReference.Value != null)
+        //        retVal = astra_ClientsReference.Value.UserName;
+        //    return retVal;
+        //}
+
+        //public string GetUserName()
+        //{
+        //    if (EntityKey == null) return string.Empty;
+
+        //    var retVal = string.Empty;
+        //    aspnet_UsersReference.Load();
+
+        //    if (aspnet_UsersReference.Value != null)
+        //        retVal = aspnet_UsersReference.Value.UserName;
+        //    return retVal;
+        //}
     }
 }

@@ -2,15 +2,24 @@
 using System.Web.Mvc;
 using ContactManager.Accounts.Interfaces;
 using ContactManager.Models;
+using ContactManager.Models.Validation;
 
 namespace ContactManager.Accounts.Models
 {
     public class PaymentMethodService : IPaymentMethodService
     {
         private readonly IPaymentMethodRepository _paymentMethodRepository;
+        private IValidationDictionary _validationDictionary;
 
-        public PaymentMethodService()
+        public PaymentMethodService(IValidationDictionary validationDictionary)
+            : this(validationDictionary, new AstraEntities())
         {
+        }
+
+        public PaymentMethodService(IValidationDictionary validationDictionary,
+            AstraEntities entirties)
+        {
+            _validationDictionary = validationDictionary;
             _paymentMethodRepository = new PaymentMethodRepository();
         }
 

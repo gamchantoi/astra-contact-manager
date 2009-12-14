@@ -9,45 +9,34 @@ using System.Text.RegularExpressions;
 using ContactManager.PPP.Intefaces;
 using ContactManager.PPP.Models;
 using ContactManager.Users.Interfaces;
-using ContactManager.Users.Models;
 using ContactManager.Users.Services;
 
-namespace ContactManager.Users.Models
+namespace ContactManager.Users.Services
 {
-    public class ContactService : IContactService
+    public class UserFasade : IUserFasade
     {
         private readonly IValidationDictionary _validationDictionary;
-        private readonly IMembershipService _accountService;
-        private readonly IClientService _clientService;
         private readonly ISecretService _pppSecretService;
-        private readonly ITransactionService _transactionService;
         private const string PATTERN = @"[\(*\)*\[*\]*]";
 
         #region Constructors
-        public ContactService(IValidationDictionary validationDictionary)
-            : this(validationDictionary, new AccountMembershipService()
-                   , new ClientService(validationDictionary), new SecretService(validationDictionary)
-                   , new TransactionService(validationDictionary))
+        public UserFasade(IValidationDictionary validationDictionary)
+            : this(validationDictionary, new AstraEntities())
         { }
 
-        public ContactService(IValidationDictionary validationDictionary, IMembershipService accountService
-                              , IClientService clientService, ISecretService pppSecretService
-                              , ITransactionService transactionService)
+        public UserFasade(IValidationDictionary validationDictionary, AstraEntities entities)
         {
+            Entities = entities;
             _validationDictionary = validationDictionary;
-            _accountService = accountService;
-            _clientService = clientService;
-            _pppSecretService = pppSecretService;
-            _transactionService = transactionService;
-            LoadMoneyService = new LoadMoneyService(validationDictionary, _clientService);
+            MembershipService = new MembershipService(Entities);
+            ClientService = new ClientService(validationDictionary, Entities);
+            _pppSecretService = new SecretService(validationDictionary, Entities);
+            LoadMoneyService = new LoadMoneyService(validationDictionary, Entities);
         }
+
         #endregion
 
-        public bool UserExist(string name)
-        {
-            return _accountService.UserExist(name);
-        }
-
+        #region Validators
         public bool ValidateContact(Client client, bool creatingUser)
         {
             bool isValid = true;
@@ -85,10 +74,14 @@ namespace ContactManager.Users.Models
                 }
             return isValid;
         }
+        #endregion
 
         #region IContactService Members
 
-        public ILoadMoneyService LoadMoneyService{ get; private set; }
+        public ILoadMoneyService LoadMoneyService { get; private set; }
+        public IMembershipService MembershipService { get; private set; }
+        public IClientService ClientService { get; private set; }
+        public AstraEntities Entities { get; private set; }
 
         public bool CreateContact(Client client)
         {
@@ -99,9 +92,9 @@ namespace ContactManager.Users.Models
             // Database logic
             try
             {
-                _accountService.CreateUser(client);
-                _clientService.CreateClient(client);
-                if(client.Role.Equals("client"))
+                MembershipService.CreateUser(client);
+                ClientService.CreateClient(client);
+                if (client.Role.Equals("client"))
                     _pppSecretService.CreatePPPSecret(client);
                 return true;
             }
@@ -115,7 +108,7 @@ namespace ContactManager.Users.Models
 
         public bool CreateContact(PPPSecret pppSecret)
         {
-            var client = _clientService.BuildClient(pppSecret);
+            var client = ClientService.BuildClient(pppSecret);
             // Validation logic
             if (!ValidateContact(client, true))
                 return false;
@@ -123,8 +116,8 @@ namespace ContactManager.Users.Models
             // Database logic
             try
             {
-                _accountService.CreateUser(client);
-                _clientService.CreateClient(client);
+                MembershipService.CreateUser(client);
+                ClientService.CreateClient(client);
                 pppSecret.UserId = client.UserId;
                 _pppSecretService.CreatePPPSecret(pppSecret);
             }
@@ -140,13 +133,13 @@ namespace ContactManager.Users.Models
         {
             try
             {
-                if (id == new Guid(_accountService.GetCurrentUser().ProviderUserKey.ToString()))
+                if (id == new Guid(MembershipService.GetCurrentUser().ProviderUserKey.ToString()))
                     throw new Exception("Can't delete current user.");
-                var client = _clientService.GetClient(id);
-                
+                var client = ClientService.GetClient(id);
+
                 //todo: disable status
                 //client.Status = 0;
-                _clientService.EditClient(client);
+                ClientService.EditClient(client);
                 //_pppSecretService.DeletePPPSecret(id);
                 //_clientService.DeleteClient(id);
                 //_accountService.DeleteUser(id);
@@ -161,10 +154,10 @@ namespace ContactManager.Users.Models
 
         public bool ActivateContact(Guid id)
         {
-            var client = _clientService.GetClient(id);
+            var client = ClientService.GetClient(id);
             //todo: enable status
             //client.Status = 1;
-            _clientService.EditClient(client);
+            ClientService.EditClient(client);
             return true;
         }
 
@@ -177,8 +170,8 @@ namespace ContactManager.Users.Models
             // Database logic
             try
             {
-                _accountService.EditUser(client);
-                _clientService.EditClient(client);
+                MembershipService.EditUser(client);
+                ClientService.EditClient(client);
                 if (client.Role.Equals("client"))
                 {
                     //TODO: activate client if balanse is > 0
@@ -196,8 +189,8 @@ namespace ContactManager.Users.Models
 
         public bool EditContact(PPPSecret pppSecret)
         {
-            var client = _clientService.BuildClient(pppSecret);
-            client.UserId = new Guid(_accountService.GetUser(client.UserName).ProviderUserKey.ToString());
+            var client = ClientService.BuildClient(pppSecret);
+            client.UserId = new Guid(MembershipService.GetUser(client.UserName).ProviderUserKey.ToString());
             // Validation logic
             if (!ValidateContact(client, false))
                 return false;
@@ -205,7 +198,7 @@ namespace ContactManager.Users.Models
             // Database logic
             try
             {
-                _accountService.EditUser(client);
+                MembershipService.EditUser(client);
                 //_clientService.EditClient(client);
                 pppSecret.UserId = client.UserId;
                 _pppSecretService.EditPPPSecret(pppSecret);
@@ -220,9 +213,9 @@ namespace ContactManager.Users.Models
 
         public Client GetContact(Guid id)
         {
-            var client = _clientService.GetClient(id);
-            var mUser = _accountService.GetUser(id);
-            client.Role = _accountService.GetRoleForUser(mUser.UserName);
+            var client = ClientService.GetClient(id);
+            var mUser = MembershipService.GetUser(id);
+            client.Role = MembershipService.GetRoleForUser(mUser.UserName);
             client.Password = mUser.GetPassword();
             client.Email = mUser.Email;
             client.UserName = mUser.UserName;
@@ -232,13 +225,13 @@ namespace ContactManager.Users.Models
 
         public string GetName(Guid id)
         {
-            return _accountService.GetUser(id).UserName;
+            return MembershipService.GetUser(id).UserName;
         }
 
-        public List<Client> ListContacts() 
+        public List<Client> ListContacts()
         {
             var clients = new List<Client>();
-            foreach (var user in _accountService.ListUsers())
+            foreach (var user in MembershipService.ListUsers())
             {
                 user.astra_ClientsReference.Load();
                 Client client;
@@ -248,23 +241,23 @@ namespace ContactManager.Users.Models
                                      UserName = user.UserName
                                  };
                 client = user.astra_ClientsReference.Value;
-                client.Role = _accountService.GetRoleForUser(user.UserName);
+                client.Role = MembershipService.GetRoleForUser(user.UserName);
                 client.UserName = user.UserName;
                 client.LoadReferences();
                 clients.Add(client);
             }
             return clients;
         }
-        
+
         public List<Client> ListContacts(bool deleted)
         {
-            var clients = _clientService.ListClients(deleted);
+            var clients = ClientService.ListClients(deleted);
             Client system = null;
             foreach (var client in clients)
             {
                 client.aspnet_UsersReference.Load();
                 var name = client.aspnet_UsersReference.Value.UserName;
-                client.Role = _accountService.GetRoleForUser(name);
+                client.Role = MembershipService.GetRoleForUser(name);
                 client.UserName = name;
                 client.LoadReferences();
 
@@ -295,7 +288,7 @@ namespace ContactManager.Users.Models
         public List<Client> ListContacts(string role)
         {
             var clients = new List<Client>();
-            var users = _accountService.ListUsers(role);
+            var users = MembershipService.ListUsers(role);
             foreach (var user in users)
             {
                 user.astra_ClientsReference.Load();
@@ -310,16 +303,16 @@ namespace ContactManager.Users.Models
 
         public bool CanSynchronize(Guid id)
         {
-            var user = _accountService.GetUser(id);
-            var role = _accountService.GetRoleForUser(user.UserName);
+            var user = MembershipService.GetUser(id);
+            var role = MembershipService.GetRoleForUser(user.UserName);
             return role.Contains("client");
         }
 
-        public bool DeleteAllData() 
+        public bool DeleteAllData()
         {
             try
             {
-                _accountService.ClearAllData();
+                MembershipService.ClearAllData();
             }
             catch (Exception ex)
             {
@@ -327,35 +320,6 @@ namespace ContactManager.Users.Models
                 return false;
             }
             return true;
-        }
-
-        //public bool LoadMoney(Client client) 
-        //{
-        //    try
-        //    {
-        //        _clientService.EditClient(client);
-        //        //_transactionService.CreateTransaction(client);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _validationDictionary.AddError("_FORM", "Money not loaded. " + ex.Message);
-        //        return false;
-        //    }
-        //    return true;
-        //}
-
-        public bool UpdateSecret(PPPSecret secret)
-        {
-            try
-            {
-                _pppSecretService.UpdatePPPSecretAddresses(secret);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                _validationDictionary.AddError("_FORM", "Contact is not saved. " + ex.Message);
-                return false;
-            }
         }
 
         #endregion

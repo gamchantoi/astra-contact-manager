@@ -4,18 +4,20 @@ using ContactManager.Models;
 
 namespace ContactManager.Users.Interfaces
 {
-    public interface IContactService
+    public interface IUserFasade
     {
         ILoadMoneyService LoadMoneyService { get; }
+        IMembershipService MembershipService { get; }
+        IClientService ClientService { get; }
+        AstraEntities Entities { get; }
 
         bool CreateContact(Client client);
-        bool CreateContact(PPPSecret pppSecret);        
+        bool CreateContact(PPPSecret pppSecret);
         bool DeleteContact(Guid id);
         bool ActivateContact(Guid id);
         bool EditContact(Client client);
         bool EditContact(PPPSecret pppSecret);
         bool CanSynchronize(Guid id);
-        bool UserExist(string name);
         string GetName(Guid id);
         Client GetContact(Guid id);
 
@@ -25,10 +27,5 @@ namespace ContactManager.Users.Interfaces
         List<Client> ListContacts(string role, bool deleted);
 
         bool DeleteAllData();
-
-        //bool LoadMoney(Client client);
-
-        bool UpdateSecret(PPPSecret secret);
-
     }
 }

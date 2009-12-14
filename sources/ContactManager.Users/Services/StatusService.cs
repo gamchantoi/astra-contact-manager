@@ -4,8 +4,9 @@ using System.Web.Mvc;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.Users.Interfaces;
+using ContactManager.Users.Models;
 
-namespace ContactManager.Users.Models
+namespace ContactManager.Users.Services
 {
     public class StatusService : IStatusService
     {

@@ -7,56 +7,42 @@ namespace ContactManager.Accounts.Models
 {
     public class PaymentMethodRepository : IPaymentMethodRepository
     {
-        private readonly AstraEntities _entities;
-
+        #region Constructors
         public PaymentMethodRepository()
-        {
-            _entities = new AstraEntities();
-        }
+            : this(new AstraEntities())
+        { }
 
-        #region ListPaymentMethods()
+        public PaymentMethodRepository(AstraEntities entities)
+        {
+            Entities = entities;
+        } 
+        #endregion
+
+        public AstraEntities Entities { get; private set; }
 
         public List<PaymentMethod> ListPaymentMethods()
         {
-            return _entities.PaymentMethodSet.ToList();
+            return Entities.PaymentMethodSet.ToList();
         }
-
-        #endregion
-
-        #region Create(PaymentMethod paymentMethod)
-
 
         public void CreatePaymentMethod(PaymentMethod paymentMethod)
         {
-            _entities.AddToPaymentMethodSet(paymentMethod);
-            _entities.SaveChanges();
+            Entities.AddToPaymentMethodSet(paymentMethod);
+            Entities.SaveChanges();
         }
-
-        #endregion
-
-        #region GetPaymentMethod(int id)
-
 
         public PaymentMethod GetPaymentMethod(int id)
         {
-            PaymentMethod paymentMethod =
-                (from m in _entities.PaymentMethodSet where m.MethodId == id select m).FirstOrDefault();
-            return paymentMethod;
+            return Entities.PaymentMethodSet.Where(m => m.MethodId == id).FirstOrDefault();
         }
-
-        #endregion
-
-        #region EditPaymentMethod(PaymentMethod paymentMethod)
-
 
         public PaymentMethod EditPaymentMethod(PaymentMethod paymentMethod)
         {
             var _paymentMethod = GetPaymentMethod(paymentMethod.MethodId);
-            _entities.ApplyPropertyChanges(_paymentMethod.EntityKey.EntitySetName, paymentMethod);
-            _entities.SaveChanges();
-            return paymentMethod;
+            Entities.ApplyPropertyChanges(_paymentMethod.EntityKey.EntitySetName, paymentMethod);
+            Entities.SaveChanges();
+            return _paymentMethod;
         }
 
-        #endregion
     }
 }

@@ -62,10 +62,11 @@ namespace ContactManager.Users.Models
 
         public Client GetClient(Guid id)
         {
-            var client = Entities.ClientSet.Where(c => c.UserId == id).FirstOrDefault();
-            if (client == null)
-                client = new Client { UserId = id };
-            return client;
+            return Entities.ClientSet.Where(c => c.UserId == id).FirstOrDefault();
+            //var client = Entities.ClientSet.Where(c => c.UserId == id).FirstOrDefault();
+            //if (client == null)
+            //    client = new Client { UserId = id };
+            //return client;
         }
 
         public List<Client> ListClients(bool deleted)

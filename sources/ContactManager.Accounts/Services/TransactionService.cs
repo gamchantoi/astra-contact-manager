@@ -19,11 +19,12 @@ namespace ContactManager.Accounts.Services
             : this(validationDictionary, new AstraEntities())
         { }
 
-        public TransactionService(IValidationDictionary validationDictionary, AstraEntities entirties)
+        public TransactionService(IValidationDictionary validationDictionary, 
+            AstraEntities entities)
         {
             _validationDictionary = validationDictionary;
-            _repository = new EntityTransactionRepository(entirties);
-            PaymentMethodService = new PaymentMethodService();
+            _repository = new EntityTransactionRepository(entities);
+            PaymentMethodService = new PaymentMethodService(validationDictionary, entities);
         }
         #endregion
 
@@ -41,14 +42,10 @@ namespace ContactManager.Accounts.Services
 
         public Transaction GetTransaction(LoadMoneyViewModel model)
         {
-            return new Transaction
-                       {
-                           Sum = model.Sum,
-                           Comment = model.Comment,
-                           Balance = model.Balance
-                       };
+            var _model = _repository.GetTransaction(model);
+            _model.acc_PaymentsMethods = PaymentMethodService.GetPaymentMethod(model.MethodId);
+            return _model;
         }
-
         
         public PaymentMethodService PaymentMethodService { get; private set; }
 

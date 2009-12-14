@@ -3,61 +3,56 @@ using System.Collections.Generic;
 using System.Linq;
 using ContactManager.Accounts.Interfaces;
 using ContactManager.Models;
+using ContactManager.Models.ViewModels;
 
 namespace ContactManager.Accounts.Models
 {
     public class EntityTransactionRepository : ITransactionRepository
     {
-        private readonly AstraEntities _entities;
-
         #region Constructors
         public EntityTransactionRepository()
         {
-            _entities = new AstraEntities();
+            Entities = new AstraEntities();
         }
 
         public EntityTransactionRepository(AstraEntities entities)
         {
-            _entities = entities;
+            Entities = entities;
         }
         #endregion
 
         #region IAccountTransactionRepository Members
 
+        public Transaction GetTransaction(LoadMoneyViewModel model)
+        {
+            return new Transaction
+            {
+                Sum = model.Sum,
+                Comment = model.Comment,
+                Balance = model.Balance
+            };
+        }
+
+        public AstraEntities Entities { get; private set; }
+
         public List<Transaction> ListTransaction()
         {
-            var list = _entities.TransactionSet.ToList();
-            //foreach (var item in list)
-            //{
-            //    item.astra_ClientsReference.Load();
-            //    item.astra_ClientsReference.Value.aspnet_UsersReference.Load();
-            //    item.astra_ClientsReference.Value.UserName =
-            //        item.astra_ClientsReference.Value.aspnet_UsersReference.Value.UserName;
-            //    item.aspnet_UsersReference.Load();
-            //    item.acc_PaymentsMethodsReference.Load();
-            //    item.astra_ServicesReference.Load();
-            //    item.mkt_PPPProfilesReference.Load();
-            //}
+            var list = Entities.TransactionSet.ToList();
+            foreach (var item in list)
+            {
+                item.astra_ClientsReference.Load();
+                item.Client = item.astra_ClientsReference.Value;
+                item.aspnet_UsersReference.Load();
+                item.User = item.aspnet_UsersReference.Value;
+            }
             return list;
         }
 
         public List<Transaction> ListTransaction(Guid userId)
         {
-            var user = _entities.ClientSet.Where(c => c.UserId == userId).FirstOrDefault();
+            var user = Entities.ClientSet.Where(c => c.UserId == userId).FirstOrDefault();
             user.acc_Transactions.Load();
             var list = user.acc_Transactions.ToList();
-            //var list = _entities.AccountTransactionSet.Where(t => t.astra_ClientsReference.Value.UserId == userId).ToList();
-            //foreach (var item in list)
-            //{
-            //    item.astra_ClientsReference.Load();
-            //    item.astra_ClientsReference.Value.aspnet_UsersReference.Load();
-            //    item.astra_ClientsReference.Value.UserName =
-            //        item.astra_ClientsReference.Value.aspnet_UsersReference.Value.UserName;
-            //    item.aspnet_UsersReference.Load();
-            //    item.acc_PaymentsMethodsReference.Load();
-            //    item.astra_ServicesReference.Load();
-            //    item.mkt_PPPProfilesReference.Load();
-            //}
             return list;
         }
 
@@ -70,39 +65,41 @@ namespace ContactManager.Accounts.Models
             //if (transaction.ServiceId.HasValue)
             //    transaction.astra_Services =
             //        _entities.ServiceSet.Where(s => s.ServiceId == transaction.ServiceId.Value).FirstOrDefault();
-            transaction.User = _entities.ASPUserSet.Where(u => u.UserId == transaction.Client.UserId).FirstOrDefault();
+            //transaction.User = _entities.ASPUserSet.Where(u => u.UserId == transaction.Client.UserId).FirstOrDefault();
             //transaction.aspnet_UsersReference.Load();
-            transaction.aspnet_Users = _entities.ASPUserSet.Where(u => u.UserId == transaction.Client.UserId).FirstOrDefault();
-            transaction.astra_Clients = _entities.ClientSet.Where(c => c.UserId == transaction.Client.UserId).FirstOrDefault();
+            //transaction.aspnet_Users = Entities.ASPUserSet.Where(u => u.UserId == transaction.Client.UserId).FirstOrDefault();
+            transaction.astra_Clients = Entities.ClientSet.Where(c => c.UserId == transaction.Client.UserId).FirstOrDefault();
             transaction.Date = DateTime.Now;
-            _entities.AddToTransactionSet(transaction);
-            _entities.SaveChanges();
+            Entities.AddToTransactionSet(transaction);
+            Entities.SaveChanges();
             return true;
         }
 
         public bool DeleteTransactions(Guid userId)
         {
-            var list = _entities.TransactionSet.Where(a => a.astra_Clients.UserId == userId);
+            var list = Entities.TransactionSet.Where(a => a.astra_Clients.UserId == userId);
             foreach (var transaction in list)
             {
-                _entities.DeleteObject(transaction);
+                Entities.DeleteObject(transaction);
             }
-            list = _entities.TransactionSet.Where(a => a.aspnet_Users.UserId == userId);
+            list = Entities.TransactionSet.Where(a => a.aspnet_Users.UserId == userId);
             foreach (var transaction in list)
             {
-                _entities.DeleteObject(transaction);
+                Entities.DeleteObject(transaction);
             }
-            _entities.SaveChanges();
+            Entities.SaveChanges();
             return true;
         }
 
-        public void ProcessClientPayment() 
-        { 
+
+
+        public void ProcessClientPayment()
+        {
             //foreach(var secrets in _entities.PPPSecretSet.ToList())
             //{
             //    secrets.mkt_PPPProfilesReference.Load();
             //    secrets.astra_ClientsReference.Load();
-                
+
             //    var client = secrets.astra_ClientsReference.Value;
             //    var profile = secrets.mkt_PPPProfilesReference.Value;
 
