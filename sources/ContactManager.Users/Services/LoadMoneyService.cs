@@ -34,7 +34,7 @@ namespace ContactManager.Users.Services
             client.LoadDetailsReferences();
             var model = new LoadMoneyViewModel
                             {
-                                UserId = client.UserId,
+                                ClientId = client.UserId,
                                 UserName = client.UserName,
                                 Balance = client.Balance,
                                 FullName = string.Format("{0} ({1})", client.FullName, client.UserName),
@@ -53,26 +53,26 @@ namespace ContactManager.Users.Services
                     return false;
                 }
 
-                var client = _clientService.GetClient(model.UserId);
+                var client = _clientService.GetClient(model.ClientId);
                 model.Balance = client.Balance;
 
-                //var transaction = _transactionService.GetTransaction(model);
+                var transaction = _transactionService.GetTransaction(model);
                 //transaction.Client = client;
 
-                var transaction = new Transaction
-                  {
-                      Sum = model.Sum,
-                      Comment = model.Comment,
-                      Balance = model.Balance,
-                      acc_PaymentsMethods =
-                          _transactionService.PaymentMethodService.GetPaymentMethod(model.MethodId),
-                      //astra_Clients = client,
-                      Client = client
-                  };
+                //var transaction = new Transaction
+                //  {
+                //      Sum = model.Sum,
+                //      Comment = model.Comment,
+                //      Balance = model.Balance,
+                //      acc_PaymentsMethods =
+                //          _transactionService.PaymentMethodService.GetPaymentMethod(model.MethodId),
+                //      //astra_Clients = client,
+                //      Client = client
+                //  };
 
 
                 //transaction.aspnet_Users = _userFasade.MembershipService.;
-                _transactionService.CreateTransaction(transaction);
+                _transactionService.CreateTransaction(model);
                 
                 client.Balance = client.Balance + model.Sum;
                 _clientService.EditClient(client);

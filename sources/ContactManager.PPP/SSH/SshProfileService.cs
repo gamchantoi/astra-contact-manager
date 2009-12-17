@@ -19,7 +19,7 @@ namespace ContactManager.PPP.SSH
             : base(validationDictionary)
         {
             _validationDictionary = validationDictionary;
-            _repository = new SshProfileRepository();
+            _repository = new SshProfileRepository(Repository);
             _pppProfileService = new ProfileService(validationDictionary);
         }
 

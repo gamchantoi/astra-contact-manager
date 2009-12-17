@@ -4,6 +4,8 @@ namespace ContactManager.SSH.Intefaces
 {
     public interface ISSHRepository
     {
+        bool AutoMode { get; set; }
+
         string Connect(string host, string username, string password);
         void Disconnect();
         string RunCommand(string command);

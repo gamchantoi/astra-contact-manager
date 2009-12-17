@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace ContactManager.Services.Models
 {
-    public class EntityServiceRepository : BaseRepository, IServiceRepository
+    public class EntityServiceRepository : RepositoryBase<Service>, IServiceRepository
     {
         #region Constructors
         public EntityServiceRepository(): this(new AstraEntities())
@@ -15,7 +15,7 @@ namespace ContactManager.Services.Models
 
         public EntityServiceRepository(AstraEntities entities)
         {
-            Entities = entities;
+            //Entities = entities;
         }
         #endregion
 
@@ -26,29 +26,29 @@ namespace ContactManager.Services.Models
             if (status.HasValue)
             {
                 var _status = status.Value == Statuses.Active ? true : false;
-                return Entities.ServiceSet.Where(s => s.Active == _status).ToList();
+                return ObjectContext.ServiceSet.Where(s => s.Active == _status).ToList();
             }
-            return Entities.ServiceSet.ToList();
+            return ObjectContext.ServiceSet.ToList();
         }
 
         public Service CreateService(Service service)
         {
             if (service.aspnet_UsersReference.Value == null)
-                service.aspnet_Users = Entities.ASPUserSet.Where(u => u.UserId == service.UserId).FirstOrDefault();
+                service.aspnet_Users = ObjectContext.ASPUserSet.Where(u => u.UserId == service.UserId).FirstOrDefault();
             service.LastUpdatedDate = DateTime.Now;
-            Entities.AddToServiceSet(service);
-            Entities.SaveChanges();
+            ObjectContext.AddToServiceSet(service);
+            ObjectContext.SaveChanges();
             return service;
         }
 
         public Service GetService(int id)
         {
-            return Entities.ServiceSet.Where(s => s.ServiceId == id).FirstOrDefault();
+            return ObjectContext.ServiceSet.Where(s => s.ServiceId == id).FirstOrDefault();
         }
 
         public Service BuildService(string systemData)
         {
-            var service = Entities.ServiceSet.Where(s => s.SystemData.Equals(systemData) ||
+            var service = ObjectContext.ServiceSet.Where(s => s.SystemData.Equals(systemData) ||
                                                          s.Name.Equals(systemData)).FirstOrDefault();
             if (service == null)
             {
@@ -61,7 +61,7 @@ namespace ContactManager.Services.Models
                                        Visible = true,
                                        Cost = Decimal.Zero,
                                        aspnet_Users =
-                                           Entities.ASPUserSet.Where(u => u.UserName.Equals("System")).FirstOrDefault()
+                                           ObjectContext.ASPUserSet.Where(u => u.UserName.Equals("System")).FirstOrDefault()
                                    };
                 service = CreateService(_service);
             }
@@ -70,12 +70,12 @@ namespace ContactManager.Services.Models
 
         public Service EditService(Service service)
         {
-            var _service = Entities.ServiceSet.Where(s => s.ServiceId == service.ServiceId).FirstOrDefault();
+            var _service = ObjectContext.ServiceSet.Where(s => s.ServiceId == service.ServiceId).FirstOrDefault();
             if (!string.IsNullOrEmpty(_service.SystemData))
                 service.SystemData = _service.SystemData;
-            Entities.ApplyPropertyChanges(_service.EntityKey.EntitySetName, service);
+            ObjectContext.ApplyPropertyChanges(_service.EntityKey.EntitySetName, service);
             _service.LastUpdatedDate = DateTime.Now;
-            Entities.SaveChanges();
+            ObjectContext.SaveChanges();
             return _service;
         }
 
@@ -90,13 +90,13 @@ namespace ContactManager.Services.Models
                                {
                                    astra_Services = service,
                                    astra_Clients =
-                                       Entities.ClientSet.Where(c => c.UserId == service.ClientId).FirstOrDefault(),
+                                       ObjectContext.ClientSet.Where(c => c.UserId == service.ClientId).FirstOrDefault(),
                                    Date = DateTime.Now,
                                    aspnet_Users =
-                                       Entities.ASPUserSet.Where(u => u.UserId == service.UserId).FirstOrDefault()
+                                       ObjectContext.ASPUserSet.Where(u => u.UserId == service.UserId).FirstOrDefault()
                                };
-            Entities.AddToClientInServicesSet(activity);
-            Entities.SaveChanges();
+            ObjectContext.AddToClientInServicesSet(activity);
+            ObjectContext.SaveChanges();
             return true;
         }
 
@@ -105,13 +105,13 @@ namespace ContactManager.Services.Models
             var activity = GetActivity(service.ClientId, service.ServiceId);
             //activity.EndDate = DateTime.Now;
             //activity.Active = false;
-            Entities.SaveChanges();
+            ObjectContext.SaveChanges();
             return true;
         }
 
         private ClientInServices GetActivity(Guid clientId, int serviceId)
         {
-            var client = Entities.ClientSet.Where(c => c.UserId == clientId).FirstOrDefault();
+            var client = ObjectContext.ClientSet.Where(c => c.UserId == clientId).FirstOrDefault();
             client.astra_ClientsInServices.Load();
             foreach (var item in client.astra_ClientsInServices) 
             {
@@ -123,7 +123,7 @@ namespace ContactManager.Services.Models
 
         public List<ClientInServices> ListActivities()
         {
-            var activities = Entities.ClientInServicesSet.ToList();
+            var activities = ObjectContext.ClientInServicesSet.ToList();
             foreach (var item in activities)
             {
                 item.astra_ServicesReference.Load();
@@ -145,7 +145,7 @@ namespace ContactManager.Services.Models
 
         public Service GetService(string name)
         {
-            return Entities.ServiceSet.Where(s => s.Name == name).FirstOrDefault();
+            return ObjectContext.ServiceSet.Where(s => s.Name == name).FirstOrDefault();
         }
 
         #endregion

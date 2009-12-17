@@ -3,17 +3,11 @@ using System.Text;
 using System.Text.RegularExpressions;
 using ContactManager.Models;
 using ContactManager.SSH.Intefaces;
-using ContactManager.SSH.Models;
 
 namespace ContactManager.PPP.SSH
 {
     public class SshSecretRepository
     {
-        public SshSecretRepository()
-        {
-            Repository = new SSHRepository();
-        }
-
         public SshSecretRepository(ISSHRepository repository)
         {
             Repository = repository;

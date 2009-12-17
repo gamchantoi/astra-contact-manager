@@ -91,6 +91,10 @@
       <Project>{CA6EDC25-507E-48C5-AC9F-F99BB32E171A}</Project>
       <Name>ContactManager.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ContactManager.ObjectContextManagement\ContactManager.ObjectContextManagement.csproj">
+      <Project>{828D3593-DFFC-4316-BB8D-9173CAEC6F1C}</Project>
+      <Name>ContactManager.ObjectContextManagement</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

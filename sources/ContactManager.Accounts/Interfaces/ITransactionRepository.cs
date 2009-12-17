@@ -16,5 +16,8 @@ namespace ContactManager.Accounts.Interfaces
         AstraEntities Entities { get; }
 
         void ProcessClientPayment();
+        void CreateTransaction(LoadMoneyViewModel model, PaymentMethod method);
+
+        void Add(Transaction transaction);
     }
 }
