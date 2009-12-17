@@ -68,13 +68,13 @@ namespace ContactManager.Models
                 {
                     if (item.astra_ServicesReference.Value.SystemData.Equals("Real_IP_Address"))
                     {
-                        pppSecret.SystemRealIP = true;
+                        if (pppSecret != null) pppSecret.SystemRealIP = true;
                         continue;
                     }
 
                     if (item.astra_ServicesReference.Value.SystemData.Equals("Stay_OnLine"))
                     {
-                        pppSecret.SystemStayOnline = true;
+                        if (pppSecret != null) pppSecret.SystemStayOnline = true;
                         continue;
                     }
                 }
@@ -97,7 +97,7 @@ namespace ContactManager.Models
             astra_ContractsReference.Load();
         }
 
-        public List<ClientInServices> LoadServicesActivities()
+        public List<ClientInServices> LoadClientServices()
         {
             astra_ClientsInServices.Load();
             foreach (var item in astra_ClientsInServices)

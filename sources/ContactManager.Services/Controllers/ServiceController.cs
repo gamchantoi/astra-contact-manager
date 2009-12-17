@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Web.Mvc;
 using ContactManager.Models.Validation;
@@ -11,11 +12,13 @@ namespace ContactManager.Services.Controllers
     public class ServiceController : Controller
     {
         private readonly IServiceService _service;
+        private readonly IClientInServicesService _clientInServicesService;
 
         public ServiceController()
         {
             IValidationDictionary validationDictionary = new ModelStateWrapper(ModelState);
             _service = new ServiceService(validationDictionary);
+            _clientInServicesService = new ClientInServicesService(validationDictionary);
         }
 
         [Authorize(Roles = "admin")]
@@ -58,6 +61,22 @@ namespace ContactManager.Services.Controllers
         public ActionResult Activities()
         {
             return View(_service.ListActivities());
+        }
+
+
+        [Authorize(Roles = "admin")]
+        public ActionResult ClientServices(Guid id)
+        {
+            return View(_clientInServicesService.GetClientServices(id));
+        }
+
+        [Authorize(Roles = "admin")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult ClientServices(FormCollection collection, Guid id)
+        {
+            if (_clientInServicesService.UpdateClientServices(collection, id))
+                return RedirectToAction("Index", "User", new {Area="Users"});
+            return View(collection);
         }
     }
 }

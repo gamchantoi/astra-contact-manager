@@ -27,5 +27,6 @@ namespace ContactManager.Users.Interfaces
         List<Client> ListContacts(string role, bool deleted);
 
         bool DeleteAllData();
+
     }
 }

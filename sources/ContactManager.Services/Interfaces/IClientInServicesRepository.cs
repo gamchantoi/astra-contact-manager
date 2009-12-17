@@ -6,5 +6,7 @@ namespace ContactManager.Services.Interfaces
     {
         ClientInServices CreateActivity(ClientInServices activity);
         ClientInServices UpdateActivity(ClientInServices activity);
+
+        bool RemoveClientFromService(ClientInServices service);
     }
 }

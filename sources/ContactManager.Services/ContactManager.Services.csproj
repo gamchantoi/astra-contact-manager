@@ -84,6 +84,7 @@
     <Compile Include="Models\SystemServicesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routes.cs" />
+    <Compile Include="ViewModels\ClientServicesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -93,6 +94,10 @@
     <ProjectReference Include="..\ContactManager.Models\ContactManager.Models.csproj">
       <Project>{CA6EDC25-507E-48C5-AC9F-F99BB32E171A}</Project>
       <Name>ContactManager.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ContactManager.Users\ContactManager.Users.csproj">
+      <Project>{3714F4A7-571B-47C4-925A-527F67F45637}</Project>
+      <Name>ContactManager.Users</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -5,6 +5,9 @@ using ContactManager.Models.Validation;
 using ContactManager.Services.Helpers;
 using ContactManager.Services.Interfaces;
 using ContactManager.Services.Models;
+using ContactManager.Services.ViewModels;
+using ContactManager.Users.Interfaces;
+using ContactManager.Users.Services;
 
 namespace ContactManager.Services.Models
 {
@@ -16,6 +19,7 @@ namespace ContactManager.Services.Models
         private readonly ISystemServicesService _systemService;
         private const string REAL_IP = "Real_IP_Address";
         private const string STAY_ONLINE = "Stay_OnLine";
+
 
         #region Constructors
         public ServiceService(IValidationDictionary validationDictionary)
@@ -29,6 +33,7 @@ namespace ContactManager.Services.Models
             _userHelper = new UserHelper();
             _repository = repository;
             _systemService = systemService;
+
         } 
         #endregion
 
@@ -45,7 +50,8 @@ namespace ContactManager.Services.Models
             {
                 if (_repository.GetService(service.Name) != null)
                     throw new Exception("Service Name exist.");
-                service.UserId = _userHelper.CurrentUserId;
+                //service.UserId = _userHelper.CurrentUserId;
+                service.UserId = _userHelper.GetCurrentUserId;
                 var _service = _repository.CreateService(service);
                 
                 if (service.SystemRealIP)
@@ -95,7 +101,7 @@ namespace ContactManager.Services.Models
         private void UpdateSystemService(PPPSecret secret, string serviceType, bool mode)
         {
             var _service = _repository.BuildService(serviceType);
-            _service.UserId = _userHelper.CurrentUserId;
+            _service.UserId = _userHelper.GetCurrentUserId;
             _service.ClientId = secret.UserId;
             if (mode)
             {
@@ -115,5 +121,6 @@ namespace ContactManager.Services.Models
         }
 
         #endregion
+
     }
 }
