@@ -109,17 +109,10 @@
       <Project>{EACF1926-D96A-445B-BD6F-271EACE6F02E}</Project>
       <Name>ContactManager.PPP</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ContactManager.Services\ContactManager.Services.csproj">
-      <Project>{23AB597B-8130-4F0B-A4A9-4DB46E6AD927}</Project>
-      <Name>ContactManager.Services</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ContactManager.SSH\ContactManager.SSH.csproj">
       <Project>{CCE5B7F0-9B7F-4F96-95A5-CF0C0E1D0755}</Project>
       <Name>ContactManager.SSH</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

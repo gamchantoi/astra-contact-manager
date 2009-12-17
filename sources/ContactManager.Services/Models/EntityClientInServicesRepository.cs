@@ -43,6 +43,14 @@ namespace ContactManager.Services.Models
             return _activity;
         }
 
+        public bool RemoveClientFromService(ClientInServices clientInServices)
+        {
+            var _service = _entities.ClientInServicesSet.Where(a => a.ActivityId == clientInServices.ActivityId).FirstOrDefault();
+            _entities.DeleteObject(_service);
+            _entities.SaveChanges();
+            return true;
+        }
+
         #endregion
     }
 }

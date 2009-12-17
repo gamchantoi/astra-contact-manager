@@ -10,8 +10,6 @@ using ContactManager.Models.ViewModels;
 using ContactManager.PPP.Intefaces;
 using ContactManager.PPP.Models;
 using ContactManager.PPP.SSH;
-using ContactManager.Services.Interfaces;
-using ContactManager.Services.Models;
 using ContactManager.Users.Interfaces;
 using ContactManager.Users.Services;
 
@@ -22,8 +20,6 @@ namespace ContactManager.Users.Controllers
     {
         private readonly IValidationDictionary validationDictionary;
         private readonly IUserFasade _service;
-        private readonly IServiceService _serviceService;
-        private readonly IClientInServicesService _serviceActivity;
         private readonly ISshSecretService _sshSecretService;
         private readonly HostHelper _helper = new HostHelper();
         private readonly IStatusService _statusService;
@@ -32,8 +28,6 @@ namespace ContactManager.Users.Controllers
         {
             validationDictionary = new ModelStateWrapper(ModelState);
             _service = new UserFasade(validationDictionary);
-            _serviceService = new ServiceService(validationDictionary);
-            _serviceActivity = new ClientInServicesService(validationDictionary);
             _sshSecretService = new SshSecretService(validationDictionary, true);
             _statusService = new StatusService(validationDictionary);
         }
@@ -78,7 +72,7 @@ namespace ContactManager.Users.Controllers
         public ActionResult Edit(Guid id)
         {
             var client = _service.GetContact(id);
-            client.LoadServicesActivities();
+            client.LoadClientServices();
             FillViewData(client);
             return View(client);
         }
@@ -202,38 +196,22 @@ namespace ContactManager.Users.Controllers
             return View(loadModel);
         }
 
-        [Authorize(Roles = "admin")]
-        public ActionResult Services(Guid id)
-        {
-            var client = _service.GetContact(id);
-            var services = _serviceService.ListServices(Statuses.Active);
-            ViewData["UserId"] = id;
-            ViewData["ClientServices"] = client.LoadServicesActivities();
-            return View(services);
-        }
 
-        [Authorize(Roles = "admin")]
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Services(FormCollection collection, Guid UserId)
-        {
-            _serviceActivity.UpdateActivity(collection, UserId);
-            return View("Index", PrepareIndex(false));
-        }
 
-        [Authorize(Roles = "admin")]
-        public ActionResult UpdateSecret(PPPSecret secret)
-        {
-            var _pppSecretService = new SecretService(validationDictionary);
-            if (_pppSecretService.UpdatePPPSecretAddresses(secret) &&
-                _serviceService.UpdateSystemService(secret))
-            {
-                _sshSecretService.Connect(_helper.GetCurrentHost());
-                _sshSecretService.EditPPPSecret(secret.UserId);
-                _sshSecretService.Disconnect();
+        //[Authorize(Roles = "admin")]
+        //public ActionResult UpdateSecret(PPPSecret secret)
+        //{
+        //    var _pppSecretService = new SecretService(validationDictionary);
+        //    if (_pppSecretService.UpdatePPPSecretAddresses(secret) &&
+        //        _serviceService.UpdateSystemService(secret))
+        //    {
+        //        _sshSecretService.Connect(_helper.GetCurrentHost());
+        //        _sshSecretService.EditPPPSecret(secret.UserId);
+        //        _sshSecretService.Disconnect();
 
-                return RedirectToAction("Index", PrepareIndex(false));
-            }
-            return RedirectToAction("Edit", secret.UserId);
-        }
+        //        return RedirectToAction("Index", PrepareIndex(false));
+        //    }
+        //    return RedirectToAction("Edit", secret.UserId);
+        //}
     }
 }

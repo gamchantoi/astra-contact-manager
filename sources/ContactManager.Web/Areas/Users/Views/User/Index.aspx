@@ -59,7 +59,7 @@
                     <%= Html.Encode(item.ProfileName) %>
                 </td>
                 <td>
-                    <a href='<%= Url.Action("Services", new {id=item.UserId}) %>'>View</a>
+                    <%= Html.ActionLink("View", "ClientServices", "Service", new {area="Services", id=item.UserId}, null)%>
                 </td>
                 <td>
                     <%= Html.Encode(String.Format("{0:F}", item.Balance)) %>

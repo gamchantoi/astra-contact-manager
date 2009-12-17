@@ -67,7 +67,7 @@
     <Compile Include="Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service.cs" />
-    <Compile Include="Status.cs" />
+    <Compile Include="Statuses.cs" />
     <Compile Include="Transaction.cs" />
     <Compile Include="Validation\IValidationDictionary.cs" />
     <Compile Include="Validation\ModelStateWrapper.cs" />
