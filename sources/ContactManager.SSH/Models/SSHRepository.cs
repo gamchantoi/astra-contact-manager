@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using ContactManager.Models;
 using ContactManager.SSH.Intefaces;
 using Tamir.SharpSsh;
 
@@ -10,6 +11,19 @@ namespace ContactManager.SSH.Models
     public class SSHRepository : ISSHRepository
     {
         private SshStream _sshStream;
+        private readonly Host _host;
+
+        public bool AutoMode { get; set; }
+
+        public SSHRepository(Host host)
+        {
+            _host = host;
+        }
+
+        public string Connect()
+        {
+            return Connect(_host.Address, _host.UserName, _host.UserPassword);
+        }
 
         public string Connect(string host, string username, string password)
         {
@@ -29,8 +43,14 @@ namespace ContactManager.SSH.Models
 
         public string RunCommand(string command)
         {
+            if (AutoMode && _sshStream == null) Connect();
+
             _sshStream.Write(command);
-            return ParseResponse(_sshStream.ReadResponse(), command);
+            var retVal = ParseResponse(_sshStream.ReadResponse(), command);
+            
+            if (AutoMode) Disconnect();
+            
+            return retVal;
         }
 
         public string BuildCommand(String key, String value)

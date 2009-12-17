@@ -38,7 +38,7 @@ namespace ContactManager.PPP.SSH
         {
             AutoMode = autoMode;
             _validationDictionary = validationDictionary;
-            _repository = repository != null ? new SshSecretRepository(repository) : new SshSecretRepository();
+            _repository = repository != null ? new SshSecretRepository(repository) : new SshSecretRepository(Repository);
             _pppSecretService = new SecretService(validationDictionary);
         } 
         #endregion
@@ -47,12 +47,8 @@ namespace ContactManager.PPP.SSH
         {
             try
             {
-                if (AutoMode) Connect();
-
                 var secret = _pppSecretService.GetPPPSecret(id);
                 _repository.ppp_secret_add(secret);
-
-                if (AutoMode) Disconnect();
             }
             catch (Exception ex)
             {

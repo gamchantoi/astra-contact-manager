@@ -10,22 +10,57 @@ namespace ContactManager.SSH.Models
     {
         private readonly IValidationDictionary _validationDictionary;
         private readonly HostHelper _hostHelper;
+        private ISSHRepository _repository;
 
+        #region Constructors
         protected SSHService(IValidationDictionary validationDictionary)
-            : this(validationDictionary, new SSHRepository())
-        {}
+            : this(validationDictionary, null)
+        { }
 
         protected SSHService(IValidationDictionary validationDictionary, ISSHRepository repository)
+            : this(validationDictionary, repository, false)
+        { }
+
+        protected SSHService(IValidationDictionary validationDictionary, bool autoMode)
+            : this(validationDictionary, null, autoMode)
+        { }
+
+        protected SSHService(IValidationDictionary validationDictionary, ISSHRepository repository, bool autoMode)
         {
             _validationDictionary = validationDictionary;
-            Repository = repository;
             _hostHelper = new HostHelper();
+            Repository = repository ?? new SSHRepository(_hostHelper.GetCurrentHost());
+            AutoMode = autoMode;
 
         }
+        #endregion
 
-        public ISSHRepository Repository { get; private set; }
+        public ISSHRepository Repository
+        {
+            get
+            {
+                if (_repository == null)
+                    _repository = new SSHRepository(_hostHelper.GetCurrentHost());
 
-        public bool AutoMode { get; set; }
+                return _repository;
+            }
+            private set
+            {
+                _repository = value;
+            }
+        }
+
+        public bool AutoMode
+        {
+            get
+            {
+                return Repository.AutoMode;
+            }
+            set
+            {
+                Repository.AutoMode = value;
+            }
+        }
 
         public bool Connect()
         {
@@ -39,8 +74,6 @@ namespace ContactManager.SSH.Models
 
         public bool Connect(string host, string username, string password)
         {
-            if (Repository == null)
-                Repository = new SSHRepository();
             try
             {
                 Repository.Connect(host, username, password);

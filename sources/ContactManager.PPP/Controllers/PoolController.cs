@@ -20,7 +20,7 @@ namespace ContactManager.PPP.Controllers
         {
             IValidationDictionary validationDictionary = new ModelStateWrapper(this.ModelState);
             _service = new PoolService(validationDictionary);
-            _sshService = new SshPoolService(validationDictionary);
+            _sshService = new SshPoolService(validationDictionary, true);
         }
 
         public ActionResult Index()
@@ -46,9 +46,7 @@ namespace ContactManager.PPP.Controllers
         {
             if (_service.CreatePool(pool))
             {
-                _sshService.Connect(_hhelper.GetCurrentHost());
-                var result = _sshService.CreatePool(pool.PoolId);
-                _sshService.Disconnect();
+                _sshService.CreatePool(pool.PoolId);
                 return View("Index", _service.ListPools());
             }
             ViewData["Pools"] = _ddhelper.GetPools(null);
@@ -66,9 +64,7 @@ namespace ContactManager.PPP.Controllers
         {
             if (_service.EditPool(pool))
             {
-                _sshService.Connect(_hhelper.GetCurrentHost());
-                var result = _sshService.EditPool(pool.PoolId);
-                _sshService.Disconnect();
+                _sshService.EditPool(pool.PoolId);
                 return View("Index", _service.ListPools());
             }
             ViewData["Pools"] = _ddhelper.GetPools(pool.PoolId);
@@ -80,9 +76,7 @@ namespace ContactManager.PPP.Controllers
             var pool = _service.GetPool(id);
             if (_service.DeletePool(id))
             {
-                _sshService.Connect(_hhelper.GetCurrentHost());
-                var result = _sshService.DeletePool(pool.Name);
-                _sshService.Disconnect();
+                _sshService.DeletePool(pool.Name);
             }
             
             return View("Index", _service.ListPools());

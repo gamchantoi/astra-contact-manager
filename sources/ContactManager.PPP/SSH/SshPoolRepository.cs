@@ -9,11 +9,6 @@ namespace ContactManager.PPP.SSH
 {
     public class SshPoolRepository
     {
-        public SshPoolRepository()
-        {
-            Repository = new SSHRepository();
-        }
-
         public SshPoolRepository(ISSHRepository repository)
         {
             Repository = repository;

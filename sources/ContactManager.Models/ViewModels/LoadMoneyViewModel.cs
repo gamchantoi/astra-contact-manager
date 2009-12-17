@@ -7,6 +7,7 @@ namespace ContactManager.Models.ViewModels
     public class LoadMoneyViewModel
     {
         public Guid UserId { get; set; }
+        public Guid ClientId { get; set; }
         public string UserName { get; set; }
         public string FullName { get; set; }
         public string Comment { get; set; }

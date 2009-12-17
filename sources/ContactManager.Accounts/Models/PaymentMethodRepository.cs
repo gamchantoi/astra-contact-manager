@@ -5,7 +5,7 @@ using ContactManager.Models;
 
 namespace ContactManager.Accounts.Models
 {
-    public class PaymentMethodRepository : IPaymentMethodRepository
+    public class PaymentMethodRepository : RepositoryBase<PaymentMethod>, IPaymentMethodRepository
     {
         #region Constructors
         public PaymentMethodRepository()
@@ -22,25 +22,25 @@ namespace ContactManager.Accounts.Models
 
         public List<PaymentMethod> ListPaymentMethods()
         {
-            return Entities.PaymentMethodSet.ToList();
+            return ObjectContext.PaymentMethodSet.ToList();
         }
 
         public void CreatePaymentMethod(PaymentMethod paymentMethod)
         {
-            Entities.AddToPaymentMethodSet(paymentMethod);
-            Entities.SaveChanges();
+            ObjectContext.AddToPaymentMethodSet(paymentMethod);
+            ObjectContext.SaveChanges();
         }
 
         public PaymentMethod GetPaymentMethod(int id)
         {
-            return Entities.PaymentMethodSet.Where(m => m.MethodId == id).FirstOrDefault();
+            return ObjectContext.PaymentMethodSet.Where(m => m.MethodId == id).FirstOrDefault();
         }
 
         public PaymentMethod EditPaymentMethod(PaymentMethod paymentMethod)
         {
             var _paymentMethod = GetPaymentMethod(paymentMethod.MethodId);
-            Entities.ApplyPropertyChanges(_paymentMethod.EntityKey.EntitySetName, paymentMethod);
-            Entities.SaveChanges();
+            ObjectContext.ApplyPropertyChanges(_paymentMethod.EntityKey.EntitySetName, paymentMethod);
+            ObjectContext.SaveChanges();
             return _paymentMethod;
         }
 

@@ -165,7 +165,7 @@ namespace ContactManager.Users.Controllers
 
         private List<Client> PrepareIndex(bool deleted)
         {
-            List<Client> users = _service.ListContacts(deleted);
+            var users = _service.ListContacts(deleted);
             users.Sort((c1, c2) => c1.UserName.CompareTo(c2.UserName));
             ViewData["TotalUsers"] = users.Count();
             ViewData["TotalBalance"] = String.Format("{0:F}", users.Sum(u => u.Balance));
@@ -192,7 +192,7 @@ namespace ContactManager.Users.Controllers
         {
             if (_service.LoadMoneyService.LoadMoney(model))
                 return View("Index", PrepareIndex(false));
-            LoadMoneyViewModel loadModel = _service.LoadMoneyService.GetViewModel(model.UserId);
+            LoadMoneyViewModel loadModel = _service.LoadMoneyService.GetViewModel(model.ClientId);
             return View(loadModel);
         }
 

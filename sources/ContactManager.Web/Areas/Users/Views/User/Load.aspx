@@ -5,7 +5,7 @@ Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.ViewModels.LoadMoneyView
  <%= Html.ValidationSummary("Operation was unsuccessful. Please view details and try again.")%>
     <% using (Html.BeginForm())
        {%>
-    <%= Html.HiddenFor(model => model.UserId) %>
+    <%= Html.HiddenFor(model => model.ClientId) %>
     <fieldset>
         <legend>Load Modey for:
             <%= Html.DisplayFor(model => model.FullName)%></legend>

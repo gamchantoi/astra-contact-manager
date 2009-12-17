@@ -54,9 +54,22 @@ namespace ContactManager.Accounts.Services
             _repository.ProcessClientPayment();
         }
 
-        public void CreateTransaction(Transaction transaction)
+        public void CreateTransaction(LoadMoneyViewModel model)
         {
-            _repository.CreateTransaction(transaction);
+            var userContext = new CurrentContext();
+            var _transaction = new Transaction
+              {
+                  Sum = model.Sum,
+                  Comment = model.Comment,
+                  Balance = model.Balance,
+                  acc_PaymentsMethods = PaymentMethodService.GetPaymentMethod(model.MethodId),
+                  aspnet_Users = userContext.CurrentASPUser,
+                  astra_Clients =  userContext.GetClient(model.ClientId)
+              };
+            model.UserId = userContext.CurrentUserId;
+            _repository.Add(_transaction);
+            //_repository.CreateTransaction(_transaction);
+            //_repository.CreateTransaction(model, PaymentMethodService.GetPaymentMethod(model.MethodId));
         }
 
         #endregion
