@@ -20,7 +20,7 @@ namespace ContactManager.Web.Controllers
             return View(conn);
         }
 
-        public ContactManager.Models.Host GetCurrentHost()
+        public Host GetCurrentHost()
         {
             var hostId = int.Parse(HttpContext.Profile.GetPropertyValue("HostId").ToString());
             return _astraEntities.HostSet.Where(h => h.HostId == hostId).FirstOrDefault();

@@ -18,6 +18,8 @@
           <EntitySet Name="astra_ClientsInServices" EntityType="AstraModel.Store.astra_ClientsInServices" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="astra_Contracts" EntityType="AstraModel.Store.astra_Contracts" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="astra_Hosts" EntityType="AstraModel.Store.astra_Hosts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="astra_Messages" EntityType="AstraModel.Store.astra_Messages" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="astra_MessagesType" EntityType="AstraModel.Store.astra_MessagesType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="astra_Services" EntityType="AstraModel.Store.astra_Services" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="astra_ServicesInSystemServices" EntityType="AstraModel.Store.astra_ServicesInSystemServices" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="astra_Statuses" EntityType="AstraModel.Store.astra_Statuses" store:Type="Tables" Schema="dbo" />
@@ -97,6 +99,18 @@
           <AssociationSet Name="FK_astra_ClientsServicesActivities_astra_Services" Association="AstraModel.Store.FK_astra_ClientsServicesActivities_astra_Services">
             <End Role="astra_Services" EntitySet="astra_Services" />
             <End Role="astra_ClientsInServices" EntitySet="astra_ClientsInServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_astra_Messages_aspnet_Users" Association="AstraModel.Store.FK_astra_Messages_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="astra_Messages" EntitySet="astra_Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_astra_Messages_astra_Clients" Association="AstraModel.Store.FK_astra_Messages_astra_Clients">
+            <End Role="astra_Clients" EntitySet="astra_Clients" />
+            <End Role="astra_Messages" EntitySet="astra_Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_astra_Messages_astra_MessagesType" Association="AstraModel.Store.FK_astra_Messages_astra_MessagesType">
+            <End Role="astra_MessagesType" EntitySet="astra_MessagesType" />
+            <End Role="astra_Messages" EntitySet="astra_Messages" />
           </AssociationSet>
           <AssociationSet Name="FK_astra_Services_aspnet_Users" Association="AstraModel.Store.FK_astra_Services_aspnet_Users">
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
@@ -246,6 +260,26 @@
           <Property Name="UserPassword" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="astra_Messages">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="ClientId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="astra_MessagesType">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
         <EntityType Name="astra_Services">
           <Key>
             <PropertyRef Name="ServiceId" />
@@ -281,7 +315,7 @@
           <Key>
             <PropertyRef Name="StreetId" />
           </Key>
-          <Property Name="StreetId" Type="int" Nullable="false" />
+          <Property Name="StreetId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="64" />
           <Property Name="Tag" Type="nvarchar" Nullable="false" MaxLength="8" />
         </EntityType>
@@ -560,6 +594,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_astra_Messages_aspnet_Users">
+          <End Role="aspnet_Users" Type="AstraModel.Store.aspnet_Users" Multiplicity="1" />
+          <End Role="astra_Messages" Type="AstraModel.Store.astra_Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="astra_Messages">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_astra_Messages_astra_Clients">
+          <End Role="astra_Clients" Type="AstraModel.Store.astra_Clients" Multiplicity="1" />
+          <End Role="astra_Messages" Type="AstraModel.Store.astra_Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="astra_Clients">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="astra_Messages">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_astra_Messages_astra_MessagesType">
+          <End Role="astra_MessagesType" Type="AstraModel.Store.astra_MessagesType" Multiplicity="1" />
+          <End Role="astra_Messages" Type="AstraModel.Store.astra_Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="astra_MessagesType">
+              <PropertyRef Name="TypeId" />
+            </Principal>
+            <Dependent Role="astra_Messages">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_astra_Services_aspnet_Users">
           <End Role="aspnet_Users" Type="AstraModel.Store.aspnet_Users" Multiplicity="1" />
           <End Role="astra_Services" Type="AstraModel.Store.astra_Services" Multiplicity="*" />
@@ -722,7 +792,18 @@
             <End Role="Profile" EntitySet="ProfileSet" /></AssociationSet>
           <AssociationSet Name="acc_ServicesInTransactions" Association="AstraModel.acc_ServicesInTransactions">
             <End Role="acc_Transactions" EntitySet="TransactionSet" />
-            <End Role="Service" EntitySet="ServiceSet" /></AssociationSet></EntityContainer>
+            <End Role="Service" EntitySet="ServiceSet" /></AssociationSet>
+          <EntitySet Name="astra_MessageSet" EntityType="AstraModel.astra_Message" />
+          <EntitySet Name="astra_MessageTypeSet" EntityType="AstraModel.astra_MessageType" />
+          <AssociationSet Name="FK_astra_Messages_aspnet_Users" Association="AstraModel.FK_astra_Messages_aspnet_Users">
+            <End Role="ASPUser" EntitySet="ASPUserSet" />
+            <End Role="astra_Messages" EntitySet="astra_MessageSet" /></AssociationSet>
+          <AssociationSet Name="FK_astra_Messages_astra_Clients" Association="AstraModel.FK_astra_Messages_astra_Clients">
+            <End Role="Client" EntitySet="ClientSet" />
+            <End Role="astra_Messages" EntitySet="astra_MessageSet" /></AssociationSet>
+          <AssociationSet Name="FK_astra_Messages_astra_MessagesType" Association="AstraModel.FK_astra_Messages_astra_MessagesType">
+            <End Role="astra_MessagesType" EntitySet="astra_MessageTypeSet" />
+            <End Role="astra_Messages" EntitySet="astra_MessageSet" /></AssociationSet></EntityContainer>
         <EntityType Name="ASPUser">
           <Key>
             <PropertyRef Name="UserId" />
@@ -737,7 +818,8 @@
           <NavigationProperty Name="astra_Clients" Relationship="AstraModel.FK_astra_Clients_aspnet_Users" FromRole="aspnet_Users" ToRole="astra_Clients" />
           <NavigationProperty Name="astra_Services" Relationship="AstraModel.FK_astra_Services_aspnet_Users" FromRole="aspnet_Users" ToRole="astra_Services" />
           <NavigationProperty Name="acc_Transactions" Relationship="AstraModel.FK_acc_Transactions_aspnet_Users" FromRole="ASPUser" ToRole="acc_Transactions" />
-          <NavigationProperty Name="astra_ClientsInServices" Relationship="AstraModel.FK_astra_ClientsServicesActivities_aspnet_Users1" FromRole="ASPUser" ToRole="astra_ClientsInServices" /></EntityType>
+          <NavigationProperty Name="astra_ClientsInServices" Relationship="AstraModel.FK_astra_ClientsServicesActivities_aspnet_Users1" FromRole="ASPUser" ToRole="astra_ClientsInServices" />
+          <NavigationProperty Name="astra_Messages" Relationship="AstraModel.FK_astra_Messages_aspnet_Users" FromRole="ASPUser" ToRole="astra_Messages" /></EntityType>
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="AddressId" />
@@ -766,7 +848,8 @@
           <NavigationProperty Name="mkt_PPPSecrets" Relationship="AstraModel.FK_mkt_PPPSecrets_astra_Clients" FromRole="astra_Clients" ToRole="mkt_PPPSecrets" />
           <NavigationProperty Name="acc_Transactions" Relationship="AstraModel.FK_acc_Transactions_astra_Clients" FromRole="Client" ToRole="acc_Transactions" />
           <NavigationProperty Name="astra_Statuses" Relationship="AstraModel.FK_astra_Clients_astra_Statuses" FromRole="Client" ToRole="astra_Statuses" />
-          <NavigationProperty Name="astra_ClientsInServices" Relationship="AstraModel.FK_astra_ClientsServicesActivities_astra_Clients1" FromRole="Client" ToRole="astra_ClientsInServices" /></EntityType>
+          <NavigationProperty Name="astra_ClientsInServices" Relationship="AstraModel.FK_astra_ClientsServicesActivities_astra_Clients1" FromRole="Client" ToRole="astra_ClientsInServices" />
+          <NavigationProperty Name="astra_Messages" Relationship="AstraModel.FK_astra_Messages_astra_Clients" FromRole="Client" ToRole="astra_Messages" /></EntityType>
         <EntityType Name="ClientDetail">
           <Key>
             <PropertyRef Name="DetailId" />
@@ -994,7 +1077,33 @@
           <End Type="AstraModel.Profile" Role="Profile" Multiplicity="0..1" /></Association>
         <Association Name="acc_ServicesInTransactions">
           <End Type="AstraModel.Transaction" Role="acc_Transactions" Multiplicity="*" />
-          <End Type="AstraModel.Service" Role="Service" Multiplicity="0..1" /></Association></Schema>
+          <End Type="AstraModel.Service" Role="Service" Multiplicity="0..1" /></Association>
+        <EntityType Name="astra_Message">
+          <Key>
+            <PropertyRef Name="MessageId" /></Key>
+          <Property Name="MessageId" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="aspnet_Users" Relationship="AstraModel.FK_astra_Messages_aspnet_Users" FromRole="astra_Messages" ToRole="ASPUser" />
+          <NavigationProperty Name="astra_Clients" Relationship="AstraModel.FK_astra_Messages_astra_Clients" FromRole="astra_Messages" ToRole="Client" />
+          <NavigationProperty Name="astra_MessagesType" Relationship="AstraModel.FK_astra_Messages_astra_MessagesType" FromRole="astra_Messages" ToRole="astra_MessagesType" /></EntityType>
+        <EntityType Name="astra_MessageType">
+          <Key>
+            <PropertyRef Name="TypeId" /></Key>
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="astra_Messages" Relationship="AstraModel.FK_astra_Messages_astra_MessagesType" FromRole="astra_MessagesType" ToRole="astra_Messages" /></EntityType>
+        <Association Name="FK_astra_Messages_aspnet_Users">
+          <End Type="AstraModel.ASPUser" Role="ASPUser" Multiplicity="1" />
+          <End Type="AstraModel.astra_Message" Role="astra_Messages" Multiplicity="*" /></Association>
+        <Association Name="FK_astra_Messages_astra_Clients">
+          <End Type="AstraModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="AstraModel.astra_Message" Role="astra_Messages" Multiplicity="*" /></Association>
+        <Association Name="FK_astra_Messages_astra_MessagesType">
+          <End Type="AstraModel.astra_MessageType" Role="astra_MessagesType" Multiplicity="1" />
+          <End Type="AstraModel.astra_Message" Role="astra_Messages" Multiplicity="*" /></Association></Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1309,7 +1418,35 @@
               <ScalarProperty Name="ServiceId" ColumnName="ServiceId" /></EndProperty>
             <EndProperty Name="acc_Transactions">
               <ScalarProperty Name="TransactionId" ColumnName="TransactionId" /></EndProperty>
-            <Condition ColumnName="ServiceId" IsNull="false" /></AssociationSetMapping></EntityContainerMapping>
+            <Condition ColumnName="ServiceId" IsNull="false" /></AssociationSetMapping>
+          <EntitySetMapping Name="astra_MessageSet">
+            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.astra_Message)">
+              <MappingFragment StoreEntitySet="astra_Messages">
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="MessageId" ColumnName="MessageId" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="astra_MessageTypeSet">
+            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.astra_MessageType)">
+              <MappingFragment StoreEntitySet="astra_MessagesType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="FK_astra_Messages_aspnet_Users" TypeName="AstraModel.FK_astra_Messages_aspnet_Users" StoreEntitySet="astra_Messages">
+            <EndProperty Name="astra_Messages">
+              <ScalarProperty Name="MessageId" ColumnName="MessageId" /></EndProperty>
+            <EndProperty Name="ASPUser">
+              <ScalarProperty Name="UserId" ColumnName="UserId" /></EndProperty></AssociationSetMapping>
+          <AssociationSetMapping Name="FK_astra_Messages_astra_Clients" TypeName="AstraModel.FK_astra_Messages_astra_Clients" StoreEntitySet="astra_Messages">
+            <EndProperty Name="astra_Messages">
+              <ScalarProperty Name="MessageId" ColumnName="MessageId" /></EndProperty>
+            <EndProperty Name="Client">
+              <ScalarProperty Name="UserId" ColumnName="ClientId" /></EndProperty></AssociationSetMapping>
+          <AssociationSetMapping Name="FK_astra_Messages_astra_MessagesType" TypeName="AstraModel.FK_astra_Messages_astra_MessagesType" StoreEntitySet="astra_Messages">
+            <EndProperty Name="astra_Messages">
+              <ScalarProperty Name="MessageId" ColumnName="MessageId" /></EndProperty>
+            <EndProperty Name="astra_MessagesType">
+              <ScalarProperty Name="TypeId" ColumnName="TypeId" /></EndProperty></AssociationSetMapping></EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -1341,33 +1478,33 @@
         <EntityTypeShape EntityType="AstraModel.PPPSecret" Width="1.5" PointX="5.75" PointY="3.875" Height="4.2879036458333335" IsExpanded="true" />
         <AssociationConnector Association="AstraModel.FK_astra_Clients_aspnet_Users" ManuallyRouted="false">
           <ConnectorPoint PointX="3.875" PointY="10.25" />
-          <ConnectorPoint PointX="3.875" PointY="6.7686979166666656" />
+          <ConnectorPoint PointX="3.875" PointY="6.9609993489583326" />
           </AssociationConnector>
         <AssociationConnector Association="AstraModel.FK_astra_Services_aspnet_Users" ManuallyRouted="false">
-          <ConnectorPoint PointX="3.125" PointY="12.442047526041666" />
-          <ConnectorPoint PointX="2.25" PointY="12.442047526041666" />
+          <ConnectorPoint PointX="3.125" PointY="12.471023763020833" />
+          <ConnectorPoint PointX="2.25" PointY="12.471023763020833" />
           </AssociationConnector>
         <AssociationConnector Association="AstraModel.FK_astra_Clients_astra_Addresses" ManuallyRouted="false">
-          <ConnectorPoint PointX="5.75" PointY="2.8939900130208338" />
-          <ConnectorPoint PointX="4.71875" PointY="2.8939900130208338" />
+          <ConnectorPoint PointX="5.75" PointY="2.9192909016927082" />
+          <ConnectorPoint PointX="4.71875" PointY="2.9192909016927082" />
           <ConnectorPoint PointX="4.71875" PointY="3.25" />
           </AssociationConnector>
         <AssociationConnector Association="AstraModel.FK_astra_Clients_astra_ClientsDetails" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="6.3218489583333328" />
-          <ConnectorPoint PointX="3" PointY="6.3218489583333328" />
+          <ConnectorPoint PointX="2.25" PointY="6.4179996744791659" />
+          <ConnectorPoint PointX="3" PointY="6.4179996744791659" />
           </AssociationConnector>
         <AssociationConnector Association="AstraModel.FK_astra_Clients_astra_Contracts" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="4.3362939453125" />
           <ConnectorPoint PointX="3" PointY="4.3362939453125" />
           </AssociationConnector>
         <AssociationConnector Association="AstraModel.FK_astra_Clients_astra_Hosts" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="2.74723751953125" />
-          <ConnectorPoint PointX="3.03125" PointY="2.74723751953125" />
+          <ConnectorPoint PointX="2.25" PointY="2.7598879638671878" />
+          <ConnectorPoint PointX="3.03125" PointY="2.7598879638671878" />
           <ConnectorPoint PointX="3.03125" PointY="3.25" />
           </AssociationConnector>
         <AssociationConnector Association="AstraModel.FK_mkt_PPPSecrets_astra_Clients" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.75" PointY="5.3218489583333328" />
-          <ConnectorPoint PointX="5.75" PointY="5.3218489583333328" />
+          <ConnectorPoint PointX="4.75" PointY="5.4179996744791659" />
+          <ConnectorPoint PointX="5.75" PointY="5.4179996744791659" />
           </AssociationConnector>
         <AssociationConnector Association="AstraModel.FK_mkt_PPPProfiles_mkt_IPPool" ManuallyRouted="false">
           <ConnectorPoint PointX="8.9375" PointY="9.125" />
@@ -1391,7 +1528,7 @@
           <ConnectorPoint PointX="5.75" PointY="11.158396809895834" />
           </AssociationConnector>
         <AssociationConnector Association="AstraModel.FK_acc_Transactions_astra_Clients" >
-          <ConnectorPoint PointX="4.71875" PointY="6.7686979166666656" />
+          <ConnectorPoint PointX="4.71875" PointY="6.9609993489583326" />
           <ConnectorPoint PointX="4.71875" PointY="9.890625" />
           <ConnectorPoint PointX="5.75" PointY="9.890625" />
           </AssociationConnector>
@@ -1408,9 +1545,9 @@
           <ConnectorPoint PointX="3.875" PointY="3.25" />
           </AssociationConnector>
         <AssociationConnector Association="AstraModel.FK_astra_ClientsServicesActivities_astra_Clients1" >
-          <ConnectorPoint PointX="3.03125" PointY="6.7686979166666656" />
-          <ConnectorPoint PointX="3.03125" PointY="9.59375" />
-          <ConnectorPoint PointX="2.25" PointY="9.59375" /></AssociationConnector>
+          <ConnectorPoint PointX="3.03125" PointY="6.9609993489583326" />
+          <ConnectorPoint PointX="3.03125" PointY="9.4453125" />
+          <ConnectorPoint PointX="2.25" PointY="9.4453125" /></AssociationConnector>
         <AssociationConnector Association="AstraModel.FK_astra_ClientsServicesActivities_astra_Services1" >
           <ConnectorPoint PointX="1.5" PointY="11.5" />
           <ConnectorPoint PointX="1.5" PointY="10.980286458333332" />
@@ -1428,6 +1565,26 @@
           <ConnectorPoint PointX="6.230466875" PointY="12.066793619791667" />
           <ConnectorPoint PointX="6.230466875" PointY="13.567047526041666" />
           <ConnectorPoint PointX="2.25" PointY="13.567047526041666" />
+          </AssociationConnector>
+        <EntityTypeShape EntityType="AstraModel.astra_Message" Width="1.5" PointX="10.5" PointY="7.125" Height="2.5571907552083326" />
+        <EntityTypeShape EntityType="AstraModel.astra_MessageType" Width="1.5" PointX="10.5" PointY="10.25" Height="1.5956835937500014" />
+        <AssociationConnector Association="AstraModel.FK_astra_Messages_aspnet_Users" >
+          <ConnectorPoint PointX="4.2812525" PointY="10.25" />
+          <ConnectorPoint PointX="4.2812525" PointY="8.4877018229166659" />
+          <ConnectorPoint PointX="4.635416666666667" PointY="8.4877018229166659" />
+          <ConnectorPoint PointX="4.802083333333333" PointY="8.4877018229166659" />
+          <ConnectorPoint PointX="8.2916666666666661" PointY="8.4877018229166659" />
+          <ConnectorPoint PointX="8.4583333333333339" PointY="8.4877018229166659" />
+          <ConnectorPoint PointX="8.8541666666666661" PointY="8.4877018229166659" />
+          <ConnectorPoint PointX="9.0208333333333339" PointY="8.4877018229166659" />
+          <ConnectorPoint PointX="10.5" PointY="8.4877018229166659" /></AssociationConnector>
+        <AssociationConnector Association="AstraModel.FK_astra_Messages_astra_Clients" >
+          <ConnectorPoint PointX="4.75" PointY="3.5910953776041667" />
+          <ConnectorPoint PointX="11.25" PointY="3.5910953776041667" />
+          <ConnectorPoint PointX="11.25" PointY="7.125" /></AssociationConnector>
+        <AssociationConnector Association="AstraModel.FK_astra_Messages_astra_MessagesType" >
+          <ConnectorPoint PointX="11.25" PointY="10.25" />
+          <ConnectorPoint PointX="11.25" PointY="9.6821907552083317" />
           </AssociationConnector></Diagram></edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

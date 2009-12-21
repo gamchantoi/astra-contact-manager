@@ -138,6 +138,10 @@
       <Project>{9FCC78FF-0A44-4A92-BFDC-D2C758246777}</Project>
       <Name>ContactManager.Hosts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ContactManager.Messages\ContactManager.Messages.csproj">
+      <Project>{2E5414EA-D88E-421B-AE3B-D98B03443578}</Project>
+      <Name>ContactManager.Messages</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ContactManager.Users\ContactManager.Users.csproj">
       <Project>{3714F4A7-571B-47C4-925A-527F67F45637}</Project>
       <Name>ContactManager.Users</Name>
@@ -177,8 +181,12 @@
     <Content Include="Areas\Accounts\Views\PaymentMethod\Edit.aspx" />
     <Content Include="Areas\Accounts\Views\PaymentMethod\Index.aspx" />
     <Content Include="Areas\Accounts\Web.config" />
+    <Content Include="Areas\Messages\Views\Message\Index.aspx" />
     <Content Include="Areas\PPP\Views\ActiveConnections\Index.aspx" />
     <Content Include="Areas\Services\Views\Service\ClientServices.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Messages\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
