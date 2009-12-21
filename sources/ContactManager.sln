@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager.Addresses", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager.ObjectContextManagement", "ContactManager.ObjectContextManagement\ContactManager.ObjectContextManagement.csproj", "{828D3593-DFFC-4316-BB8D-9173CAEC6F1C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager.Messages", "ContactManager.Messages\ContactManager.Messages.csproj", "{2E5414EA-D88E-421B-AE3B-D98B03443578}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +87,10 @@ Global
 		{828D3593-DFFC-4316-BB8D-9173CAEC6F1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{828D3593-DFFC-4316-BB8D-9173CAEC6F1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{828D3593-DFFC-4316-BB8D-9173CAEC6F1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E5414EA-D88E-421B-AE3B-D98B03443578}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E5414EA-D88E-421B-AE3B-D98B03443578}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E5414EA-D88E-421B-AE3B-D98B03443578}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E5414EA-D88E-421B-AE3B-D98B03443578}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
