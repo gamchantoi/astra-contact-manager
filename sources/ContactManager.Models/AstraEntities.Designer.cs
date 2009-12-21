@@ -29,12 +29,12 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "acc_PaymentsInTransactions", "acc_Transactions", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Transaction), "acc_PaymentsMethods", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ContactManager.Models.PaymentMethod))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "acc_ProfilesInTransactions", "acc_Transactions", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Transaction), "Profile", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ContactManager.Models.Profile))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "acc_ServicesInTransactions", "acc_Transactions", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Transaction), "Service", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ContactManager.Models.Service))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Messages_aspnet_Users", "ASPUser", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.ASPUser), "astra_Messages", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.astra_Message))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Messages_astra_Clients", "Client", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.Client), "astra_Messages", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.astra_Message))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Messages_astra_MessagesType", "astra_MessagesType", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.astra_MessageType), "astra_Messages", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.astra_Message))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Messages_aspnet_Users", "ASPUser", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.ASPUser), "astra_Messages", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Message))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Messages_astra_Clients", "Client", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.Client), "astra_Messages", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Message))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Messages_astra_MessagesType", "astra_MessagesType", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.MessageType), "astra_Messages", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Message))]
 
 // Original file name:
-// Generation date: 22.12.2009 0:06:31
+// Generation date: 22.12.2009 0:58:17
 namespace ContactManager.Models
 {
     
@@ -309,35 +309,35 @@ namespace ContactManager.Models
         }
         private global::System.Data.Objects.ObjectQuery<Street> _StreetSet;
         /// <summary>
-        /// There are no comments for astra_MessageSet in the schema.
+        /// There are no comments for Messages in the schema.
         /// </summary>
-        public global::System.Data.Objects.ObjectQuery<astra_Message> astra_MessageSet
+        public global::System.Data.Objects.ObjectQuery<Message> Messages
         {
             get
             {
-                if ((this._astra_MessageSet == null))
+                if ((this._Messages == null))
                 {
-                    this._astra_MessageSet = base.CreateQuery<astra_Message>("[astra_MessageSet]");
+                    this._Messages = base.CreateQuery<Message>("[Messages]");
                 }
-                return this._astra_MessageSet;
+                return this._Messages;
             }
         }
-        private global::System.Data.Objects.ObjectQuery<astra_Message> _astra_MessageSet;
+        private global::System.Data.Objects.ObjectQuery<Message> _Messages;
         /// <summary>
-        /// There are no comments for astra_MessageTypeSet in the schema.
+        /// There are no comments for MessageTypes in the schema.
         /// </summary>
-        public global::System.Data.Objects.ObjectQuery<astra_MessageType> astra_MessageTypeSet
+        public global::System.Data.Objects.ObjectQuery<MessageType> MessageTypes
         {
             get
             {
-                if ((this._astra_MessageTypeSet == null))
+                if ((this._MessageTypes == null))
                 {
-                    this._astra_MessageTypeSet = base.CreateQuery<astra_MessageType>("[astra_MessageTypeSet]");
+                    this._MessageTypes = base.CreateQuery<MessageType>("[MessageTypes]");
                 }
-                return this._astra_MessageTypeSet;
+                return this._MessageTypes;
             }
         }
-        private global::System.Data.Objects.ObjectQuery<astra_MessageType> _astra_MessageTypeSet;
+        private global::System.Data.Objects.ObjectQuery<MessageType> _MessageTypes;
         /// <summary>
         /// There are no comments for ASPUserSet in the schema.
         /// </summary>
@@ -451,18 +451,18 @@ namespace ContactManager.Models
             base.AddObject("StreetSet", street);
         }
         /// <summary>
-        /// There are no comments for astra_MessageSet in the schema.
+        /// There are no comments for Messages in the schema.
         /// </summary>
-        public void AddToastra_MessageSet(astra_Message astra_Message)
+        public void AddToMessages(Message message)
         {
-            base.AddObject("astra_MessageSet", astra_Message);
+            base.AddObject("Messages", message);
         }
         /// <summary>
-        /// There are no comments for astra_MessageTypeSet in the schema.
+        /// There are no comments for MessageTypes in the schema.
         /// </summary>
-        public void AddToastra_MessageTypeSet(astra_MessageType astra_MessageType)
+        public void AddToMessageTypes(MessageType messageType)
         {
-            base.AddObject("astra_MessageTypeSet", astra_MessageType);
+            base.AddObject("MessageTypes", messageType);
         }
     }
     /// <summary>
@@ -764,17 +764,17 @@ namespace ContactManager.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<astra_Message> astra_Messages
+        public global::System.Data.Objects.DataClasses.EntityCollection<Message> astra_Messages
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<astra_Message>("AstraModel.FK_astra_Messages_aspnet_Users", "astra_Messages");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Message>("AstraModel.FK_astra_Messages_aspnet_Users", "astra_Messages");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<astra_Message>("AstraModel.FK_astra_Messages_aspnet_Users", "astra_Messages", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Message>("AstraModel.FK_astra_Messages_aspnet_Users", "astra_Messages", value);
                 }
             }
         }
@@ -1432,17 +1432,17 @@ namespace ContactManager.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<astra_Message> astra_Messages
+        public global::System.Data.Objects.DataClasses.EntityCollection<Message> astra_Messages
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<astra_Message>("AstraModel.FK_astra_Messages_astra_Clients", "astra_Messages");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Message>("AstraModel.FK_astra_Messages_astra_Clients", "astra_Messages");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<astra_Message>("AstraModel.FK_astra_Messages_astra_Clients", "astra_Messages", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Message>("AstraModel.FK_astra_Messages_astra_Clients", "astra_Messages", value);
                 }
             }
         }
@@ -4192,33 +4192,33 @@ namespace ContactManager.Models
         }
     }
     /// <summary>
-    /// There are no comments for AstraModel.astra_Message in the schema.
+    /// There are no comments for AstraModel.Message in the schema.
     /// </summary>
     /// <KeyProperties>
     /// MessageId
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="AstraModel", Name="astra_Message")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="AstraModel", Name="Message")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class astra_Message : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class Message : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new astra_Message object.
+        /// Create a new Message object.
         /// </summary>
         /// <param name="messageId">Initial value of MessageId.</param>
         /// <param name="text">Initial value of Text.</param>
         /// <param name="title">Initial value of Title.</param>
         /// <param name="date">Initial value of Date.</param>
         /// <param name="statusId">Initial value of StatusId.</param>
-        public static astra_Message Createastra_Message(int messageId, string text, string title, global::System.DateTime date, int statusId)
+        public static Message CreateMessage(int messageId, string text, string title, global::System.DateTime date, int statusId)
         {
-            astra_Message astra_Message = new astra_Message();
-            astra_Message.MessageId = messageId;
-            astra_Message.Text = text;
-            astra_Message.Title = title;
-            astra_Message.Date = date;
-            astra_Message.StatusId = statusId;
-            return astra_Message;
+            Message message = new Message();
+            message.MessageId = messageId;
+            message.Text = text;
+            message.Title = title;
+            message.Date = date;
+            message.StatusId = statusId;
+            return message;
         }
         /// <summary>
         /// There are no comments for Property MessageId in the schema.
@@ -4336,13 +4336,13 @@ namespace ContactManager.Models
         partial void OnStatusIdChanging(int value);
         partial void OnStatusIdChanged();
         /// <summary>
-        /// There are no comments for aspnet_Users in the schema.
+        /// There are no comments for User in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "FK_astra_Messages_aspnet_Users", "ASPUser")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public ASPUser aspnet_Users
+        public ASPUser User
         {
             get
             {
@@ -4354,11 +4354,11 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for aspnet_Users in the schema.
+        /// There are no comments for User in the schema.
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<ASPUser> aspnet_UsersReference
+        public global::System.Data.Objects.DataClasses.EntityReference<ASPUser> UserReference
         {
             get
             {
@@ -4373,13 +4373,13 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for astra_Clients in the schema.
+        /// There are no comments for Client in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "FK_astra_Messages_astra_Clients", "Client")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public Client astra_Clients
+        public Client Client
         {
             get
             {
@@ -4391,11 +4391,11 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for astra_Clients in the schema.
+        /// There are no comments for Client in the schema.
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<Client> astra_ClientsReference
+        public global::System.Data.Objects.DataClasses.EntityReference<Client> ClientReference
         {
             get
             {
@@ -4410,65 +4410,65 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for astra_MessagesType in the schema.
+        /// There are no comments for MessageType in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "FK_astra_Messages_astra_MessagesType", "astra_MessagesType")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public astra_MessageType astra_MessagesType
+        public MessageType MessageType
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<astra_MessageType>("AstraModel.FK_astra_Messages_astra_MessagesType", "astra_MessagesType").Value;
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<MessageType>("AstraModel.FK_astra_Messages_astra_MessagesType", "astra_MessagesType").Value;
             }
             set
             {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<astra_MessageType>("AstraModel.FK_astra_Messages_astra_MessagesType", "astra_MessagesType").Value = value;
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<MessageType>("AstraModel.FK_astra_Messages_astra_MessagesType", "astra_MessagesType").Value = value;
             }
         }
         /// <summary>
-        /// There are no comments for astra_MessagesType in the schema.
+        /// There are no comments for MessageType in the schema.
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<astra_MessageType> astra_MessagesTypeReference
+        public global::System.Data.Objects.DataClasses.EntityReference<MessageType> MessageTypeReference
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<astra_MessageType>("AstraModel.FK_astra_Messages_astra_MessagesType", "astra_MessagesType");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<MessageType>("AstraModel.FK_astra_Messages_astra_MessagesType", "astra_MessagesType");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<astra_MessageType>("AstraModel.FK_astra_Messages_astra_MessagesType", "astra_MessagesType", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<MessageType>("AstraModel.FK_astra_Messages_astra_MessagesType", "astra_MessagesType", value);
                 }
             }
         }
     }
     /// <summary>
-    /// There are no comments for AstraModel.astra_MessageType in the schema.
+    /// There are no comments for AstraModel.MessageType in the schema.
     /// </summary>
     /// <KeyProperties>
     /// TypeId
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="AstraModel", Name="astra_MessageType")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="AstraModel", Name="MessageType")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class astra_MessageType : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class MessageType : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new astra_MessageType object.
+        /// Create a new MessageType object.
         /// </summary>
         /// <param name="typeId">Initial value of TypeId.</param>
         /// <param name="name">Initial value of Name.</param>
-        public static astra_MessageType Createastra_MessageType(int typeId, string name)
+        public static MessageType CreateMessageType(int typeId, string name)
         {
-            astra_MessageType astra_MessageType = new astra_MessageType();
-            astra_MessageType.TypeId = typeId;
-            astra_MessageType.Name = name;
-            return astra_MessageType;
+            MessageType messageType = new MessageType();
+            messageType.TypeId = typeId;
+            messageType.Name = name;
+            return messageType;
         }
         /// <summary>
         /// There are no comments for Property TypeId in the schema.
@@ -4517,23 +4517,23 @@ namespace ContactManager.Models
         partial void OnNameChanging(string value);
         partial void OnNameChanged();
         /// <summary>
-        /// There are no comments for astra_Messages in the schema.
+        /// There are no comments for Message in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "FK_astra_Messages_astra_MessagesType", "astra_Messages")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<astra_Message> astra_Messages
+        public global::System.Data.Objects.DataClasses.EntityCollection<Message> Message
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<astra_Message>("AstraModel.FK_astra_Messages_astra_MessagesType", "astra_Messages");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Message>("AstraModel.FK_astra_Messages_astra_MessagesType", "astra_Messages");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<astra_Message>("AstraModel.FK_astra_Messages_astra_MessagesType", "astra_Messages", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Message>("AstraModel.FK_astra_Messages_astra_MessagesType", "astra_Messages", value);
                 }
             }
         }

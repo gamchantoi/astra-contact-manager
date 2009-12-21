@@ -793,17 +793,17 @@
           <AssociationSet Name="acc_ServicesInTransactions" Association="AstraModel.acc_ServicesInTransactions">
             <End Role="acc_Transactions" EntitySet="TransactionSet" />
             <End Role="Service" EntitySet="ServiceSet" /></AssociationSet>
-          <EntitySet Name="astra_MessageSet" EntityType="AstraModel.astra_Message" />
-          <EntitySet Name="astra_MessageTypeSet" EntityType="AstraModel.astra_MessageType" />
+          <EntitySet Name="Messages" EntityType="AstraModel.Message" />
+          <EntitySet Name="MessageTypes" EntityType="AstraModel.MessageType" />
           <AssociationSet Name="FK_astra_Messages_aspnet_Users" Association="AstraModel.FK_astra_Messages_aspnet_Users">
             <End Role="ASPUser" EntitySet="ASPUserSet" />
-            <End Role="astra_Messages" EntitySet="astra_MessageSet" /></AssociationSet>
+            <End Role="astra_Messages" EntitySet="Messages" /></AssociationSet>
           <AssociationSet Name="FK_astra_Messages_astra_Clients" Association="AstraModel.FK_astra_Messages_astra_Clients">
             <End Role="Client" EntitySet="ClientSet" />
-            <End Role="astra_Messages" EntitySet="astra_MessageSet" /></AssociationSet>
+            <End Role="astra_Messages" EntitySet="Messages" /></AssociationSet>
           <AssociationSet Name="FK_astra_Messages_astra_MessagesType" Association="AstraModel.FK_astra_Messages_astra_MessagesType">
-            <End Role="astra_MessagesType" EntitySet="astra_MessageTypeSet" />
-            <End Role="astra_Messages" EntitySet="astra_MessageSet" /></AssociationSet></EntityContainer>
+            <End Role="astra_MessagesType" EntitySet="MessageTypes" />
+            <End Role="astra_Messages" EntitySet="Messages" /></AssociationSet></EntityContainer>
         <EntityType Name="ASPUser">
           <Key>
             <PropertyRef Name="UserId" />
@@ -1078,7 +1078,7 @@
         <Association Name="acc_ServicesInTransactions">
           <End Type="AstraModel.Transaction" Role="acc_Transactions" Multiplicity="*" />
           <End Type="AstraModel.Service" Role="Service" Multiplicity="0..1" /></Association>
-        <EntityType Name="astra_Message">
+        <EntityType Name="Message">
           <Key>
             <PropertyRef Name="MessageId" /></Key>
           <Property Name="MessageId" Type="Int32" Nullable="false" />
@@ -1086,24 +1086,24 @@
           <Property Name="Title" Type="String" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" />
           <Property Name="StatusId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="aspnet_Users" Relationship="AstraModel.FK_astra_Messages_aspnet_Users" FromRole="astra_Messages" ToRole="ASPUser" />
-          <NavigationProperty Name="astra_Clients" Relationship="AstraModel.FK_astra_Messages_astra_Clients" FromRole="astra_Messages" ToRole="Client" />
-          <NavigationProperty Name="astra_MessagesType" Relationship="AstraModel.FK_astra_Messages_astra_MessagesType" FromRole="astra_Messages" ToRole="astra_MessagesType" /></EntityType>
-        <EntityType Name="astra_MessageType">
+          <NavigationProperty Name="User" Relationship="AstraModel.FK_astra_Messages_aspnet_Users" FromRole="astra_Messages" ToRole="ASPUser" />
+          <NavigationProperty Name="Client" Relationship="AstraModel.FK_astra_Messages_astra_Clients" FromRole="astra_Messages" ToRole="Client" />
+          <NavigationProperty Name="MessageType" Relationship="AstraModel.FK_astra_Messages_astra_MessagesType" FromRole="astra_Messages" ToRole="astra_MessagesType" /></EntityType>
+        <EntityType Name="MessageType">
           <Key>
             <PropertyRef Name="TypeId" /></Key>
           <Property Name="TypeId" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <NavigationProperty Name="astra_Messages" Relationship="AstraModel.FK_astra_Messages_astra_MessagesType" FromRole="astra_MessagesType" ToRole="astra_Messages" /></EntityType>
+          <NavigationProperty Name="Message" Relationship="AstraModel.FK_astra_Messages_astra_MessagesType" FromRole="astra_MessagesType" ToRole="astra_Messages" /></EntityType>
         <Association Name="FK_astra_Messages_aspnet_Users">
           <End Type="AstraModel.ASPUser" Role="ASPUser" Multiplicity="1" />
-          <End Type="AstraModel.astra_Message" Role="astra_Messages" Multiplicity="*" /></Association>
+          <End Type="AstraModel.Message" Role="astra_Messages" Multiplicity="*" /></Association>
         <Association Name="FK_astra_Messages_astra_Clients">
           <End Type="AstraModel.Client" Role="Client" Multiplicity="1" />
-          <End Type="AstraModel.astra_Message" Role="astra_Messages" Multiplicity="*" /></Association>
+          <End Type="AstraModel.Message" Role="astra_Messages" Multiplicity="*" /></Association>
         <Association Name="FK_astra_Messages_astra_MessagesType">
-          <End Type="AstraModel.astra_MessageType" Role="astra_MessagesType" Multiplicity="1" />
-          <End Type="AstraModel.astra_Message" Role="astra_Messages" Multiplicity="*" /></Association></Schema>
+          <End Type="AstraModel.MessageType" Role="astra_MessagesType" Multiplicity="1" />
+          <End Type="AstraModel.Message" Role="astra_Messages" Multiplicity="*" /></Association></Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1419,16 +1419,16 @@
             <EndProperty Name="acc_Transactions">
               <ScalarProperty Name="TransactionId" ColumnName="TransactionId" /></EndProperty>
             <Condition ColumnName="ServiceId" IsNull="false" /></AssociationSetMapping>
-          <EntitySetMapping Name="astra_MessageSet">
-            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.astra_Message)">
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.Message)">
               <MappingFragment StoreEntitySet="astra_Messages">
                 <ScalarProperty Name="StatusId" ColumnName="StatusId" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="MessageId" ColumnName="MessageId" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="astra_MessageTypeSet">
-            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.astra_MessageType)">
+          <EntitySetMapping Name="MessageTypes">
+            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.MessageType)">
               <MappingFragment StoreEntitySet="astra_MessagesType">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="TypeId" ColumnName="TypeId" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
@@ -1566,8 +1566,8 @@
           <ConnectorPoint PointX="6.230466875" PointY="13.567047526041666" />
           <ConnectorPoint PointX="2.25" PointY="13.567047526041666" />
           </AssociationConnector>
-        <EntityTypeShape EntityType="AstraModel.astra_Message" Width="1.5" PointX="10.5" PointY="7.125" Height="2.5571907552083326" />
-        <EntityTypeShape EntityType="AstraModel.astra_MessageType" Width="1.5" PointX="10.5" PointY="10.25" Height="1.5956835937500014" />
+        <EntityTypeShape EntityType="AstraModel.Message" Width="1.5" PointX="10.5" PointY="7.125" Height="2.5571907552083326" />
+        <EntityTypeShape EntityType="AstraModel.MessageType" Width="1.5" PointX="10.5" PointY="10.25" Height="1.5956835937500014" />
         <AssociationConnector Association="AstraModel.FK_astra_Messages_aspnet_Users" >
           <ConnectorPoint PointX="4.2812525" PointY="10.25" />
           <ConnectorPoint PointX="4.2812525" PointY="8.4877018229166659" />
