@@ -65,10 +65,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Interfaces\IActiveConnections.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Models\ActiveConnections.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -181,6 +177,7 @@
     <Content Include="Areas\Accounts\Views\PaymentMethod\Edit.aspx" />
     <Content Include="Areas\Accounts\Views\PaymentMethod\Index.aspx" />
     <Content Include="Areas\Accounts\Web.config" />
+    <Content Include="Areas\PPP\Views\ActiveConnections\Index.aspx" />
     <Content Include="Areas\Services\Views\Service\ClientServices.aspx" />
   </ItemGroup>
   <ItemGroup>

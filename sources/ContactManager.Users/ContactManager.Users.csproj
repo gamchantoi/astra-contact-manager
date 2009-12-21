@@ -67,7 +67,7 @@
     <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="DropDownHelper.cs" />
+    <Compile Include="Helpers\DropDownHelper.cs" />
     <Compile Include="Interfaces\IClientRepository.cs" />
     <Compile Include="Interfaces\IClientService.cs" />
     <Compile Include="Interfaces\IUserFasade.cs" />

@@ -16,18 +16,19 @@ namespace ContactManager.PPP.SSH
         private readonly IProfileService _pppProfileService;
 
         public SshProfileService(IValidationDictionary validationDictionary) 
-            : base(validationDictionary)
+            //: base(validationDictionary)
+            : this(validationDictionary, true)
+        {
+            //_validationDictionary = validationDictionary;
+            //_repository = new SshProfileRepository(Repository);
+            //_pppProfileService = new ProfileService(validationDictionary);
+        }
+
+        public SshProfileService(IValidationDictionary validationDictionary, bool autoMode) 
+            : base(validationDictionary, autoMode)
         {
             _validationDictionary = validationDictionary;
             _repository = new SshProfileRepository(Repository);
-            _pppProfileService = new ProfileService(validationDictionary);
-        }
-
-        public SshProfileService(IValidationDictionary validationDictionary, ISSHRepository repository) 
-            : base(validationDictionary, repository)
-        {
-            _validationDictionary = validationDictionary;
-            _repository = new SshProfileRepository(repository);
             _pppProfileService = new ProfileService(validationDictionary);
         }
 

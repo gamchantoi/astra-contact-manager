@@ -1,6 +1,6 @@
-﻿using ContactManager.Web.Interfaces;
+﻿using ContactManager.PPP.Intefaces;
 
-namespace ContactManager.Web.Models
+namespace ContactManager.PPP.Models
 {
     public class ActiveConnections : IActiveConnections
     {

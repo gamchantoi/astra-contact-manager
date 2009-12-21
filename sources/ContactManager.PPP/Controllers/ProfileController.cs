@@ -13,10 +13,10 @@ namespace ContactManager.PPP.Controllers
     [HandleError]
     public class ProfileController : Controller
     {
-        private DropDownHelper _ddhelper = new DropDownHelper();
-        private HostHelper _uhelper = new HostHelper();
-        private IProfileService _service;
-        private ISshProfileService _sshService;
+        private readonly DropDownHelper _ddhelper = new DropDownHelper();
+        private readonly HostHelper _uhelper = new HostHelper();
+        private readonly IProfileService _service;
+        private readonly ISshProfileService _sshService;
 
         public ProfileController()
         {
@@ -50,9 +50,7 @@ namespace ContactManager.PPP.Controllers
         {
             if (_service.CreateProfile(profile))
             {
-                _sshService.Connect(_uhelper.GetCurrentHost());
                 var result = _sshService.CreatePPPProfile(profile.ProfileId);
-                _sshService.Disconnect();
                 return View("Index", PrepareIndex());
             }
             ViewData["Pools"] = _ddhelper.GetPools(null);
