@@ -9,8 +9,8 @@
 //------------------------------------------------------------------------------
 
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Clients_aspnet_Users", "aspnet_Users", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.ASPUser), "astra_Clients", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ContactManager.Models.Client))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Services_aspnet_Users", "aspnet_Users", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.ASPUser), "astra_Services", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Service))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Clients_aspnet_Users", "aspnet_Users", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.User), "astra_Clients", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ContactManager.Models.Client))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Services_aspnet_Users", "aspnet_Users", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.User), "astra_Services", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Service))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Clients_astra_Addresses", "astra_Addresses", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ContactManager.Models.Address), "astra_Clients", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Client))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Clients_astra_ClientsDetails", "astra_ClientsDetails", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ContactManager.Models.ClientDetail), "astra_Clients", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Client))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Clients_astra_Contracts", "astra_Contracts", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ContactManager.Models.Contract), "astra_Clients", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Client))]
@@ -19,9 +19,9 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_mkt_PPPProfiles_mkt_IPPool", "mkt_IPPools", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ContactManager.Models.Pool), "mkt_PPPProfiles", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Profile))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_mkt_PPPSecrets_mkt_PPPProfiles", "mkt_PPPProfiles", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ContactManager.Models.Profile), "mkt_PPPSecrets", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.PPPSecret))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "astra_ServicesInSystemServices", "astra_Services", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Service), "astra_SystemServices", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.SystemService))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_acc_Transactions_aspnet_Users", "ASPUser", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.ASPUser), "acc_Transactions", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Transaction))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_acc_Transactions_aspnet_Users", "ASPUser", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.User), "acc_Transactions", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Transaction))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_acc_Transactions_astra_Clients", "Client", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.Client), "acc_Transactions", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Transaction))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_ClientsServicesActivities_aspnet_Users1", "ASPUser", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.ASPUser), "astra_ClientsInServices", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.ClientInServices))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_ClientsServicesActivities_aspnet_Users1", "ASPUser", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.User), "astra_ClientsInServices", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.ClientInServices))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Addresses_astra_Streets", "astra_Streets", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.Street), "Address", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Address))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Clients_astra_Statuses", "astra_Statuses", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.Status), "Client", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Client))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_ClientsServicesActivities_astra_Clients1", "Client", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.Client), "astra_ClientsInServices", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.ClientInServices))]
@@ -29,12 +29,12 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "acc_PaymentsInTransactions", "acc_Transactions", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Transaction), "acc_PaymentsMethods", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ContactManager.Models.PaymentMethod))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "acc_ProfilesInTransactions", "acc_Transactions", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Transaction), "Profile", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ContactManager.Models.Profile))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "acc_ServicesInTransactions", "acc_Transactions", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Transaction), "Service", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ContactManager.Models.Service))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Messages_aspnet_Users", "ASPUser", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.ASPUser), "astra_Messages", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Message))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Messages_aspnet_Users", "ASPUser", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.User), "astra_Messages", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Message))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Messages_astra_Clients", "Client", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.Client), "astra_Messages", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Message))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Messages_astra_MessagesType", "astra_MessagesType", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.MessageType), "astra_Messages", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Message))]
 
 // Original file name:
-// Generation date: 22.12.2009 0:58:17
+// Generation date: 12/22/2009 1:30:17 AM
 namespace ContactManager.Models
 {
     
@@ -69,20 +69,20 @@ namespace ContactManager.Models
         }
         partial void OnContextCreated();
         /// <summary>
-        /// There are no comments for ASPUserSet in the schema.
+        /// There are no comments for Users in the schema.
         /// </summary>
-        public global::System.Data.Objects.ObjectQuery<ASPUser> ASPUserSet
+        public global::System.Data.Objects.ObjectQuery<User> Users
         {
             get
             {
-                if ((this._ASPUserSet == null))
+                if ((this._Users == null))
                 {
-                    this._ASPUserSet = base.CreateQuery<ASPUser>("[ASPUserSet]");
+                    this._Users = base.CreateQuery<User>("[Users]");
                 }
-                return this._ASPUserSet;
+                return this._Users;
             }
         }
-        private global::System.Data.Objects.ObjectQuery<ASPUser> _ASPUserSet;
+        private global::System.Data.Objects.ObjectQuery<User> _Users;
         /// <summary>
         /// There are no comments for AddressSet in the schema.
         /// </summary>
@@ -99,20 +99,20 @@ namespace ContactManager.Models
         }
         private global::System.Data.Objects.ObjectQuery<Address> _AddressSet;
         /// <summary>
-        /// There are no comments for ClientSet in the schema.
+        /// There are no comments for Clients in the schema.
         /// </summary>
-        public global::System.Data.Objects.ObjectQuery<Client> ClientSet
+        public global::System.Data.Objects.ObjectQuery<Client> Clients
         {
             get
             {
-                if ((this._ClientSet == null))
+                if ((this._Clients == null))
                 {
-                    this._ClientSet = base.CreateQuery<Client>("[ClientSet]");
+                    this._Clients = base.CreateQuery<Client>("[Clients]");
                 }
-                return this._ClientSet;
+                return this._Clients;
             }
         }
-        private global::System.Data.Objects.ObjectQuery<Client> _ClientSet;
+        private global::System.Data.Objects.ObjectQuery<Client> _Clients;
         /// <summary>
         /// There are no comments for ClientDetailSet in the schema.
         /// </summary>
@@ -234,35 +234,35 @@ namespace ContactManager.Models
         }
         private global::System.Data.Objects.ObjectQuery<PPPSecret> _PPPSecretSet;
         /// <summary>
-        /// There are no comments for PaymentMethodSet in the schema.
+        /// There are no comments for PaymentMethods in the schema.
         /// </summary>
-        public global::System.Data.Objects.ObjectQuery<PaymentMethod> PaymentMethodSet
+        public global::System.Data.Objects.ObjectQuery<PaymentMethod> PaymentMethods
         {
             get
             {
-                if ((this._PaymentMethodSet == null))
+                if ((this._PaymentMethods == null))
                 {
-                    this._PaymentMethodSet = base.CreateQuery<PaymentMethod>("[PaymentMethodSet]");
+                    this._PaymentMethods = base.CreateQuery<PaymentMethod>("[PaymentMethods]");
                 }
-                return this._PaymentMethodSet;
+                return this._PaymentMethods;
             }
         }
-        private global::System.Data.Objects.ObjectQuery<PaymentMethod> _PaymentMethodSet;
+        private global::System.Data.Objects.ObjectQuery<PaymentMethod> _PaymentMethods;
         /// <summary>
-        /// There are no comments for TransactionSet in the schema.
+        /// There are no comments for Transactions in the schema.
         /// </summary>
-        public global::System.Data.Objects.ObjectQuery<Transaction> TransactionSet
+        public global::System.Data.Objects.ObjectQuery<Transaction> Transactions
         {
             get
             {
-                if ((this._TransactionSet == null))
+                if ((this._Transactions == null))
                 {
-                    this._TransactionSet = base.CreateQuery<Transaction>("[TransactionSet]");
+                    this._Transactions = base.CreateQuery<Transaction>("[Transactions]");
                 }
-                return this._TransactionSet;
+                return this._Transactions;
             }
         }
-        private global::System.Data.Objects.ObjectQuery<Transaction> _TransactionSet;
+        private global::System.Data.Objects.ObjectQuery<Transaction> _Transactions;
         /// <summary>
         /// There are no comments for ClientInServicesSet in the schema.
         /// </summary>
@@ -339,11 +339,11 @@ namespace ContactManager.Models
         }
         private global::System.Data.Objects.ObjectQuery<MessageType> _MessageTypes;
         /// <summary>
-        /// There are no comments for ASPUserSet in the schema.
+        /// There are no comments for Users in the schema.
         /// </summary>
-        public void AddToASPUserSet(ASPUser aSPUser)
+        public void AddToUsers(User user)
         {
-            base.AddObject("ASPUserSet", aSPUser);
+            base.AddObject("Users", user);
         }
         /// <summary>
         /// There are no comments for AddressSet in the schema.
@@ -353,11 +353,11 @@ namespace ContactManager.Models
             base.AddObject("AddressSet", address);
         }
         /// <summary>
-        /// There are no comments for ClientSet in the schema.
+        /// There are no comments for Clients in the schema.
         /// </summary>
-        public void AddToClientSet(Client client)
+        public void AddToClients(Client client)
         {
-            base.AddObject("ClientSet", client);
+            base.AddObject("Clients", client);
         }
         /// <summary>
         /// There are no comments for ClientDetailSet in the schema.
@@ -416,18 +416,18 @@ namespace ContactManager.Models
             base.AddObject("PPPSecretSet", pPPSecret);
         }
         /// <summary>
-        /// There are no comments for PaymentMethodSet in the schema.
+        /// There are no comments for PaymentMethods in the schema.
         /// </summary>
-        public void AddToPaymentMethodSet(PaymentMethod paymentMethod)
+        public void AddToPaymentMethods(PaymentMethod paymentMethod)
         {
-            base.AddObject("PaymentMethodSet", paymentMethod);
+            base.AddObject("PaymentMethods", paymentMethod);
         }
         /// <summary>
-        /// There are no comments for TransactionSet in the schema.
+        /// There are no comments for Transactions in the schema.
         /// </summary>
-        public void AddToTransactionSet(Transaction transaction)
+        public void AddToTransactions(Transaction transaction)
         {
-            base.AddObject("TransactionSet", transaction);
+            base.AddObject("Transactions", transaction);
         }
         /// <summary>
         /// There are no comments for ClientInServicesSet in the schema.
@@ -466,18 +466,18 @@ namespace ContactManager.Models
         }
     }
     /// <summary>
-    /// There are no comments for AstraModel.ASPUser in the schema.
+    /// There are no comments for AstraModel.User in the schema.
     /// </summary>
     /// <KeyProperties>
     /// UserId
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="AstraModel", Name="ASPUser")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="AstraModel", Name="User")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class ASPUser : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class User : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new ASPUser object.
+        /// Create a new User object.
         /// </summary>
         /// <param name="applicationId">Initial value of ApplicationId.</param>
         /// <param name="userId">Initial value of UserId.</param>
@@ -485,16 +485,16 @@ namespace ContactManager.Models
         /// <param name="loweredUserName">Initial value of LoweredUserName.</param>
         /// <param name="isAnonymous">Initial value of IsAnonymous.</param>
         /// <param name="lastActivityDate">Initial value of LastActivityDate.</param>
-        public static ASPUser CreateASPUser(global::System.Guid applicationId, global::System.Guid userId, string userName, string loweredUserName, bool isAnonymous, global::System.DateTime lastActivityDate)
+        public static User CreateUser(global::System.Guid applicationId, global::System.Guid userId, string userName, string loweredUserName, bool isAnonymous, global::System.DateTime lastActivityDate)
         {
-            ASPUser aSPUser = new ASPUser();
-            aSPUser.ApplicationId = applicationId;
-            aSPUser.UserId = userId;
-            aSPUser.UserName = userName;
-            aSPUser.LoweredUserName = loweredUserName;
-            aSPUser.IsAnonymous = isAnonymous;
-            aSPUser.LastActivityDate = lastActivityDate;
-            return aSPUser;
+            User user = new User();
+            user.ApplicationId = applicationId;
+            user.UserId = userId;
+            user.UserName = userName;
+            user.LoweredUserName = loweredUserName;
+            user.IsAnonymous = isAnonymous;
+            user.LastActivityDate = lastActivityDate;
+            return user;
         }
         /// <summary>
         /// There are no comments for Property ApplicationId in the schema.
@@ -1131,15 +1131,15 @@ namespace ContactManager.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public ASPUser aspnet_Users
+        public User aspnet_Users
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<ASPUser>("AstraModel.FK_astra_Clients_aspnet_Users", "aspnet_Users").Value;
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<User>("AstraModel.FK_astra_Clients_aspnet_Users", "aspnet_Users").Value;
             }
             set
             {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<ASPUser>("AstraModel.FK_astra_Clients_aspnet_Users", "aspnet_Users").Value = value;
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<User>("AstraModel.FK_astra_Clients_aspnet_Users", "aspnet_Users").Value = value;
             }
         }
         /// <summary>
@@ -1147,17 +1147,17 @@ namespace ContactManager.Models
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<ASPUser> aspnet_UsersReference
+        public global::System.Data.Objects.DataClasses.EntityReference<User> aspnet_UsersReference
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<ASPUser>("AstraModel.FK_astra_Clients_aspnet_Users", "aspnet_Users");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<User>("AstraModel.FK_astra_Clients_aspnet_Users", "aspnet_Users");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<ASPUser>("AstraModel.FK_astra_Clients_aspnet_Users", "aspnet_Users", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<User>("AstraModel.FK_astra_Clients_aspnet_Users", "aspnet_Users", value);
                 }
             }
         }
@@ -2253,15 +2253,15 @@ namespace ContactManager.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public ASPUser aspnet_Users
+        public User aspnet_Users
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<ASPUser>("AstraModel.FK_astra_Services_aspnet_Users", "aspnet_Users").Value;
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<User>("AstraModel.FK_astra_Services_aspnet_Users", "aspnet_Users").Value;
             }
             set
             {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<ASPUser>("AstraModel.FK_astra_Services_aspnet_Users", "aspnet_Users").Value = value;
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<User>("AstraModel.FK_astra_Services_aspnet_Users", "aspnet_Users").Value = value;
             }
         }
         /// <summary>
@@ -2269,17 +2269,17 @@ namespace ContactManager.Models
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<ASPUser> aspnet_UsersReference
+        public global::System.Data.Objects.DataClasses.EntityReference<User> aspnet_UsersReference
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<ASPUser>("AstraModel.FK_astra_Services_aspnet_Users", "aspnet_Users");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<User>("AstraModel.FK_astra_Services_aspnet_Users", "aspnet_Users");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<ASPUser>("AstraModel.FK_astra_Services_aspnet_Users", "aspnet_Users", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<User>("AstraModel.FK_astra_Services_aspnet_Users", "aspnet_Users", value);
                 }
             }
         }
@@ -3593,50 +3593,50 @@ namespace ContactManager.Models
         partial void OnCommentChanging(string value);
         partial void OnCommentChanged();
         /// <summary>
-        /// There are no comments for aspnet_Users in the schema.
+        /// There are no comments for User in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "FK_acc_Transactions_aspnet_Users", "ASPUser")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public ASPUser aspnet_Users
+        public User User
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<ASPUser>("AstraModel.FK_acc_Transactions_aspnet_Users", "ASPUser").Value;
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<User>("AstraModel.FK_acc_Transactions_aspnet_Users", "ASPUser").Value;
             }
             set
             {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<ASPUser>("AstraModel.FK_acc_Transactions_aspnet_Users", "ASPUser").Value = value;
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<User>("AstraModel.FK_acc_Transactions_aspnet_Users", "ASPUser").Value = value;
             }
         }
         /// <summary>
-        /// There are no comments for aspnet_Users in the schema.
+        /// There are no comments for User in the schema.
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<ASPUser> aspnet_UsersReference
+        public global::System.Data.Objects.DataClasses.EntityReference<User> UserReference
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<ASPUser>("AstraModel.FK_acc_Transactions_aspnet_Users", "ASPUser");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<User>("AstraModel.FK_acc_Transactions_aspnet_Users", "ASPUser");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<ASPUser>("AstraModel.FK_acc_Transactions_aspnet_Users", "ASPUser", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<User>("AstraModel.FK_acc_Transactions_aspnet_Users", "ASPUser", value);
                 }
             }
         }
         /// <summary>
-        /// There are no comments for astra_Clients in the schema.
+        /// There are no comments for Client in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "FK_acc_Transactions_astra_Clients", "Client")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public Client astra_Clients
+        public Client Client
         {
             get
             {
@@ -3648,11 +3648,11 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for astra_Clients in the schema.
+        /// There are no comments for Client in the schema.
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<Client> astra_ClientsReference
+        public global::System.Data.Objects.DataClasses.EntityReference<Client> ClientReference
         {
             get
             {
@@ -3667,13 +3667,13 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for acc_PaymentsMethods in the schema.
+        /// There are no comments for PaymentMethod in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "acc_PaymentsInTransactions", "acc_PaymentsMethods")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public PaymentMethod acc_PaymentsMethods
+        public PaymentMethod PaymentMethod
         {
             get
             {
@@ -3685,11 +3685,11 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for acc_PaymentsMethods in the schema.
+        /// There are no comments for PaymentMethod in the schema.
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<PaymentMethod> acc_PaymentsMethodsReference
+        public global::System.Data.Objects.DataClasses.EntityReference<PaymentMethod> PaymentMethodReference
         {
             get
             {
@@ -3704,13 +3704,13 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for mkt_PPPProfiles in the schema.
+        /// There are no comments for Profile in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "acc_ProfilesInTransactions", "Profile")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public Profile mkt_PPPProfiles
+        public Profile Profile
         {
             get
             {
@@ -3722,11 +3722,11 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for mkt_PPPProfiles in the schema.
+        /// There are no comments for Profile in the schema.
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<Profile> mkt_PPPProfilesReference
+        public global::System.Data.Objects.DataClasses.EntityReference<Profile> ProfileReference
         {
             get
             {
@@ -3741,13 +3741,13 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for astra_Services in the schema.
+        /// There are no comments for Service in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "acc_ServicesInTransactions", "Service")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public Service astra_Services
+        public Service Service
         {
             get
             {
@@ -3759,11 +3759,11 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for astra_Services in the schema.
+        /// There are no comments for Service in the schema.
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<Service> astra_ServicesReference
+        public global::System.Data.Objects.DataClasses.EntityReference<Service> ServiceReference
         {
             get
             {
@@ -3854,15 +3854,15 @@ namespace ContactManager.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public ASPUser aspnet_Users
+        public User aspnet_Users
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<ASPUser>("AstraModel.FK_astra_ClientsServicesActivities_aspnet_Users1", "ASPUser").Value;
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<User>("AstraModel.FK_astra_ClientsServicesActivities_aspnet_Users1", "ASPUser").Value;
             }
             set
             {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<ASPUser>("AstraModel.FK_astra_ClientsServicesActivities_aspnet_Users1", "ASPUser").Value = value;
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<User>("AstraModel.FK_astra_ClientsServicesActivities_aspnet_Users1", "ASPUser").Value = value;
             }
         }
         /// <summary>
@@ -3870,17 +3870,17 @@ namespace ContactManager.Models
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<ASPUser> aspnet_UsersReference
+        public global::System.Data.Objects.DataClasses.EntityReference<User> aspnet_UsersReference
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<ASPUser>("AstraModel.FK_astra_ClientsServicesActivities_aspnet_Users1", "ASPUser");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<User>("AstraModel.FK_astra_ClientsServicesActivities_aspnet_Users1", "ASPUser");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<ASPUser>("AstraModel.FK_astra_ClientsServicesActivities_aspnet_Users1", "ASPUser", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<User>("AstraModel.FK_astra_ClientsServicesActivities_aspnet_Users1", "ASPUser", value);
                 }
             }
         }
@@ -4342,15 +4342,15 @@ namespace ContactManager.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public ASPUser User
+        public User User
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<ASPUser>("AstraModel.FK_astra_Messages_aspnet_Users", "ASPUser").Value;
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<User>("AstraModel.FK_astra_Messages_aspnet_Users", "ASPUser").Value;
             }
             set
             {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<ASPUser>("AstraModel.FK_astra_Messages_aspnet_Users", "ASPUser").Value = value;
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<User>("AstraModel.FK_astra_Messages_aspnet_Users", "ASPUser").Value = value;
             }
         }
         /// <summary>
@@ -4358,17 +4358,17 @@ namespace ContactManager.Models
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<ASPUser> UserReference
+        public global::System.Data.Objects.DataClasses.EntityReference<User> UserReference
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<ASPUser>("AstraModel.FK_astra_Messages_aspnet_Users", "ASPUser");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<User>("AstraModel.FK_astra_Messages_aspnet_Users", "ASPUser");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<ASPUser>("AstraModel.FK_astra_Messages_aspnet_Users", "ASPUser", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<User>("AstraModel.FK_astra_Messages_aspnet_Users", "ASPUser", value);
                 }
             }
         }

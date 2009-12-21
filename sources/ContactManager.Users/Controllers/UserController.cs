@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 //using ContactManager.Clients;
-using ContactManager.Hosts.Helpers;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.Models.ViewModels;
 using ContactManager.PPP.Intefaces;
-using ContactManager.PPP.Models;
 using ContactManager.PPP.SSH;
 using ContactManager.Users.Interfaces;
 using ContactManager.Users.Services;
@@ -22,11 +20,12 @@ namespace ContactManager.Users.Controllers
         private readonly IValidationDictionary validationDictionary;
         private readonly IUserFasade _service;
         private readonly ISshSecretService _sshSecretService;
-        private readonly HostHelper _helper = new HostHelper();
+        private readonly CurrentContext _ctx;
         private readonly IStatusService _statusService;
 
         public UserController()
         {
+            _ctx = new CurrentContext();
             validationDictionary = new ModelStateWrapper(ModelState);
             _service = new UserFasade(validationDictionary);
             _sshSecretService = new SshSecretService(validationDictionary, true);
@@ -91,7 +90,7 @@ namespace ContactManager.Users.Controllers
                 //todo: check client status for sync
                 if (_service.CanSynchronize(client.UserId))
                 {
-                    _sshSecretService.Connect(_helper.GetCurrentHost());
+                    _sshSecretService.Connect(_ctx.GetCurrentHost());
                     var result = _sshSecretService.EditPPPSecret(client.UserId);
                     _sshSecretService.Disconnect();
                 }
@@ -113,7 +112,7 @@ namespace ContactManager.Users.Controllers
                 {
                     if (canSync)
                     {
-                        _sshSecretService.Connect(_helper.GetCurrentHost());
+                        _sshSecretService.Connect(_ctx.GetCurrentHost());
                         _sshSecretService.CreatePPPSecret(id);
                         _sshSecretService.Disconnect();
                     }
@@ -125,7 +124,7 @@ namespace ContactManager.Users.Controllers
                 {
                     if (canSync)
                     {
-                        _sshSecretService.Connect(_helper.GetCurrentHost());
+                        _sshSecretService.Connect(_ctx.GetCurrentHost());
                         _sshSecretService.DeletePPPSecret(name);
                         _sshSecretService.Disconnect();
                     }
@@ -193,7 +192,7 @@ namespace ContactManager.Users.Controllers
         {
             if (_service.LoadMoneyService.LoadMoney(model))
                 return View("Index", PrepareIndex(false));
-            LoadMoneyViewModel loadModel = _service.LoadMoneyService.GetViewModel(model.ClientId);
+            var loadModel = _service.LoadMoneyService.GetViewModel(model.ClientId);
             return View(loadModel);
         }
 

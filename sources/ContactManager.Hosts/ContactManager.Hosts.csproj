@@ -65,7 +65,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HostController.cs" />
-    <Compile Include="Helpers\HostHelper.cs" />
     <Compile Include="Interfaces\IHostsRepository.cs" />
     <Compile Include="Interfaces\IHostsService.cs" />
     <Compile Include="Models\HostsRepository.cs" />
@@ -84,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

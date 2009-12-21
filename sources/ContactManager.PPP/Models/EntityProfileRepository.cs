@@ -6,40 +6,22 @@ using ContactManager.PPP.Intefaces;
 
 namespace ContactManager.PPP.Models
 {
-    public class EntityProfileRepository : IProfileRepository
+    public class EntityProfileRepository : RepositoryBase<Profile>, IProfileRepository
     {
-        private readonly AstraEntities _entities;
-        //private IContactRepository _contactRepository;
-
-        #region Constructors
-        public EntityProfileRepository()
-        {
-            _entities = new AstraEntities();
-            //_contactRepository = new EntityContactRepository(_entities);
-            //userId = _contactRepository.CurrentUser().UserId;
-        }
-
-        public EntityProfileRepository(AstraEntities entities)
-        {
-            _entities = entities;
-            //_contactRepository = new EntityContactRepository(entities);
-        }
-        #endregion
-
         #region IProfileRepository Members
 
         public Profile CreateProfile(Profile profile)
         {
             profile.LastUpdatedDate = DateTime.Now;
-            profile.mkt_IPPools = _entities.PoolSet.Where(p => p.PoolId == profile.PoolId).FirstOrDefault();
-            _entities.AddToProfileSet(profile);
-            _entities.SaveChanges();
+            profile.mkt_IPPools = ObjectContext.PoolSet.Where(p => p.PoolId == profile.PoolId).FirstOrDefault();
+            ObjectContext.AddToProfileSet(profile);
+            ObjectContext.SaveChanges();
             return profile;
         }
 
         public void DeleteProfile(int id)
         {
-            var profile = _entities.ProfileSet.Where(p => p.ProfileId == id).FirstOrDefault();
+            var profile = ObjectContext.ProfileSet.Where(p => p.ProfileId == id).FirstOrDefault();
             profile.mkt_PPPSecrets.Load();
             var clientsCount = profile.mkt_PPPSecrets.Count;
             if (clientsCount > 0)
@@ -47,26 +29,26 @@ namespace ContactManager.PPP.Models
                 throw new Exception(string.Format("Profile '{0}' is assigned to {1} user(s), and can't be deleted.",
                                                   profile.Name, clientsCount));
             }
-            _entities.DeleteObject(profile);
-            _entities.SaveChanges();
+            ObjectContext.DeleteObject(profile);
+            ObjectContext.SaveChanges();
         }
 
         public Profile EditProfile(Profile profile)
         {            
-            var _profile = _entities.ProfileSet.Where(p => p.ProfileId == profile.ProfileId).FirstOrDefault();
+            var _profile = ObjectContext.ProfileSet.Where(p => p.ProfileId == profile.ProfileId).FirstOrDefault();
             var cost = _profile.Cost;
-            _entities.ApplyPropertyChanges(_profile.EntityKey.EntitySetName, profile);
+            ObjectContext.ApplyPropertyChanges(_profile.EntityKey.EntitySetName, profile);
             if (!profile.Cost.HasValue)
                 _profile.Cost = cost;
-            _profile.mkt_IPPools = _entities.PoolSet.Where(p => p.PoolId == profile.PoolId).FirstOrDefault();
+            _profile.mkt_IPPools = ObjectContext.PoolSet.Where(p => p.PoolId == profile.PoolId).FirstOrDefault();
             _profile.LastUpdatedDate = DateTime.Now;
-            _entities.SaveChanges();
+            ObjectContext.SaveChanges();
             return _profile;
         }
 
         public Profile GetProfile(int id)
         {
-            var profile = _entities.ProfileSet.Where(p => p.ProfileId == id).FirstOrDefault();
+            var profile = ObjectContext.ProfileSet.Where(p => p.ProfileId == id).FirstOrDefault();
             profile.mkt_IPPoolsReference.Load();
             if (profile.mkt_IPPoolsReference.Value != null)
             {
@@ -78,7 +60,7 @@ namespace ContactManager.PPP.Models
 
         public Profile GetProfile(string name)
         {
-            var profile = _entities.ProfileSet.Where(p => p.Name == name).FirstOrDefault();
+            var profile = ObjectContext.ProfileSet.Where(p => p.Name == name).FirstOrDefault();
             if (profile == null)
                 return null;
             profile.mkt_IPPoolsReference.Load();
@@ -92,12 +74,12 @@ namespace ContactManager.PPP.Models
 
         //public Profile GetProfile(string name)
         //{
-        //    return _entities.TariffSet.Where(t => t.Name == name).FirstOrDefault();
+        //    return ObjectContext.TariffSet.Where(t => t.Name == name).FirstOrDefault();
         //}
 
         //public Profile GetProfile(Profile tariff)
         //{
-        //    var _tariff = _entities.TariffSet.Where(t =>
+        //    var _tariff = ObjectContext.TariffSet.Where(t =>
         //               t.Direction == tariff.Direction &&
         //                   //t.Service == tariff.Service &&
         //               t.Limit_At == tariff.Limit_At &&
@@ -115,7 +97,7 @@ namespace ContactManager.PPP.Models
 
         public List<Profile> ListProfiles()
         {
-            foreach (var profile in _entities.ProfileSet.ToList())
+            foreach (var profile in ObjectContext.ProfileSet.ToList())
             {
                 profile.mkt_IPPoolsReference.Load();
                 if (profile.mkt_IPPoolsReference.Value != null)
@@ -124,13 +106,13 @@ namespace ContactManager.PPP.Models
                     profile.PoolName = profile.mkt_IPPoolsReference.Value.Name;
                 }
             }
-            return _entities.ProfileSet.ToList();
+            return ObjectContext.ProfileSet.ToList();
         }
 
         public int DeleteUnAssignedProfiles()
         {
             int count = 0;
-            //foreach (var tariff in _entities.TariffSet)
+            //foreach (var tariff in ObjectContext.TariffSet)
             //{
             //    tariff.astra_Clients.Load();
             //    tariff.astra_QueuesSimple.Load();
@@ -138,11 +120,11 @@ namespace ContactManager.PPP.Models
             //    var queuesCount = tariff.astra_QueuesSimple.Count;
             //    if (clientsCount <= 0 && queuesCount <= 0)
             //    {
-            //        _entities.DeleteObject(tariff);
+            //        ObjectContext.DeleteObject(tariff);
             //        count++;
             //    }
             //}
-            //_entities.SaveChanges();
+            //ObjectContext.SaveChanges();
             return count;
         }
 

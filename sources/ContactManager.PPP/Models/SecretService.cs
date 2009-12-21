@@ -13,15 +13,10 @@ namespace ContactManager.PPP.Models
 
         #region Constructors
         public SecretService(IValidationDictionary validationDictionary)
-            : this(validationDictionary, new AstraEntities())
-        { }
-
-        public SecretService(IValidationDictionary validationDictionary, 
-            AstraEntities entities)
         {
             _validationDictionary = validationDictionary;
-            _secretRepository = new EntitySecretRepository(entities);
-            _profileService = new ProfileService(validationDictionary, entities);
+            _secretRepository = new EntitySecretRepository();
+            _profileService = new ProfileService(validationDictionary);
         }
         #endregion
 

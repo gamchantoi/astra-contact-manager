@@ -17,13 +17,9 @@ namespace ContactManager.PPP.Models
 
         #region Constructors
         public ProfileService(IValidationDictionary validationDictionary)
-            : this(validationDictionary, new AstraEntities())
-        { }
-
-        public ProfileService(IValidationDictionary validationDictionary, AstraEntities entities)
         {
             _validationDictionary = validationDictionary;
-            _repository = new EntityProfileRepository(entities);
+            _repository = new EntityProfileRepository();
             _poolService = new PoolService(validationDictionary);
         } 
         #endregion

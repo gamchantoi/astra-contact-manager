@@ -34,7 +34,7 @@ namespace ContactManager.Services.Models
         public Service CreateService(Service service)
         {
             if (service.aspnet_UsersReference.Value == null)
-                service.aspnet_Users = ObjectContext.ASPUserSet.Where(u => u.UserId == service.UserId).FirstOrDefault();
+                service.aspnet_Users = ObjectContext.Users.Where(u => u.UserId == service.UserId).FirstOrDefault();
             service.LastUpdatedDate = DateTime.Now;
             ObjectContext.AddToServiceSet(service);
             ObjectContext.SaveChanges();
@@ -61,7 +61,7 @@ namespace ContactManager.Services.Models
                                        Visible = true,
                                        Cost = Decimal.Zero,
                                        aspnet_Users =
-                                           ObjectContext.ASPUserSet.Where(u => u.UserName.Equals("System")).FirstOrDefault()
+                                           ObjectContext.Users.Where(u => u.UserName.Equals("System")).FirstOrDefault()
                                    };
                 service = CreateService(_service);
             }
@@ -90,10 +90,10 @@ namespace ContactManager.Services.Models
                                {
                                    astra_Services = service,
                                    astra_Clients =
-                                       ObjectContext.ClientSet.Where(c => c.UserId == service.ClientId).FirstOrDefault(),
+                                       ObjectContext.Clients.Where(c => c.UserId == service.ClientId).FirstOrDefault(),
                                    Date = DateTime.Now,
                                    aspnet_Users =
-                                       ObjectContext.ASPUserSet.Where(u => u.UserId == service.UserId).FirstOrDefault()
+                                       ObjectContext.Users.Where(u => u.UserId == service.UserId).FirstOrDefault()
                                };
             ObjectContext.AddToClientInServicesSet(activity);
             ObjectContext.SaveChanges();
@@ -111,7 +111,7 @@ namespace ContactManager.Services.Models
 
         private ClientInServices GetActivity(Guid clientId, int serviceId)
         {
-            var client = ObjectContext.ClientSet.Where(c => c.UserId == clientId).FirstOrDefault();
+            var client = ObjectContext.Clients.Where(c => c.UserId == clientId).FirstOrDefault();
             client.astra_ClientsInServices.Load();
             foreach (var item in client.astra_ClientsInServices) 
             {

@@ -7,9 +7,9 @@ namespace ContactManager.Users.Interfaces
     public interface IUserFasade
     {
         ILoadMoneyService LoadMoneyService { get; }
-        IMembershipService MembershipService { get; }
+        IUserService UserService { get; }
         IClientService ClientService { get; }
-        AstraEntities Entities { get; }
+        //AstraEntities Entities { get; }
 
         bool CreateContact(Client client);
         bool CreateContact(PPPSecret pppSecret);

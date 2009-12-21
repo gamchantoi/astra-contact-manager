@@ -6,7 +6,7 @@ namespace ContactManager.Users.Interfaces
 {
     public interface IClientRepository
     {
-        AstraEntities Entities { get; }
+        //AstraEntities Entities { get; }
 
         Client CreateClient(Client client);
         void DeleteClient(Guid id);

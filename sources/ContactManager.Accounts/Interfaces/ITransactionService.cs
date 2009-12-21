@@ -10,7 +10,6 @@ namespace ContactManager.Accounts.Interfaces
     {
         List<Transaction> ListTransactions();
         List<Transaction> ListTransactions(Guid userId);
-        Transaction GetTransaction(LoadMoneyViewModel model);
         PaymentMethodService PaymentMethodService { get; }
         void ProcessClientPayment();
 

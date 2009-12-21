@@ -12,12 +12,6 @@ namespace ContactManager.Accounts.Models
         private IValidationDictionary _validationDictionary;
 
         public PaymentMethodService(IValidationDictionary validationDictionary)
-            : this(validationDictionary, new AstraEntities())
-        {
-        }
-
-        public PaymentMethodService(IValidationDictionary validationDictionary,
-            AstraEntities entirties)
         {
             _validationDictionary = validationDictionary;
             _paymentMethodRepository = new PaymentMethodRepository();

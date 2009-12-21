@@ -23,7 +23,7 @@ namespace ContactManager.Web.Controllers
         {
             FormsAuth = formsAuth ?? new FormsAuthenticationService();
             var _fasade = fasade ?? new UserFasade(new ModelStateWrapper(ModelState));
-            MembershipService = _fasade.MembershipService;
+            MembershipService = _fasade.UserService;
         }
 
         public IFormsAuthentication FormsAuth
@@ -32,7 +32,7 @@ namespace ContactManager.Web.Controllers
             private set;
         }
 
-        public IMembershipService MembershipService
+        public IUserService MembershipService
         {
             get;
             private set;

@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using System.Web;
-using ContactManager.Models;
 using ContactManager.PPP.Intefaces;
 using ContactManager.SSH.Intefaces;
-using ContactManager.SSH.Models;
 
 namespace ContactManager.PPP.Models
 {
     public class ActiveConnectionsRepository : IActiveConnectionsRepository
     {
-        private AstraEntities _astraEntities;
-
-
         public ActiveConnectionsRepository(ISSHRepository repository)
         {
             Repository = repository;

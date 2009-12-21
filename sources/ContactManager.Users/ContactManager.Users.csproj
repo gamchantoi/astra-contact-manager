@@ -71,8 +71,9 @@
     <Compile Include="Interfaces\IClientRepository.cs" />
     <Compile Include="Interfaces\IClientService.cs" />
     <Compile Include="Interfaces\IUserFasade.cs" />
-    <Compile Include="Interfaces\IMembershipService.cs" />
-    <Compile Include="Services\MembershipService.cs" />
+    <Compile Include="Interfaces\IUserService.cs" />
+    <Compile Include="Models\EntityUserRepository.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\ClientService.cs" />
     <Compile Include="Services\UserFasade.cs" />
     <Compile Include="Models\EntityClientRepository.cs" />
@@ -104,6 +105,10 @@
     <ProjectReference Include="..\ContactManager.Models\ContactManager.Models.csproj">
       <Project>{CA6EDC25-507E-48C5-AC9F-F99BB32E171A}</Project>
       <Name>ContactManager.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ContactManager.ObjectContextManagement\ContactManager.ObjectContextManagement.csproj">
+      <Project>{828D3593-DFFC-4316-BB8D-9173CAEC6F1C}</Project>
+      <Name>ContactManager.ObjectContextManagement</Name>
     </ProjectReference>
     <ProjectReference Include="..\ContactManager.PPP\ContactManager.PPP.csproj">
       <Project>{EACF1926-D96A-445B-BD6F-271EACE6F02E}</Project>

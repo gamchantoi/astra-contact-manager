@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Objects.DataClasses;
 using System.Linq;
 using ContactManager.Accounts.Interfaces;
 using ContactManager.Models;
@@ -9,17 +10,17 @@ namespace ContactManager.Accounts.Models
 {
     public class EntityTransactionRepository : RepositoryBase<Transaction>, ITransactionRepository
     {
-        #region Constructors
-        public EntityTransactionRepository()
-        {
-            Entities = new AstraEntities();
-        }
+        //#region Constructors
+        //public EntityTransactionRepository()
+        //{
+        //    Entities = new AstraEntities();
+        //}
 
-        public EntityTransactionRepository(AstraEntities entities)
-        {
-            Entities = entities;
-        }
-        #endregion
+        //public EntityTransactionRepository(AstraEntities entities)
+        //{
+        //    Entities = entities;
+        //}
+        //#endregion
 
         #region IAccountTransactionRepository Members
 
@@ -33,24 +34,24 @@ namespace ContactManager.Accounts.Models
             };
         }
 
-        public AstraEntities Entities { get; private set; }
+        //public AstraEntities Entities { get; private set; }
 
         public List<Transaction> ListTransaction()
         {
-            var list = ObjectContext.TransactionSet.ToList();
+            var list = ObjectContext.Transactions.ToList();
             foreach (var item in list)
             {
-                item.astra_ClientsReference.Load();
-                item.Client = item.astra_ClientsReference.Value;
-                item.aspnet_UsersReference.Load();
-                item.User = item.aspnet_UsersReference.Value;
+                item.ClientReference.Load();
+                item.Client = item.ClientReference.Value;
+                item.UserReference.Load();
+                item.User = item.UserReference.Value;
             }
             return list;
         }
 
         public List<Transaction> ListTransaction(Guid userId)
         {
-            var user = ObjectContext.ClientSet.Where(c => c.UserId == userId).FirstOrDefault();
+            var user = ObjectContext.Clients.Where(c => c.UserId == userId).FirstOrDefault();
             user.acc_Transactions.Load();
             var list = user.acc_Transactions.ToList();
             return list;
@@ -59,30 +60,19 @@ namespace ContactManager.Accounts.Models
         public bool CreateTransaction(Transaction transaction)
         {
             transaction.Date = DateTime.Now;
-            transaction.aspnet_Users = ObjectContext.ASPUserSet.
-                Where(u => u.UserId == transaction.aspnet_Users.UserId).FirstOrDefault();
-            ObjectContext.AddToTransactionSet(transaction);
+            ObjectContext.AddToTransactions(transaction);
             ObjectContext.SaveChanges();
             return true;
-        }
-
-        public override void Add(Transaction transaction)
-        {
-            
-                transaction.Date = DateTime.Now;
-                base.Add(transaction);
-                base.SaveAllObjectChanges();
-            
         }
 
         public bool DeleteTransactions(Guid userId)
         {
-            var list = ObjectContext.TransactionSet.Where(a => a.astra_Clients.UserId == userId);
+            var list = ObjectContext.Transactions.Where(a => a.Client.UserId == userId);
             foreach (var transaction in list)
             {
                 ObjectContext.DeleteObject(transaction);
             }
-            list = ObjectContext.TransactionSet.Where(a => a.aspnet_Users.UserId == userId);
+            list = ObjectContext.Transactions.Where(a => a.User.UserId == userId);
             foreach (var transaction in list)
             {
                 ObjectContext.DeleteObject(transaction);
@@ -90,8 +80,6 @@ namespace ContactManager.Accounts.Models
             ObjectContext.SaveChanges();
             return true;
         }
-
-
 
         public void ProcessClientPayment()
         {
@@ -153,27 +141,21 @@ namespace ContactManager.Accounts.Models
             //}
         }
 
-        public void CreateTransaction(LoadMoneyViewModel model, PaymentMethod method)
-        {
-            using (new UnitOfWorkScope(true))
-            {
-                var transaction = new Transaction
-                      {
-                          Sum = model.Sum,
-                          Comment = model.Comment,
-                          Balance = model.Balance,
-                          acc_PaymentsMethods = method,
-                          Date = DateTime.Now,
-                          astra_Clients =
-                              ObjectContext.ClientSet.Where(c => c.UserId == model.ClientId).FirstOrDefault(),
-                          aspnet_Users =
-                              ObjectContext.ASPUserSet.Where(u => u.UserId == model.UserId).FirstOrDefault()
-                      };
-                ObjectContext.AddToTransactionSet(transaction);
-                ObjectContext.SaveChanges(); 
-            }
-
-        }
+        //public void CreateTransaction(LoadMoneyViewModel model, PaymentMethod method)
+        //{
+        //    var transaction = new Transaction
+        //          {
+        //              Sum = model.Sum,
+        //              Comment = model.Comment,
+        //              Balance = model.Balance,
+        //              //acc_PaymentsMethods = method,
+        //              Date = DateTime.Now,
+        //              Client = ObjectContext.Clients.Where(c => c.UserId == model.ClientId).FirstOrDefault(),
+        //              User = ObjectContext.Users.Where(u => u.UserId == model.UserId).FirstOrDefault()
+        //          };
+        //    ObjectContext.AddToTransactions(transaction);
+        //    ObjectContext.SaveChanges();
+        //}
 
         //private AccountTransactionMethod CreateSystemTransactionMethod(string name, string comment)
         //{
