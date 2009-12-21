@@ -1,5 +1,4 @@
 using System.Web.Mvc;
-using ContactManager.Hosts.Helpers;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.PPP.Helpers;
@@ -12,13 +11,12 @@ namespace ContactManager.PPP.Controllers
     public class PoolController : Controller
     {
         private readonly DropDownHelper _ddhelper = new DropDownHelper();
-        private readonly HostHelper _hhelper = new HostHelper();
         private readonly IPoolService _service;
         private readonly ISshPoolService _sshService;
 
         public PoolController()
         {
-            IValidationDictionary validationDictionary = new ModelStateWrapper(this.ModelState);
+            IValidationDictionary validationDictionary = new ModelStateWrapper(ModelState);
             _service = new PoolService(validationDictionary);
             _sshService = new SshPoolService(validationDictionary, true);
         }

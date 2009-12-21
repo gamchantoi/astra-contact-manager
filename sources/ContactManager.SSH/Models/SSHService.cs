@@ -1,5 +1,4 @@
-﻿using ContactManager.Hosts.Helpers;
-using ContactManager.Models;
+﻿using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.SSH.Intefaces;
 using ContactManager.SSH.Models;
@@ -9,7 +8,7 @@ namespace ContactManager.SSH.Models
     public abstract class SSHService
     {
         private readonly IValidationDictionary _validationDictionary;
-        private readonly HostHelper _hostHelper;
+        private readonly CurrentContext _ctx;
         private ISSHRepository _repository;
 
         #region Constructors
@@ -28,8 +27,8 @@ namespace ContactManager.SSH.Models
         protected SSHService(IValidationDictionary validationDictionary, ISSHRepository repository, bool autoMode)
         {
             _validationDictionary = validationDictionary;
-            _hostHelper = new HostHelper();
-            Repository = repository ?? new SSHRepository(_hostHelper.GetCurrentHost());
+            _ctx = new CurrentContext();
+            Repository = repository ?? new SSHRepository(_ctx.GetCurrentHost());
             AutoMode = autoMode;
 
         }
@@ -40,7 +39,7 @@ namespace ContactManager.SSH.Models
             get
             {
                 if (_repository == null)
-                    _repository = new SSHRepository(_hostHelper.GetCurrentHost());
+                    _repository = new SSHRepository(_ctx.GetCurrentHost());
 
                 return _repository;
             }
@@ -64,7 +63,7 @@ namespace ContactManager.SSH.Models
 
         public bool Connect()
         {
-            return Connect(_hostHelper.GetCurrentHost());
+            return Connect(_ctx.GetCurrentHost());
         }
 
         public bool Connect(Host host)

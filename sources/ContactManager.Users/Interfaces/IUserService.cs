@@ -5,26 +5,26 @@ using System;
 
 namespace ContactManager.Users.Interfaces
 {
-    public interface IMembershipService
+    public interface IUserService
     {
         int MinPasswordLength { get; }
-        Guid CreatedUserId { get; }
-        Guid GetCurrentUserId { get; }
-        bool UserExist(string name);
+        //Guid CreatedUserId { get; }
+        //Guid GetCurrentUserId { get; }
+        //bool UserExist(string name);
         bool ValidateUser(string userName, string password);        
         bool DeleteUser(Guid id);
         bool ChangePassword(string userName, string oldPassword, string newPassword);
         string GetRoleForUser(string name);        
         void EditUser(Client client);
 
-        List<ASPUser> ListUsers(string role);
-        List<ASPUser> ListUsers();
+        List<User> ListUsers(string role);
+        List<User> ListUsers();
 
-        MembershipCreateStatus CreateUser(Client client);
+        bool CreateUser(Client client);
         MembershipUser GetUser(Guid id);
         MembershipUser GetUser(string name);
-        MembershipUser GetCurrentUser();
-        MembershipUser GetSystemUser();
+        //MembershipUser GetCurrentUser();
+        //MembershipUser GetSystemUser();
 
         bool ClearAllData();
     }

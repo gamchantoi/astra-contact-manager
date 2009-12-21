@@ -25,9 +25,9 @@ namespace ContactManager.Services.Models
 
         public ClientInServices CreateActivity(ClientInServices activity)
         {
-            activity.astra_Clients = _entities.ClientSet.Where(c => c.UserId == activity.ClientId).FirstOrDefault();
+            activity.astra_Clients = _entities.Clients.Where(c => c.UserId == activity.ClientId).FirstOrDefault();
             activity.astra_Services = _entities.ServiceSet.Where(s => s.ServiceId == activity.ServiceId).FirstOrDefault();
-            activity.aspnet_Users = _entities.ASPUserSet.Where(u => u.UserId == activity.UserId).FirstOrDefault();
+            activity.aspnet_Users = _entities.Users.Where(u => u.UserId == activity.UserId).FirstOrDefault();
             activity.Date = DateTime.Now;
             _entities.AddToClientInServicesSet(activity);
             _entities.SaveChanges();

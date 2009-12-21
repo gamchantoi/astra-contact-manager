@@ -16,15 +16,10 @@ namespace ContactManager.Accounts.Services
 
         #region Constructors
         public TransactionService(IValidationDictionary validationDictionary)
-            : this(validationDictionary, new AstraEntities())
-        { }
-
-        public TransactionService(IValidationDictionary validationDictionary, 
-            AstraEntities entities)
         {
             _validationDictionary = validationDictionary;
-            _repository = new EntityTransactionRepository(entities);
-            PaymentMethodService = new PaymentMethodService(validationDictionary, entities);
+            _repository = new EntityTransactionRepository();
+            PaymentMethodService = new PaymentMethodService(validationDictionary);
         }
         #endregion
 
@@ -40,13 +35,6 @@ namespace ContactManager.Accounts.Services
             return _repository.ListTransaction(userId);
         }
 
-        public Transaction GetTransaction(LoadMoneyViewModel model)
-        {
-            var _model = _repository.GetTransaction(model);
-            _model.acc_PaymentsMethods = PaymentMethodService.GetPaymentMethod(model.MethodId);
-            return _model;
-        }
-        
         public PaymentMethodService PaymentMethodService { get; private set; }
 
         public void ProcessClientPayment()
@@ -56,20 +44,17 @@ namespace ContactManager.Accounts.Services
 
         public void CreateTransaction(LoadMoneyViewModel model)
         {
-            var userContext = new CurrentContext();
+            var _ctx = new CurrentContext();
             var _transaction = new Transaction
               {
                   Sum = model.Sum,
                   Comment = model.Comment,
                   Balance = model.Balance,
-                  acc_PaymentsMethods = PaymentMethodService.GetPaymentMethod(model.MethodId),
-                  aspnet_Users = userContext.CurrentASPUser,
-                  astra_Clients =  userContext.GetClient(model.ClientId)
+                  PaymentMethod = PaymentMethodService.GetPaymentMethod(model.MethodId),
+                  User = _ctx.CurrentASPUser,
+                  Client = _ctx.GetClient(model.ClientId)
               };
-            model.UserId = userContext.CurrentUserId;
-            _repository.Add(_transaction);
-            //_repository.CreateTransaction(_transaction);
-            //_repository.CreateTransaction(model, PaymentMethodService.GetPaymentMethod(model.MethodId));
+            _repository.CreateTransaction(_transaction);
         }
 
         #endregion

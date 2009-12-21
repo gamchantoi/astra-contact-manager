@@ -13,7 +13,7 @@ namespace ContactManager.Users.Controllers
 
         public ActionResult Index(Guid id)
         {
-            var client = _entities.ClientSet.Where(c => c.UserId == id).FirstOrDefault();
+            var client = _entities.Clients.Where(c => c.UserId == id).FirstOrDefault();
             //client.astra_ClientsDetailsReference.Load();
             //client.aspnet_UsersReference.Load();
             //TempData["ClientForDetails"] = client;
@@ -28,7 +28,7 @@ namespace ContactManager.Users.Controllers
 
         public ActionResult Create(Guid userId)
         {
-            var client = _entities.ClientSet.Where(c => c.UserId == userId).FirstOrDefault();
+            var client = _entities.Clients.Where(c => c.UserId == userId).FirstOrDefault();
             FillViewData(client);
             return View();
         }
@@ -39,7 +39,7 @@ namespace ContactManager.Users.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(ClientDetail detail, Address adderess, Contract contract, Guid UserId)
         {
-            var client = _entities.ClientSet.Where(c => c.UserId == UserId).FirstOrDefault();
+            var client = _entities.Clients.Where(c => c.UserId == UserId).FirstOrDefault();
             try
             {
                 detail.LastUpdatedDate = DateTime.Now;
@@ -70,7 +70,7 @@ namespace ContactManager.Users.Controllers
 
         public ActionResult Edit(Guid userId)
         {
-            var client = _entities.ClientSet.Where(c => c.UserId == userId).FirstOrDefault();
+            var client = _entities.Clients.Where(c => c.UserId == userId).FirstOrDefault();
             client.LoadDetailsReferences();
             //var client = TempData["ClientForDetails"] as Client;
             return View(client);
@@ -82,7 +82,7 @@ namespace ContactManager.Users.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Edit(ClientDetail detail, Address adderess, Contract contract, Guid UserId)
         {
-            var client = _entities.ClientSet.Where(c => c.UserId == UserId).FirstOrDefault();
+            var client = _entities.Clients.Where(c => c.UserId == UserId).FirstOrDefault();
             client.LoadDetailsReferences();
             try
             {

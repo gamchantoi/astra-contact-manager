@@ -27,7 +27,7 @@ namespace ContactManager.ObjectContextManagement
                     {
                         HttpContext.Current.Items.Add(ocKey, new T());
 
-                        System.Diagnostics.Debug.WriteLine("AspNetObjectContextManager: Created new NorthwindObjectContext");
+                        System.Diagnostics.Debug.WriteLine("AspNetObjectContextManager: Created new AstraObjectContext");
                     }
                 }
                 return HttpContext.Current.Items[ocKey] as T;

@@ -1,5 +1,4 @@
 using System.Web.Mvc;
-using ContactManager.Hosts.Helpers;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
 using System.Collections.Generic;
@@ -13,13 +12,13 @@ namespace ContactManager.PPP.Controllers
     [HandleError]
     public class ProfileController : Controller
     {
-        private readonly DropDownHelper _ddhelper = new DropDownHelper();
-        private readonly HostHelper _uhelper = new HostHelper();
+        private readonly DropDownHelper _ddhelper;
         private readonly IProfileService _service;
         private readonly ISshProfileService _sshService;
 
         public ProfileController()
         {
+            _ddhelper = new DropDownHelper();
             IValidationDictionary validationDictionary = new ModelStateWrapper(ModelState);
             _service = new ProfileService(validationDictionary);
             _sshService = new SshProfileService(validationDictionary);
@@ -50,7 +49,7 @@ namespace ContactManager.PPP.Controllers
         {
             if (_service.CreateProfile(profile))
             {
-                var result = _sshService.CreatePPPProfile(profile.ProfileId);
+                _sshService.CreatePPPProfile(profile.ProfileId);
                 return View("Index", PrepareIndex());
             }
             ViewData["Pools"] = _ddhelper.GetPools(null);
@@ -74,9 +73,7 @@ namespace ContactManager.PPP.Controllers
         {
             if (_service.EditProfile(profile))
             {
-                _sshService.Connect(_uhelper.GetCurrentHost());
-                var result = _sshService.EditPPPProfile(profile.ProfileId);
-                _sshService.Disconnect();
+                _sshService.EditPPPProfile(profile.ProfileId);
                 return View("Index", PrepareIndex());
             }
             return View(profile);
@@ -88,9 +85,7 @@ namespace ContactManager.PPP.Controllers
             var profile = _service.GetProfile(id);
             if (_service.DeleteProfile(id))
             {
-                _sshService.Connect(_uhelper.GetCurrentHost());
-                var result = _sshService.DeletePPPProfile(profile.Name);
-                _sshService.Disconnect();
+                _sshService.DeletePPPProfile(profile.Name);
             }
 
             return View("Index", PrepareIndex());

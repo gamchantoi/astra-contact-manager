@@ -20,18 +20,15 @@ namespace ContactManager.Users.Services
         private const string PATTERN = @"[\(*\)*\[*\]*]";
 
         #region Constructors
-        public UserFasade(IValidationDictionary validationDictionary)
-            : this(validationDictionary, new AstraEntities())
-        { }
 
-        public UserFasade(IValidationDictionary validationDictionary, AstraEntities entities)
+        public UserFasade(IValidationDictionary validationDictionary)
         {
-            Entities = entities;
+            //Entities = entities;
             _validationDictionary = validationDictionary;
-            MembershipService = new MembershipService(Entities);
-            ClientService = new ClientService(validationDictionary, Entities);
-            _pppSecretService = new SecretService(validationDictionary, Entities);
-            LoadMoneyService = new LoadMoneyService(validationDictionary, Entities);
+            UserService = new UserService(validationDictionary);
+            ClientService = new ClientService(validationDictionary);
+            _pppSecretService = new SecretService(validationDictionary);
+            LoadMoneyService = new LoadMoneyService(validationDictionary);
         }
 
         #endregion
@@ -79,9 +76,9 @@ namespace ContactManager.Users.Services
         #region IContactService Members
 
         public ILoadMoneyService LoadMoneyService { get; private set; }
-        public IMembershipService MembershipService { get; private set; }
+        public IUserService UserService { get; private set; }
         public IClientService ClientService { get; private set; }
-        public AstraEntities Entities { get; private set; }
+        //public AstraObjectContext ObjectContext { get; private set; }
 
         public bool CreateContact(Client client)
         {
@@ -92,7 +89,7 @@ namespace ContactManager.Users.Services
             // Database logic
             try
             {
-                MembershipService.CreateUser(client);
+                UserService.CreateUser(client);
                 ClientService.CreateClient(client);
                 if (client.Role.Equals("client"))
                     _pppSecretService.CreatePPPSecret(client);
@@ -116,7 +113,7 @@ namespace ContactManager.Users.Services
             // Database logic
             try
             {
-                MembershipService.CreateUser(client);
+                UserService.CreateUser(client);
                 ClientService.CreateClient(client);
                 pppSecret.UserId = client.UserId;
                 _pppSecretService.CreatePPPSecret(pppSecret);
@@ -133,7 +130,8 @@ namespace ContactManager.Users.Services
         {
             try
             {
-                if (id == new Guid(MembershipService.GetCurrentUser().ProviderUserKey.ToString()))
+                var ctx = new CurrentContext();
+                if (id.Equals(ctx.CurrentUserId))
                     throw new Exception("Can't delete current user.");
                 var client = ClientService.GetClient(id);
 
@@ -170,7 +168,7 @@ namespace ContactManager.Users.Services
             // Database logic
             try
             {
-                MembershipService.EditUser(client);
+                UserService.EditUser(client);
                 ClientService.EditClient(client);
                 if (client.Role.Equals("client"))
                 {
@@ -190,7 +188,7 @@ namespace ContactManager.Users.Services
         public bool EditContact(PPPSecret pppSecret)
         {
             var client = ClientService.BuildClient(pppSecret);
-            client.UserId = new Guid(MembershipService.GetUser(client.UserName).ProviderUserKey.ToString());
+            client.UserId = new Guid(UserService.GetUser(client.UserName).ProviderUserKey.ToString());
             // Validation logic
             if (!ValidateContact(client, false))
                 return false;
@@ -198,7 +196,7 @@ namespace ContactManager.Users.Services
             // Database logic
             try
             {
-                MembershipService.EditUser(client);
+                UserService.EditUser(client);
                 //_clientService.EditClient(client);
                 pppSecret.UserId = client.UserId;
                 _pppSecretService.EditPPPSecret(pppSecret);
@@ -214,8 +212,8 @@ namespace ContactManager.Users.Services
         public Client GetContact(Guid id)
         {
             var client = ClientService.GetClient(id);
-            var mUser = MembershipService.GetUser(id);
-            client.Role = MembershipService.GetRoleForUser(mUser.UserName);
+            var mUser = UserService.GetUser(id);
+            client.Role = UserService.GetRoleForUser(mUser.UserName);
             client.Password = mUser.GetPassword();
             client.Email = mUser.Email;
             client.UserName = mUser.UserName;
@@ -225,13 +223,13 @@ namespace ContactManager.Users.Services
 
         public string GetName(Guid id)
         {
-            return MembershipService.GetUser(id).UserName;
+            return UserService.GetUser(id).UserName;
         }
 
         public List<Client> ListContacts()
         {
             var clients = new List<Client>();
-            foreach (var user in MembershipService.ListUsers())
+            foreach (var user in UserService.ListUsers())
             {
                 user.astra_ClientsReference.Load();
                 Client client;
@@ -241,7 +239,7 @@ namespace ContactManager.Users.Services
                                      UserName = user.UserName
                                  };
                 client = user.astra_ClientsReference.Value;
-                client.Role = MembershipService.GetRoleForUser(user.UserName);
+                client.Role = UserService.GetRoleForUser(user.UserName);
                 client.UserName = user.UserName;
                 client.LoadReferences();
                 clients.Add(client);
@@ -257,7 +255,7 @@ namespace ContactManager.Users.Services
             {
                 client.aspnet_UsersReference.Load();
                 var name = client.aspnet_UsersReference.Value.UserName;
-                client.Role = MembershipService.GetRoleForUser(name);
+                client.Role = UserService.GetRoleForUser(name);
                 client.UserName = name;
                 client.LoadReferences();
 
@@ -288,7 +286,7 @@ namespace ContactManager.Users.Services
         public List<Client> ListContacts(string role)
         {
             var clients = new List<Client>();
-            var users = MembershipService.ListUsers(role);
+            var users = UserService.ListUsers(role);
             foreach (var user in users)
             {
                 user.astra_ClientsReference.Load();
@@ -303,8 +301,8 @@ namespace ContactManager.Users.Services
 
         public bool CanSynchronize(Guid id)
         {
-            var user = MembershipService.GetUser(id);
-            var role = MembershipService.GetRoleForUser(user.UserName);
+            var user = UserService.GetUser(id);
+            var role = UserService.GetRoleForUser(user.UserName);
             return role.Contains("client");
         }
 
@@ -312,7 +310,7 @@ namespace ContactManager.Users.Services
         {
             try
             {
-                MembershipService.ClearAllData();
+                UserService.ClearAllData();
             }
             catch (Exception ex)
             {

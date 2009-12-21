@@ -5,39 +5,39 @@ using ContactManager.Users.Interfaces;
 
 namespace ContactManager.Users.Models
 {
-    public class EntityStatusRepository : IStatusRepository
+    public class EntityStatusRepository : RepositoryBase<Status>, IStatusRepository
     {
-        private readonly AstraEntities _entities;
+        //private readonly AstraEntities _entities;
 
-        #region Constructors
-        public EntityStatusRepository() : this(new AstraEntities()) { }
+        //#region Constructors
+        //public EntityStatusRepository() : this(new AstraEntities()) { }
 
-        public EntityStatusRepository(AstraEntities entities)
-        {
-            _entities = entities;
-        }
-        #endregion
+        //public EntityStatusRepository(AstraEntities entities)
+        //{
+        //    _entities = entities;
+        //}
+        //#endregion
 
         public List<Status> ListStatuses()
         {
-            return _entities.StatusSet.ToList();
+            return ObjectContext.StatusSet.ToList();
         }
 
         private Status CreateStatus(Status status)
         {
-            _entities.AddToStatusSet(status);
-            _entities.SaveChanges();
+            ObjectContext.AddToStatusSet(status);
+            ObjectContext.SaveChanges();
             return status;
         }
 
         public Status GetStatus(int id)
         {
-            return _entities.StatusSet.Where(s => s.StatusId == id).FirstOrDefault();
+            return ObjectContext.StatusSet.Where(s => s.StatusId == id).FirstOrDefault();
         }
 
         public Status GetStatus(Statuses status)
         {
-            var _status = _entities.StatusSet.Where(s => s.Name.Equals(status.ToString())).FirstOrDefault() ??
+            var _status = ObjectContext.StatusSet.Where(s => s.Name.Equals(status.ToString())).FirstOrDefault() ??
                          CreateStatus(new Status
                                           {
                                               DisplayName = status.ToString(),
@@ -50,8 +50,8 @@ namespace ContactManager.Users.Models
         {
             var _status = GetStatus(status.StatusId);
             status.Name = _status.Name;
-            _entities.ApplyPropertyChanges(_status.EntityKey.EntitySetName, status);
-            _entities.SaveChanges();
+            ObjectContext.ApplyPropertyChanges(_status.EntityKey.EntitySetName, status);
+            ObjectContext.SaveChanges();
             return _status;
         }
     }

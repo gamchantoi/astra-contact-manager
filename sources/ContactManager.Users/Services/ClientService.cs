@@ -15,15 +15,10 @@ namespace ContactManager.Users.Services
 
         #region Constructors
         public ClientService(IValidationDictionary validationDictionary)
-            : this(validationDictionary, new AstraEntities())
-        { }
-
-        public ClientService(IValidationDictionary validationDictionary, 
-            AstraEntities entities)
         {
             _validationDictionary = validationDictionary;
-            _repository = new EntityClientRepository(entities);
-            _statusService = new StatusService(validationDictionary, entities);
+            _repository = new EntityClientRepository();
+            _statusService = new StatusService(validationDictionary);
         } 
         #endregion
 

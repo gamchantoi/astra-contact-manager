@@ -5,7 +5,7 @@ using System.Web.Security;
 
 namespace ContactManager.Models
 {
-    public class CurrentContext : RepositoryBase<ASPUser>
+    public class CurrentContext : RepositoryBase<User>
     {
         public Guid CurrentUserId
         {
@@ -15,12 +15,11 @@ namespace ContactManager.Models
             }
         }
 
-        public ASPUser CurrentASPUser
+        public User CurrentASPUser
         {
             get
             {
-                return ObjectContext.ASPUserSet.
-                    Where(u => u.UserId == CurrentUserId).FirstOrDefault();
+                return ObjectContext.Users.FirstOrDefault(u => u.UserId == CurrentUserId);
             }
         }
 
@@ -28,14 +27,20 @@ namespace ContactManager.Models
         {
             get
             {
-                return ObjectContext.ClientSet.
+                return ObjectContext.Clients.
                     Where(c => c.UserId == CurrentUserId).FirstOrDefault();
             }
         }
 
         public Client GetClient(Guid userId)
         {
-            return ObjectContext.ClientSet.Where(c => c.UserId == userId).FirstOrDefault();
+            return ObjectContext.Clients.FirstOrDefault(c => c.UserId == userId);
+        }
+
+        public Host GetCurrentHost()
+        {
+            var hostId = int.Parse(HttpContext.Current.Profile.GetPropertyValue("HostId").ToString());
+            return ObjectContext.HostSet.FirstOrDefault(h => h.HostId == hostId);
         }
 
     }

@@ -15,13 +15,9 @@ namespace ContactManager.Users.Services
 
         #region Constructors
         public StatusService(IValidationDictionary validationDictionary)
-            : this(validationDictionary, new AstraEntities())
-        { }
-
-        public StatusService(IValidationDictionary validationDictionary, AstraEntities entities)
         {
             _validationDictionary = validationDictionary;
-            _repository = new EntityStatusRepository(entities);
+            _repository = new EntityStatusRepository();
         }
         #endregion
 

@@ -5,8 +5,6 @@ namespace ContactManager.Accounts.Interfaces
 {
     interface IPaymentMethodRepository
     {
-        AstraEntities Entities { get; }
-
         List<PaymentMethod> ListPaymentMethods();
         void CreatePaymentMethod(PaymentMethod paymentMethod);
         PaymentMethod GetPaymentMethod(int id);
