@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using ContactManager.Clients;
+//using ContactManager.Clients;
 using ContactManager.Hosts.Helpers;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
@@ -12,6 +12,7 @@ using ContactManager.PPP.Models;
 using ContactManager.PPP.SSH;
 using ContactManager.Users.Interfaces;
 using ContactManager.Users.Services;
+using ContactManager.Users.Helpers;
 
 namespace ContactManager.Users.Controllers
 {
@@ -135,7 +136,7 @@ namespace ContactManager.Users.Controllers
         }
 
         private void FillViewData(Client user)
-        {
+        {                        // взяв з юзерів може бути з ппп
             var userHelper = new DropDownHelper();
             var pppHelper = new PPP.Helpers.DropDownHelper();
 

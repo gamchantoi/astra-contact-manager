@@ -9,7 +9,7 @@ namespace ContactManager.Models
         {
             get
             {
-                if (EntityKey == null) return UserName;
+                if (EntityKey == null) return string.Empty;
                 if(!aspnet_UsersReference.IsLoaded)
                     aspnet_UsersReference.Load();
                 return aspnet_UsersReference.Value.UserName;

@@ -12,7 +12,7 @@ namespace ContactManager.PPP.Intefaces
         bool DeletePool(string name);
         List<Pool> ListPools();
         ISSHRepository Repository { get; }
-        bool Connect(ContactManager.Models.Host host);
+        bool Connect();
         void Disconnect();
     }
 }

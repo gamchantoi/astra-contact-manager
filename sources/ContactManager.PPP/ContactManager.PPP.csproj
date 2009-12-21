@@ -64,18 +64,25 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ActiveConnectionsController.cs" />
     <Compile Include="Controllers\PoolController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DropDownHelper.cs" />
+    <Compile Include="Intefaces\IActiveConnections.cs" />
+    <Compile Include="Intefaces\IActiveConnectionsRepository.cs" />
+    <Compile Include="Intefaces\IActiveConnectionsService.cs" />
     <Compile Include="Intefaces\IPoolRepository.cs" />
     <Compile Include="Intefaces\IPoolService.cs" />
     <Compile Include="Intefaces\ISecretRepository.cs" />
     <Compile Include="Intefaces\ISecretService.cs" />
     <Compile Include="Intefaces\IProfileRepository.cs" />
     <Compile Include="Intefaces\IProfileService.cs" />
+    <Compile Include="Models\ActiveConnections.cs" />
+    <Compile Include="Models\ActiveConnectionsRepository.cs" />
+    <Compile Include="Models\ActiveConnectionsService.cs" />
     <Compile Include="Models\EntityPoolRepository.cs" />
     <Compile Include="Models\EntitySecretRepository.cs" />
     <Compile Include="Models\EntityProfileRepository.cs" />

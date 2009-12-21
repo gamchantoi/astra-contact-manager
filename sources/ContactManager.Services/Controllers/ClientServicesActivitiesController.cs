@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 
-namespace ContactManager.Controllers
+namespace ContactManager.Services.Controllers
 {
     public class ClientServicesActivitiesController : Controller
     {
