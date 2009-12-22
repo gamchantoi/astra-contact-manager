@@ -37,10 +37,31 @@ namespace ContactManager.Models
             return ObjectContext.Clients.FirstOrDefault(c => c.UserId == userId);
         }
 
+        public User GetUser(Guid userId)
+        {
+            return ObjectContext.Users.FirstOrDefault(c => c.UserId == userId);
+        }
+
         public Host GetCurrentHost()
         {
             var hostId = int.Parse(HttpContext.Current.Profile.GetPropertyValue("HostId").ToString());
             return ObjectContext.HostSet.FirstOrDefault(h => h.HostId == hostId);
+        }
+
+        public User GetSystemUser()
+        {
+            var user = Membership.GetUser("System");
+            if (user == null)
+            {
+                MembershipCreateStatus status;
+                var _user = Membership.Provider.CreateUser("System", "SystemUserPass", "", null, null, true, null, out status);
+
+                return status != MembershipCreateStatus.Success 
+                    ? null 
+                    : GetUser(new Guid(_user.ProviderUserKey.ToString()));
+            }
+
+            return GetUser(new Guid(user.ProviderUserKey.ToString()));
         }
 
     }
