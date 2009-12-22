@@ -216,8 +216,6 @@ namespace ContactManager.Users.Services
             client.Role = UserService.GetRoleForUser(mUser.UserName);
             client.Password = mUser.GetPassword();
             client.Email = mUser.Email;
-            client.UserName = mUser.UserName;
-            client.LoadReferences();
             return client;
         }
 
@@ -250,22 +248,12 @@ namespace ContactManager.Users.Services
         public List<Client> ListContacts(bool deleted)
         {
             var clients = ClientService.ListClients(deleted);
-            Client system = null;
             foreach (var client in clients)
             {
-                client.aspnet_UsersReference.Load();
-                var name = client.aspnet_UsersReference.Value.UserName;
-                client.Role = UserService.GetRoleForUser(name);
-                client.UserName = name;
-                client.LoadReferences();
-
-                if (client.UserName.Equals("system", StringComparison.CurrentCultureIgnoreCase))
-                {
-                    system = client;
-                }
+                //todo: lazy load role
+                client.Role = UserService.GetRoleForUser(client.UserName);
             }
-            if (system != null)
-                clients.Remove(system);
+        
             return clients;
         }
 

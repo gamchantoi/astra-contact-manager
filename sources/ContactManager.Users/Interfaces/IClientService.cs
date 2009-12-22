@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ContactManager.Models;
+using ContactManager.Users.ViewModels;
 
 namespace ContactManager.Users.Interfaces
 {
@@ -10,6 +11,7 @@ namespace ContactManager.Users.Interfaces
         bool DeleteClient(Guid id);
         bool EditClient(Client client);
         Client GetClient(Guid id);
+        ClientViewModel GetViewModel(Client client);
         Client BuildClient(PPPSecret secret);
         List<Client> ListClients(bool deleted);
     }

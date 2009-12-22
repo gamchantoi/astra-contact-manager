@@ -22,11 +22,11 @@
         </p>
         <p>
             FullName:
-            <%= Html.Encode(Model.FullName) %>
+            <%= Html.Encode(Model.GetFullName()) %>
         </p>
         <p>
             TariffName:
-            <%= Html.Encode(Model.ProfileName) %>
+            <%= Html.Encode(Model.GetProfileName()) %>
         </p>
     </fieldset>
 

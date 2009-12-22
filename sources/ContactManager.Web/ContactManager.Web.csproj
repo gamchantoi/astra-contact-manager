@@ -193,6 +193,8 @@
     <Content Include="Areas\Messages\Views\Message\Delete.aspx" />
     <Content Include="Areas\Messages\Views\Message\Details.aspx" />
     <Content Include="Areas\Messages\Web.config" />
+    <Content Include="Areas\Users\Views\Shared\DetailsUserControl.ascx" />
+    <Content Include="Areas\Users\Views\Shared\PPPSecretUserControl.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

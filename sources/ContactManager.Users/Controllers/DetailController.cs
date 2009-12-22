@@ -17,8 +17,8 @@ namespace ContactManager.Users.Controllers
             //client.astra_ClientsDetailsReference.Load();
             //client.aspnet_UsersReference.Load();
             //TempData["ClientForDetails"] = client;
-            client.astra_ClientsDetailsReference.Load();
-            if (client.astra_ClientsDetailsReference.Value == null)
+            client.ClientDetailsReference.Load();
+            if (client.ClientDetailsReference.Value == null)
                 return RedirectToAction("Create", new { userId = client.UserId });
             return RedirectToAction("Edit", new { userId = client.UserId });
         }
@@ -49,7 +49,7 @@ namespace ContactManager.Users.Controllers
                 _entities.AddToAddressSet(adderess);
                 _entities.AddToContractSet(contract);
 
-                client.astra_ClientsDetails = detail;
+                client.ClientDetails = detail;
                 client.astra_Addresses = adderess;
                 client.astra_Contracts = contract;
 
@@ -87,16 +87,16 @@ namespace ContactManager.Users.Controllers
             try
             {
                 //var det = _entities.ClientDetailSet.Where(d => d.DetailId == detail.DetailId).FirstOrDefault();
-                if (client.astra_ClientsDetailsReference.Value == null)
+                if (client.ClientDetailsReference.Value == null)
                 {
                     _entities.AddToClientDetailSet(detail);
-                    client.astra_ClientsDetails = detail;
+                    client.ClientDetails = detail;
                 }
                 else
                 {
-                    _entities.ApplyPropertyChanges(client.astra_ClientsDetailsReference.Value.EntityKey.EntitySetName, detail);
+                    _entities.ApplyPropertyChanges(client.ClientDetailsReference.Value.EntityKey.EntitySetName, detail);
                 }
-                client.astra_ClientsDetailsReference.Value.LastUpdatedDate = DateTime.Now;
+                client.ClientDetailsReference.Value.LastUpdatedDate = DateTime.Now;
                 _entities.SaveChanges();
 
                 //var addr = _entities.AddressSet.Where(a => a.AddressId == adderess.AddressId).FirstOrDefault();

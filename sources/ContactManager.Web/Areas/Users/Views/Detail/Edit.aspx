@@ -4,7 +4,7 @@
     <%= Html.ValidationSummary("Edit was unsuccessful. Please correct the errors and try again.") %>
     <% using (Html.BeginForm())
        {%>
-    <% var details = Model.astra_ClientsDetailsReference.Value == null ? new ContactManager.Models.ClientDetail() : Model.astra_ClientsDetailsReference.Value; %>
+    <% var details = Model.ClientDetailsReference.Value == null ? new ContactManager.Models.ClientDetail() : Model.ClientDetailsReference.Value; %>
     <% var address = Model.astra_AddressesReference.Value == null ? new ContactManager.Models.Address() : Model.astra_AddressesReference.Value; %>
     <% var contract = Model.astra_ContractsReference.Value == null ? new ContactManager.Models.Contract() : Model.astra_ContractsReference.Value; %>
     <%= Html.Hidden("DetailId", details.DetailId)%>
@@ -18,7 +18,7 @@
             <legend>Details</legend>
             <p>
                 <label for="FirstName">
-                    FirstName:</label>
+                    FirstName:</label> 
                 <%= Html.TextBox("FirstName", details.FirstName)%>
                 <%= Html.ValidationMessage("FirstName", "*") %>
             </p>

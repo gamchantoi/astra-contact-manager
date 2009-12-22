@@ -1,8 +1,6 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Client>" %>
-<%@ Import Namespace="ContactManager.Users.Services"%>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Users.ViewModels.ClientViewModel>" %>
 
-
-<%@ Import Namespace="ContactManager.Models" %>
+<%@ Import Namespace="ContactManager.Users.Services" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <script language="javascript" type="text/javascript" src="<%= Url.Content("~/Scripts/PasswordGenerator.js")%>"></script>
@@ -36,7 +34,7 @@
             <p>
                 <label for="Role">
                     Role:</label>
-                <%= Html.DropDownList("Role", (SelectList)ViewData["Roles"])%>
+                <%= Html.DropDownList("Role", Model.Roles)%>
                 <%= Html.ValidationMessage("Role", "*") %>
             </p>
             <%if (!Model.Role.Equals(Role.admin.ToString()))
@@ -44,7 +42,7 @@
             <p>
                 <label for="ProfileId">
                     Profile:</label>
-                <%= Html.DropDownList("ProfileId", (SelectList)ViewData["Profiles"])%>
+                <%= Html.DropDownList("ProfileId", Model.Profiles)%>
                 <%= Html.ValidationMessage("ProfileId", "*")%>
             </p>
             <%} %>
@@ -69,7 +67,7 @@
             <p>
                 <label for="Status">
                     Status:</label>
-                <%= Html.DropDownList("SecretStatus", (SelectList)ViewData["Statuses"])%>
+                <%= Html.DropDownList("SecretStatus", Model.Statuses)%>
                 <%= Html.ValidationMessage("SecretStatus", "*")%>
             </p>
             <p>
@@ -78,54 +76,8 @@
             </p>
             <% } %>
         </fieldset>
-        <%if (!Model.Role.Equals(Role.admin.ToString()))
-          {%>
-        <fieldset class="fields">
-            <legend>Identification</legend>
-            <% using (Html.BeginForm("UpdateSecret", "User"))
-               {%>
-            <%= Html.Hidden("UserId", Model.UserId)%>
-            <p>
-                <label for="LocalAddress">
-                    Local Address:</label>
-                <%= Html.TextBox("LocalAddress", Model.mkt_PPPSecretsReference.Value != null ? Model.mkt_PPPSecretsReference.Value.LocalAddress : "")%>
-                <%= Html.ValidationMessage("LocalAddress", "*")%>
-            </p>
-            <p>
-                <label for="RemoteAddress">
-                    Remote Address:</label>
-                <%= Html.TextBox("RemoteAddress", Model.mkt_PPPSecretsReference.Value != null ? Model.mkt_PPPSecretsReference.Value.RemoteAddress : "")%>
-                <%= Html.ValidationMessage("RemoteAddress", "*")%>
-            </p>
-            <p>
-                <label for="MACAddress">
-                    MAC Address:</label>
-                <%= Html.TextBox("MACAddress", Model.mkt_PPPSecretsReference.Value != null ? Model.mkt_PPPSecretsReference.Value.MACAddress : "")%>
-                <%= Html.ValidationMessage("MACAddress", "*")%>
-            </p>
-            <p>
-                <label for="DHCPAddress">
-                    DHCP Address:</label>
-                <%= Html.TextBox("DHCPAddress", Model.mkt_PPPSecretsReference.Value != null ? Model.mkt_PPPSecretsReference.Value.DHCPAddress : "")%>
-                <%= Html.ValidationMessage("DHCPAddress", "*")%>
-            </p>
-            <legend>System Services</legend>
-            <p>
-                <label for="SystemRealIP">
-                    Real IP Address:</label>
-                <%= Html.CheckBox("SystemRealIP", Model.mkt_PPPSecretsReference.Value != null ? Model.mkt_PPPSecretsReference.Value.SystemRealIP : false)%>
-            </p>
-            <p style="display: none;">
-                <label for="SystemStayOnline">
-                    Stay Online:</label>
-                <%= Html.CheckBox("SystemStayOnline", Model.mkt_PPPSecretsReference.Value != null ? Model.mkt_PPPSecretsReference.Value.SystemStayOnline : false)%>
-            </p>
-            <p>
-                <input name="button" type="submit" value="Update" />
-            </p>
-            <%} %>
-        </fieldset>
-        <%} %>
+        <%Html.RenderPartial("PPPSecretUserControl", Model); %>
+        <%Html.RenderPartial("DetailsUserControl", Model); %>
     </fieldset>
     <div>
         <%=Html.ActionLink("Back to List", "Index") %>

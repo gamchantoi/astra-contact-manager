@@ -34,7 +34,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Messages_astra_MessagesType", "astra_MessagesType", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.MessageType), "astra_Messages", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Message))]
 
 // Original file name:
-// Generation date: 12/22/2009 2:20:54 PM
+// Generation date: 12/22/2009 6:09:33 PM
 namespace ContactManager.Models
 {
     
@@ -1125,13 +1125,13 @@ namespace ContactManager.Models
         partial void OnLastUpdatedDateChanging(global::System.DateTime value);
         partial void OnLastUpdatedDateChanged();
         /// <summary>
-        /// There are no comments for aspnet_Users in the schema.
+        /// There are no comments for User in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "FK_astra_Clients_aspnet_Users", "aspnet_Users")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public User aspnet_Users
+        public User User
         {
             get
             {
@@ -1143,11 +1143,11 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for aspnet_Users in the schema.
+        /// There are no comments for User in the schema.
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<User> aspnet_UsersReference
+        public global::System.Data.Objects.DataClasses.EntityReference<User> UserReference
         {
             get
             {
@@ -1199,13 +1199,13 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for astra_ClientsDetails in the schema.
+        /// There are no comments for ClientDetails in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "FK_astra_Clients_astra_ClientsDetails", "astra_ClientsDetails")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public ClientDetail astra_ClientsDetails
+        public ClientDetail ClientDetails
         {
             get
             {
@@ -1217,11 +1217,11 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for astra_ClientsDetails in the schema.
+        /// There are no comments for ClientDetails in the schema.
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<ClientDetail> astra_ClientsDetailsReference
+        public global::System.Data.Objects.DataClasses.EntityReference<ClientDetail> ClientDetailsReference
         {
             get
             {

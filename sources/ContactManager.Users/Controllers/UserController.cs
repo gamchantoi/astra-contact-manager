@@ -74,8 +74,7 @@ namespace ContactManager.Users.Controllers
         {
             var client = _facade.GetContact(id);
             client.LoadClientServices();
-            FillViewData(client);
-            return View(client);
+            return View(FillViewData(client));
         }
 
         [Authorize(Roles = "admin")]
@@ -135,23 +134,26 @@ namespace ContactManager.Users.Controllers
             return View("Index", PrepareIndex(status));
         }
 
-        private void FillViewData(Client user)
-        {                        // взяв з юзерів може бути з ппп
+        private ClientViewModel FillViewData(Client client)
+        {
+            var viewModel = _facade.ClientService.GetViewModel(client);
+
             var userHelper = new DropDownHelper();
             var pppHelper = new PPP.Helpers.DropDownHelper();
 
-            if (user == null)
+            if (client == null)
             {
-                ViewData["Roles"] = userHelper.GetRoles("client");
-                ViewData["Profiles"] = pppHelper.GetProfiles(null);
-                ViewData["Statuses"] = _statusService.ListStatuses(null);
+                viewModel.Roles = userHelper.GetRoles("client");
+                viewModel.Profiles = pppHelper.GetProfiles(null);
+                viewModel.Statuses = _statusService.ListStatuses(null);
             }
             else
             {
-                ViewData["Roles"] = userHelper.GetRoles(user.Role);
-                ViewData["Profiles"] = pppHelper.GetProfiles(user.ProfileId);
-                ViewData["Statuses"] = _statusService.ListStatuses(user.StatusId);
+                viewModel.Roles = userHelper.GetRoles(client.Role);
+                viewModel.Profiles = pppHelper.GetProfiles(client.ProfileId);
+                viewModel.Statuses = _statusService.ListStatuses(client.StatusId);
             }
+            return viewModel;
         }
 
         [Authorize(Roles = "admin")]

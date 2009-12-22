@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Web.Mvc;
 using ContactManager.Models;
 
 namespace ContactManager.Users.ViewModels
@@ -17,6 +15,16 @@ namespace ContactManager.Users.ViewModels
         public string StatusDisplayName { get; set; }
         public string StatusName { get; set; }
 
-        //public Status Status { get; set; }
+        public string Password { get; set; }
+        public string Credit { get; set; }
+        public string Email { get; set; }
+        public string Comment { get; set; }
+
+        public PPPSecret PPPSecret { get; set; }
+        public ClientDetail ClientDetails { get; set; }
+
+        public SelectList Roles { get; set; }
+        public SelectList Profiles { get; set; }
+        public SelectList Statuses { get; set; }
     }
 }
