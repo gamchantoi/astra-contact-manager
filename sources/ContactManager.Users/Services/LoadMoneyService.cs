@@ -32,7 +32,7 @@ namespace ContactManager.Users.Services
                                 UserName = client.UserName,
                                 Balance = client.Balance,
                                 FullName = string.Format("{0} ({1})", client.FullName, client.UserName),
-                                LoadMethods = _transactionService.PaymentMethodService.ListPaymentMethods(null)
+                                LoadMethods = _transactionService.PaymentMethodService.SelectListPaymentMethods(null)
                             };
             return model;
         }

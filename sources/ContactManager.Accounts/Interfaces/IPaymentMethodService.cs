@@ -6,10 +6,10 @@ namespace ContactManager.Accounts.Interfaces
 {
     interface IPaymentMethodService
     {
-        List<PaymentMethod> ListPaymentMethods();
+        List<PaymentMethod> ListPaymentMethods(bool? visible);
         bool Create(PaymentMethod paymentMethod);
         PaymentMethod GetPaymentMethod(int id);
-        SelectList ListPaymentMethods(int? selectedId);
+        SelectList SelectListPaymentMethods(int? selectedId);
         bool EditPaymentMethod(PaymentMethod paymentMethod);
     }
 }

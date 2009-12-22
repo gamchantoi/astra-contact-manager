@@ -33,7 +33,7 @@
                 <%= Html.Encode(item.ClientUserName) %>
             </td>
             <td>
-                <%= Html.Encode(item.Sum) %>
+                <%= Html.Encode(String.Format("{0:F}", item.Sum)) %>
             </td>
             <td>
                 <%= Html.Encode(String.Format("{0:F}", item.Balance)) %>
