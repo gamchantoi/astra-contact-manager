@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using ContactManager.Accounts.Interfaces;
 using ContactManager.Models;
@@ -9,7 +10,7 @@ namespace ContactManager.Accounts.Models
     public class PaymentMethodService : IPaymentMethodService
     {
         private readonly IPaymentMethodRepository _paymentMethodRepository;
-        private IValidationDictionary _validationDictionary;
+        private readonly IValidationDictionary _validationDictionary;
 
         public PaymentMethodService(IValidationDictionary validationDictionary)
         {
@@ -29,8 +30,9 @@ namespace ContactManager.Accounts.Models
                 _paymentMethodRepository.CreatePaymentMethod(paymentMethod);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                _validationDictionary.AddError("_FORM", "Payment is not created. " + ex.Message);
                 return false;
             }
 
@@ -48,8 +50,9 @@ namespace ContactManager.Accounts.Models
                 _paymentMethodRepository.EditPaymentMethod(paymentMethod);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                _validationDictionary.AddError("_FORM", "Payment is not edited. " + ex.Message);
                 return false;
             }
         }

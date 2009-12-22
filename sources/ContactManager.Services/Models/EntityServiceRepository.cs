@@ -8,17 +8,6 @@ namespace ContactManager.Services.Models
 {
     public class EntityServiceRepository : RepositoryBase<Service>, IServiceRepository
     {
-        #region Constructors
-        public EntityServiceRepository(): this(new AstraEntities())
-        {          
-        }
-
-        public EntityServiceRepository(AstraEntities entities)
-        {
-            //Entities = entities;
-        }
-        #endregion
-
         #region IServiceRepository Members
 
         public List<Service> ListServices(Statuses? status)

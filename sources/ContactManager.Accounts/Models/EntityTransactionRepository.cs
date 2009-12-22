@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Objects.DataClasses;
 using System.Linq;
 using ContactManager.Accounts.Interfaces;
 using ContactManager.Models;
@@ -10,20 +9,6 @@ namespace ContactManager.Accounts.Models
 {
     public class EntityTransactionRepository : RepositoryBase<Transaction>, ITransactionRepository
     {
-        //#region Constructors
-        //public EntityTransactionRepository()
-        //{
-        //    Entities = new AstraEntities();
-        //}
-
-        //public EntityTransactionRepository(AstraEntities entities)
-        //{
-        //    Entities = entities;
-        //}
-        //#endregion
-
-        #region IAccountTransactionRepository Members
-
         public Transaction GetTransaction(LoadMoneyViewModel model)
         {
             return new Transaction
@@ -33,8 +18,6 @@ namespace ContactManager.Accounts.Models
                 Balance = model.Balance
             };
         }
-
-        //public AstraEntities Entities { get; private set; }
 
         public List<Transaction> ListTransaction()
         {
@@ -141,22 +124,6 @@ namespace ContactManager.Accounts.Models
             //}
         }
 
-        //public void CreateTransaction(LoadMoneyViewModel model, PaymentMethod method)
-        //{
-        //    var transaction = new Transaction
-        //          {
-        //              Sum = model.Sum,
-        //              Comment = model.Comment,
-        //              Balance = model.Balance,
-        //              //acc_PaymentsMethods = method,
-        //              Date = DateTime.Now,
-        //              Client = ObjectContext.Clients.Where(c => c.UserId == model.ClientId).FirstOrDefault(),
-        //              User = ObjectContext.Users.Where(u => u.UserId == model.UserId).FirstOrDefault()
-        //          };
-        //    ObjectContext.AddToTransactions(transaction);
-        //    ObjectContext.SaveChanges();
-        //}
-
         //private AccountTransactionMethod CreateSystemTransactionMethod(string name, string comment)
         //{
         //    var method = new AccountTransactionMethod
@@ -168,7 +135,5 @@ namespace ContactManager.Accounts.Models
         //    _entities.SaveChanges();
         //    return method;
         //}
-
-        #endregion
     }
 }
