@@ -717,7 +717,7 @@
           <EntitySet Name="SystemServiceSet" EntityType="AstraModel.SystemService" />
           <EntitySet Name="PoolSet" EntityType="AstraModel.Pool" />
           <EntitySet Name="ProfileSet" EntityType="AstraModel.Profile" />
-          <EntitySet Name="PPPSecretSet" EntityType="AstraModel.PPPSecret" />
+          <EntitySet Name="PPPSecrets" EntityType="AstraModel.PPPSecret" />
           <AssociationSet Name="FK_astra_Clients_aspnet_Users" Association="AstraModel.FK_astra_Clients_aspnet_Users">
             <End Role="aspnet_Users" EntitySet="Users" />
             <End Role="astra_Clients" EntitySet="Clients" />
@@ -744,7 +744,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_mkt_PPPSecrets_astra_Clients" Association="AstraModel.FK_mkt_PPPSecrets_astra_Clients">
             <End Role="astra_Clients" EntitySet="Clients" />
-            <End Role="mkt_PPPSecrets" EntitySet="PPPSecretSet" />
+            <End Role="mkt_PPPSecrets" EntitySet="PPPSecrets" />
           </AssociationSet>
           <AssociationSet Name="FK_mkt_PPPProfiles_mkt_IPPool" Association="AstraModel.FK_mkt_PPPProfiles_mkt_IPPool">
             <End Role="mkt_IPPools" EntitySet="PoolSet" />
@@ -752,7 +752,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_mkt_PPPSecrets_mkt_PPPProfiles" Association="AstraModel.FK_mkt_PPPSecrets_mkt_PPPProfiles">
             <End Role="mkt_PPPProfiles" EntitySet="ProfileSet" />
-            <End Role="mkt_PPPSecrets" EntitySet="PPPSecretSet" />
+            <End Role="mkt_PPPSecrets" EntitySet="PPPSecrets" />
           </AssociationSet>
           <AssociationSet Name="astra_ServicesInSystemServices" Association="AstraModel.astra_ServicesInSystemServices">
             <End Role="astra_Services" EntitySet="ServiceSet" />
@@ -845,9 +845,9 @@
           <NavigationProperty Name="astra_ClientsDetails" Relationship="AstraModel.FK_astra_Clients_astra_ClientsDetails" FromRole="astra_Clients" ToRole="astra_ClientsDetails" />
           <NavigationProperty Name="astra_Contracts" Relationship="AstraModel.FK_astra_Clients_astra_Contracts" FromRole="astra_Clients" ToRole="astra_Contracts" />
           <NavigationProperty Name="astra_Hosts" Relationship="AstraModel.FK_astra_Clients_astra_Hosts" FromRole="astra_Clients" ToRole="astra_Hosts" />
-          <NavigationProperty Name="mkt_PPPSecrets" Relationship="AstraModel.FK_mkt_PPPSecrets_astra_Clients" FromRole="astra_Clients" ToRole="mkt_PPPSecrets" />
+          <NavigationProperty Name="PPPSecret" Relationship="AstraModel.FK_mkt_PPPSecrets_astra_Clients" FromRole="astra_Clients" ToRole="mkt_PPPSecrets" />
           <NavigationProperty Name="acc_Transactions" Relationship="AstraModel.FK_acc_Transactions_astra_Clients" FromRole="Client" ToRole="acc_Transactions" />
-          <NavigationProperty Name="astra_Statuses" Relationship="AstraModel.FK_astra_Clients_astra_Statuses" FromRole="Client" ToRole="astra_Statuses" />
+          <NavigationProperty Name="Status" Relationship="AstraModel.FK_astra_Clients_astra_Statuses" FromRole="Client" ToRole="astra_Statuses" />
           <NavigationProperty Name="astra_ClientsInServices" Relationship="AstraModel.FK_astra_ClientsServicesActivities_astra_Clients1" FromRole="Client" ToRole="astra_ClientsInServices" />
           <NavigationProperty Name="astra_Messages" Relationship="AstraModel.FK_astra_Messages_astra_Clients" FromRole="Client" ToRole="astra_Messages" /></EntityType>
         <EntityType Name="ClientDetail">
@@ -933,9 +933,9 @@
           <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" />
           <Property Name="Comment" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="mkt_IPPools" Relationship="AstraModel.FK_mkt_PPPProfiles_mkt_IPPool" FromRole="mkt_PPPProfiles" ToRole="mkt_IPPools" />
-          <NavigationProperty Name="mkt_PPPSecrets" Relationship="AstraModel.FK_mkt_PPPSecrets_mkt_PPPProfiles" FromRole="mkt_PPPProfiles" ToRole="mkt_PPPSecrets" />
-          <NavigationProperty Name="acc_Transactions" Relationship="AstraModel.acc_ProfilesInTransactions" FromRole="Profile" ToRole="acc_Transactions" /></EntityType>
+          <NavigationProperty Name="IPPool" Relationship="AstraModel.FK_mkt_PPPProfiles_mkt_IPPool" FromRole="mkt_PPPProfiles" ToRole="mkt_IPPools" />
+          <NavigationProperty Name="PPPSecrets" Relationship="AstraModel.FK_mkt_PPPSecrets_mkt_PPPProfiles" FromRole="mkt_PPPProfiles" ToRole="mkt_PPPSecrets" />
+          <NavigationProperty Name="Transactions" Relationship="AstraModel.acc_ProfilesInTransactions" FromRole="Profile" ToRole="acc_Transactions" /></EntityType>
         <EntityType Name="PPPSecret">
           <Key>
             <PropertyRef Name="UserId" />
@@ -952,8 +952,8 @@
           <Property Name="LimitBytesIn" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
           <Property Name="LimitBytesOut" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
           <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="astra_Clients" Relationship="AstraModel.FK_mkt_PPPSecrets_astra_Clients" FromRole="mkt_PPPSecrets" ToRole="astra_Clients" />
-          <NavigationProperty Name="mkt_PPPProfiles" Relationship="AstraModel.FK_mkt_PPPSecrets_mkt_PPPProfiles" FromRole="mkt_PPPSecrets" ToRole="mkt_PPPProfiles" />
+          <NavigationProperty Name="Client" Relationship="AstraModel.FK_mkt_PPPSecrets_astra_Clients" FromRole="mkt_PPPSecrets" ToRole="astra_Clients" />
+          <NavigationProperty Name="Profile" Relationship="AstraModel.FK_mkt_PPPSecrets_mkt_PPPProfiles" FromRole="mkt_PPPSecrets" ToRole="mkt_PPPProfiles" />
           <Property Name="Name" Type="String" Nullable="true" />
           <Property Name="Password" Type="String" Nullable="true" />
           <Property Name="Disabled" Type="Boolean" Nullable="true" /></EntityType>
@@ -1039,7 +1039,7 @@
             <PropertyRef Name="StatusId" /></Key>
           <Property Name="StatusId" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <NavigationProperty Name="astra_Clients" Relationship="AstraModel.FK_astra_Clients_astra_Statuses" FromRole="astra_Statuses" ToRole="Client" />
+          <NavigationProperty Name="Clients" Relationship="AstraModel.FK_astra_Clients_astra_Statuses" FromRole="astra_Statuses" ToRole="Client" />
           <Property Name="DisplayName" Type="String" Nullable="false" /></EntityType>
         <EntityType Name="Street">
           <Key>
@@ -1227,7 +1227,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PPPSecretSet">
+          <EntitySetMapping Name="PPPSecrets">
             <EntityTypeMapping TypeName="IsTypeOf(AstraModel.PPPSecret)">
               <MappingFragment StoreEntitySet="mkt_PPPSecrets">
                 <ScalarProperty Name="Disabled" ColumnName="Disabled" />

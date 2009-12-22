@@ -34,7 +34,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Messages_astra_MessagesType", "astra_MessagesType", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.MessageType), "astra_Messages", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Message))]
 
 // Original file name:
-// Generation date: 12/22/2009 1:30:17 AM
+// Generation date: 12/22/2009 2:20:54 PM
 namespace ContactManager.Models
 {
     
@@ -219,20 +219,20 @@ namespace ContactManager.Models
         }
         private global::System.Data.Objects.ObjectQuery<Profile> _ProfileSet;
         /// <summary>
-        /// There are no comments for PPPSecretSet in the schema.
+        /// There are no comments for PPPSecrets in the schema.
         /// </summary>
-        public global::System.Data.Objects.ObjectQuery<PPPSecret> PPPSecretSet
+        public global::System.Data.Objects.ObjectQuery<PPPSecret> PPPSecrets
         {
             get
             {
-                if ((this._PPPSecretSet == null))
+                if ((this._PPPSecrets == null))
                 {
-                    this._PPPSecretSet = base.CreateQuery<PPPSecret>("[PPPSecretSet]");
+                    this._PPPSecrets = base.CreateQuery<PPPSecret>("[PPPSecrets]");
                 }
-                return this._PPPSecretSet;
+                return this._PPPSecrets;
             }
         }
-        private global::System.Data.Objects.ObjectQuery<PPPSecret> _PPPSecretSet;
+        private global::System.Data.Objects.ObjectQuery<PPPSecret> _PPPSecrets;
         /// <summary>
         /// There are no comments for PaymentMethods in the schema.
         /// </summary>
@@ -409,11 +409,11 @@ namespace ContactManager.Models
             base.AddObject("ProfileSet", profile);
         }
         /// <summary>
-        /// There are no comments for PPPSecretSet in the schema.
+        /// There are no comments for PPPSecrets in the schema.
         /// </summary>
-        public void AddToPPPSecretSet(PPPSecret pPPSecret)
+        public void AddToPPPSecrets(PPPSecret pPPSecret)
         {
-            base.AddObject("PPPSecretSet", pPPSecret);
+            base.AddObject("PPPSecrets", pPPSecret);
         }
         /// <summary>
         /// There are no comments for PaymentMethods in the schema.
@@ -1310,13 +1310,13 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for mkt_PPPSecrets in the schema.
+        /// There are no comments for PPPSecret in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "FK_mkt_PPPSecrets_astra_Clients", "mkt_PPPSecrets")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public PPPSecret mkt_PPPSecrets
+        public PPPSecret PPPSecret
         {
             get
             {
@@ -1328,11 +1328,11 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for mkt_PPPSecrets in the schema.
+        /// There are no comments for PPPSecret in the schema.
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<PPPSecret> mkt_PPPSecretsReference
+        public global::System.Data.Objects.DataClasses.EntityReference<PPPSecret> PPPSecretReference
         {
             get
             {
@@ -1368,13 +1368,13 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for astra_Statuses in the schema.
+        /// There are no comments for Status in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "FK_astra_Clients_astra_Statuses", "astra_Statuses")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public Status astra_Statuses
+        public Status Status
         {
             get
             {
@@ -1386,11 +1386,11 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for astra_Statuses in the schema.
+        /// There are no comments for Status in the schema.
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<Status> astra_StatusesReference
+        public global::System.Data.Objects.DataClasses.EntityReference<Status> StatusReference
         {
             get
             {
@@ -2789,13 +2789,13 @@ namespace ContactManager.Models
         partial void OnCommentChanging(string value);
         partial void OnCommentChanged();
         /// <summary>
-        /// There are no comments for mkt_IPPools in the schema.
+        /// There are no comments for IPPool in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "FK_mkt_PPPProfiles_mkt_IPPool", "mkt_IPPools")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public Pool mkt_IPPools
+        public Pool IPPool
         {
             get
             {
@@ -2807,11 +2807,11 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for mkt_IPPools in the schema.
+        /// There are no comments for IPPool in the schema.
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<Pool> mkt_IPPoolsReference
+        public global::System.Data.Objects.DataClasses.EntityReference<Pool> IPPoolReference
         {
             get
             {
@@ -2826,13 +2826,13 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for mkt_PPPSecrets in the schema.
+        /// There are no comments for PPPSecrets in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "FK_mkt_PPPSecrets_mkt_PPPProfiles", "mkt_PPPSecrets")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<PPPSecret> mkt_PPPSecrets
+        public global::System.Data.Objects.DataClasses.EntityCollection<PPPSecret> PPPSecrets
         {
             get
             {
@@ -2847,13 +2847,13 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for acc_Transactions in the schema.
+        /// There are no comments for Transactions in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "acc_ProfilesInTransactions", "acc_Transactions")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<Transaction> acc_Transactions
+        public global::System.Data.Objects.DataClasses.EntityCollection<Transaction> Transactions
         {
             get
             {
@@ -3237,13 +3237,13 @@ namespace ContactManager.Models
         partial void OnDisabledChanging(global::System.Nullable<bool> value);
         partial void OnDisabledChanged();
         /// <summary>
-        /// There are no comments for astra_Clients in the schema.
+        /// There are no comments for Client in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "FK_mkt_PPPSecrets_astra_Clients", "astra_Clients")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public Client astra_Clients
+        public Client Client
         {
             get
             {
@@ -3255,11 +3255,11 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for astra_Clients in the schema.
+        /// There are no comments for Client in the schema.
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<Client> astra_ClientsReference
+        public global::System.Data.Objects.DataClasses.EntityReference<Client> ClientReference
         {
             get
             {
@@ -3274,13 +3274,13 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for mkt_PPPProfiles in the schema.
+        /// There are no comments for Profile in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "FK_mkt_PPPSecrets_mkt_PPPProfiles", "mkt_PPPProfiles")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public Profile mkt_PPPProfiles
+        public Profile Profile
         {
             get
             {
@@ -3292,11 +3292,11 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for mkt_PPPProfiles in the schema.
+        /// There are no comments for Profile in the schema.
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<Profile> mkt_PPPProfilesReference
+        public global::System.Data.Objects.DataClasses.EntityReference<Profile> ProfileReference
         {
             get
             {
@@ -4054,13 +4054,13 @@ namespace ContactManager.Models
         partial void OnDisplayNameChanging(string value);
         partial void OnDisplayNameChanged();
         /// <summary>
-        /// There are no comments for astra_Clients in the schema.
+        /// There are no comments for Clients in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "FK_astra_Clients_astra_Statuses", "Client")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<Client> astra_Clients
+        public global::System.Data.Objects.DataClasses.EntityCollection<Client> Clients
         {
             get
             {

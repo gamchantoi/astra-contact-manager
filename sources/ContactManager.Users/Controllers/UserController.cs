@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-//using ContactManager.Clients;
+using AutoMapper;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.Models.ViewModels;
@@ -11,6 +11,7 @@ using ContactManager.PPP.SSH;
 using ContactManager.Users.Interfaces;
 using ContactManager.Users.Services;
 using ContactManager.Users.Helpers;
+using ContactManager.Users.ViewModels;
 
 namespace ContactManager.Users.Controllers
 {
@@ -18,7 +19,7 @@ namespace ContactManager.Users.Controllers
     public class UserController : Controller
     {
         private readonly IValidationDictionary validationDictionary;
-        private readonly IUserFasade _service;
+        private readonly IUserFasade _facade;
         private readonly ISshSecretService _sshSecretService;
         private readonly CurrentContext _ctx;
         private readonly IStatusService _statusService;
@@ -27,7 +28,7 @@ namespace ContactManager.Users.Controllers
         {
             _ctx = new CurrentContext();
             validationDictionary = new ModelStateWrapper(ModelState);
-            _service = new UserFasade(validationDictionary);
+            _facade = new UserFasade(validationDictionary);
             _sshSecretService = new SshSecretService(validationDictionary, true);
             _statusService = new StatusService(validationDictionary);
         }
@@ -56,9 +57,9 @@ namespace ContactManager.Users.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(Client client)
         {
-            if (_service.CreateContact(client))
+            if (_facade.CreateContact(client))
             {
-                if (_service.CanSynchronize(client.UserId))
+                if (_facade.CanSynchronize(client.UserId))
                 {
                     _sshSecretService.CreatePPPSecret(client.UserId);
                 }
@@ -71,7 +72,7 @@ namespace ContactManager.Users.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult Edit(Guid id)
         {
-            var client = _service.GetContact(id);
+            var client = _facade.GetContact(id);
             client.LoadClientServices();
             FillViewData(client);
             return View(client);
@@ -85,10 +86,10 @@ namespace ContactManager.Users.Controllers
             {
                 return RedirectToAction("Index", "Detail", new { id = client.UserId });
             }
-            if (_service.EditContact(client))
+            if (_facade.EditContact(client))
             {
                 //todo: check client status for sync
-                if (_service.CanSynchronize(client.UserId))
+                if (_facade.CanSynchronize(client.UserId))
                 {
                     _sshSecretService.Connect(_ctx.GetCurrentHost());
                     var result = _sshSecretService.EditPPPSecret(client.UserId);
@@ -96,7 +97,7 @@ namespace ContactManager.Users.Controllers
                 }
                 return RedirectToAction("Index", PrepareIndex(false));
             }
-            var wClient = _service.GetContact(client.UserId);
+            var wClient = _facade.GetContact(client.UserId);
             FillViewData(wClient);
             return View(wClient);
         }
@@ -104,11 +105,11 @@ namespace ContactManager.Users.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult Status(Guid id, bool status)
         {
-            var name = _service.GetName(id);
-            var canSync = _service.CanSynchronize(id);
+            var name = _facade.GetName(id);
+            var canSync = _facade.CanSynchronize(id);
             if (status)
             {
-                if (_service.ActivateContact(id))
+                if (_facade.ActivateContact(id))
                 {
                     if (canSync)
                     {
@@ -120,7 +121,7 @@ namespace ContactManager.Users.Controllers
             }
             else
             {
-                if (_service.DeleteContact(id))
+                if (_facade.DeleteContact(id))
                 {
                     if (canSync)
                     {
@@ -156,43 +157,49 @@ namespace ContactManager.Users.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult DeleteAll()
         {
-            foreach (var user in _service.ListContacts("client"))
+            foreach (var user in _facade.ListContacts("client"))
             {
-                _service.DeleteContact(user.UserId);
+                _facade.DeleteContact(user.UserId);
             }
             return View("Index", PrepareIndex(false));
         }
 
-        private List<Client> PrepareIndex(bool deleted)
+        private ListClientViewModel PrepareIndex(bool deleted)
         {
-            var users = _service.ListContacts(deleted);
+            var _model = new ListClientViewModel();
+            var users = _facade.ListContacts(deleted);
             users.Sort((c1, c2) => c1.UserName.CompareTo(c2.UserName));
-            ViewData["TotalUsers"] = users.Count();
-            ViewData["TotalBalance"] = String.Format("{0:F}", users.Sum(u => u.Balance));
-            ViewData["Deleted"] = deleted;
-            return users;
+
+            Mapper.CreateMap<Client, ClientViewModel>();
+            var viewModelList = Mapper.Map<List<Client>, List<ClientViewModel>>(users);
+
+            _model.Clients = viewModelList;
+            _model.TotalUsers = users.Count();
+            _model.TotalBalance = users.Sum(u => u.Balance);
+            _model.Deleted = deleted;
+            return _model;
         }
 
         [Authorize(Roles = "admin")]
         public ActionResult ClearAllData()
         {
-            _service.DeleteAllData();
+            _facade.DeleteAllData();
             return View("Index", PrepareIndex(false));
         }
 
         [Authorize(Roles = "admin")]
         public ActionResult Load(Guid id)
         {
-            return View(_service.LoadMoneyService.GetViewModel(id));
+            return View(_facade.LoadMoneyService.GetViewModel(id));
         }
 
         [Authorize(Roles = "admin")]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Load(LoadMoneyViewModel model)
         {
-            if (_service.LoadMoneyService.LoadMoney(model))
+            if (_facade.LoadMoneyService.LoadMoney(model))
                 return View("Index", PrepareIndex(false));
-            var loadModel = _service.LoadMoneyService.GetViewModel(model.ClientId);
+            var loadModel = _facade.LoadMoneyService.GetViewModel(model.ClientId);
             return View(loadModel);
         }
 

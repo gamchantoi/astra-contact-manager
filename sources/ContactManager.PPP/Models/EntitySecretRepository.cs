@@ -11,20 +11,20 @@ namespace ContactManager.PPP.Models
 
         public PPPSecret CreatePPPSecret(PPPSecret secret)
         {
-            secret.astra_Clients = ObjectContext.Clients.Where(c => c.UserId == secret.UserId).FirstOrDefault();
+            secret.Client = ObjectContext.Clients.Where(c => c.UserId == secret.UserId).FirstOrDefault();
             if(secret.Profile != null)
-                secret.mkt_PPPProfiles = ObjectContext.ProfileSet.Where(p => p.Name == secret.Profile).FirstOrDefault();
+                secret.Profile = ObjectContext.ProfileSet.Where(p => p.Name == secret.Profile.Name).FirstOrDefault();
             else if(secret.ProfileId > 0)
-                secret.mkt_PPPProfiles = ObjectContext.ProfileSet.Where(p => p.ProfileId == secret.ProfileId).FirstOrDefault();
+                secret.Profile = ObjectContext.ProfileSet.Where(p => p.ProfileId == secret.ProfileId).FirstOrDefault();
             secret.LastUpdatedDate = DateTime.Now;
-            ObjectContext.AddToPPPSecretSet(secret);
+            ObjectContext.AddToPPPSecrets(secret);
             ObjectContext.SaveChanges();
             return secret;
         }
 
         public void DeletePPPSecret(Guid id)
         {
-            var secret = ObjectContext.PPPSecretSet.Where(s => s.UserId == id).FirstOrDefault();
+            var secret = ObjectContext.PPPSecrets.Where(s => s.UserId == id).FirstOrDefault();
             if (secret == null) return;
             ObjectContext.DeleteObject(secret);
             ObjectContext.SaveChanges();
@@ -32,17 +32,17 @@ namespace ContactManager.PPP.Models
 
         public PPPSecret EditPPPSecret(PPPSecret secret)
         {
-            var _secret = ObjectContext.PPPSecretSet.Where(s => s.UserId == secret.UserId).FirstOrDefault();
+            var _secret = ObjectContext.PPPSecrets.Where(s => s.UserId == secret.UserId).FirstOrDefault();
             if (_secret == null)
                 CreatePPPSecret(secret);
             else
             {
                 ObjectContext.ApplyPropertyChanges(_secret.EntityKey.EntitySetName, secret);
-                _secret.astra_Clients = ObjectContext.Clients.Where(c => c.UserId == secret.UserId).FirstOrDefault();
+                _secret.Client = ObjectContext.Clients.Where(c => c.UserId == secret.UserId).FirstOrDefault();
                 if (secret.ProfileId > 0)
-                    _secret.mkt_PPPProfiles = ObjectContext.ProfileSet.Where(p => p.ProfileId == secret.ProfileId).FirstOrDefault();
-                else if (!string.IsNullOrEmpty(secret.Profile))
-                    _secret.mkt_PPPProfiles = ObjectContext.ProfileSet.Where(p => p.Name == secret.Profile).FirstOrDefault();
+                    _secret.Profile = ObjectContext.ProfileSet.Where(p => p.ProfileId == secret.ProfileId).FirstOrDefault();
+                else if (!string.IsNullOrEmpty(secret.Profile.Name))
+                    _secret.Profile = ObjectContext.ProfileSet.Where(p => p.Name == secret.Profile.Name).FirstOrDefault();
                 _secret.LastUpdatedDate = DateTime.Now;
                 ObjectContext.SaveChanges();
             }
@@ -51,13 +51,13 @@ namespace ContactManager.PPP.Models
 
         public PPPSecret GetPPPSecret(Guid id)
         {
-            var secret = ObjectContext.PPPSecretSet.Where(s => s.UserId == id).FirstOrDefault();
+            var secret = ObjectContext.PPPSecrets.Where(s => s.UserId == id).FirstOrDefault();
             if (secret == null)
                 return null;
-            secret.mkt_PPPProfilesReference.Load();
-            if (secret.mkt_PPPProfilesReference.Value == null)
+            secret.ProfileReference.Load();
+            if (secret.ProfileReference.Value == null)
                 return secret;
-            secret.Profile = secret.mkt_PPPProfilesReference.Value.Name;
+            //secret.Profile = secret.ProfileReference.Value.Name;
             return secret;
         }
 

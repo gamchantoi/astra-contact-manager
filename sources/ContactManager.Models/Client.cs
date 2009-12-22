@@ -34,16 +34,16 @@ namespace ContactManager.Models
         {
             if (EntityKey == null) return;
 
-            mkt_PPPSecretsReference.Load();
-            var pppSecret = mkt_PPPSecretsReference.Value;
+            PPPSecretReference.Load();
+            var pppSecret = PPPSecretReference.Value;
             if (pppSecret != null)
             {
                 Comment = pppSecret.Comment;
                 if (pppSecret.Disabled.HasValue)
                     SecretStatus = pppSecret.Disabled.Value ? "Active" : "Disabled";
 
-                pppSecret.mkt_PPPProfilesReference.Load();
-                var profile = pppSecret.mkt_PPPProfilesReference.Value;
+                pppSecret.ProfileReference.Load();
+                var profile = pppSecret.ProfileReference.Value;
                 if (profile != null)
                 {
                     ProfileId = profile.ProfileId;
@@ -79,9 +79,8 @@ namespace ContactManager.Models
                     }
                 }
             }
-
-            astra_StatusesReference.Load();
-            StatusId = astra_StatusesReference.Value.StatusId;
+            StatusReference.Load();
+            StatusId = StatusReference.Value.StatusId;
         }
 
         public void LoadDetailsReferences()

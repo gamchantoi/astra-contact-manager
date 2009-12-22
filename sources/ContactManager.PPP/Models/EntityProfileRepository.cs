@@ -13,7 +13,7 @@ namespace ContactManager.PPP.Models
         public Profile CreateProfile(Profile profile)
         {
             profile.LastUpdatedDate = DateTime.Now;
-            profile.mkt_IPPools = ObjectContext.PoolSet.Where(p => p.PoolId == profile.PoolId).FirstOrDefault();
+            profile.IPPool = ObjectContext.PoolSet.Where(p => p.PoolId == profile.PoolId).FirstOrDefault();
             ObjectContext.AddToProfileSet(profile);
             ObjectContext.SaveChanges();
             return profile;
@@ -22,8 +22,8 @@ namespace ContactManager.PPP.Models
         public void DeleteProfile(int id)
         {
             var profile = ObjectContext.ProfileSet.Where(p => p.ProfileId == id).FirstOrDefault();
-            profile.mkt_PPPSecrets.Load();
-            var clientsCount = profile.mkt_PPPSecrets.Count;
+            profile.PPPSecrets.Load();
+            var clientsCount = profile.PPPSecrets.Count;
             if (clientsCount > 0)
             {
                 throw new Exception(string.Format("Profile '{0}' is assigned to {1} user(s), and can't be deleted.",
@@ -40,7 +40,7 @@ namespace ContactManager.PPP.Models
             ObjectContext.ApplyPropertyChanges(_profile.EntityKey.EntitySetName, profile);
             if (!profile.Cost.HasValue)
                 _profile.Cost = cost;
-            _profile.mkt_IPPools = ObjectContext.PoolSet.Where(p => p.PoolId == profile.PoolId).FirstOrDefault();
+            _profile.IPPool = ObjectContext.PoolSet.Where(p => p.PoolId == profile.PoolId).FirstOrDefault();
             _profile.LastUpdatedDate = DateTime.Now;
             ObjectContext.SaveChanges();
             return _profile;
@@ -49,11 +49,11 @@ namespace ContactManager.PPP.Models
         public Profile GetProfile(int id)
         {
             var profile = ObjectContext.ProfileSet.Where(p => p.ProfileId == id).FirstOrDefault();
-            profile.mkt_IPPoolsReference.Load();
-            if (profile.mkt_IPPoolsReference.Value != null)
+            profile.IPPoolReference.Load();
+            if (profile.IPPoolReference.Value != null)
             {
-                profile.PoolName = profile.mkt_IPPoolsReference.Value.Name;
-                profile.PoolId = profile.mkt_IPPoolsReference.Value.PoolId;
+                profile.PoolName = profile.IPPoolReference.Value.Name;
+                profile.PoolId = profile.IPPoolReference.Value.PoolId;
             }
             return profile;
         }
@@ -63,11 +63,11 @@ namespace ContactManager.PPP.Models
             var profile = ObjectContext.ProfileSet.Where(p => p.Name == name).FirstOrDefault();
             if (profile == null)
                 return null;
-            profile.mkt_IPPoolsReference.Load();
-            if (profile.mkt_IPPoolsReference.Value != null)
+            profile.IPPoolReference.Load();
+            if (profile.IPPoolReference.Value != null)
             {
-                profile.PoolName = profile.mkt_IPPoolsReference.Value.Name;
-                profile.PoolId = profile.mkt_IPPoolsReference.Value.PoolId;
+                profile.PoolName = profile.IPPoolReference.Value.Name;
+                profile.PoolId = profile.IPPoolReference.Value.PoolId;
             }
             return profile;
         }
@@ -99,11 +99,11 @@ namespace ContactManager.PPP.Models
         {
             foreach (var profile in ObjectContext.ProfileSet.ToList())
             {
-                profile.mkt_IPPoolsReference.Load();
-                if (profile.mkt_IPPoolsReference.Value != null)
+                profile.IPPoolReference.Load();
+                if (profile.IPPoolReference.Value != null)
                 {
-                    profile.PoolId = profile.mkt_IPPoolsReference.Value.PoolId;
-                    profile.PoolName = profile.mkt_IPPoolsReference.Value.Name;
+                    profile.PoolId = profile.IPPoolReference.Value.PoolId;
+                    profile.PoolName = profile.IPPoolReference.Value.Name;
                 }
             }
             return ObjectContext.ProfileSet.ToList();

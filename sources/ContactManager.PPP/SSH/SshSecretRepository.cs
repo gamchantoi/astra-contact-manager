@@ -25,7 +25,7 @@ namespace ContactManager.PPP.SSH
             var command = new StringBuilder("ppp secret add ");
             command.Append(Repository.BuildCommand("name", secret.Name))
                 .Append(Repository.BuildCommand("password", secret.Password))
-                .Append(Repository.BuildCommand("profile", secret.Profile))
+                .Append(Repository.BuildCommand("profile", secret.Profile.Name))
                 .Append(Repository.BuildCommand("service", secret.Service))
                 .Append(Repository.BuildCommand("local-address", secret.LocalAddress))
                 .Append(Repository.BuildCommand("remote-address", secret.RemoteAddress))
@@ -61,7 +61,7 @@ namespace ContactManager.PPP.SSH
             var command = new StringBuilder("ppp secret set ");
             command.Append(secret.Name + " ")
                 .Append(Repository.BuildCommand("password", secret.Password))
-                .Append(Repository.BuildCommand("profile", secret.Profile))
+                .Append(Repository.BuildCommand("profile", secret.Profile.Name))
                 .Append(Repository.BuildCommand("service", secret.Service))
                 .Append(Repository.BuildCommand("local-address", secret.LocalAddress))
                 .Append(Repository.BuildCommand("remote-address", secret.RemoteAddress))
@@ -87,7 +87,8 @@ namespace ContactManager.PPP.SSH
                 var properties = Repository.BuildProperties(val);
                 pppS.Name = Repository.GetValue(properties, "name");
                 pppS.Password = Repository.GetValue(properties, "password");
-                pppS.Profile = Repository.GetValue(properties, "profile");
+                pppS.Profile = new Profile 
+                    {Name = Repository.GetValue(properties, "profile")};
                 pppS.LocalAddress = Repository.GetValue(properties, "local-address");
                 pppS.RemoteAddress = Repository.GetValue(properties, "remote-address");
                 pppS.Disabled = bool.Parse(Repository.GetValue(properties, "status"));
