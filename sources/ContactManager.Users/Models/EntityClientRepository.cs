@@ -8,21 +8,7 @@ namespace ContactManager.Users.Models
 {
     public class EntityClientRepository : RepositoryBase<Client>, IClientRepository
     {
-        //#region Constructors
-        //public EntityClientRepository()
-        //{
-        //    Entities = new AstraEntities();
-        //}
-
-        //public EntityClientRepository(AstraEntities entities)
-        //{
-        //    Entities = entities;
-        //}
-        //#endregion
-
         #region IClientRepository Members
-
-        //public AstraEntities Entities { get; private set; }
 
         public Client CreateClient(Client client)
         {
@@ -42,7 +28,7 @@ namespace ContactManager.Users.Models
             //_entities.DeleteObject(client);
             //todo: add status seter
             //client.Status = 0;
-            ObjectContext.SaveChanges();
+            //ObjectContext.SaveChanges();
         }
 
         public Client EditClient(Client client)

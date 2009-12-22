@@ -10,9 +10,8 @@ namespace ContactManager.Accounts.Services
 {
     public class TransactionService : ITransactionService
     {
-        private IValidationDictionary _validationDictionary;
+        private readonly IValidationDictionary _validationDictionary;
         private readonly ITransactionRepository _repository;
-
 
         #region Constructors
         public TransactionService(IValidationDictionary validationDictionary)
@@ -42,19 +41,28 @@ namespace ContactManager.Accounts.Services
             _repository.ProcessClientPayment();
         }
 
-        public void CreateTransaction(LoadMoneyViewModel model)
+        public bool CreateTransaction(LoadMoneyViewModel model)
         {
-            var _ctx = new CurrentContext();
-            var _transaction = new Transaction
-              {
-                  Sum = model.Sum,
-                  Comment = model.Comment,
-                  Balance = model.Balance,
-                  PaymentMethod = PaymentMethodService.GetPaymentMethod(model.MethodId),
-                  User = _ctx.CurrentASPUser,
-                  Client = _ctx.GetClient(model.ClientId)
-              };
-            _repository.CreateTransaction(_transaction);
+            try
+            {
+                var _ctx = new CurrentContext();
+                var _transaction = new Transaction
+                  {
+                      Sum = model.Sum,
+                      Comment = model.Comment,
+                      Balance = model.Balance,
+                      PaymentMethod = PaymentMethodService.GetPaymentMethod(model.MethodId),
+                      User = _ctx.CurrentASPUser,
+                      Client = _ctx.GetClient(model.ClientId)
+                  };
+                _repository.CreateTransaction(_transaction);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _validationDictionary.AddError("_FORM", "Transaction is not saved. " + ex.Message);
+                return false;
+            }
         }
 
         #endregion

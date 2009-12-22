@@ -13,6 +13,6 @@ namespace ContactManager.Accounts.Interfaces
         PaymentMethodService PaymentMethodService { get; }
         void ProcessClientPayment();
 
-        void CreateTransaction(LoadMoneyViewModel model);
+        bool CreateTransaction(LoadMoneyViewModel model);
     }
 }

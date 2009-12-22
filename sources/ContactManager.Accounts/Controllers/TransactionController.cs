@@ -16,8 +16,7 @@ namespace ContactManager.Accounts.Controllers
 
         public TransactionController()
         {
-            IValidationDictionary validationDictionary = new ModelStateWrapper(ModelState);
-            _service = new TransactionService(validationDictionary);
+            _service = new TransactionService(new ModelStateWrapper(ModelState));
         }
 
         [Authorize]
