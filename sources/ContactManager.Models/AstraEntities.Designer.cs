@@ -34,7 +34,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Messages_astra_MessagesType", "astra_MessagesType", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.MessageType), "astra_Messages", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Message))]
 
 // Original file name:
-// Generation date: 12/22/2009 6:09:33 PM
+// Generation date: 12/23/2009 12:22:46 AM
 namespace ContactManager.Models
 {
     
@@ -84,20 +84,20 @@ namespace ContactManager.Models
         }
         private global::System.Data.Objects.ObjectQuery<User> _Users;
         /// <summary>
-        /// There are no comments for AddressSet in the schema.
+        /// There are no comments for Addresses in the schema.
         /// </summary>
-        public global::System.Data.Objects.ObjectQuery<Address> AddressSet
+        public global::System.Data.Objects.ObjectQuery<Address> Addresses
         {
             get
             {
-                if ((this._AddressSet == null))
+                if ((this._Addresses == null))
                 {
-                    this._AddressSet = base.CreateQuery<Address>("[AddressSet]");
+                    this._Addresses = base.CreateQuery<Address>("[Addresses]");
                 }
-                return this._AddressSet;
+                return this._Addresses;
             }
         }
-        private global::System.Data.Objects.ObjectQuery<Address> _AddressSet;
+        private global::System.Data.Objects.ObjectQuery<Address> _Addresses;
         /// <summary>
         /// There are no comments for Clients in the schema.
         /// </summary>
@@ -294,20 +294,20 @@ namespace ContactManager.Models
         }
         private global::System.Data.Objects.ObjectQuery<Status> _StatusSet;
         /// <summary>
-        /// There are no comments for StreetSet in the schema.
+        /// There are no comments for Streets in the schema.
         /// </summary>
-        public global::System.Data.Objects.ObjectQuery<Street> StreetSet
+        public global::System.Data.Objects.ObjectQuery<Street> Streets
         {
             get
             {
-                if ((this._StreetSet == null))
+                if ((this._Streets == null))
                 {
-                    this._StreetSet = base.CreateQuery<Street>("[StreetSet]");
+                    this._Streets = base.CreateQuery<Street>("[Streets]");
                 }
-                return this._StreetSet;
+                return this._Streets;
             }
         }
-        private global::System.Data.Objects.ObjectQuery<Street> _StreetSet;
+        private global::System.Data.Objects.ObjectQuery<Street> _Streets;
         /// <summary>
         /// There are no comments for Messages in the schema.
         /// </summary>
@@ -346,11 +346,11 @@ namespace ContactManager.Models
             base.AddObject("Users", user);
         }
         /// <summary>
-        /// There are no comments for AddressSet in the schema.
+        /// There are no comments for Addresses in the schema.
         /// </summary>
-        public void AddToAddressSet(Address address)
+        public void AddToAddresses(Address address)
         {
-            base.AddObject("AddressSet", address);
+            base.AddObject("Addresses", address);
         }
         /// <summary>
         /// There are no comments for Clients in the schema.
@@ -444,11 +444,11 @@ namespace ContactManager.Models
             base.AddObject("StatusSet", status);
         }
         /// <summary>
-        /// There are no comments for StreetSet in the schema.
+        /// There are no comments for Streets in the schema.
         /// </summary>
-        public void AddToStreetSet(Street street)
+        public void AddToStreets(Street street)
         {
-            base.AddObject("StreetSet", street);
+            base.AddObject("Streets", street);
         }
         /// <summary>
         /// There are no comments for Messages in the schema.
@@ -947,13 +947,13 @@ namespace ContactManager.Models
         partial void OnRoomChanging(string value);
         partial void OnRoomChanged();
         /// <summary>
-        /// There are no comments for astra_Clients in the schema.
+        /// There are no comments for Client in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "FK_astra_Clients_astra_Addresses", "astra_Clients")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<Client> astra_Clients
+        public global::System.Data.Objects.DataClasses.EntityCollection<Client> Client
         {
             get
             {
@@ -968,13 +968,13 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for astra_Streets in the schema.
+        /// There are no comments for Street in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "FK_astra_Addresses_astra_Streets", "astra_Streets")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public Street astra_Streets
+        public Street Street
         {
             get
             {
@@ -986,11 +986,11 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for astra_Streets in the schema.
+        /// There are no comments for Street in the schema.
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<Street> astra_StreetsReference
+        public global::System.Data.Objects.DataClasses.EntityReference<Street> StreetReference
         {
             get
             {
@@ -1162,13 +1162,13 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for astra_Addresses in the schema.
+        /// There are no comments for Address in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "FK_astra_Clients_astra_Addresses", "astra_Addresses")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public Address astra_Addresses
+        public Address Address
         {
             get
             {
@@ -1180,11 +1180,11 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for astra_Addresses in the schema.
+        /// There are no comments for Address in the schema.
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<Address> astra_AddressesReference
+        public global::System.Data.Objects.DataClasses.EntityReference<Address> AddressReference
         {
             get
             {
@@ -4170,13 +4170,13 @@ namespace ContactManager.Models
         partial void OnTagChanging(string value);
         partial void OnTagChanged();
         /// <summary>
-        /// There are no comments for astra_Addresses in the schema.
+        /// There are no comments for Address in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "FK_astra_Addresses_astra_Streets", "Address")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<Address> astra_Addresses
+        public global::System.Data.Objects.DataClasses.EntityCollection<Address> Address
         {
             get
             {

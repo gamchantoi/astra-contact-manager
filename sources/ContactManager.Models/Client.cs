@@ -119,7 +119,7 @@ namespace ContactManager.Models
             //    FullName = string.Format("{0} {1} {2}", astra_ClientsDetailsReference.Value.LastName,
             //        astra_ClientsDetailsReference.Value.FirstName,
             //        astra_ClientsDetailsReference.Value.MiddleName);
-            astra_AddressesReference.Load();
+            AddressReference.Load();
             astra_ContractsReference.Load();
         }
 

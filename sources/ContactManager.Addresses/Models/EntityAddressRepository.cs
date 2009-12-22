@@ -5,47 +5,35 @@ using ContactManager.Models;
 
 namespace ContactManager.Addresses.Models
 {
-    public class EntityAddressRepository
+    public class EntityAddressRepository : RepositoryBase<Address>
     {
-        private readonly AstraEntities _entities;
-
-        #region Constructors
-        public EntityAddressRepository() : this(new AstraEntities()) { }
-
-        public EntityAddressRepository(AstraEntities entities)
-        {
-            _entities = entities;
-        }
-        #endregion
-
         public List<Address> ListAddresses()
         {
-            return _entities.AddressSet.ToList();
+            return ObjectContext.Addresses.ToList();
         }
 
         public Address Create(Address address)
         {
-
-            _entities.AddToAddressSet(address);
+            ObjectContext.AddToAddresses(address);
             address.LastUpdatedDate = DateTime.Now;
-            _entities.SaveChanges();
+            ObjectContext.SaveChanges();
             return address;
         }
 
         public Address GetAddress(int id)
         {
-            return (from m in _entities.AddressSet where id == m.AddressId select m).FirstOrDefault();
+            return (from m in ObjectContext.Addresses where id == m.AddressId select m).FirstOrDefault();
         }
 
         public Address Edit(Address address)
         {
-            Address _address = GetAddress(address.AddressId);
+            var _address = GetAddress(address.AddressId);
             var _street =
-                (from m in _entities.StreetSet where m.StreetId == address.Street.StreetId select m).FirstOrDefault();
-            _address.astra_Streets = _street;
-            _entities.ApplyPropertyChanges(_address.EntityKey.EntitySetName, address);
+                (from m in ObjectContext.Streets where m.StreetId == address.Street.StreetId select m).FirstOrDefault();
+            _address.Street = _street;
+            ObjectContext.ApplyPropertyChanges(_address.EntityKey.EntitySetName, address);
             _address.LastUpdatedDate = DateTime.Now;
-            _entities.SaveChanges();
+            ObjectContext.SaveChanges();
             return _address;
         }
     }
