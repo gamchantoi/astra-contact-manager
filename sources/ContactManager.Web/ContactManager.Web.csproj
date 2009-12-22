@@ -195,6 +195,7 @@
     <Content Include="Areas\Messages\Web.config" />
     <Content Include="Areas\Users\Views\Shared\DetailsUserControl.ascx" />
     <Content Include="Areas\Users\Views\Shared\PPPSecretUserControl.ascx" />
+    <Content Include="Areas\Users\Views\Shared\ServicesUserControl.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -28,7 +28,9 @@ namespace ContactManager.Models
         public int MethodId { get; set; }
         public int StatusId { get; set; }
         public decimal Load { get; set; }
-        //public string ProfileName { get; set; }
+        
+        
+        public List<Service> Services { get; set; }
 
         public string GetProfileName()
         {
@@ -124,10 +126,12 @@ namespace ContactManager.Models
         public List<ClientInServices> LoadClientServices()
         {
             astra_ClientsInServices.Load();
+            if (Services == null) Services = new List<Service>();
             foreach (var item in astra_ClientsInServices)
             {
                 item.astra_ServicesReference.Load();
                 item.ServiceId = item.astra_ServicesReference.Value.ServiceId;
+                Services.Add(item.astra_Services);
             }
             return astra_ClientsInServices.ToList();
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using ContactManager.Models;
 
@@ -16,12 +17,13 @@ namespace ContactManager.Users.ViewModels
         public string StatusName { get; set; }
 
         public string Password { get; set; }
-        public string Credit { get; set; }
+        public decimal Credit { get; set; }
         public string Email { get; set; }
         public string Comment { get; set; }
 
         public PPPSecret PPPSecret { get; set; }
         public ClientDetail ClientDetails { get; set; }
+        public List<Service> Services { get; set; }
 
         public SelectList Roles { get; set; }
         public SelectList Profiles { get; set; }

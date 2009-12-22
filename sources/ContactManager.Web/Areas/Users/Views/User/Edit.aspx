@@ -16,13 +16,17 @@
             <% using (Html.BeginForm())
                {%>
             <%= Html.Hidden("UserId", Model.UserId) %>
-            <%= Html.Hidden("UserName", Model.UserName)%>
             <%= Html.Hidden("Balance", Model.Balance)%>
-            <%--<%= Html.Hidden("Status", Model.Status)%>--%>
             <p>
                 <label for="Balance">
                     Balance:</label>
                 <%= Html.Encode(String.Format("{0:F}", Model.Balance)) %>
+            </p>
+            <p>
+                <label for="UserName">
+                    UserName:</label>
+                <%= Html.TextBox("UserName", Model.UserName)%>
+                <%= Html.ValidationMessage("UserName", "*")%>
             </p>
             <p>
                 <label for="Password">
@@ -78,6 +82,7 @@
         </fieldset>
         <%Html.RenderPartial("PPPSecretUserControl", Model); %>
         <%Html.RenderPartial("DetailsUserControl", Model); %>
+        <%Html.RenderPartial("ServicesUserControl", Model); %>
     </fieldset>
     <div>
         <%=Html.ActionLink("Back to List", "Index") %>
