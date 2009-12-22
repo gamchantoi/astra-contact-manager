@@ -37,11 +37,12 @@ namespace ContactManager.Users.Models
 
         public Status GetStatus(Statuses status)
         {
-            var _status = ObjectContext.StatusSet.Where(s => s.Name.Equals(status.ToString())).FirstOrDefault() ??
+            var str = status.ToString();
+            var _status = ObjectContext.StatusSet.Where(s => s.Name.Equals(str)).FirstOrDefault() ??
                          CreateStatus(new Status
                                           {
-                                              DisplayName = status.ToString(),
-                                              Name = status.ToString()
+                                              DisplayName = str,
+                                              Name = str
                                           });
             return _status;
         }

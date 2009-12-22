@@ -75,7 +75,7 @@ namespace ContactManager.PPP.Models
             var secret = GetPPPSecret(client.UserId) ?? CreateSecret(client);
             secret.ProfileId = client.ProfileId;
             secret.Disabled = client.SecretStatus.Equals("Active");
-            secret.Profile = String.Empty;
+            //secret.Profile = String.Empty;
             secret.Comment = client.Comment;
             try
             {
@@ -97,9 +97,9 @@ namespace ContactManager.PPP.Models
             //secret.Name = user.UserName;
             //secret.Password = user.GetPassword();
 
-            secret.mkt_PPPProfilesReference.Load();
-            if (secret.mkt_PPPProfilesReference.Value != null)
-                secret.Profile = secret.mkt_PPPProfilesReference.Value.Name;
+            secret.ProfileReference.Load();
+            if (secret.ProfileReference.Value != null)
+                secret.Profile = secret.ProfileReference.Value;
             return secret;
         }
 

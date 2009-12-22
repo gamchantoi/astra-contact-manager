@@ -51,12 +51,10 @@ namespace ContactManager.Users.Models
             return ObjectContext.Clients.FirstOrDefault(c => c.UserId == id);
         }
 
-        public List<Client> ListClients(bool deleted)
+        public List<Client> ListClients(Status status)
         {
-            var _deleted = deleted ? 0 : 1;
-            //todo: add status selector
-            //return _entities.ClientSet.Where(c => c.Status == _deleted).ToList();
-            return ObjectContext.Clients.ToList();
+            status.Clients.Load();
+            return status.Clients.ToList();
         }
         
         #endregion

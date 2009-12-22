@@ -111,14 +111,6 @@ namespace ContactManager.Users.Services
         //    return Membership.GetUser(HttpContext.Current.User.Identity.Name);
         //}
 
-        //public MembershipUser GetSystemUser()
-        //{
-        //    var user = Membership.GetUser("System");
-        //    if (user == null)
-        //        CreateUser("System", "SystemUserPass", "");
-        //    return user;
-        //}
-
         public void EditUser(Client client)
         {
             var mUser = Membership.Provider.GetUser(client.UserId, true);

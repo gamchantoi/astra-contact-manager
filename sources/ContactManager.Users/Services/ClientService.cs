@@ -28,7 +28,7 @@ namespace ContactManager.Users.Services
         {
             try
             {
-                client.astra_Statuses = _statusService.GetStatus(client.StatusId);
+                client.Status = _statusService.GetStatus(client.StatusId);
                 _repository.CreateClient(client);
                 return true;
             }
@@ -84,7 +84,11 @@ namespace ContactManager.Users.Services
 
         public List<Client> ListClients(bool deleted)
         {
-            return _repository.ListClients(deleted);
+            var _status = deleted 
+                ? _statusService.GetStatus(Statuses.Inactive) 
+                : _statusService.GetStatus(Statuses.Active);
+
+            return _repository.ListClients(_status);
         }
 
         #endregion
