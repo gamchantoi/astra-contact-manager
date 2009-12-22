@@ -55,7 +55,7 @@
                     <%= Html.Encode(item.FullName)%>
                 </td>
                 <td>
-                    <%= Html.Action(item.ProfileName) %>
+                    <%= Html.Encode(item.ProfileName)%>
                 </td>
                 <td>
                     <%= Html.ActionLink("View", "ClientServices", "Service", new {area="Services", id=item.UserId}, null)%>

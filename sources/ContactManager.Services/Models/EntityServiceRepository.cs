@@ -121,8 +121,8 @@ namespace ContactManager.Services.Models
 
                 item.astra_ClientsReference.Load();
                 item.ClientId = item.astra_ClientsReference.Value.UserId;
-                item.astra_ClientsReference.Value.aspnet_UsersReference.Load();
-                item.ClientName = item.astra_ClientsReference.Value.aspnet_UsersReference.Value.UserName;
+                item.astra_ClientsReference.Value.UserReference.Load();
+                item.ClientName = item.astra_ClientsReference.Value.UserReference.Value.UserName;
                 
                 item.aspnet_UsersReference.Load();
                 item.UserId = item.aspnet_UsersReference.Value.UserId;

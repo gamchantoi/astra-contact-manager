@@ -840,9 +840,9 @@
           <Property Name="Balance" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="Credit" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="aspnet_Users" Relationship="AstraModel.FK_astra_Clients_aspnet_Users" FromRole="astra_Clients" ToRole="aspnet_Users" />
+          <NavigationProperty Name="User" Relationship="AstraModel.FK_astra_Clients_aspnet_Users" FromRole="astra_Clients" ToRole="aspnet_Users" />
           <NavigationProperty Name="astra_Addresses" Relationship="AstraModel.FK_astra_Clients_astra_Addresses" FromRole="astra_Clients" ToRole="astra_Addresses" />
-          <NavigationProperty Name="astra_ClientsDetails" Relationship="AstraModel.FK_astra_Clients_astra_ClientsDetails" FromRole="astra_Clients" ToRole="astra_ClientsDetails" />
+          <NavigationProperty Name="ClientDetails" Relationship="AstraModel.FK_astra_Clients_astra_ClientsDetails" FromRole="astra_Clients" ToRole="astra_ClientsDetails" />
           <NavigationProperty Name="astra_Contracts" Relationship="AstraModel.FK_astra_Clients_astra_Contracts" FromRole="astra_Clients" ToRole="astra_Contracts" />
           <NavigationProperty Name="astra_Hosts" Relationship="AstraModel.FK_astra_Clients_astra_Hosts" FromRole="astra_Clients" ToRole="astra_Hosts" />
           <NavigationProperty Name="PPPSecret" Relationship="AstraModel.FK_mkt_PPPSecrets_astra_Clients" FromRole="astra_Clients" ToRole="mkt_PPPSecrets" />
