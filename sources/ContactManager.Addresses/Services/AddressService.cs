@@ -16,14 +16,10 @@ namespace ContactManager.Addresses.Services
 
         #region Constructors
         public AddressService(IValidationDictionary validationDictionary)
-            : this(validationDictionary, new AstraEntities())
-        { }
-
-        public AddressService(IValidationDictionary validationDictionary, AstraEntities entities)
         {
             _validationDictionary = validationDictionary;
-            _addressRepository = new EntityAddressRepository(entities);
-            _streetRepository = new EntityStreetRepository(entities);
+            _addressRepository = new EntityAddressRepository();
+            _streetRepository = new EntityStreetRepository();
         }
         #endregion
 
@@ -53,7 +49,7 @@ namespace ContactManager.Addresses.Services
         {
             try
             {
-                address.astra_Streets = GetStreet(address.Street.StreetId);
+                address.Street = GetStreet(address.Street.StreetId);
                 _addressRepository.Create(address);
                 return true;
             }

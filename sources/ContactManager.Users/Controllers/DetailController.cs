@@ -46,11 +46,11 @@ namespace ContactManager.Users.Controllers
                 adderess.LastUpdatedDate = DateTime.Now;
 
                 _entities.AddToClientDetailSet(detail);
-                _entities.AddToAddressSet(adderess);
+                _entities.AddToAddresses(adderess);
                 _entities.AddToContractSet(contract);
 
                 client.ClientDetails = detail;
-                client.astra_Addresses = adderess;
+                client.Address = adderess;
                 client.astra_Contracts = contract;
 
                 _entities.SaveChanges();
@@ -100,17 +100,17 @@ namespace ContactManager.Users.Controllers
                 _entities.SaveChanges();
 
                 //var addr = _entities.AddressSet.Where(a => a.AddressId == adderess.AddressId).FirstOrDefault();
-                if (client.astra_AddressesReference.Value == null)
+                if (client.Address == null)
                 {
-                    _entities.AddToAddressSet(adderess);
-                    client.astra_Addresses = adderess;
+                    _entities.AddToAddresses(adderess);
+                    client.Address = adderess;
 
                 }
                 else
                 {
-                    _entities.ApplyPropertyChanges(client.astra_AddressesReference.Value.EntityKey.EntitySetName, adderess);
+                    _entities.ApplyPropertyChanges(client.AddressReference.Value.EntityKey.EntitySetName, adderess);
                 }
-                client.astra_AddressesReference.Value.LastUpdatedDate = DateTime.Now;
+                client.AddressReference.Value.LastUpdatedDate = DateTime.Now;
                 _entities.SaveChanges();
 
                 //var contr = _entities.ContractSet.Where(c => c.ContractId == contract.ContractId).FirstOrDefault();

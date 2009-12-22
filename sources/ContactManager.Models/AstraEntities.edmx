@@ -708,7 +708,7 @@
       <Schema Namespace="AstraModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
         <EntityContainer Name="AstraEntities">
           <EntitySet Name="Users" EntityType="AstraModel.User" />
-          <EntitySet Name="AddressSet" EntityType="AstraModel.Address" />
+          <EntitySet Name="Addresses" EntityType="AstraModel.Address" />
           <EntitySet Name="Clients" EntityType="AstraModel.Client" />
           <EntitySet Name="ClientDetailSet" EntityType="AstraModel.ClientDetail" />
           <EntitySet Name="ContractSet" EntityType="AstraModel.Contract" />
@@ -727,7 +727,7 @@
             <End Role="astra_Services" EntitySet="ServiceSet" />
           </AssociationSet>
           <AssociationSet Name="FK_astra_Clients_astra_Addresses" Association="AstraModel.FK_astra_Clients_astra_Addresses">
-            <End Role="astra_Addresses" EntitySet="AddressSet" />
+            <End Role="astra_Addresses" EntitySet="Addresses" />
             <End Role="astra_Clients" EntitySet="Clients" />
           </AssociationSet>
           <AssociationSet Name="FK_astra_Clients_astra_ClientsDetails" Association="AstraModel.FK_astra_Clients_astra_ClientsDetails">
@@ -762,7 +762,7 @@
           <EntitySet Name="Transactions" EntityType="AstraModel.Transaction" />
           <EntitySet Name="ClientInServicesSet" EntityType="AstraModel.ClientInServices" />
           <EntitySet Name="StatusSet" EntityType="AstraModel.Status" />
-          <EntitySet Name="StreetSet" EntityType="AstraModel.Street" />
+          <EntitySet Name="Streets" EntityType="AstraModel.Street" />
           <AssociationSet Name="FK_acc_Transactions_aspnet_Users" Association="AstraModel.FK_acc_Transactions_aspnet_Users">
             <End Role="ASPUser" EntitySet="Users" />
             <End Role="acc_Transactions" EntitySet="Transactions" /></AssociationSet>
@@ -773,8 +773,8 @@
             <End Role="ASPUser" EntitySet="Users" />
             <End Role="astra_ClientsInServices" EntitySet="ClientInServicesSet" /></AssociationSet>
           <AssociationSet Name="FK_astra_Addresses_astra_Streets" Association="AstraModel.FK_astra_Addresses_astra_Streets">
-            <End Role="astra_Streets" EntitySet="StreetSet" />
-            <End Role="Address" EntitySet="AddressSet" /></AssociationSet>
+            <End Role="astra_Streets" EntitySet="Streets" />
+            <End Role="Address" EntitySet="Addresses" /></AssociationSet>
           <AssociationSet Name="FK_astra_Clients_astra_Statuses" Association="AstraModel.FK_astra_Clients_astra_Statuses">
             <End Role="astra_Statuses" EntitySet="StatusSet" />
             <End Role="Client" EntitySet="Clients" /></AssociationSet>
@@ -829,9 +829,9 @@
           <Property Name="Building" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="Details" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="astra_Clients" Relationship="AstraModel.FK_astra_Clients_astra_Addresses" FromRole="astra_Addresses" ToRole="astra_Clients" />
+          <NavigationProperty Name="Client" Relationship="AstraModel.FK_astra_Clients_astra_Addresses" FromRole="astra_Addresses" ToRole="astra_Clients" />
           <Property Name="Room" Type="String" Nullable="true" />
-          <NavigationProperty Name="astra_Streets" Relationship="AstraModel.FK_astra_Addresses_astra_Streets" FromRole="Address" ToRole="astra_Streets" /></EntityType>
+          <NavigationProperty Name="Street" Relationship="AstraModel.FK_astra_Addresses_astra_Streets" FromRole="Address" ToRole="astra_Streets" /></EntityType>
         <EntityType Name="Client">
           <Key>
             <PropertyRef Name="UserId" />
@@ -841,7 +841,7 @@
           <Property Name="Credit" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="User" Relationship="AstraModel.FK_astra_Clients_aspnet_Users" FromRole="astra_Clients" ToRole="aspnet_Users" />
-          <NavigationProperty Name="astra_Addresses" Relationship="AstraModel.FK_astra_Clients_astra_Addresses" FromRole="astra_Clients" ToRole="astra_Addresses" />
+          <NavigationProperty Name="Address" Relationship="AstraModel.FK_astra_Clients_astra_Addresses" FromRole="astra_Clients" ToRole="astra_Addresses" />
           <NavigationProperty Name="ClientDetails" Relationship="AstraModel.FK_astra_Clients_astra_ClientsDetails" FromRole="astra_Clients" ToRole="astra_ClientsDetails" />
           <NavigationProperty Name="astra_Contracts" Relationship="AstraModel.FK_astra_Clients_astra_Contracts" FromRole="astra_Clients" ToRole="astra_Contracts" />
           <NavigationProperty Name="astra_Hosts" Relationship="AstraModel.FK_astra_Clients_astra_Hosts" FromRole="astra_Clients" ToRole="astra_Hosts" />
@@ -1047,7 +1047,7 @@
           <Property Name="StreetId" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="Tag" Type="String" Nullable="false" />
-          <NavigationProperty Name="astra_Addresses" Relationship="AstraModel.FK_astra_Addresses_astra_Streets" FromRole="astra_Streets" ToRole="Address" /></EntityType>
+          <NavigationProperty Name="Address" Relationship="AstraModel.FK_astra_Addresses_astra_Streets" FromRole="astra_Streets" ToRole="Address" /></EntityType>
         <Association Name="FK_acc_Transactions_aspnet_Users">
           <End Type="AstraModel.User" Role="ASPUser" Multiplicity="1" />
           <End Type="AstraModel.Transaction" Role="acc_Transactions" Multiplicity="*" /></Association>
@@ -1122,7 +1122,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AddressSet">
+          <EntitySetMapping Name="Addresses">
             <EntityTypeMapping TypeName="IsTypeOf(AstraModel.Address)">
               <MappingFragment StoreEntitySet="astra_Addresses">
                 <ScalarProperty Name="Room" ColumnName="Room" />
@@ -1360,7 +1360,7 @@
                 <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="StatusId" ColumnName="StatusId" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="StreetSet">
+          <EntitySetMapping Name="Streets">
             <EntityTypeMapping TypeName="IsTypeOf(AstraModel.Street)">
               <MappingFragment StoreEntitySet="astra_Streets">
                 <ScalarProperty Name="Tag" ColumnName="Tag" />
