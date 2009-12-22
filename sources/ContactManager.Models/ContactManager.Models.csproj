@@ -64,6 +64,7 @@
     <Compile Include="Client.cs" />
     <Compile Include="ClientInServices.cs" />
     <Compile Include="CurrentContext.cs" />
+    <Compile Include="Message.cs" />
     <Compile Include="Pool.cs" />
     <Compile Include="PPPSecret.cs" />
     <Compile Include="Profile.cs" />

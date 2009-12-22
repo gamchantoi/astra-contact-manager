@@ -186,6 +186,12 @@
     <Content Include="Areas\Services\Views\Service\ClientServices.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Messages\Views\MessageType\Create.aspx" />
+    <Content Include="Areas\Messages\Views\MessageType\Edit.aspx" />
+    <Content Include="Areas\Messages\Views\MessageType\Index.aspx" />
+    <Content Include="Areas\Messages\Views\Message\Create.aspx" />
+    <Content Include="Areas\Messages\Views\Message\Delete.aspx" />
+    <Content Include="Areas\Messages\Views\Message\Details.aspx" />
     <Content Include="Areas\Messages\Web.config" />
   </ItemGroup>
   <ItemGroup>
