@@ -20,7 +20,7 @@ namespace ContactManager.Accounts.Controllers
 
         public ActionResult Index()
         {
-            return View(_paymentMethodService.ListPaymentMethods());
+            return View(_paymentMethodService.ListPaymentMethods(null));
         }
 
         public ActionResult Create()

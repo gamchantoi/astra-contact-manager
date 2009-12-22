@@ -17,9 +17,9 @@ namespace ContactManager.Accounts.Models
             _paymentMethodRepository = new PaymentMethodRepository();
         }
 
-        public List<PaymentMethod> ListPaymentMethods()
+        public List<PaymentMethod> ListPaymentMethods(bool? visible)
         {
-            return _paymentMethodRepository.ListPaymentMethods();
+            return _paymentMethodRepository.ListPaymentMethods(visible);
         }
 
         public bool Create(PaymentMethod paymentMethod)
@@ -54,9 +54,9 @@ namespace ContactManager.Accounts.Models
             }
         }
 
-        public SelectList ListPaymentMethods(int? selectedId)
+        public SelectList SelectListPaymentMethods(int? selectedId)
         {
-            var list = ListPaymentMethods();
+            var list = ListPaymentMethods(true);
             if (selectedId.HasValue)
                 return new SelectList(list, "MethodId", "Name", selectedId.Value);
 

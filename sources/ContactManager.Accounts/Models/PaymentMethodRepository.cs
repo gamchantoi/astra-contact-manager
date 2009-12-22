@@ -7,8 +7,10 @@ namespace ContactManager.Accounts.Models
 {
     public class PaymentMethodRepository : RepositoryBase<PaymentMethod>, IPaymentMethodRepository
     {
-        public List<PaymentMethod> ListPaymentMethods()
+        public List<PaymentMethod> ListPaymentMethods(bool? visible)
         {
+            if(visible.HasValue)
+                return ObjectContext.PaymentMethods.Where(m => m.Visible == visible.Value).ToList();
             return ObjectContext.PaymentMethods.ToList();
         }
 

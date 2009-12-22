@@ -15,7 +15,7 @@ Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.ViewModels.LoadMoneyView
         </p>
         <p>
             <%= Html.LabelFor(model => model.Sum) %>
-            <%= Html.TextBoxFor(model => model.Sum)%>
+            <%= Html.TextBox("Sum", "")%>
             <%= Html.ValidationMessageFor(model => model.Sum)%>
         </p>
         <p>
