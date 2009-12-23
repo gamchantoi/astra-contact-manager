@@ -74,6 +74,7 @@ namespace ContactManager.Users.Controllers
         {
             var client = _facade.GetContact(id);
             client.LoadClientServices();
+            client.LoadAddressReferences();
             return View(FillViewData(client));
         }
 

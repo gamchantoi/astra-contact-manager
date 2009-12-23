@@ -843,7 +843,7 @@
           <NavigationProperty Name="User" Relationship="AstraModel.FK_astra_Clients_aspnet_Users" FromRole="astra_Clients" ToRole="aspnet_Users" />
           <NavigationProperty Name="Address" Relationship="AstraModel.FK_astra_Clients_astra_Addresses" FromRole="astra_Clients" ToRole="astra_Addresses" />
           <NavigationProperty Name="ClientDetails" Relationship="AstraModel.FK_astra_Clients_astra_ClientsDetails" FromRole="astra_Clients" ToRole="astra_ClientsDetails" />
-          <NavigationProperty Name="astra_Contracts" Relationship="AstraModel.FK_astra_Clients_astra_Contracts" FromRole="astra_Clients" ToRole="astra_Contracts" />
+          <NavigationProperty Name="Contract" Relationship="AstraModel.FK_astra_Clients_astra_Contracts" FromRole="astra_Clients" ToRole="astra_Contracts" />
           <NavigationProperty Name="astra_Hosts" Relationship="AstraModel.FK_astra_Clients_astra_Hosts" FromRole="astra_Clients" ToRole="astra_Hosts" />
           <NavigationProperty Name="PPPSecret" Relationship="AstraModel.FK_mkt_PPPSecrets_astra_Clients" FromRole="astra_Clients" ToRole="mkt_PPPSecrets" />
           <NavigationProperty Name="acc_Transactions" Relationship="AstraModel.FK_acc_Transactions_astra_Clients" FromRole="Client" ToRole="acc_Transactions" />
@@ -873,7 +873,7 @@
           <Property Name="Comment" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="CreateDate" Type="DateTime" />
           <Property Name="ExpiredDate" Type="DateTime" />
-          <NavigationProperty Name="astra_Clients" Relationship="AstraModel.FK_astra_Clients_astra_Contracts" FromRole="astra_Contracts" ToRole="astra_Clients" />
+          <NavigationProperty Name="Client" Relationship="AstraModel.FK_astra_Clients_astra_Contracts" FromRole="astra_Contracts" ToRole="astra_Clients" />
         </EntityType>
         <EntityType Name="Host">
           <Key>

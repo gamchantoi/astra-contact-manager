@@ -5,8 +5,8 @@
     <% using (Html.BeginForm())
        {%>
     <% var details = Model.ClientDetailsReference.Value == null ? new ContactManager.Models.ClientDetail() : Model.ClientDetailsReference.Value; %>
-    <% var address = Model.astra_AddressesReference.Value == null ? new ContactManager.Models.Address() : Model.astra_AddressesReference.Value; %>
-    <% var contract = Model.astra_ContractsReference.Value == null ? new ContactManager.Models.Contract() : Model.astra_ContractsReference.Value; %>
+    <% var address = Model.AddressReference.Value == null ? new ContactManager.Models.Address() : Model.AddressReference.Value; %>
+    <% var contract = Model.ContractReference.Value == null ? new ContactManager.Models.Contract() : Model.ContractReference.Value; %>
     <%= Html.Hidden("DetailId", details.DetailId)%>
     <%= Html.Hidden("AddressId", address.AddressId)%>
     <%= Html.Hidden("ContractId", contract.ContractId)%>
