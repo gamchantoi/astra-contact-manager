@@ -1,40 +1,41 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+<%@ Import Namespace="ContactManager.Web.Helpers"%>
 
 <asp:Content ID="changePasswordHead" ContentPlaceHolderID="head" runat="server">
-    <title>Change Password</title>
+    <title><%= Html.Resource("Web_Resources, Site_View_Account_ChangePassword_Title")%></title>
 </asp:Content>
 
 <asp:Content ID="changePasswordContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Change Password</h2>
+    <h2><%= Html.Resource("Web_Resources, Site_View_Account_ChangePassword_Title")%></h2>
     <p>
-        Use the form below to change your password. 
+        <%= Html.Resource("Web_Resources, Site_View_Account_ChangePassword_P1")%> 
     </p>
     <p>
-        New passwords are required to be a minimum of <%=Html.Encode(ViewData["PasswordLength"])%> characters in length.
+        <%= Html.Resource("Web_Resources, Site_View_Account_ChangePassword_P2")%><%--New passwords are required to be a minimum of <%=Html.Encode(ViewData["PasswordLength"])%> characters in length.--%>
     </p>
     <%= Html.ValidationSummary() %>
 
     <% using (Html.BeginForm()) { %>
         <div>
             <fieldset>
-                <legend>Account Information</legend>
+                <legend><%= Html.Resource("Web_Resources, Site_View_Account_ChangePassword_AccountInformation")%></legend>
                 <p>
-                    <label for="currentPassword">Current password:</label>
+                    <label for="currentPassword"><%= Html.Resource("Web_Resources, Site_View_Account_ChangePassword_CurrentPassword")%></label>
                     <%= Html.Password("currentPassword") %>
                     <%= Html.ValidationMessage("currentPassword") %>
                 </p>
                 <p>
-                    <label for="newPassword">New password:</label>
+                    <label for="newPassword"><%= Html.Resource("Web_Resources, Site_View_Account_ChangePassword_NewPassword")%></label>
                     <%= Html.Password("newPassword") %>
                     <%= Html.ValidationMessage("newPassword") %>
                 </p>
                 <p>
-                    <label for="confirmPassword">Confirm new password:</label>
+                    <label for="confirmPassword"><%= Html.Resource("Web_Resources, Site_View_Account_ChangePassword_ConfirmNewPassword")%></label>
                     <%= Html.Password("confirmPassword") %>
                     <%= Html.ValidationMessage("confirmPassword") %>
                 </p>
                 <p>
-                    <input type="submit" value="Change Password" />
+                    <input type="submit" value=<%= Html.Resource("Web_Resources, Site_View_Account_ChangePassword_ChangePassword")%> />
                 </p>
             </fieldset>
         </div>

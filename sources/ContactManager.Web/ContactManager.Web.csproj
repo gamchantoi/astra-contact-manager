@@ -64,6 +64,16 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\Web_Resources.designer.cs">
+      <DependentUpon>Web_Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Web_Resources.uk-ua.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Web_Resources.uk-ua.resx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -71,6 +81,7 @@
     </Compile>
     <Compile Include="Helpers\DropDownHelper.cs" />
     <Compile Include="Helpers\MenuItemHelper.cs" />
+    <Compile Include="Helpers\LocalizationExtensions.cs" />
     <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="Interfaces\IFormsAuthentication.cs" />
     <Compile Include="Models\FormsAuthenticationService.cs" />
@@ -198,6 +209,18 @@
     <Content Include="Areas\Users\Views\Shared\DetailsUserControl.ascx" />
     <Content Include="Areas\Users\Views\Shared\PPPSecretUserControl.ascx" />
     <Content Include="Areas\Users\Views\Shared\ServicesUserControl.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Web_Resources.uk-ua.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Web_Resources.uk-ua.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Web_Resources.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Web_Resources.designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
