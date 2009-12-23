@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Back to List" xml:space="preserve">
-    <value>Back to List</value>
-  </data>
-  <data name="Edit Message Type" xml:space="preserve">
-    <value>Edit Message Type</value>
-  </data>
   <data name="Messages_View_Create_BackToList" xml:space="preserve">
     <value>Back to List</value>
   </data>
@@ -230,6 +224,12 @@
   </data>
   <data name="Messages_View_MessageType_Create_Name" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="Messages_View_MessageType_Edit_BackToList" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+  <data name="Messages_View_MessageType_Edit_EditMessageType" xml:space="preserve">
+    <value>Edit Message Type</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
