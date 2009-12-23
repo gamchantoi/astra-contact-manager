@@ -36,9 +36,7 @@ namespace ContactManager.Users.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult Index(bool? deleted)
         {
-            if (deleted.HasValue)
-                return View(PrepareIndex(deleted.Value));
-            return View(PrepareIndex(false));
+            return deleted.HasValue ? View(PrepareIndex(deleted.Value)) : View(PrepareIndex(false));
         }
 
         [Authorize(Roles = "admin")]
@@ -73,6 +71,8 @@ namespace ContactManager.Users.Controllers
         public ActionResult Edit(Guid id)
         {
             var client = _facade.GetContact(id);
+            client.LoadStatusReferences();
+            client.LoadContractReferences();
             client.LoadClientServices();
             client.LoadAddressReferences();
             return View(FillViewData(client));
@@ -80,24 +80,18 @@ namespace ContactManager.Users.Controllers
 
         [Authorize(Roles = "admin")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Edit(Client client, string button)
+        public ActionResult Edit(ClientViewModel viewModel)
         {
-            if (button.Equals("Details"))
-            {
-                return RedirectToAction("Index", "Detail", new { id = client.UserId });
-            }
-            if (_facade.EditContact(client))
+            if (_facade.EditContact(viewModel))
             {
                 //todo: check client status for sync
-                if (_facade.CanSynchronize(client.UserId))
+                if (_facade.CanSynchronize(viewModel.UserId))
                 {
-                    _sshSecretService.Connect(_ctx.GetCurrentHost());
-                    var result = _sshSecretService.EditPPPSecret(client.UserId);
-                    _sshSecretService.Disconnect();
+                    _sshSecretService.EditPPPSecret(viewModel.UserId);
                 }
                 return RedirectToAction("Index", PrepareIndex(false));
             }
-            var wClient = _facade.GetContact(client.UserId);
+            var wClient = _facade.GetContact(viewModel.UserId);
             FillViewData(wClient);
             return View(wClient);
         }
@@ -152,7 +146,7 @@ namespace ContactManager.Users.Controllers
             {
                 viewModel.Roles = userHelper.GetRoles(client.Role);
                 viewModel.Profiles = pppHelper.GetProfiles(client.ProfileId);
-                viewModel.Statuses = _statusService.ListStatuses(client.StatusId);
+                viewModel.Statuses = _statusService.ListStatuses(client.Status.StatusId);
             }
             return viewModel;
         }

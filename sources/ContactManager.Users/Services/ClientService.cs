@@ -59,6 +59,7 @@ namespace ContactManager.Users.Services
         {
             try
             {
+                client.Status = _statusService.GetStatus(client.StatusId);
                 _repository.EditClient(client);
             }
             catch (Exception ex)

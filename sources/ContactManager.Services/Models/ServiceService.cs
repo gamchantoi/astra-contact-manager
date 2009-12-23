@@ -92,7 +92,7 @@ namespace ContactManager.Services.Models
 
         public bool UpdateSystemService(PPPSecret secret)
         {
-            UpdateSystemService(secret, REAL_IP, secret.SystemRealIP);
+            //UpdateSystemService(secret, REAL_IP, secret.SystemRealIP);
             //UpdateSystemService(secret, STAY_ONLINE, secret.SystemStayOnline);
 
             return true;

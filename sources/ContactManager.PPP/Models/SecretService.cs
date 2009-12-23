@@ -9,18 +9,19 @@ namespace ContactManager.PPP.Models
     {
         private readonly IValidationDictionary _validationDictionary;
         private readonly ISecretRepository _secretRepository;
-        private readonly IProfileService _profileService;
 
         #region Constructors
         public SecretService(IValidationDictionary validationDictionary)
         {
             _validationDictionary = validationDictionary;
             _secretRepository = new EntitySecretRepository();
-            _profileService = new ProfileService(validationDictionary);
+            ProfileService = new ProfileService(validationDictionary);
         }
         #endregion
 
         #region IPPPSecretService Members
+
+        public ProfileService ProfileService { get; set; }
 
         public bool CreatePPPSecret(PPPSecret secret)
         {
@@ -72,10 +73,11 @@ namespace ContactManager.PPP.Models
 
         public bool EditPPPSecret(Client client)
         {
+            var ctx = new CurrentContext();
             var secret = GetPPPSecret(client.UserId) ?? CreateSecret(client);
-            secret.ProfileId = client.ProfileId;
-            secret.Disabled = client.SecretStatus.Equals("Active");
-            //secret.Profile = String.Empty;
+            secret.Profile = ProfileService.GetProfile(client.ProfileId);
+            secret.Client = ctx.GetClient(client.UserId);
+            secret.Disabled = !client.Status.IsActive;
             secret.Comment = client.Comment;
             try
             {
@@ -90,16 +92,10 @@ namespace ContactManager.PPP.Models
 
         public PPPSecret GetPPPSecret(Guid id)
         {
-            //var user = _accountService.GetUser(id);
             var secret = _secretRepository.GetPPPSecret(id);
-            if (secret == null)
-                return null;
-            //secret.Name = user.UserName;
-            //secret.Password = user.GetPassword();
+            if (secret == null) return null;
 
             secret.ProfileReference.Load();
-            if (secret.ProfileReference.Value != null)
-                secret.Profile = secret.ProfileReference.Value;
             return secret;
         }
 

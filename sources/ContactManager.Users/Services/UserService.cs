@@ -111,20 +111,20 @@ namespace ContactManager.Users.Services
         //    return Membership.GetUser(HttpContext.Current.User.Identity.Name);
         //}
 
-        public void EditUser(Client client)
+        public void EditUser(User user)
         {
-            var mUser = Membership.Provider.GetUser(client.UserId, true);
+            var mUser = Membership.Provider.GetUser(user.UserId, true);
 
-            if (!String.IsNullOrEmpty(client.Email)) mUser.Email = client.Email;
+            if (!String.IsNullOrEmpty(user.Email)) mUser.Email = user.Email;
 
-            if (!String.Equals(mUser.GetPassword(), client.Password))
-                mUser.ChangePassword(mUser.GetPassword(), client.Password);
+            if (!String.Equals(mUser.GetPassword(), user.Password))
+                mUser.ChangePassword(mUser.GetPassword(), user.Password);
             Membership.Provider.UpdateUser(mUser);
 
-            if (!String.IsNullOrEmpty(client.Role) && !Roles.IsUserInRole(mUser.UserName, client.Role))
+            if (!String.IsNullOrEmpty(user.Role) && !Roles.IsUserInRole(mUser.UserName, user.Role))
             {
                 Roles.RemoveUserFromRoles(mUser.UserName, Roles.GetRolesForUser(mUser.UserName));
-                Roles.AddUserToRole(mUser.UserName, client.Role);
+                Roles.AddUserToRole(mUser.UserName, user.Role);
             }
         }
 

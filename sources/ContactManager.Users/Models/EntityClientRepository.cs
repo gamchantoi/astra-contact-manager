@@ -36,13 +36,9 @@ namespace ContactManager.Users.Models
             var _client = ObjectContext.Clients.Where(c => c.UserId == client.UserId).FirstOrDefault();
             if (_client == null)
                 return CreateClient(client);
-            else
-            {
-                //client.Balance = client.Balance + client.Load;
-                ObjectContext.ApplyPropertyChanges(_client.EntityKey.EntitySetName, client);
-                _client.LastUpdatedDate = DateTime.Now;
-                ObjectContext.SaveChanges();
-            }
+            ObjectContext.ApplyPropertyChanges(_client.EntityKey.EntitySetName, client);
+            _client.LastUpdatedDate = DateTime.Now;
+            ObjectContext.SaveChanges();
             return _client;
         }
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using ContactManager.Accounts.Interfaces;
-using ContactManager.Accounts.Services;
+using AutoMapper;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
 using System.Web.Security;
@@ -10,6 +9,7 @@ using ContactManager.PPP.Intefaces;
 using ContactManager.PPP.Models;
 using ContactManager.Users.Interfaces;
 using ContactManager.Users.Services;
+using ContactManager.Users.ViewModels;
 
 namespace ContactManager.Users.Services
 {
@@ -23,32 +23,32 @@ namespace ContactManager.Users.Services
 
         public UserFasade(IValidationDictionary validationDictionary)
         {
-            //Entities = entities;
             _validationDictionary = validationDictionary;
             UserService = new UserService(validationDictionary);
             ClientService = new ClientService(validationDictionary);
             _pppSecretService = new SecretService(validationDictionary);
             LoadMoneyService = new LoadMoneyService(validationDictionary);
+            StatusService = new StatusService(validationDictionary);
         }
 
         #endregion
 
         #region Validators
-        public bool ValidateContact(Client client, bool creatingUser)
+        public bool ValidateContact(ClientViewModel viewModel, bool creatingUser)
         {
-            bool isValid = true;
+            var isValid = true;
             if (creatingUser)
             {
-                var mUser = Membership.Provider.GetUser(client.UserName, false);
+                var mUser = Membership.Provider.GetUser(viewModel.UserName, false);
                 if (mUser != null)
                 {
-                    _validationDictionary.AddError("_FORM", "UserName " + client.UserName + " already exist.");
+                    _validationDictionary.AddError("_FORM", "UserName " + viewModel.UserName + " already exist.");
                     isValid = false;
                 }
             }
-            if (!ValidateField("UserName", client.UserName, client.UserName, true))
+            if (!ValidateField("UserName", viewModel.UserName, viewModel.UserName, true))
                 isValid = false;
-            if (!ValidateField("Password", client.Password, client.UserName, true))
+            if (!ValidateField("Password", viewModel.Password, viewModel.UserName, true))
                 isValid = false;
             return isValid;
         }
@@ -78,13 +78,13 @@ namespace ContactManager.Users.Services
         public ILoadMoneyService LoadMoneyService { get; private set; }
         public IUserService UserService { get; private set; }
         public IClientService ClientService { get; private set; }
-        //public AstraObjectContext ObjectContext { get; private set; }
+        public IStatusService StatusService { get; private set; }
 
         public bool CreateContact(Client client)
         {
             // Validation logic
-            if (!ValidateContact(client, true))
-                return false;
+            //if (!ValidateContact(client, true))
+            //return false;
 
             // Database logic
             try
@@ -107,8 +107,8 @@ namespace ContactManager.Users.Services
         {
             var client = ClientService.BuildClient(pppSecret);
             // Validation logic
-            if (!ValidateContact(client, true))
-                return false;
+            //if (!ValidateContact(client, true))
+            //    return false;
 
             // Database logic
             try
@@ -159,23 +159,19 @@ namespace ContactManager.Users.Services
             return true;
         }
 
-        public bool EditContact(Client client)
+        public bool EditContact(ClientViewModel viewModel)
         {
-            // Validation logic
-            if (!ValidateContact(client, false))
+            if (!ValidateContact(viewModel, false))
                 return false;
 
-            // Database logic
             try
             {
-                UserService.EditUser(client);
-                ClientService.EditClient(client);
-                if (client.Role.Equals("client"))
+                UserService.EditUser(BuildUser(viewModel));
+                ClientService.EditClient(BuildClient(viewModel));
+                if (viewModel.Role.Equals("client"))
                 {
-                    //TODO: activate client if balanse is > 0
-                    _pppSecretService.EditPPPSecret(client);
+                    _pppSecretService.EditPPPSecret(BuildSecret(viewModel));
                 }
-                //_transactionService.CreateTransaction(client);
             }
             catch (Exception ex)
             {
@@ -185,18 +181,41 @@ namespace ContactManager.Users.Services
             return true;
         }
 
+        private PPPSecret BuildSecret(ClientViewModel viewModel)
+        {
+            var secret = _pppSecretService.GetPPPSecret(viewModel.UserId);
+            secret.Client = ClientService.GetClient(viewModel.UserId); ;
+            secret.Profile = _pppSecretService.ProfileService.GetProfile(viewModel.ProfileId);
+            secret.Disabled = !StatusService.GetStatus(viewModel.StatusId).IsActive;
+            secret.Password = viewModel.Password;
+            secret.Comment = viewModel.Comment;
+            return secret;
+        }
+
+        private static Client BuildClient(ClientViewModel viewModel)
+        {
+            Mapper.CreateMap<ClientViewModel, Client>();
+            return Mapper.Map<ClientViewModel, Client>(viewModel);
+        }
+
+        private static User BuildUser(ClientViewModel viewModel)
+        {
+            Mapper.CreateMap<ClientViewModel, User>();
+            return Mapper.Map<ClientViewModel, User>(viewModel);
+        }
+
         public bool EditContact(PPPSecret pppSecret)
         {
             var client = ClientService.BuildClient(pppSecret);
             client.UserId = new Guid(UserService.GetUser(client.UserName).ProviderUserKey.ToString());
             // Validation logic
-            if (!ValidateContact(client, false))
-                return false;
+            //if (!ValidateContact(client, false))
+            //    return false;
 
             // Database logic
             try
             {
-                UserService.EditUser(client);
+                //UserService.EditUser(client);
                 //_clientService.EditClient(client);
                 pppSecret.UserId = client.UserId;
                 _pppSecretService.EditPPPSecret(pppSecret);
@@ -213,9 +232,12 @@ namespace ContactManager.Users.Services
         {
             var client = ClientService.GetClient(id);
             var mUser = UserService.GetUser(id);
+            var secret = _pppSecretService.GetPPPSecret(id);
             client.Role = UserService.GetRoleForUser(mUser.UserName);
             client.Password = mUser.GetPassword();
             client.Email = mUser.Email;
+            if (secret != null)
+                client.Comment = secret.Comment;
             return client;
         }
 
@@ -253,7 +275,7 @@ namespace ContactManager.Users.Services
                 //todo: lazy load role
                 client.Role = UserService.GetRoleForUser(client.UserName);
             }
-        
+
             return clients;
         }
 

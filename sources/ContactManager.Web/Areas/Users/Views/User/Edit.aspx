@@ -69,14 +69,13 @@
                 <%= Html.ValidationMessage("Comment", "*")%>
             </p>
             <p>
-                <label for="Status">
+                <label for="StatusId">
                     Status:</label>
-                <%= Html.DropDownList("SecretStatus", Model.Statuses)%>
-                <%= Html.ValidationMessage("SecretStatus", "*")%>
+                <%= Html.DropDownList("StatusId", Model.Statuses)%>
+                <%= Html.ValidationMessage("StatusId", "*")%>
             </p>
             <p>
                 <input name="button" type="submit" value="Save" />
-                <input name="button" type="submit" value="Details" />
             </p>
             <% } %>
         </fieldset>
