@@ -15,7 +15,7 @@ namespace ContactManager.Users.Interfaces
         bool DeleteUser(Guid id);
         bool ChangePassword(string userName, string oldPassword, string newPassword);
         string GetRoleForUser(string name);        
-        void EditUser(Client client);
+        void EditUser(User client);
 
         List<User> ListUsers(string role);
         List<User> ListUsers();

@@ -10,11 +10,11 @@ namespace ContactManager.Models
             get
             {
                 if (EntityKey == null) return string.Empty;
-                if(!UserReference.IsLoaded)
+                if (!UserReference.IsLoaded)
                     UserReference.Load();
                 return User.UserName;
 
-            } 
+            }
             set { }
         }
 
@@ -28,15 +28,15 @@ namespace ContactManager.Models
         public int MethodId { get; set; }
         public int StatusId { get; set; }
         public decimal Load { get; set; }
-        
-        
+
+
         public List<Service> Services { get; set; }
 
         public string GetProfileName()
         {
             if (EntityKey == null) return string.Empty;
 
-            if(!PPPSecretReference.IsLoaded)
+            if (!PPPSecretReference.IsLoaded)
                 PPPSecretReference.Load();
 
             if (PPPSecret != null && !PPPSecret.ProfileReference.IsLoaded)
@@ -50,10 +50,12 @@ namespace ContactManager.Models
         public string GetFullName()
         {
             if (EntityKey == null) return string.Empty;
-            ClientDetailsReference.Load();
+            if (!ClientDetailsReference.IsLoaded)
+                ClientDetailsReference.Load();
+
             var details = ClientDetailsReference.Value;
-            return details != null 
-                ? string.Format("{0} {1} {2}", details.LastName, details.FirstName, details.MiddleName) 
+            return details != null
+                ? string.Format("{0} {1} {2}", details.LastName, details.FirstName, details.MiddleName)
                 : string.Empty;
         }
 
@@ -85,67 +87,58 @@ namespace ContactManager.Models
             //    FullName = string.Format("{0} {1} {2}", details.LastName, details.FirstName, details.MiddleName);
             //}
 
-            astra_ClientsInServices.Load();
-            foreach (var item in astra_ClientsInServices)
-            {
-                item.astra_ServicesReference.Load();
+            //astra_ClientsInServices.Load();
+            //foreach (var item in astra_ClientsInServices)
+            //{
+            //    item.astra_ServicesReference.Load();
 
-                if (item.astra_ServicesReference.Value != null &&
-                    item.astra_ServicesReference.Value.SystemData != null)
-                {
-                    if (item.astra_ServicesReference.Value.SystemData.Equals("Real_IP_Address"))
-                    {
-                        if (pppSecret != null) pppSecret.SystemRealIP = true;
-                        continue;
-                    }
+            //    if (item.astra_ServicesReference.Value != null &&
+            //        item.astra_ServicesReference.Value.SystemData != null)
+            //    {
+            //        if (item.astra_ServicesReference.Value.SystemData.Equals("Real_IP_Address"))
+            //        {
+            //            if (pppSecret != null) pppSecret.SystemRealIP = true;
+            //            continue;
+            //        }
 
-                    if (item.astra_ServicesReference.Value.SystemData.Equals("Stay_OnLine"))
-                    {
-                        if (pppSecret != null) pppSecret.SystemStayOnline = true;
-                        continue;
-                    }
-                }
-            }
-            StatusReference.Load();
-            StatusId = StatusReference.Value.StatusId;
+            //        if (item.astra_ServicesReference.Value.SystemData.Equals("Stay_OnLine"))
+            //        {
+            //            if (pppSecret != null) pppSecret.SystemStayOnline = true;
+            //            continue;
+            //        }
+            //    }
+            //}
+            //StatusReference.Load();
+            //StatusId = StatusReference.Value.StatusId;
         }
 
         public void LoadDetailsReferences()
         {
-            UserReference.Load();
-            UserName = UserReference.Value.UserName;
-            ClientDetailsReference.Load();
-            //if (astra_ClientsDetailsReference.Value != null)
-            //    FullName = string.Format("{0} {1} {2}", astra_ClientsDetailsReference.Value.LastName,
-            //        astra_ClientsDetailsReference.Value.FirstName,
-            //        astra_ClientsDetailsReference.Value.MiddleName);
-            AddressReference.Load();
-            ContractReference.Load();
+            if (!ClientDetailsReference.IsLoaded)
+                ClientDetailsReference.Load();
         }
 
         public void LoadAddressReferences()
         {
-            UserReference.Load();
-            UserName = UserReference.Value.UserName;
-            ClientDetailsReference.Load();
-            AddressReference.Load();
-            Address.StreetReference.Load();
-            ContractReference.Load();
+            if (!AddressReference.IsLoaded)
+                AddressReference.Load();
+
+            if (Address != null)
+                Address.StreetReference.Load();
         }
 
 
         public void LoadContractReferences()
         {
-            //UserReference.Load();
-            //UserName = UserReference.Value.UserName;
-            //ClientDetailsReference.Load();
-            //AddressReference.Load();
-            //Address.StreetReference.Load();
-            //astra_ContractsReference.Load();
-            
+            if (!ContractReference.IsLoaded)
+                ContractReference.Load();
         }
 
-
+        public void LoadStatusReferences()
+        {
+            if (!StatusReference.IsLoaded)
+                StatusReference.Load();
+        }
 
         public List<ClientInServices> LoadClientServices()
         {
