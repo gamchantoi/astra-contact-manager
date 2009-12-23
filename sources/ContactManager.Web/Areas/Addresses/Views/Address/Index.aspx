@@ -1,20 +1,21 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ContactManager.Models.Address>>" %>
+<%@ Import Namespace="ContactManager.Web.Helpers"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <table class="data-table" cellpadding="0" cellspacing="0">
         <tr>
             <th></th>
             <th>
-                City
+                <%= Html.Resource("Addresses_Resources, Addresses_View_Index_City")%>
             </th>
             <th>
-                Building
+                <%= Html.Resource("Addresses_Resources, Addresses_View_Index_Building")%>
             </th>
             <th>
-                Details
+                <%= Html.Resource("Addresses_Resources, Addresses_View_Index_Details")%>
             </th>
             <th>
-                Room
+                <%= Html.Resource("Addresses_Resources, Addresses_View_Index_Room")%>
             </th>
         </tr>
 
@@ -22,8 +23,8 @@
     
         <tr>
             <td>
-                <%= Html.ActionLink("Edit", "Edit", new { id=item.AddressId }) %> |
-                <%= Html.ActionLink("Details", "Details", new { id=item.AddressId })%>
+                <%= Html.ActionLink(Html.Resource("Addresses_Resources, Addresses_View_Index_Edit"), "Edit", new { id = item.AddressId })%> |
+                <%= Html.ActionLink(Html.Resource("Addresses_Resources, Addresses_View_Index_Details"), "Details", new { id = item.AddressId })%>
             </td>
             <td>
                 <%= Html.Encode(item.City) %>
@@ -44,7 +45,7 @@
     </table>
 
     <p>
-        <%= Html.ActionLink("Create New", "Create") %>
+        <%= Html.ActionLink(Html.Resource("Addresses_Resources, Addresses_View_Index_CreateNew"), "Create")%>
     </p>
 
 </asp:Content>
