@@ -1,44 +1,45 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+<%@ Import Namespace="ContactManager.Web.Helpers"%>
 
 <asp:Content ID="registerHead" ContentPlaceHolderID="head" runat="server">
-    <title>Register</title>
+    <title><%= Html.Resource("Web_Resources, Site_View_Account_Register_Title")%></title>
 </asp:Content>
 
 <asp:Content ID="registerContent" ContentPlaceHolderID="MainContent" runat="server">
     <p>
-        Use the form below to create a new account. 
+        <%= Html.Resource("Web_Resources, Site_View_Account_Register_P1")%> 
     </p>
     <p>
-        Passwords are required to be a minimum of <%=Html.Encode(ViewData["PasswordLength"])%> characters in length.
+        <%= Html.Resource("Web_Resources, Site_View_Account_Register_P2")%>
     </p>
     <%= Html.ValidationSummary() %>
 
     <% using (Html.BeginForm()) { %>
         <div>
             <fieldset>
-                <legend>Account Information</legend>
+                <legend><%= Html.Resource("Web_Resources, Site_View_Account_Register_AccountInformation")%></legend>
                 <p>
-                    <label for="username">Username:</label>
+                    <label for="username"><%= Html.Resource("Web_Resources, Site_View_Account_Register_Username")%></label>
                     <%= Html.TextBox("username") %>
                     <%= Html.ValidationMessage("username") %>
                 </p>
                 <p>
-                    <label for="email">Email:</label>
+                    <label for="email"><%= Html.Resource("Web_Resources, Site_View_Account_Register_Email")%></label>
                     <%= Html.TextBox("email") %>
                     <%= Html.ValidationMessage("email") %>
                 </p>
                 <p>
-                    <label for="password">Password:</label>
+                    <label for="password"><%= Html.Resource("Web_Resources, Site_View_Account_Register_Password")%></label>
                     <%= Html.Password("password") %>
                     <%= Html.ValidationMessage("password") %>
                 </p>
                 <p>
-                    <label for="confirmPassword">Confirm password:</label>
+                    <label for="confirmPassword"><%= Html.Resource("Web_Resources, Site_View_Account_Register_ConfirmPassword")%></label>
                     <%= Html.Password("confirmPassword") %>
                     <%= Html.ValidationMessage("confirmPassword") %>
                 </p>
                 <p class="submit">
-                    <input type="submit" value="Register" />
+                    <input type="submit" value=<%= Html.Resource("Web_Resources, Site_View_Account_Register_Register")%> />
                 </p>
             </fieldset>
         </div>
