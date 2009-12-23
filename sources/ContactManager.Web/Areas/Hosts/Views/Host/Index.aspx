@@ -1,4 +1,5 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ContactManager.Models.Host>>" %>
+<%@ Import Namespace="ContactManager.Web.Helpers"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -7,22 +8,22 @@
         <thead>
             <tr>
                 <th>
-                    Select
+                    <%= Html.Resource("Hosts_Resources, Hosts_View_Index_Select")%>
                 </th>
                 <th>
-                    Delete
+                    <%= Html.Resource("Hosts_Resources, Hosts_View_Index_Delete")%>
                 </th>
                 <th>
-                    Address
+                    <%= Html.Resource("Hosts_Resources, Hosts_View_Index_Address")%>
                 </th>
                 <th>
-                    UserName
+                    <%= Html.Resource("Hosts_Resources, Hosts_View_Index_UserName")%>
                 </th>
                 <th>
-                    UserPassword
+                    <%= Html.Resource("Hosts_Resources, Hosts_View_Index_UserPassword")%>
                 </th>
                 <th>
-                    LastUpdatedDate
+                    <%= Html.Resource("Hosts_Resources, Hosts_View_Index_LastUpdatedDate")%>
                 </th>
             </tr>
         </thead>
@@ -33,16 +34,16 @@
                 <td>
                     <% if (HttpContext.Current.Profile.GetPropertyValue("HostId").Equals(item.HostId))
                        {%>
-                    Selected
+                    <%= Html.Resource("Hosts_Resources, Hosts_View_Index_Selected")%>
                     <% }
                        else
                        {%>
-                    <%= Html.ActionLink("Select", "Select", new { id = item.HostId })%>
+                    <%= Html.ActionLink(Html.Resource("Hosts_Resources, Hosts_View_Index_Select"), "Select", new { id = item.HostId })%>
                     <%} %>
                 </td>
                 <td>
                     <a href='<%= Url.Action("Delete", new {id=item.HostId}) %>'>
-                        Delete</a>
+                        <%= Html.Resource("Hosts_Resources, Hosts_View_Index_Delete")%></a>
                 </td>
                 <td>
                     <a href='<%= Url.Action("Edit", new {id=item.HostId}) %>'>
@@ -62,6 +63,6 @@
         </tbody>
     </table>
     <p>
-        <%= Html.ActionLink("Create New", "Create") %>
+        <%= Html.ActionLink(Html.Resource("Hosts_Resources, Hosts_View_Index_Create"), "Create")%>
     </p>
 </asp:Content>

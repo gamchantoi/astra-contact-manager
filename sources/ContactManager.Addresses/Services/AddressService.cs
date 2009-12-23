@@ -75,7 +75,9 @@ namespace ContactManager.Addresses.Services
 
         public Address GetAddress(int id)
         {
-            return _addressRepository.GetAddress(id);
+            var address = _addressRepository.GetAddress(id);
+            address.LoadStreetReferences();
+            return address;
         }
     }
 }

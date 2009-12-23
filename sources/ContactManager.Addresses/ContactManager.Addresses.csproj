@@ -64,6 +64,16 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\Addresses_Resources.designer.cs">
+      <DependentUpon>Addresses_Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Addresses_Resources.uk-ua.designer.cs">
+      <DependentUpon>Addresses_Resources.uk-ua.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Models\EntityAddressRepository.cs" />
     <Compile Include="Models\EntityStreetRepository.cs" />
@@ -80,6 +90,18 @@
       <Project>{CA6EDC25-507E-48C5-AC9F-F99BB32E171A}</Project>
       <Name>ContactManager.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Addresses_Resources.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Addresses_Resources.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Addresses_Resources.uk-ua.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Addresses_Resources.uk-ua.designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

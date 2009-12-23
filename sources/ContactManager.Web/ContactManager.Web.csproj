@@ -64,6 +64,36 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\Addresses_Resources.designer.cs">
+      <DependentUpon>Addresses_Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Addresses_Resources.uk-ua.designer.cs">
+      <DependentUpon>Addresses_Resources.uk-ua.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Messages_Resources.designer.cs">
+      <DependentUpon>Messages_Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Messages_Resources.uk-ua.designer.cs">
+      <DependentUpon>Messages_Resources.uk-ua.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Hosts_Resources.designer.cs">
+      <DependentUpon>Hosts_Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Hosts_Resources.uk-ua.designer.cs">
+      <DependentUpon>Hosts_Resources.uk-ua.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="App_GlobalResources\Web_Resources.designer.cs">
       <DependentUpon>Web_Resources.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -220,6 +250,42 @@
     <Content Include="App_GlobalResources\Web_Resources.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Web_Resources.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Addresses_Resources.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Addresses_Resources.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Addresses_Resources.uk-ua.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Addresses_Resources.uk-ua.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Hosts_Resources.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Hosts_Resources.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Hosts_Resources.uk-ua.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Hosts_Resources.uk-ua.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Messages_Resources.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Messages_Resources.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Messages_Resources.uk-ua.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Messages_Resources.uk-ua.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
