@@ -83,6 +83,8 @@
         <%Html.RenderPartial("PPPSecretUserControl", Model); %>
         <%Html.RenderPartial("DetailsUserControl", Model); %>
         <%Html.RenderPartial("ServicesUserControl", Model); %>
+        <%Html.RenderPartial("AddressUserControl", Model); %>
+        <%Html.RenderPartial("ContractUserControl", Model); %>
     </fieldset>
     <div>
         <%=Html.ActionLink("Back to List", "Index") %>

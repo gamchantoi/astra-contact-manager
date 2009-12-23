@@ -34,7 +34,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Messages_astra_MessagesType", "astra_MessagesType", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.MessageType), "astra_Messages", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Message))]
 
 // Original file name:
-// Generation date: 12/23/2009 12:22:46 AM
+// Generation date: 23.12.2009 1:41:25
 namespace ContactManager.Models
 {
     
@@ -1236,13 +1236,13 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for astra_Contracts in the schema.
+        /// There are no comments for Contract in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "FK_astra_Clients_astra_Contracts", "astra_Contracts")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public Contract astra_Contracts
+        public Contract Contract
         {
             get
             {
@@ -1254,11 +1254,11 @@ namespace ContactManager.Models
             }
         }
         /// <summary>
-        /// There are no comments for astra_Contracts in the schema.
+        /// There are no comments for Contract in the schema.
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<Contract> astra_ContractsReference
+        public global::System.Data.Objects.DataClasses.EntityReference<Contract> ContractReference
         {
             get
             {
@@ -1819,13 +1819,13 @@ namespace ContactManager.Models
         partial void OnExpiredDateChanging(global::System.Nullable<global::System.DateTime> value);
         partial void OnExpiredDateChanged();
         /// <summary>
-        /// There are no comments for astra_Clients in the schema.
+        /// There are no comments for Client in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "FK_astra_Clients_astra_Contracts", "astra_Clients")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<Client> astra_Clients
+        public global::System.Data.Objects.DataClasses.EntityCollection<Client> Client
         {
             get
             {

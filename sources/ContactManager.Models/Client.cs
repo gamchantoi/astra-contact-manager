@@ -120,8 +120,32 @@ namespace ContactManager.Models
             //        astra_ClientsDetailsReference.Value.FirstName,
             //        astra_ClientsDetailsReference.Value.MiddleName);
             AddressReference.Load();
-            astra_ContractsReference.Load();
+            ContractReference.Load();
         }
+
+        public void LoadAddressReferences()
+        {
+            UserReference.Load();
+            UserName = UserReference.Value.UserName;
+            ClientDetailsReference.Load();
+            AddressReference.Load();
+            Address.StreetReference.Load();
+            ContractReference.Load();
+        }
+
+
+        public void LoadContractReferences()
+        {
+            //UserReference.Load();
+            //UserName = UserReference.Value.UserName;
+            //ClientDetailsReference.Load();
+            //AddressReference.Load();
+            //Address.StreetReference.Load();
+            //astra_ContractsReference.Load();
+            
+        }
+
+
 
         public List<ClientInServices> LoadClientServices()
         {

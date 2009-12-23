@@ -51,7 +51,7 @@ namespace ContactManager.Users.Controllers
 
                 client.ClientDetails = detail;
                 client.Address = adderess;
-                client.astra_Contracts = contract;
+                client.Contract = contract;
 
                 _entities.SaveChanges();
                 //Session.Remove("UserForDetails");
@@ -114,14 +114,14 @@ namespace ContactManager.Users.Controllers
                 _entities.SaveChanges();
 
                 //var contr = _entities.ContractSet.Where(c => c.ContractId == contract.ContractId).FirstOrDefault();
-                if (client.astra_ContractsReference.Value == null)
+                if (client.ContractReference.Value == null)
                 {
                     _entities.AddToContractSet(contract);
-                    client.astra_Contracts = contract;
+                    client.Contract = contract;
                 }
                 else
                 {
-                    _entities.ApplyPropertyChanges(client.astra_ContractsReference.Value.EntityKey.EntitySetName, contract);
+                    _entities.ApplyPropertyChanges(client.ContractReference.Value.EntityKey.EntitySetName, contract);
                 }
 
                 _entities.SaveChanges();

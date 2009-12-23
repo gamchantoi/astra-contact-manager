@@ -24,6 +24,8 @@ namespace ContactManager.Users.ViewModels
         public PPPSecret PPPSecret { get; set; }
         public ClientDetail ClientDetails { get; set; }
         public List<Service> Services { get; set; }
+        public Address Address { get; set; }
+        public Contract Contract { get; set; }
 
         public SelectList Roles { get; set; }
         public SelectList Profiles { get; set; }
