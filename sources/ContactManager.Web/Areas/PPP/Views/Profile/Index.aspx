@@ -1,27 +1,28 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ContactManager.Models.Profile>>" %>
+<%@ Import Namespace="ContactManager.Web.Helpers"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <%= Html.ValidationSummary("Operation was unsuccessful. Please view details and try again.")%>
+    <%= Html.ValidationSummary(Html.Resource("PPP_Resources, PPP_View_Profile_Index_ValidationSummary"))%>
     <table class="data-table" cellpadding="0" cellspacing="0">
         <thead>
             <tr>
                 <th>
-                    Delete
+                    <%= Html.Resource("PPP_Resources, PPP_View_Profile_Index_Delete")%>
                 </th>
                 <th>
-                    Name
+                    <%= Html.Resource("PPP_Resources, PPP_View_Profile_Index_Name")%>
                 </th>
                 <th>
-                    LocalAddress
+                    <%= Html.Resource("PPP_Resources, PPP_View_Profile_Index_LocalAddress")%>
                 </th>
                 <th>
-                    Pool
+                    <%= Html.Resource("PPP_Resources, PPP_View_Profile_Index_Pool")%>
                 </th>
                 <th>
-                    RateLimit
+                    <%= Html.Resource("PPP_Resources, PPP_View_Profile_Index_RateLimit")%>
                 </th>
                 <th>
-                    Cost
+                    <%= Html.Resource("PPP_Resources, PPP_View_Profile_Index_Cost")%>
                 </th>
             </tr>
         </thead>
@@ -31,7 +32,7 @@
             <tr>
                 <td>
                     <a href='<%= Url.Action("Delete", new {id=item.ProfileId}) %>'>
-                        Delete</a>
+                        <%= Html.Resource("PPP_Resources, PPP_View_Profile_Index_Delete")%></a>
                 </td>
                 <td>
                     <a href='<%= Url.Action("Edit", new {id=item.ProfileId}) %>'>
@@ -54,8 +55,8 @@
         </tbody>
     </table>
     <p>
-        <%= Html.ActionLink("Create New", "Create") %>    |
-        <%= Html.ActionLink("Delete Profiles", "DeleteUnused")%>
+        <%= Html.ActionLink(Html.Resource("PPP_Resources, PPP_View_Profile_Index_CreateNew"), "Create") %>    |
+        <%= Html.ActionLink(Html.Resource("PPP_Resources, PPP_View_Profile_Index_DeleteProfiles"), "DeleteUnused")%>
     </p>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">

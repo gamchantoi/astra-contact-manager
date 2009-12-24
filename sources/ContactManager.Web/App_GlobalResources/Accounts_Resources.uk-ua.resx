@@ -117,133 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Messages_View_Create_BackToList" xml:space="preserve">
-    <value>Back to List</value>
+  <data name="Accounts_View_Index_Balance" xml:space="preserve">
+    <value>Баланс</value>
   </data>
-  <data name="Messages_View_Create_Create" xml:space="preserve">
-    <value>Create</value>
+  <data name="Accounts_View_Index_ClientName" xml:space="preserve">
+    <value>Імя клієнта</value>
   </data>
-  <data name="Messages_View_Create_CreateNewMessage" xml:space="preserve">
-    <value>Create new message</value>
+  <data name="Accounts_View_Index_Comment" xml:space="preserve">
+    <value>Коментарі</value>
   </data>
-  <data name="Messages_View_Create_MessageTypeId" xml:space="preserve">
-    <value>MessageType</value>
+  <data name="Accounts_View_Index_CreateNew" xml:space="preserve">
+    <value>Створити</value>
   </data>
-  <data name="Messages_View_Create_Text" xml:space="preserve">
-    <value>Text</value>
+  <data name="Accounts_View_Index_Date" xml:space="preserve">
+    <value>Дата</value>
   </data>
-  <data name="Messages_View_Create_Title" xml:space="preserve">
-    <value>Title</value>
+  <data name="Accounts_View_Index_PaymentsMethods" xml:space="preserve">
+    <value>Методи оплат</value>
   </data>
-  <data name="Messages_View_Delete_BackToList" xml:space="preserve">
-    <value>Back to List</value>
+  <data name="Accounts_View_Index_Sum" xml:space="preserve">
+    <value>Сума</value>
   </data>
-  <data name="Messages_View_Delete_Date" xml:space="preserve">
-    <value>Date:</value>
+  <data name="Accounts_View_Index_TransactionName" xml:space="preserve">
+    <value>Імя транзакції</value>
   </data>
-  <data name="Messages_View_Delete_Delete" xml:space="preserve">
-    <value>Delete</value>
+  <data name="Accounts_View_Index_UserName" xml:space="preserve">
+    <value>Імя користувача</value>
   </data>
-  <data name="Messages_View_Delete_DeleteThisMessage" xml:space="preserve">
-    <value>Delete this Message ?</value>
+  <data name="Accounts_View_PaymentsMethods_Create_BackToList" xml:space="preserve">
+    <value>Назад до списку</value>
   </data>
-  <data name="Messages_View_Delete_From" xml:space="preserve">
-    <value>From:</value>
+  <data name="Accounts_View_PaymentsMethods_Create_Comment" xml:space="preserve">
+    <value>Коментар</value>
   </data>
-  <data name="Messages_View_Delete_MessageType" xml:space="preserve">
-    <value>MessageType:</value>
+  <data name="Accounts_View_PaymentsMethods_Create_Create" xml:space="preserve">
+    <value>Створити</value>
   </data>
-  <data name="Messages_View_Delete_StatusId" xml:space="preserve">
-    <value>StatusId:</value>
+  <data name="Accounts_View_PaymentsMethods_Create_CreatePaymentMethod" xml:space="preserve">
+    <value>Створити метод оплат</value>
   </data>
-  <data name="Messages_View_Delete_Text" xml:space="preserve">
-    <value>Text:</value>
+  <data name="Accounts_View_PaymentsMethods_Create_Name" xml:space="preserve">
+    <value>Імя</value>
   </data>
-  <data name="Messages_View_Delete_Title" xml:space="preserve">
-    <value>Title:</value>
+  <data name="Accounts_View_PaymentsMethods_Create_Visible" xml:space="preserve">
+    <value>Видимий</value>
   </data>
-  <data name="Messages_View_Delete_To" xml:space="preserve">
-    <value>To:</value>
+  <data name="Accounts_View_PaymentsMethods_Edit_EditPaymentMethod" xml:space="preserve">
+    <value>Редагувати методи оплат</value>
   </data>
-  <data name="Messages_View_Details_BackToList" xml:space="preserve">
-    <value>Back to List</value>
+  <data name="Accounts_View_PaymentsMethods_Edit_Save" xml:space="preserve">
+    <value>Зберегти</value>
   </data>
-  <data name="Messages_View_Details_Date" xml:space="preserve">
-    <value>Date:</value>
-  </data>
-  <data name="Messages_View_Details_From" xml:space="preserve">
-    <value>From:</value>
-  </data>
-  <data name="Messages_View_Details_MessageDetails" xml:space="preserve">
-    <value>Message details</value>
-  </data>
-  <data name="Messages_View_Details_MessageType" xml:space="preserve">
-    <value>MessageType:</value>
-  </data>
-  <data name="Messages_View_Details_StatusId" xml:space="preserve">
-    <value>StatusId:</value>
-  </data>
-  <data name="Messages_View_Details_Text" xml:space="preserve">
-    <value>Text:</value>
-  </data>
-  <data name="Messages_View_Details_Title" xml:space="preserve">
-    <value>Title:</value>
-  </data>
-  <data name="Messages_View_Details_To" xml:space="preserve">
-    <value>To:</value>
-  </data>
-  <data name="Messages_View_Index_CreateMessageType" xml:space="preserve">
-    <value>Create Message Type</value>
-  </data>
-  <data name="Messages_View_Index_CreateNew" xml:space="preserve">
-    <value>Create New</value>
-  </data>
-  <data name="Messages_View_Index_Date" xml:space="preserve">
-    <value>Date</value>
-  </data>
-  <data name="Messages_View_Index_Delete" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="Messages_View_Index_Details" xml:space="preserve">
-    <value>Details</value>
-  </data>
-  <data name="Messages_View_Index_Text" xml:space="preserve">
-    <value>Text</value>
-  </data>
-  <data name="Messages_View_Index_Title" xml:space="preserve">
-    <value>Title</value>
-  </data>
-  <data name="Messages_View_MessageType_Create_BackToList" xml:space="preserve">
-    <value>Back to List</value>
-  </data>
-  <data name="Messages_View_MessageType_Create_Create" xml:space="preserve">
-    <value>Create</value>
-  </data>
-  <data name="Messages_View_MessageType_Create_CreateMessageType" xml:space="preserve">
-    <value>Create Message Type</value>
-  </data>
-  <data name="Messages_View_MessageType_Create_Name" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="Messages_View_MessageType_Edit_BackToList" xml:space="preserve">
-    <value>Back to List</value>
-  </data>
-  <data name="Messages_View_MessageType_Edit_EditMessageType" xml:space="preserve">
-    <value>Edit Message Type</value>
-  </data>
-  <data name="Messages_View_MessageType_Edit_Name" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="Messages_View_MessageType_Edit_Save" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="Messages_View_MessageType_Index_CreateNew" xml:space="preserve">
-    <value>Create New</value>
-  </data>
-  <data name="Messages_View_MessageType_Index_Edit" xml:space="preserve">
-    <value>Edit</value>
-  </data>
-  <data name="Messages_View_MessageType_Index_Name" xml:space="preserve">
-    <value>Name</value>
+  <data name="Accounts_View_PaymentsMethods_Index_CreateNew" xml:space="preserve">
+    <value>Створити</value>
   </data>
 </root>

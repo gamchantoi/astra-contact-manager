@@ -405,18 +405,45 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
-        internal static string Name {
+        internal static string Messages_View_MessageType_Edit_Name {
             get {
-                return ResourceManager.GetString("Name", resourceCulture);
+                return ResourceManager.GetString("Messages_View_MessageType_Edit_Name", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
-        internal static string Save {
+        internal static string Messages_View_MessageType_Edit_Save {
             get {
-                return ResourceManager.GetString("Save", resourceCulture);
+                return ResourceManager.GetString("Messages_View_MessageType_Edit_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create New.
+        /// </summary>
+        internal static string Messages_View_MessageType_Index_CreateNew {
+            get {
+                return ResourceManager.GetString("Messages_View_MessageType_Index_CreateNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        internal static string Messages_View_MessageType_Index_Edit {
+            get {
+                return ResourceManager.GetString("Messages_View_MessageType_Index_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string Messages_View_MessageType_Index_Name {
+            get {
+                return ResourceManager.GetString("Messages_View_MessageType_Index_Name", resourceCulture);
             }
         }
     }

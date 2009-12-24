@@ -117,133 +117,175 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Messages_View_Create_BackToList" xml:space="preserve">
-    <value>Back to List</value>
+  <data name="PPP_View_ActiveConnections_Index_Address" xml:space="preserve">
+    <value>Address</value>
   </data>
-  <data name="Messages_View_Create_Create" xml:space="preserve">
-    <value>Create</value>
+  <data name="PPP_View_ActiveConnections_Index_CallerId" xml:space="preserve">
+    <value>CallerId</value>
   </data>
-  <data name="Messages_View_Create_CreateNewMessage" xml:space="preserve">
-    <value>Create new message</value>
+  <data name="PPP_View_ActiveConnections_Index_Encoding" xml:space="preserve">
+    <value>Encoding</value>
   </data>
-  <data name="Messages_View_Create_MessageTypeId" xml:space="preserve">
-    <value>MessageType</value>
+  <data name="PPP_View_ActiveConnections_Index_LimitBytesIn" xml:space="preserve">
+    <value>LimitBytesIn</value>
   </data>
-  <data name="Messages_View_Create_Text" xml:space="preserve">
-    <value>Text</value>
+  <data name="PPP_View_ActiveConnections_Index_LimitBytesOut" xml:space="preserve">
+    <value>LimitBytesOut</value>
   </data>
-  <data name="Messages_View_Create_Title" xml:space="preserve">
-    <value>Title</value>
-  </data>
-  <data name="Messages_View_Delete_BackToList" xml:space="preserve">
-    <value>Back to List</value>
-  </data>
-  <data name="Messages_View_Delete_Date" xml:space="preserve">
-    <value>Date:</value>
-  </data>
-  <data name="Messages_View_Delete_Delete" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="Messages_View_Delete_DeleteThisMessage" xml:space="preserve">
-    <value>Delete this Message ?</value>
-  </data>
-  <data name="Messages_View_Delete_From" xml:space="preserve">
-    <value>From:</value>
-  </data>
-  <data name="Messages_View_Delete_MessageType" xml:space="preserve">
-    <value>MessageType:</value>
-  </data>
-  <data name="Messages_View_Delete_StatusId" xml:space="preserve">
-    <value>StatusId:</value>
-  </data>
-  <data name="Messages_View_Delete_Text" xml:space="preserve">
-    <value>Text:</value>
-  </data>
-  <data name="Messages_View_Delete_Title" xml:space="preserve">
-    <value>Title:</value>
-  </data>
-  <data name="Messages_View_Delete_To" xml:space="preserve">
-    <value>To:</value>
-  </data>
-  <data name="Messages_View_Details_BackToList" xml:space="preserve">
-    <value>Back to List</value>
-  </data>
-  <data name="Messages_View_Details_Date" xml:space="preserve">
-    <value>Date:</value>
-  </data>
-  <data name="Messages_View_Details_From" xml:space="preserve">
-    <value>From:</value>
-  </data>
-  <data name="Messages_View_Details_MessageDetails" xml:space="preserve">
-    <value>Message details</value>
-  </data>
-  <data name="Messages_View_Details_MessageType" xml:space="preserve">
-    <value>MessageType:</value>
-  </data>
-  <data name="Messages_View_Details_StatusId" xml:space="preserve">
-    <value>StatusId:</value>
-  </data>
-  <data name="Messages_View_Details_Text" xml:space="preserve">
-    <value>Text:</value>
-  </data>
-  <data name="Messages_View_Details_Title" xml:space="preserve">
-    <value>Title:</value>
-  </data>
-  <data name="Messages_View_Details_To" xml:space="preserve">
-    <value>To:</value>
-  </data>
-  <data name="Messages_View_Index_CreateMessageType" xml:space="preserve">
-    <value>Create Message Type</value>
-  </data>
-  <data name="Messages_View_Index_CreateNew" xml:space="preserve">
-    <value>Create New</value>
-  </data>
-  <data name="Messages_View_Index_Date" xml:space="preserve">
-    <value>Date</value>
-  </data>
-  <data name="Messages_View_Index_Delete" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="Messages_View_Index_Details" xml:space="preserve">
-    <value>Details</value>
-  </data>
-  <data name="Messages_View_Index_Text" xml:space="preserve">
-    <value>Text</value>
-  </data>
-  <data name="Messages_View_Index_Title" xml:space="preserve">
-    <value>Title</value>
-  </data>
-  <data name="Messages_View_MessageType_Create_BackToList" xml:space="preserve">
-    <value>Back to List</value>
-  </data>
-  <data name="Messages_View_MessageType_Create_Create" xml:space="preserve">
-    <value>Create</value>
-  </data>
-  <data name="Messages_View_MessageType_Create_CreateMessageType" xml:space="preserve">
-    <value>Create Message Type</value>
-  </data>
-  <data name="Messages_View_MessageType_Create_Name" xml:space="preserve">
+  <data name="PPP_View_ActiveConnections_Index_Name" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="Messages_View_MessageType_Edit_BackToList" xml:space="preserve">
+  <data name="PPP_View_ActiveConnections_Index_Service" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="PPP_View_ActiveConnections_Index_SessionId" xml:space="preserve">
+    <value>SessionId</value>
+  </data>
+  <data name="PPP_View_ActiveConnections_Index_Uptime" xml:space="preserve">
+    <value>Uptime</value>
+  </data>
+  <data name="PPP_View_Pool_Create_Addresses" xml:space="preserve">
+    <value>Addresses:</value>
+  </data>
+  <data name="PPP_View_Pool_Create_BackToList" xml:space="preserve">
     <value>Back to List</value>
   </data>
-  <data name="Messages_View_MessageType_Edit_EditMessageType" xml:space="preserve">
-    <value>Edit Message Type</value>
+  <data name="PPP_View_Pool_Create_Create" xml:space="preserve">
+    <value>Create</value>
   </data>
-  <data name="Messages_View_MessageType_Edit_Name" xml:space="preserve">
-    <value>Name</value>
+  <data name="PPP_View_Pool_Create_CreateNewPool" xml:space="preserve">
+    <value>Create New Pool</value>
   </data>
-  <data name="Messages_View_MessageType_Edit_Save" xml:space="preserve">
+  <data name="PPP_View_Pool_Create_Name" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="PPP_View_Pool_Create_NextPool" xml:space="preserve">
+    <value>NextPool:</value>
+  </data>
+  <data name="PPP_View_Pool_Create_ValidationSummary" xml:space="preserve">
+    <value>Create was unsuccessful. Please correct the errors and try again.</value>
+  </data>
+  <data name="PPP_View_Pool_Edit_Addresses" xml:space="preserve">
+    <value>Addresses:</value>
+  </data>
+  <data name="PPP_View_Pool_Edit_BackToList" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+  <data name="PPP_View_Pool_Edit_EditPool" xml:space="preserve">
+    <value>Edit Pool:</value>
+  </data>
+  <data name="PPP_View_Pool_Edit_NextPool" xml:space="preserve">
+    <value>NextPool:</value>
+  </data>
+  <data name="PPP_View_Pool_Edit_Save" xml:space="preserve">
     <value>Save</value>
   </data>
-  <data name="Messages_View_MessageType_Index_CreateNew" xml:space="preserve">
+  <data name="PPP_View_Pool_Edit_ValidationSummary" xml:space="preserve">
+    <value>Edit was unsuccessful. Please correct the errors and try again.</value>
+  </data>
+  <data name="PPP_View_Pool_Index_Addresses" xml:space="preserve">
+    <value>Addresses</value>
+  </data>
+  <data name="PPP_View_Pool_Index_CreateNew" xml:space="preserve">
     <value>Create New</value>
   </data>
-  <data name="Messages_View_MessageType_Index_Edit" xml:space="preserve">
-    <value>Edit</value>
+  <data name="PPP_View_Pool_Index_Delete" xml:space="preserve">
+    <value>Delete</value>
   </data>
-  <data name="Messages_View_MessageType_Index_Name" xml:space="preserve">
+  <data name="PPP_View_Pool_Index_DeleteAll" xml:space="preserve">
+    <value>Delete All</value>
+  </data>
+  <data name="PPP_View_Pool_Index_Name" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="PPP_View_Pool_Index_NextPool" xml:space="preserve">
+    <value>NextPool</value>
+  </data>
+  <data name="PPP_View_Pool_Index_ValidationSummary" xml:space="preserve">
+    <value>Operation was unsuccessful. Please view details and try again.</value>
+  </data>
+  <data name="PPP_View_Profile_Create_BackToList" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+  <data name="PPP_View_Profile_Create_Comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="PPP_View_Profile_Create_Cost" xml:space="preserve">
+    <value>Cost</value>
+  </data>
+  <data name="PPP_View_Profile_Create_Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="PPP_View_Profile_Create_CreateNewProfile" xml:space="preserve">
+    <value>Create New Profile</value>
+  </data>
+  <data name="PPP_View_Profile_Create_LocalAddress" xml:space="preserve">
+    <value>LocalAddress</value>
+  </data>
+  <data name="PPP_View_Profile_Create_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="PPP_View_Profile_Create_Pool" xml:space="preserve">
+    <value>Pool</value>
+  </data>
+  <data name="PPP_View_Profile_Create_RateLimit" xml:space="preserve">
+    <value>RateLimit</value>
+  </data>
+  <data name="PPP_View_Profile_Create_ValidationSummary" xml:space="preserve">
+    <value>Create was unsuccessful. Please correct the errors and try again.</value>
+  </data>
+  <data name="PPP_View_Profile_Edit_BackToList" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+  <data name="PPP_View_Profile_Edit_Comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="PPP_View_Profile_Edit_Cost" xml:space="preserve">
+    <value>Cost</value>
+  </data>
+  <data name="PPP_View_Profile_Edit_EditProfile" xml:space="preserve">
+    <value>Edit Profile</value>
+  </data>
+  <data name="PPP_View_Profile_Edit_LocalAddress" xml:space="preserve">
+    <value>LocalAddress</value>
+  </data>
+  <data name="PPP_View_Profile_Edit_Pool" xml:space="preserve">
+    <value>Pool</value>
+  </data>
+  <data name="PPP_View_Profile_Edit_RateLimit" xml:space="preserve">
+    <value>RateLimit</value>
+  </data>
+  <data name="PPP_View_Profile_Edit_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="PPP_View_Profile_Edit_ValidationSummary" xml:space="preserve">
+    <value>Edit was unsuccessful. Please correct the errors and try again.</value>
+  </data>
+  <data name="PPP_View_Profile_Index_Cost" xml:space="preserve">
+    <value>Cost</value>
+  </data>
+  <data name="PPP_View_Profile_Index_CreateNew" xml:space="preserve">
+    <value>Create New</value>
+  </data>
+  <data name="PPP_View_Profile_Index_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="PPP_View_Profile_Index_DeleteProfiles" xml:space="preserve">
+    <value>Delete Profiles</value>
+  </data>
+  <data name="PPP_View_Profile_Index_LocalAddress" xml:space="preserve">
+    <value>LocalAddress</value>
+  </data>
+  <data name="PPP_View_Profile_Index_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="PPP_View_Profile_Index_Pool" xml:space="preserve">
+    <value>Pool</value>
+  </data>
+  <data name="PPP_View_Profile_Index_RateLimit" xml:space="preserve">
+    <value>RateLimit</value>
+  </data>
+  <data name="PPP_View_Profile_Index_ValidationSummary" xml:space="preserve">
+    <value>Operation was unsuccessful. Please view details and try again.</value>
   </data>
 </root>

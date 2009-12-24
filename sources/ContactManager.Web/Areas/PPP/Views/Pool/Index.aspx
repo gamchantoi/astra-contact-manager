@@ -1,21 +1,22 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ContactManager.Models.Pool>>" %>
+<%@ Import Namespace="ContactManager.Web.Helpers"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <%= Html.ValidationSummary("Operation was unsuccessful. Please view details and try again.")%>
+    <%= Html.ValidationSummary(Html.Resource("PPP_Resources, PPP_View_Pool_Index_Delete"))%>
     <table class="data-table" cellpadding="0" cellspacing="0">
         <thead>
             <tr>
                 <th>
-                    Delete
+                    <%= Html.Resource("PPP_Resources, PPP_View_Pool_Index_Delete")%>
                 </th>
                 <th>
-                    Name
+                    <%= Html.Resource("PPP_Resources, PPP_View_Pool_Index_Name")%>
                 </th>
                 <th>
-                    Addresses
+                    <%= Html.Resource("PPP_Resources, PPP_View_Pool_Index_Addresses")%>
                 </th>
                 <th>
-                    NextPool
+                    <%= Html.Resource("PPP_Resources, PPP_View_Pool_Index_NextPool")%>
                 </th>
             </tr>
         </thead>
@@ -25,7 +26,7 @@
         
             <tr>
                 <td>
-                    <a href='<%= Url.Action("Delete", new {id=item.PoolId}) %>'>Delete</a>
+                    <a href='<%= Url.Action("Delete", new {id=item.PoolId}) %>'><%= Html.Resource("PPP_Resources, PPP_View_Pool_Index_Delete")%></a>
                 </td>
                 <td>
                     <a href='<%= Url.Action("Edit", new {id=item.PoolId}) %>'>
@@ -42,8 +43,8 @@
         </tbody>
     </table>
     <p>
-        <%= Html.ActionLink("Create New", "Create") %> | 
-        <%= Html.ActionLink("Delete All", "DeleteAll")%>
+        <%= Html.ActionLink(Html.Resource("PPP_Resources, PPP_View_Pool_Index_CreateNew"), "Create") %> | 
+        <%= Html.ActionLink(Html.Resource("PPP_Resources, PPP_View_Pool_Index_DeleteAll"), "DeleteAll")%>
     </p>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">

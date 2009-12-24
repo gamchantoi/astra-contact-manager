@@ -1,16 +1,17 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ContactManager.Models.PaymentMethod>>" %>
+<%@ Import Namespace="ContactManager.Web.Helpers"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <table class="data-table" cellpadding="0" cellspacing="0">
         <tr>
             <th>
-                Name
+                 <%= Html.Resource("Accounts_Resources, Accounts_View_PaymentsMethods_Create_Name")%>
             </th>
             <th>
-                Comment
+                <%= Html.Resource("Accounts_Resources, Accounts_View_PaymentsMethods_Create_Comment")%>
             </th>
             <th>
-                Visible
+                <%= Html.Resource("Accounts_Resources, Accounts_View_PaymentsMethods_Create_Visible")%>
             </th>
         </tr>
         <% foreach (var item in Model)
@@ -29,7 +30,7 @@
         <% } %>
     </table>
     <p>
-        <%= Html.ActionLink("Create New", "Create") %>
+        <%= Html.ActionLink(Html.Resource("Accounts_Resources, Accounts_View_PaymentsMethods_Index_CreateNew"), "Create") %>
     </p>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
