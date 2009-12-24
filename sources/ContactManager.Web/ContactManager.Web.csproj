@@ -144,6 +144,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\DetailsHelper.cs" />
     <Compile Include="Helpers\DropDownHelper.cs" />
     <Compile Include="Helpers\MenuItemHelper.cs" />
     <Compile Include="Helpers\LocalizationExtensions.cs" />
@@ -374,6 +375,35 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Services_Resources.designer.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\astra-dialog.js" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\ui.accordion.css" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\ui.all.css" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\ui.base.css" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\ui.core.css" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\ui.datepicker.css" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\ui.dialog.css" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\ui.progressbar.css" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\ui.resizable.css" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\ui.slider.css" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\ui.tabs.css" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\ui.theme.css" />
+    <Content Include="Scripts\jquery-ui-1.7.2\ui\ui.core.js" />
+    <Content Include="Scripts\jquery-ui-1.7.2\ui\ui.dialog.js" />
+    <Content Include="Scripts\jquery-ui-1.7.2\ui\ui.draggable.js" />
+    <Content Include="Scripts\jquery-ui-1.7.2\ui\ui.resizable.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

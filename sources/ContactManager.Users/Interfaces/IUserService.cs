@@ -20,7 +20,7 @@ namespace ContactManager.Users.Interfaces
         List<User> ListUsers(string role);
         List<User> ListUsers();
 
-        bool CreateUser(Client client);
+        User CreateUser(User user);
         MembershipUser GetUser(Guid id);
         MembershipUser GetUser(string name);
         //MembershipUser GetCurrentUser();

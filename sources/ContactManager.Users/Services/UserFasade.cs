@@ -37,12 +37,12 @@ namespace ContactManager.Users.Services
         public bool ValidateContact(ClientViewModel viewModel, bool creatingUser)
         {
             var isValid = true;
-            if (creatingUser)
+            if (creatingUser && !string.IsNullOrEmpty(viewModel.UserName))
             {
-                var mUser = Membership.Provider.GetUser(viewModel.UserName, false);
+                var mUser = UserService.GetUser(viewModel.UserName);
                 if (mUser != null)
                 {
-                    _validationDictionary.AddError("_FORM", "UserName " + viewModel.UserName + " already exist.");
+                    _validationDictionary.AddError("UserName", "UserName " + viewModel.UserName + " already exist.");
                     isValid = false;
                 }
             }
@@ -57,14 +57,13 @@ namespace ContactManager.Users.Services
         {
             var isValid = true;
             var r = new Regex(PATTERN, RegexOptions.Compiled);
-
-            if (fieldValue.Trim().Length == 0)
+            if (string.IsNullOrEmpty(fieldValue) || fieldValue.Trim().Length == 0)
             {
                 _validationDictionary.AddError(fieldName, string.Format("User {0}: {1} is required.", userName, fieldName));
                 isValid = false;
             }
             if (!specialSymbols)
-                if (r.Match(fieldValue).Success)
+                if (string.IsNullOrEmpty(fieldValue) || r.Match(fieldValue).Success)
                 {
                     _validationDictionary.AddError(fieldName, string.Format("User {0}: {1} contain not allowed symbols '()[]'.", userName, fieldName));
                     isValid = false;
@@ -80,19 +79,19 @@ namespace ContactManager.Users.Services
         public IClientService ClientService { get; private set; }
         public IStatusService StatusService { get; private set; }
 
-        public bool CreateContact(Client client)
+        public bool CreateContact(ClientViewModel viewModel)
         {
             // Validation logic
-            //if (!ValidateContact(client, true))
-            //return false;
+            if (!ValidateContact(viewModel, true))
+            return false;
 
             // Database logic
             try
             {
-                UserService.CreateUser(client);
-                ClientService.CreateClient(client);
-                if (client.Role.Equals("client"))
-                    _pppSecretService.CreatePPPSecret(client);
+                viewModel.UserId = UserService.CreateUser(BuildUser(viewModel)).UserId;
+                ClientService.CreateClient(BuildClient(viewModel));
+                if (viewModel.Role.Equals("client"))
+                    return _pppSecretService.CreatePPPSecret(BuildSecret(viewModel));
                 return true;
             }
             catch (Exception ex)
@@ -113,7 +112,7 @@ namespace ContactManager.Users.Services
             // Database logic
             try
             {
-                UserService.CreateUser(client);
+                //UserService.CreateUser(client);
                 ClientService.CreateClient(client);
                 pppSecret.UserId = client.UserId;
                 _pppSecretService.CreatePPPSecret(pppSecret);
@@ -184,7 +183,11 @@ namespace ContactManager.Users.Services
         private PPPSecret BuildSecret(ClientViewModel viewModel)
         {
             var secret = _pppSecretService.GetPPPSecret(viewModel.UserId) 
-                ?? new PPPSecret { UserId = viewModel.UserId };
+                ?? new PPPSecret
+                       {
+                           Client = ClientService.GetClient(viewModel.UserId),
+                           Name = viewModel.UserName
+                       };
 
             secret.Client = ClientService.GetClient(viewModel.UserId); ;
             secret.Profile = _pppSecretService.ProfileService.GetProfile(viewModel.ProfileId);
@@ -196,7 +199,12 @@ namespace ContactManager.Users.Services
 
         private Client BuildClient(ClientViewModel viewModel)
         {
-            var client = ClientService.GetClient(viewModel.UserId);
+            var ctx = new CurrentContext();
+            var client = ClientService.GetClient(viewModel.UserId) 
+                ?? new Client
+                       {
+                           User = ctx.GetUser(viewModel.UserId)
+                       };
             client.Credit = viewModel.Credit;
             client.Status = StatusService.GetStatus(viewModel.StatusId);
             return client;

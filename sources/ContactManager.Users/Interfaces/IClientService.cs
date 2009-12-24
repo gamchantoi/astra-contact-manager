@@ -12,6 +12,7 @@ namespace ContactManager.Users.Interfaces
         bool EditClient(Client client);
         Client GetClient(Guid id);
         ClientViewModel GetViewModel(Client client);
+        Client GetModel(ClientViewModel viewModel);
         Client BuildClient(PPPSecret secret);
         List<Client> ListClients(bool deleted);
     }

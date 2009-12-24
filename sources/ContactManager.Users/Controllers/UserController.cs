@@ -47,24 +47,21 @@ namespace ContactManager.Users.Controllers
 
         public ActionResult Create()
         {
-            //ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
-            FillViewData(null);
-            return View();
+            return View(FillViewData(null));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(Client client)
+        public ActionResult Create(ClientViewModel viewModel)
         {
-            if (_facade.CreateContact(client))
+            if (_facade.CreateContact(viewModel))
             {
-                if (_facade.CanSynchronize(client.UserId))
+                if (_facade.CanSynchronize(viewModel.UserId))
                 {
-                    _sshSecretService.CreatePPPSecret(client.UserId);
+                    _sshSecretService.CreatePPPSecret(viewModel.UserId);
                 }
                 return View("Index", PrepareIndex(false));
             }
-            FillViewData(null);
-            return View();
+            return View(FillViewData(_facade.ClientService.GetModel(viewModel)));
         }
 
         [Authorize(Roles = "admin")]
@@ -91,8 +88,8 @@ namespace ContactManager.Users.Controllers
                 }
                 return RedirectToAction("Index", PrepareIndex(false));
             }
-            var wClient = _facade.GetContact(viewModel.UserId);
-            return View(FillViewData(wClient));
+            //var wClient = _facade.GetContact(viewModel.UserId);
+            return View(FillViewData(_facade.ClientService.GetModel(viewModel)));
         }
 
         [Authorize(Roles = "admin")]
@@ -130,22 +127,24 @@ namespace ContactManager.Users.Controllers
 
         private ClientViewModel FillViewData(Client client)
         {
-            var viewModel = _facade.ClientService.GetViewModel(client);
+            ClientViewModel viewModel;
 
             var userHelper = new DropDownHelper();
             var pppHelper = new PPP.Helpers.DropDownHelper();
 
             if (client == null)
             {
+                viewModel = new ClientViewModel();
                 viewModel.Roles = userHelper.GetRoles("client");
                 viewModel.Profiles = pppHelper.GetProfiles(null);
                 viewModel.Statuses = _statusService.ListStatuses(null);
             }
             else
             {
+                viewModel = _facade.ClientService.GetViewModel(client); 
                 viewModel.Roles = userHelper.GetRoles(client.Role);
                 viewModel.Profiles = pppHelper.GetProfiles(client.ProfileId);
-                viewModel.Statuses = _statusService.ListStatuses(client.Status.StatusId);
+                viewModel.Statuses = _statusService.ListStatuses(client.Status != null ? client.Status.StatusId : 0);
             }
             return viewModel;
         }
@@ -199,7 +198,12 @@ namespace ContactManager.Users.Controllers
             return View(loadModel);
         }
 
-
+        [Authorize(Roles = "admin")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public string GetPopupData()
+        {
+            return "Hello word";
+        }
 
         //[Authorize(Roles = "admin")]
         //public ActionResult UpdateSecret(PPPSecret secret)

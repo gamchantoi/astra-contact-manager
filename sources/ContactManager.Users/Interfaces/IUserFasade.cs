@@ -11,7 +11,7 @@ namespace ContactManager.Users.Interfaces
         IUserService UserService { get; }
         IClientService ClientService { get; }
 
-        bool CreateContact(Client client);
+        bool CreateContact(ClientViewModel viewModel);
         bool CreateContact(PPPSecret pppSecret);
         bool DeleteContact(Guid id);
         bool ActivateContact(Guid id);

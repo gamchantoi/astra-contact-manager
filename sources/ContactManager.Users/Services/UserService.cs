@@ -37,17 +37,16 @@ namespace ContactManager.Users.Services
             return _repository.Provider.ValidateUser(userName, password);
         }
 
-        public bool CreateUser(Client client)
+        public User CreateUser(User user)
         {
             try
             {
-                _repository.CreateUser(client);
-                return true;
+                return _repository.CreateUser(user);
             }
             catch (Exception ex)
             {
                 _validationDictionary.AddError("_FORM", "User is not saved. " + ex.Message);
-                return false;
+                return null;
             }
         }
 
