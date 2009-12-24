@@ -1,4 +1,6 @@
-﻿namespace ContactManager.Models
+﻿using ContactManager.Models.Enums;
+
+namespace ContactManager.Models
 {
     public partial class Status
     {
@@ -6,7 +8,7 @@
         {
             get
             {
-                return Name.Equals(Statuses.Active.ToString());
+                return Name.Equals(STATUSES.Active.ToString());
             }
         }
     }

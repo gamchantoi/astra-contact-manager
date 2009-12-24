@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using AutoMapper;
 using ContactManager.Models;
+using ContactManager.Models.Enums;
 using ContactManager.Models.Validation;
 using ContactManager.Users.Interfaces;
 using ContactManager.Users.Models;
@@ -21,7 +22,7 @@ namespace ContactManager.Users.Services
             _validationDictionary = validationDictionary;
             _repository = new EntityClientRepository();
             _statusService = new StatusService(validationDictionary);
-        } 
+        }
         #endregion
 
         #region IClientService Members
@@ -52,14 +53,13 @@ namespace ContactManager.Users.Services
             {
                 _validationDictionary.AddError("_FORM", "Client is not deleted. " + ex.Message);
                 return false;
-            }            
+            }
         }
 
         public bool EditClient(Client client)
         {
             try
             {
-                client.Status = _statusService.GetStatus(client.StatusId);
                 _repository.EditClient(client);
             }
             catch (Exception ex)
@@ -81,7 +81,7 @@ namespace ContactManager.Users.Services
             return Mapper.Map<Client, ClientViewModel>(client);
         }
 
-        public Client BuildClient(PPPSecret secret) 
+        public Client BuildClient(PPPSecret secret)
         {
             return new Client
                        {
@@ -94,13 +94,14 @@ namespace ContactManager.Users.Services
         public List<Client> ListClients(bool deleted)
         {
             var ctx = new CurrentContext();
-            var _status = deleted 
-                ? _statusService.GetStatus(Statuses.Inactive) 
-                : _statusService.GetStatus(Statuses.Active);
+            var _status = _statusService.GetStatus(STATUSES.Deleted);
 
-            var list = _repository.ListClients(_status);
+            var list = _repository.ListClients(_status, deleted);
+            
             var system = list.Find(c => c.UserId == ctx.GetSystemUser().UserId);
-            list.Remove(system);
+            if (system != null)
+                list.Remove(system);
+            
             return list;
         }
 

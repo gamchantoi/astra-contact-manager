@@ -1,4 +1,5 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Users.ViewModels.ClientViewModel>" %>
+<%@ Import Namespace="ContactManager.Models.Enums"%>
 
 <%@ Import Namespace="ContactManager.Users.Services" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -38,15 +39,15 @@
             <p>
                 <label for="Role">
                     Role:</label>
-                <%= Html.DropDownList("Role", Model.Roles)%>
+                <%= Html.DropDownListFor(r => r.Role, Model.Roles)%>
                 <%= Html.ValidationMessage("Role", "*") %>
             </p>
-            <%if (!Model.Role.Equals(Role.admin.ToString()))
+            <%if (!Model.Role.Equals(ROLES.admin.ToString()))
               {%>
             <p>
                 <label for="ProfileId">
                     Profile:</label>
-                <%= Html.DropDownList("ProfileId", Model.Profiles)%>
+                <%= Html.DropDownListFor(p => p.ProfileId, Model.Profiles)%>
                 <%= Html.ValidationMessage("ProfileId", "*")%>
             </p>
             <%} %>

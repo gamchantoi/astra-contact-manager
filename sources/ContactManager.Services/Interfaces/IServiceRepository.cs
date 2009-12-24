@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using ContactManager.Models;
+using ContactManager.Models.Enums;
 
 namespace ContactManager.Services.Interfaces
 {
     public interface IServiceRepository
     {
-        List<Service> ListServices(Statuses? status);
+        List<Service> ListServices(STATUSES? status);
         List<ClientInServices> ListActivities();
 
         Service CreateService(Service service);

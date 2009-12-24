@@ -1,8 +1,6 @@
 ﻿using System.Web.Security;
 using System.Collections.Generic;
-using System.Linq;
 using System;
-using System.Web;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.Users.Interfaces;
@@ -22,11 +20,6 @@ namespace ContactManager.Users.Services
             _repository = new EntityUserRepository();
         }
 
-        //public UserService(MembershipProvider provider, AstraEntities entities)
-        //{
-        //    _provider = provider ?? Membership.Provider;
-        //    _entities = entities;
-        //} 
         #endregion
 
         #region IMembershipService Members
@@ -119,6 +112,8 @@ namespace ContactManager.Users.Services
 
             if (!String.Equals(mUser.GetPassword(), user.Password))
                 mUser.ChangePassword(mUser.GetPassword(), user.Password);
+            //if (!user.UserName.Equals(mUser.UserName))
+            //    mUser.UserName = user.UserName;
             Membership.Provider.UpdateUser(mUser);
 
             if (!String.IsNullOrEmpty(user.Role) && !Roles.IsUserInRole(mUser.UserName, user.Role))
@@ -134,15 +129,6 @@ namespace ContactManager.Users.Services
             Membership.Provider.DeleteUser(user.UserName, true);
             return true;
         }
-
-        //public Guid GetCurrentUserId
-        //{
-        //    get 
-        //    {
-        //        var user = GetCurrentUser();
-        //        return new Guid(user.ProviderUserKey.ToString());
-        //    }
-        //}
 
         public bool ClearAllData()
         {
@@ -202,9 +188,5 @@ namespace ContactManager.Users.Services
         #endregion
     }
 
-    public enum Role
-    {
-        admin,
-        client
-    }
+
 }

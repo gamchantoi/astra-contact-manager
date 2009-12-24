@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using ContactManager.Models;
+using ContactManager.Models.Enums;
 using ContactManager.Users.Interfaces;
 
 namespace ContactManager.Users.Models
@@ -20,25 +21,25 @@ namespace ContactManager.Users.Models
 
         public List<Status> ListStatuses()
         {
-            return ObjectContext.StatusSet.ToList();
+            return ObjectContext.Statuses.ToList();
         }
 
         private Status CreateStatus(Status status)
         {
-            ObjectContext.AddToStatusSet(status);
+            ObjectContext.AddToStatuses(status);
             ObjectContext.SaveChanges();
             return status;
         }
 
         public Status GetStatus(int id)
         {
-            return ObjectContext.StatusSet.Where(s => s.StatusId == id).FirstOrDefault();
+            return ObjectContext.Statuses.Where(s => s.StatusId == id).FirstOrDefault();
         }
 
-        public Status GetStatus(Statuses status)
+        public Status GetStatus(STATUSES status)
         {
             var str = status.ToString();
-            var _status = ObjectContext.StatusSet.Where(s => s.Name.Equals(str)).FirstOrDefault() ??
+            var _status = ObjectContext.Statuses.Where(s => s.Name.Equals(str)).FirstOrDefault() ??
                          CreateStatus(new Status
                                           {
                                               DisplayName = str,

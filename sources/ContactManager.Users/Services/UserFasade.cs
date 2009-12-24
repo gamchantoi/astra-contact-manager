@@ -183,7 +183,9 @@ namespace ContactManager.Users.Services
 
         private PPPSecret BuildSecret(ClientViewModel viewModel)
         {
-            var secret = _pppSecretService.GetPPPSecret(viewModel.UserId);
+            var secret = _pppSecretService.GetPPPSecret(viewModel.UserId) 
+                ?? new PPPSecret { UserId = viewModel.UserId };
+
             secret.Client = ClientService.GetClient(viewModel.UserId); ;
             secret.Profile = _pppSecretService.ProfileService.GetProfile(viewModel.ProfileId);
             secret.Disabled = !StatusService.GetStatus(viewModel.StatusId).IsActive;
@@ -192,10 +194,12 @@ namespace ContactManager.Users.Services
             return secret;
         }
 
-        private static Client BuildClient(ClientViewModel viewModel)
+        private Client BuildClient(ClientViewModel viewModel)
         {
-            Mapper.CreateMap<ClientViewModel, Client>();
-            return Mapper.Map<ClientViewModel, Client>(viewModel);
+            var client = ClientService.GetClient(viewModel.UserId);
+            client.Credit = viewModel.Credit;
+            client.Status = StatusService.GetStatus(viewModel.StatusId);
+            return client;
         }
 
         private static User BuildUser(ClientViewModel viewModel)
@@ -273,6 +277,7 @@ namespace ContactManager.Users.Services
             foreach (var client in clients)
             {
                 //todo: lazy load role
+                client.LoadStatusReferences();
                 client.Role = UserService.GetRoleForUser(client.UserName);
             }
 

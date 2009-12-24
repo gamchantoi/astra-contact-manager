@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using ContactManager.Models;
+using ContactManager.Models.Enums;
 using ContactManager.Models.Validation;
 using ContactManager.Services.Helpers;
 using ContactManager.Services.Interfaces;
@@ -100,7 +101,7 @@ namespace ContactManager.Services.Models
             var client = _userFasade.ClientService.GetClient(UserId);       
             var clientServices = client.LoadClientServices();               
 
-            var services = _serviceService.ListServices(Statuses.Active);   
+            var services = _serviceService.ListServices(STATUSES.Active);   
 
 
             foreach (var service in services)                               

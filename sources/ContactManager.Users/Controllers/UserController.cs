@@ -92,8 +92,7 @@ namespace ContactManager.Users.Controllers
                 return RedirectToAction("Index", PrepareIndex(false));
             }
             var wClient = _facade.GetContact(viewModel.UserId);
-            FillViewData(wClient);
-            return View(wClient);
+            return View(FillViewData(wClient));
         }
 
         [Authorize(Roles = "admin")]

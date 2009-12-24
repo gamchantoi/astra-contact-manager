@@ -34,7 +34,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Messages_astra_MessagesType", "astra_MessagesType", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.MessageType), "astra_Messages", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Message))]
 
 // Original file name:
-// Generation date: 23.12.2009 1:41:25
+// Generation date: 12/23/2009 9:42:32 PM
 namespace ContactManager.Models
 {
     
@@ -279,20 +279,20 @@ namespace ContactManager.Models
         }
         private global::System.Data.Objects.ObjectQuery<ClientInServices> _ClientInServicesSet;
         /// <summary>
-        /// There are no comments for StatusSet in the schema.
+        /// There are no comments for Statuses in the schema.
         /// </summary>
-        public global::System.Data.Objects.ObjectQuery<Status> StatusSet
+        public global::System.Data.Objects.ObjectQuery<Status> Statuses
         {
             get
             {
-                if ((this._StatusSet == null))
+                if ((this._Statuses == null))
                 {
-                    this._StatusSet = base.CreateQuery<Status>("[StatusSet]");
+                    this._Statuses = base.CreateQuery<Status>("[Statuses]");
                 }
-                return this._StatusSet;
+                return this._Statuses;
             }
         }
-        private global::System.Data.Objects.ObjectQuery<Status> _StatusSet;
+        private global::System.Data.Objects.ObjectQuery<Status> _Statuses;
         /// <summary>
         /// There are no comments for Streets in the schema.
         /// </summary>
@@ -437,11 +437,11 @@ namespace ContactManager.Models
             base.AddObject("ClientInServicesSet", clientInServices);
         }
         /// <summary>
-        /// There are no comments for StatusSet in the schema.
+        /// There are no comments for Statuses in the schema.
         /// </summary>
-        public void AddToStatusSet(Status status)
+        public void AddToStatuses(Status status)
         {
-            base.AddObject("StatusSet", status);
+            base.AddObject("Statuses", status);
         }
         /// <summary>
         /// There are no comments for Streets in the schema.

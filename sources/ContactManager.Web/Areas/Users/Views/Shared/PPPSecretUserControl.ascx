@@ -1,8 +1,9 @@
-﻿<%@ Import Namespace="ContactManager.Users.Services" %>
+﻿<%@ Import Namespace="ContactManager.Models.Enums"%>
+<%@ Import Namespace="ContactManager.Users.Services" %>
 <%@ Import Namespace="ContactManager.Users.ViewModels" %>
 <%@ Import Namespace="ContactManager.Models" %>
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<ClientViewModel>" %>
-<%if (!Model.Role.Equals(Role.admin.ToString()) && Model.PPPSecret != null)
+<%if (!Model.Role.Equals(ROLES.admin.ToString()) && Model.PPPSecret != null)
   {%>
 <fieldset class="fields">
     <legend><a href="#">PPP Secret</a></legend>
