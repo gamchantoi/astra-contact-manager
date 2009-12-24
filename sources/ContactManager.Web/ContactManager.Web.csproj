@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -75,6 +76,36 @@
     </Compile>
     <Compile Include="App_GlobalResources\Addresses_Resources.uk-ua.designer.cs">
       <DependentUpon>Addresses_Resources.uk-ua.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Accounts_Resources.designer.cs">
+      <DependentUpon>Accounts_Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Accounts_Resources.uk-ua.designer.cs">
+      <DependentUpon>Accounts_Resources.uk-ua.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Services_Resources.designer.cs">
+      <DependentUpon>Services_Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Services_Resources.uk-ua.designer.cs">
+      <DependentUpon>Services_Resources.uk-ua.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\PPP_Resources.designer.cs">
+      <DependentUpon>PPP_Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\PPP_Resources.uk-ua.designer.cs">
+      <DependentUpon>PPP_Resources.uk-ua.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -307,6 +338,42 @@
     <Content Include="media\language\es_ES.txt" />
     <Content Include="media\language\fr_FR.txt" />
     <Content Include="MvcContrib.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Accounts_Resources.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Accounts_Resources.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Accounts_Resources.uk-ua.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Accounts_Resources.uk-ua.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\PPP_Resources.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>PPP_Resources.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\PPP_Resources.uk-ua.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>PPP_Resources.uk-ua.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Services_Resources.uk-ua.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Services_Resources.uk-ua.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Services_Resources.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Services_Resources.designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

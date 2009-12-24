@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+<%@ Import Namespace="System.Web.Mvc.Html"%><%--DELETE THIS!--%>
 <%@ Import Namespace="ContactManager.Web.Helpers"%>
 
 <asp:Content ID="loginHead" ContentPlaceHolderID="head" runat="server">
@@ -26,7 +27,7 @@
                     <%= Html.CheckBox("rememberMe") %> <label class="inline" for="rememberMe"><%= Html.Resource("Web_Resources, Site_View_Account_LogOn_RememberMe")%></label>
                 </p>
                 <p class="submit">
-                    <input type="submit" value=<%= Html.Resource("Web_Resources, Site_View_Account_LogOn_Button_LogOn") %> />
+                    <input type="submit" value = <%= Html.Encode( Html.Resource("Web_Resources, Site_View_Account_LogOn_Button_LogOn")) %> />
                 </p>
             </fieldset>
         </div>

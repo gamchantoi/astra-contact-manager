@@ -1,28 +1,29 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ContactManager.Accounts.ViewModels.TransactionVewModel>>" %>
+<%@ Import Namespace="ContactManager.Web.Helpers"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <table class="data-table" cellpadding="0" cellspacing="0">
         <tr>
             <th>
-                ClientName
+                 <%= Html.Resource("Accounts_Resources, Accounts_View_Index_ClientName")%>
             </th>
             <th>
-                Sum
+                <%= Html.Resource("Accounts_Resources, Accounts_View_Index_Sum")%>
             </th>
             <th>
-                Balance
+                <%= Html.Resource("Accounts_Resources, Accounts_View_Index_Balance")%>
             </th>
             <th>
-                Comment
+                <%= Html.Resource("Accounts_Resources, Accounts_View_Index_Comment")%>
             </th>
             <th>
-                UserName
+                <%= Html.Resource("Accounts_Resources, Accounts_View_Index_UserName")%>
             </th>
             <th>
-                TransactionName
+                <%= Html.Resource("Accounts_Resources, Accounts_View_Index_TransactionName")%>
             </th>
             <th>
-                Date
+                <%= Html.Resource("Accounts_Resources, Accounts_View_Index_Date")%>
             </th>
         </tr>
 
@@ -57,8 +58,8 @@
     </table>
 
     <p>
-        <%= Html.ActionLink("Create New", "Create") %>&nbsp;|&nbsp;
-        <%= Html.ActionLink("Payments Methods", "Index", "PaymentMethod")%>
+        <%= Html.ActionLink(Html.Resource("Accounts_Resources, Accounts_View_Index_CreateNew"), "Create")%>&nbsp;|&nbsp;
+        <%= Html.ActionLink(Html.Resource("Accounts_Resources, Accounts_View_Index_PaymentsMethods"), "Index", "PaymentMethod")%>
     </p>
 
 </asp:Content>

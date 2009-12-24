@@ -1,54 +1,55 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Service>" %>
+<%@ Import Namespace="ContactManager.Web.Helpers"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <%= Html.ValidationSummary("Create was unsuccessful. Please correct the errors and try again.") %>
+    <%= Html.ValidationSummary(Html.Resource("Services_Resources, Services_View_Create_ValidationSummary"))%>
     <% using (Html.BeginForm())
        {%>
     <fieldset>
-        <legend>Create New Service</legend>
+        <legend><%= Html.Resource("Services_Resources, Services_View_Create_CreateNewService")%></legend>
         <p>
             <label for="Name">
-                Name:</label>
+                <%= Html.Resource("Services_Resources, Services_View_Create_Name")%>:</label>
             <%= Html.TextBox("Name") %>
             <%= Html.ValidationMessage("Name", "*") %>
         </p>
         <p>
             <label for="Comment">
-                Comment:</label>
+                <%= Html.Resource("Services_Resources, Services_View_Create_Comment")%>:</label>
             <%= Html.TextBox("Comment")%>
             <%= Html.ValidationMessage("Comment", "*")%>
         </p>
         <p>
             <label for="Cost">
-                Cost:</label>
+                <%= Html.Resource("Services_Resources, Services_View_Create_Cost")%>:</label>
             <%= Html.TextBox("Cost") %>
             <%= Html.ValidationMessage("Cost", "*") %>
         </p>
         <p>
             <label for="IsRegular">
-                IsRegular:</label>
+                <%= Html.Resource("Services_Resources, Services_View_Create_IsRegular")%>:</label>
             <%= Html.CheckBox("IsRegular") %>
             <%= Html.ValidationMessage("IsRegular", "*") %>
         </p>
         <p>
             <label for="Active">
-                Active:</label>
+                <%= Html.Resource("Services_Resources, Services_View_Create_Active")%>:</label>
             <%= Html.CheckBox("Active", true)%>
             <%= Html.ValidationMessage("Active", "*")%>
         </p>
         <p>
             <label for="Visible">
-                Visible:</label>
+                <%= Html.Resource("Services_Resources, Services_View_Create_Visible")%>:</label>
             <%= Html.CheckBox("Visible", true)%>
             <%= Html.ValidationMessage("Visible", "*")%>
         </p>
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value=<%= Html.Resource("Services_Resources, Services_View_Create_Create")%> />
         </p>
     </fieldset>
     <% } %>
     <div>
-        <%=Html.ActionLink("Back to List", "Index") %>
+        <%=Html.ActionLink(Html.Resource("Services_Resources, Services_View_Create_BackToList"), "Index") %>
     </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">

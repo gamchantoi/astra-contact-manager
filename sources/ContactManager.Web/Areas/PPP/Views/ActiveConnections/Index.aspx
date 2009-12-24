@@ -1,35 +1,36 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ContactManager.PPP.Models.ActiveConnections>>" %>
+<%@ Import Namespace="ContactManager.Web.Helpers"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <table  class="data-table" cellpadding="0" cellspacing="0">
         <tr>
             <th></th>
             <th>
-                Name
+                <%= Html.Resource("PPP_Resources, PPP_View_ActiveConnections_Index_Name")%>
             </th>
             <th>
-                Service
+                <%= Html.Resource("PPP_Resources, PPP_View_ActiveConnections_Index_Service")%>
             </th>
             <th>
-                CallerId
+                <%= Html.Resource("PPP_Resources, PPP_View_ActiveConnections_Index_CallerId")%>
             </th>
             <th>
-                Address
+                <%= Html.Resource("PPP_Resources, PPP_View_ActiveConnections_Index_Address")%>
             </th>
             <th>
-                Uptime
+                <%= Html.Resource("PPP_Resources, PPP_View_ActiveConnections_Index_Uptime")%>
             </th>
             <th>
-                Encoding
+                <%= Html.Resource("PPP_Resources, PPP_View_ActiveConnections_Index_Encoding")%>
             </th>
             <th>
-                SessionId
+                <%= Html.Resource("PPP_Resources, PPP_View_ActiveConnections_Index_SessionId")%>
             </th>
             <th>
-                LimitBytesIn
+                <%= Html.Resource("PPP_Resources, PPP_View_ActiveConnections_Index_LimitBytesIn")%>
             </th>
             <th>
-                LimitBytesOut
+                <%= Html.Resource("PPP_Resources, PPP_View_ActiveConnections_Index_LimitBytesOut")%>
             </th>
         </tr>
 

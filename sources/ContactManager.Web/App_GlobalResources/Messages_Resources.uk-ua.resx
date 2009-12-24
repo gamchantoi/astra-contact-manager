@@ -225,4 +225,25 @@
   <data name="Messages_View_MessageType_Create_Name" xml:space="preserve">
     <value>Імя</value>
   </data>
+  <data name="Messages_View_MessageType_Edit_BackToList" xml:space="preserve">
+    <value>Назад до списку</value>
+  </data>
+  <data name="Messages_View_MessageType_Edit_EditMessageType" xml:space="preserve">
+    <value>Редагувати тип</value>
+  </data>
+  <data name="Messages_View_MessageType_Edit_Name" xml:space="preserve">
+    <value>Імя</value>
+  </data>
+  <data name="Messages_View_MessageType_Edit_Save" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
+  <data name="Messages_View_MessageType_Index_CreateNew" xml:space="preserve">
+    <value>Створити</value>
+  </data>
+  <data name="Messages_View_MessageType_Index_Edit" xml:space="preserve">
+    <value>Редагувати</value>
+  </data>
+  <data name="Messages_View_MessageType_Index_Name" xml:space="preserve">
+    <value>Імя</value>
+  </data>
 </root>
