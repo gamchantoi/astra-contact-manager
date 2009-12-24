@@ -30,9 +30,8 @@
         <div id="menucontainer">
             <%if (HttpContext.Current.User.Identity.IsAuthenticated)
               {%>
-            <ul id="menu">
+            <ul id="menu"> 
                 <%= Html.MenuItem(Html.Resource("Web_Resources, Site_MenuItem_Users"), "Index", "User", "Users")%>
-                <%= Html.MenuItem(Html.Resource("Web_Resources, Site_MenuItem_Hosts"), "Index", "Host", "Hosts")%>
                 <%= Html.MenuItem(Html.Resource("Web_Resources, Site_MenuItem_Profiles"), "Index", "Profile", "PPP")%>
                 <%= Html.MenuItem(Html.Resource("Web_Resources, Site_MenuItem_Pools"), "Index", "Pool", "PPP")%>
                 <%= Html.MenuItem(Html.Resource("Web_Resources, Site_MenuItem_Sync"), "Index", "Sync", "")%>
