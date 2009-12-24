@@ -1,4 +1,5 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Users.ViewModels.ClientViewModel>" %>
+<%@ Import Namespace="ContactManager.Web.Helpers"%>
 <%@ Import Namespace="ContactManager.Models.Enums"%>
 
 <%@ Import Namespace="ContactManager.Users.Services" %>
@@ -14,37 +15,37 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <%= Html.ValidationSummary("Edit was unsuccessful. Please correct the errors and try again.") %>
+    <%= Html.ValidationSummary(Html.Resource("Users_Resources, Users_User_Edit_ValidationSummary"))%>
     <fieldset class="fields">
-        <legend>Edit User:
+        <legend><%= Html.Resource("Users_Resources, Users_User_Edit_EditUser")%>
             <%=Html.Encode(Model.UserName)%></legend>
         <fieldset class="fields">
-            <legend>General</legend>
+            <legend><%= Html.Resource("Users_Resources, Users_User_Edit_General")%></legend>
             <% using (Html.BeginForm())
                {%>
             <%= Html.Hidden("UserId", Model.UserId) %>
             <%= Html.Hidden("Balance", Model.Balance)%>
             <p>
                 <label for="Balance">
-                    Balance:</label>
+                    <%= Html.Resource("Users_Resources, Users_User_Edit_Balance")%>:</label>
                 <%= Html.Encode(String.Format("{0:F}", Model.Balance)) %>
             </p>
             <p>
                 <label for="UserName">
-                    UserName:</label>
+                    <%= Html.Resource("Users_Resources, Users_User_Edit_UserName")%>:</label>
                 <%= Html.TextBox("UserName", Model.UserName)%>
                 <%= Html.ValidationMessage("UserName", "*")%>
             </p>
             <p>
                 <label for="Password">
-                    Password:</label>
+                    <%= Html.Resource("Users_Resources, Users_User_Edit_Password")%>:</label>
                 <%= Html.TextBox("Password", Model.Password) %>
                 <%= Html.ValidationMessage("Password", "*") %>
                 <input type="button" value="Generate" onclick="javascript: generatePassword('8', '#Password');" />
             </p>
             <p>
                 <label for="Role">
-                    Role:</label>
+                    <%= Html.Resource("Users_Resources, Users_User_Edit_Role")%>:</label>
                 <%= Html.DropDownListFor(r => r.Role, Model.Roles)%>
                 <%= Html.ValidationMessage("Role", "*") %>
             </p>
@@ -52,37 +53,37 @@
               {%>
             <p>
                 <label for="ProfileId">
-                    Profile:</label>
+                    <%= Html.Resource("Users_Resources, Users_User_Edit_Profile")%>:</label>
                 <%= Html.DropDownListFor(p => p.ProfileId, Model.Profiles)%>
                 <%= Html.ValidationMessage("ProfileId", "*")%>
             </p>
             <%} %>
             <p>
                 <label for="Credit">
-                    Credit:</label>
+                    <%= Html.Resource("Users_Resources, Users_User_Edit_Credit")%>:</label>
                 <%= Html.TextBox("Credit", String.Format("{0:F}", Model.Credit))%>
                 <%= Html.ValidationMessage("Credit", "*")%>
             </p>
             <p>
                 <label for="Email">
-                    Email:</label>
+                    <%= Html.Resource("Users_Resources, Users_User_Edit_Email")%>:</label>
                 <%= Html.TextBox("Email", Model.Email) %>
                 <%= Html.ValidationMessage("Email", "*") %>
             </p>
             <p>
                 <label for="Comment">
-                    Comment:</label>
+                    <%= Html.Resource("Users_Resources, Users_User_Edit_Comment")%>:</label>
                 <%= Html.TextBox("Comment", Model.Comment)%>
                 <%= Html.ValidationMessage("Comment", "*")%>
             </p>
             <p>
                 <label for="StatusId">
-                    Status:</label>
+                    <%= Html.Resource("Users_Resources, Users_User_Edit_Status")%>:</label>
                 <%= Html.DropDownList("StatusId", Model.Statuses)%>
                 <%= Html.ValidationMessage("StatusId", "*")%>
             </p>
             <p>
-                <input name="button" type="submit" value="Save" />
+                <input name="button" type="submit" value=<%= Html.Resource("Users_Resources, Users_User_Edit_Save")%> />
             </p>
             <% } %>
         </fieldset>
@@ -93,6 +94,6 @@
         <%Html.RenderPartial("ContractUserControl", Model); %>
     </fieldset>
     <div>
-        <%=Html.ActionLink("Back to List", "Index") %>
+        <%=Html.ActionLink(Html.Resource("Users_Resources, Users_User_Edit_BackToList"), "Index") %>
     </div>
 </asp:Content>
