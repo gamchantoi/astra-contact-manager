@@ -95,3 +95,9 @@ label { display: block; float: left; width: 120px; text-align: right; margin: 0 
 p.submit, p.checkbox { padding-left: 130px; }
 p.checkbox label { display: inline; float: none; }
 /*#logo { float: left; width: 100px; height: 100px; overflow: hidden; }*/
+
+/* TABLES 
+----------------------------------------------------------*/
+table { border: 1px solid #E8EEF4; border-collapse: collapse; }
+table th { background-color: #E8EEF4; border: 1px solid #E8EEF4; padding: 6px 5px; text-align: left; }
+table td { border: 1px solid #E8EEF4; padding: 5px; }

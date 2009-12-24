@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ContactManager.Models;
+using ContactManager.Models.Enums;
 using ContactManager.Services.Interfaces;
 using System.Linq;
 
@@ -10,11 +11,11 @@ namespace ContactManager.Services.Models
     {
         #region IServiceRepository Members
 
-        public List<Service> ListServices(Statuses? status)
+        public List<Service> ListServices(STATUSES? status)
         {
             if (status.HasValue)
             {
-                var _status = status.Value == Statuses.Active ? true : false;
+                var _status = status.Value == STATUSES.Active ? true : false;
                 return ObjectContext.ServiceSet.Where(s => s.Active == _status).ToList();
             }
             return ObjectContext.ServiceSet.ToList();

@@ -12,6 +12,6 @@ namespace ContactManager.Users.Interfaces
         void DeleteClient(Guid id);
         Client EditClient(Client client);
         Client GetClient(Guid id);
-        List<Client> ListClients(Status status);
+        List<Client> ListClients(Status status,bool inStatus);
     }
 }

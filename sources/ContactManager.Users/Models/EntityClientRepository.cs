@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Objects;
 using System.Linq;
 using ContactManager.Models;
 using ContactManager.Users.Interfaces;
@@ -36,9 +37,7 @@ namespace ContactManager.Users.Models
             var _client = ObjectContext.Clients.Where(c => c.UserId == client.UserId).FirstOrDefault();
             if (_client == null)
                 return CreateClient(client);
-            var manager = ObjectContext.ObjectStateManager;
-            var objClient = manager.GetObjectStateEntry(client.EntityKey);
-            objClient.SetModified();
+
             ObjectContext.ApplyPropertyChanges(_client.EntityKey.EntitySetName, client);
             _client.LastUpdatedDate = DateTime.Now;
             ObjectContext.SaveChanges();
@@ -50,12 +49,24 @@ namespace ContactManager.Users.Models
             return ObjectContext.Clients.FirstOrDefault(c => c.UserId == id);
         }
 
-        public List<Client> ListClients(Status status)
+        public List<Client> ListClients(Status status, bool inStatus)
         {
-            status.Clients.Load();
-            return status.Clients.ToList();
+            if (inStatus)
+                return ObjectContext.Clients
+                    .Join(ObjectContext.Statuses,
+                        c => c.Status.StatusId, s => s.StatusId,
+                        (c, s) => new { c, s })
+                    .Where(temp0 => (temp0.c.Status.StatusId == status.StatusId))
+                    .Select(temp0 => temp0.c).ToList();
+
+            return ObjectContext.Clients
+                    .Join(ObjectContext.Statuses,
+                        c => c.Status.StatusId, s => s.StatusId,
+                        (c, s) => new { c, s })
+                    .Where(temp0 => (temp0.c.Status.StatusId != status.StatusId))
+                    .Select(temp0 => temp0.c).ToList();
         }
-        
+
         #endregion
     }
 }

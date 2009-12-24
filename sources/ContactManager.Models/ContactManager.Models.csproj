@@ -72,7 +72,7 @@
     <Compile Include="RepositoryBase.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="Status.cs" />
-    <Compile Include="Statuses.cs" />
+    <Compile Include="Enums\Enums.cs" />
     <Compile Include="Transaction.cs" />
     <Compile Include="UnitOfWorkScope.cs" />
     <Compile Include="User.cs" />

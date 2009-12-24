@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ContactManager.Models;
+using ContactManager.Models.Enums;
 using ContactManager.Models.Validation;
 using ContactManager.Services.Helpers;
 using ContactManager.Services.Interfaces;
@@ -39,7 +40,7 @@ namespace ContactManager.Services.Models
 
         #region IServiceService Members
 
-        public List<Service> ListServices(Statuses? status) 
+        public List<Service> ListServices(STATUSES? status) 
         {
             return _repository.ListServices(status);
         }

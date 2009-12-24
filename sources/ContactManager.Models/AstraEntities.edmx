@@ -761,7 +761,7 @@
           <EntitySet Name="PaymentMethods" EntityType="AstraModel.PaymentMethod" />
           <EntitySet Name="Transactions" EntityType="AstraModel.Transaction" />
           <EntitySet Name="ClientInServicesSet" EntityType="AstraModel.ClientInServices" />
-          <EntitySet Name="StatusSet" EntityType="AstraModel.Status" />
+          <EntitySet Name="Statuses" EntityType="AstraModel.Status" />
           <EntitySet Name="Streets" EntityType="AstraModel.Street" />
           <AssociationSet Name="FK_acc_Transactions_aspnet_Users" Association="AstraModel.FK_acc_Transactions_aspnet_Users">
             <End Role="ASPUser" EntitySet="Users" />
@@ -776,7 +776,7 @@
             <End Role="astra_Streets" EntitySet="Streets" />
             <End Role="Address" EntitySet="Addresses" /></AssociationSet>
           <AssociationSet Name="FK_astra_Clients_astra_Statuses" Association="AstraModel.FK_astra_Clients_astra_Statuses">
-            <End Role="astra_Statuses" EntitySet="StatusSet" />
+            <End Role="astra_Statuses" EntitySet="Statuses" />
             <End Role="Client" EntitySet="Clients" /></AssociationSet>
           <AssociationSet Name="FK_astra_ClientsServicesActivities_astra_Clients1" Association="AstraModel.FK_astra_ClientsServicesActivities_astra_Clients1">
             <End Role="Client" EntitySet="Clients" />
@@ -1354,7 +1354,7 @@
               <MappingFragment StoreEntitySet="astra_ClientsInServices">
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="ActivityId" ColumnName="ActivityId" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="StatusSet">
+          <EntitySetMapping Name="Statuses">
             <EntityTypeMapping TypeName="IsTypeOf(AstraModel.Status)">
               <MappingFragment StoreEntitySet="astra_Statuses">
                 <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />

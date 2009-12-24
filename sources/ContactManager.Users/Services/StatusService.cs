@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using ContactManager.Models;
+using ContactManager.Models.Enums;
 using ContactManager.Models.Validation;
 using ContactManager.Users.Interfaces;
 using ContactManager.Users.Models;
@@ -38,7 +39,7 @@ namespace ContactManager.Users.Services
             return _repository.GetStatus(id);
         }
 
-        public Status GetStatus(Statuses status)
+        public Status GetStatus(STATUSES status)
         {
             return _repository.GetStatus(status);
         }
