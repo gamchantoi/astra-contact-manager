@@ -11,7 +11,7 @@ namespace ContactManager.PPP.Models
 
         public PPPSecret CreatePPPSecret(PPPSecret secret)
         {
-            secret.Client = ObjectContext.Clients.Where(c => c.UserId == secret.UserId).FirstOrDefault();
+            //secret.Client = ObjectContext.Clients.Where(c => c.UserId == secret.UserId).FirstOrDefault();
             //if(secret.Profile != null)
             //    secret.Profile = ObjectContext.ProfileSet.Where(p => p.Name == secret.Profile.Name).FirstOrDefault();
             //else if(secret.ProfileId > 0)

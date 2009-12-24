@@ -31,7 +31,6 @@ namespace ContactManager.Users.Services
         {
             try
             {
-                client.Status = _statusService.GetStatus(client.StatusId);
                 _repository.CreateClient(client);
                 return true;
             }
@@ -79,6 +78,12 @@ namespace ContactManager.Users.Services
         {
             Mapper.CreateMap<Client, ClientViewModel>();
             return Mapper.Map<Client, ClientViewModel>(client);
+        }
+
+        public Client GetModel(ClientViewModel viewModel)
+        {
+            Mapper.CreateMap<ClientViewModel, Client>();
+            return Mapper.Map<ClientViewModel, Client>(viewModel);
         }
 
         public Client BuildClient(PPPSecret secret)

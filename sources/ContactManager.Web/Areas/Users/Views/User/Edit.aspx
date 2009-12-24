@@ -5,8 +5,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <script language="javascript" type="text/javascript" src="<%= Url.Content("~/Scripts/PasswordGenerator.js")%>"></script>
+    <script language="javascript" type="text/javascript" src="<%= Url.Content("~/Scripts/jquery-ui-1.7.2/ui/ui.core.js")%>"></script>
+    <script language="javascript" type="text/javascript" src="<%= Url.Content("~/Scripts/jquery-ui-1.7.2/ui/ui.dialog.js")%>"></script>
+    <script language="javascript" type="text/javascript" src="<%= Url.Content("~/Scripts/jquery-ui-1.7.2/ui/ui.draggable.js")%>"></script>
+    <script language="javascript" type="text/javascript" src="<%= Url.Content("~/Scripts/jquery-ui-1.7.2/ui/ui.resizable.js")%>"></script>
+    <script language="javascript" type="text/javascript" src="<%= Url.Content("~/Scripts/astra-dialog.js")%>"></script>
 
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <%= Html.ValidationSummary("Edit was unsuccessful. Please correct the errors and try again.") %>
     <fieldset class="fields">

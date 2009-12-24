@@ -1,4 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Client>" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Users.ViewModels.ClientViewModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -27,13 +27,13 @@
         <p>
             <label for="Role">
                 Role:</label>
-            <%= Html.DropDownList("Role", (SelectList)ViewData["Roles"])%>
+            <%= Html.DropDownList("Role", Model.Roles )%>
             <%= Html.ValidationMessage("Role", "*") %>
         </p>
         <p>
             <label for="ProfileId">
                 Profile:</label>
-            <%= Html.DropDownList("ProfileId", (SelectList)ViewData["Profiles"])%>
+            <%= Html.DropDownList("ProfileId", Model.Profiles)%>
             <%= Html.ValidationMessage("ProfileId", "*")%>
         </p>
         <p>
@@ -51,7 +51,7 @@
         <p>
             <label for="StatusId">
                 Status:</label>
-            <%= Html.DropDownList("StatusId", (SelectList)ViewData["Statuses"])%>
+            <%= Html.DropDownList("StatusId", Model.Statuses)%>
             <%= Html.ValidationMessage("StatusId", "*")%>
         </p>
         <p>

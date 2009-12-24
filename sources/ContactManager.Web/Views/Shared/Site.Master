@@ -50,6 +50,7 @@
             <div id="bottom-shadow">
             </div>
         </div>
+        <div id="dialog"></div>
     </div>
 </body>
 </html>

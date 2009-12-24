@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Security;
 using ContactManager.Models;
 
@@ -16,15 +15,15 @@ namespace ContactManager.Users.Models
             Provider = Membership.Provider;
         }
 
-        public User CreateUser(Client client)
+        public User CreateUser(User user)
         {
             MembershipCreateStatus status;
-            var user = Provider.CreateUser(client.UserName, client.Password, client.Email, null, null, true, null, out status);
-            var userId = new Guid(user.ProviderUserKey.ToString());
+            var _user = Provider.CreateUser(user.UserName, user.Password, user.Email, null, null, true, null, out status);
+            var userId = new Guid(_user.ProviderUserKey.ToString());
             
             if (status != MembershipCreateStatus.Success) return null;
 
-            Roles.AddUserToRole(client.UserName, client.Role);
+            Roles.AddUserToRole(user.UserName, user.Role);
             return GetUser(userId);
         }
 
