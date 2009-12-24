@@ -1,4 +1,5 @@
-﻿<%@ Import Namespace="ContactManager.Users.ViewModels" %>
+﻿<%@ Import Namespace="ContactManager.Web.Helpers"%>
+<%@ Import Namespace="ContactManager.Users.ViewModels" %>
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<ClientViewModel>" %>
 <%if (Model.Services != null && Model.Services.Count > 0)
   {%>
@@ -7,11 +8,8 @@
     <%
         foreach (var service in Model.Services)
         {%>
-    <p>
-        <label for="Name">
-            Name:</label>
-        <%= Html.Encode(service.Name)%>
-    </p>
+        <%=Html.BuildItem("Name: ", string.Format("{0} ({1:F})", service.Name, service.Cost))%>
     <%} %>
+    
 </fieldset>
 <%} %>

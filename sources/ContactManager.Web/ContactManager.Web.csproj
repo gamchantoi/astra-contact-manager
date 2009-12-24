@@ -89,6 +89,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="App_GlobalResources\Users_Resources.designer.cs">
+      <DependentUpon>Users_Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Users_Resources.uk-ua.designer.cs">
+      <DependentUpon>Users_Resources.uk-ua.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="App_GlobalResources\Services_Resources.designer.cs">
       <DependentUpon>Services_Resources.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -338,7 +348,6 @@
     <Content Include="media\language\en_UK.txt" />
     <Content Include="media\language\es_ES.txt" />
     <Content Include="media\language\fr_FR.txt" />
-    <Content Include="MvcContrib.dll" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\Accounts_Resources.resx">
@@ -404,6 +413,18 @@
     <Content Include="Scripts\jquery-ui-1.7.2\ui\ui.dialog.js" />
     <Content Include="Scripts\jquery-ui-1.7.2\ui\ui.draggable.js" />
     <Content Include="Scripts\jquery-ui-1.7.2\ui\ui.resizable.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Users_Resources.uk-ua.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Users_Resources.uk-ua.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Users_Resources.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Users_Resources.designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,28 +1,13 @@
-﻿<%@ Import Namespace="ContactManager.Users.ViewModels" %>
+﻿<%@ Import Namespace="ContactManager.Web.Helpers"%>
+<%@ Import Namespace="ContactManager.Users.ViewModels" %>
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<ClientViewModel>" %>
 <%if (Model.Contract != null)
   {%>
 <fieldset class="fields">
     <legend><a href="#">Contract</a></legend>
-    <p>
-        <label for="ContractNumber">
-            ContractNumber:</label>
-        <%= Html.Encode(Model.Contract.ContractNumber)%>
-    </p>
-    <p>
-        <label for="Comment">
-            Comment:</label>
-        <%= Html.Encode(Model.Contract.Comment)%>
-    </p>
-    <p>
-        <label for="CreateDate">
-            CreateDate:</label>
-        <%= Html.Encode(Model.Contract.CreateDate)%>
-    </p>
-    <p>
-        <label for="ExpiredDate">
-            ExpiredDate:</label>
-        <%= Html.Encode(Model.Contract.ExpiredDate)%>
-    </p>
+    <%=Html.BuildItem("ContractNumber: ", Model.Contract.ContractNumber)%>
+    <%=Html.BuildItem("Comment: ", Model.Contract.Comment)%>
+    <%=Html.BuildItem("CreateDate: ", Model.Contract.CreateDate.HasValue ? Model.Contract.CreateDate.Value.ToShortDateString() :"" )%>
+    <%=Html.BuildItem("ExpiredDate: ", Model.Contract.ExpiredDate.HasValue ? Model.Contract.ExpiredDate.Value.ToShortDateString() : "")%>
 </fieldset>
-<%} %>
+<%} %> 
