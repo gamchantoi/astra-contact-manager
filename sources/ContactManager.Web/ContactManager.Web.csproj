@@ -229,6 +229,10 @@
       <Project>{2E5414EA-D88E-421B-AE3B-D98B03443578}</Project>
       <Name>ContactManager.Messages</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ContactManager.Synchronization\ContactManager.Synchronization.csproj">
+      <Project>{992422D0-1AAD-4B19-AE12-115F4AB7342B}</Project>
+      <Name>ContactManager.Synchronization</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ContactManager.Users\ContactManager.Users.csproj">
       <Project>{3714F4A7-571B-47C4-925A-527F67F45637}</Project>
       <Name>ContactManager.Users</Name>
@@ -425,6 +429,10 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Users_Resources.designer.cs</LastGenOutput>
     </Content>
+    <Content Include="Areas\Synchronizations\Views\Sync\Index.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Synchronizations\Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

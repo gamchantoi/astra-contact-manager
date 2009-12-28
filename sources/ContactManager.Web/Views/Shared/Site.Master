@@ -18,8 +18,6 @@
     <div class="page">
         <div id="header">
             <div id="title">
-                <%--<h1>
-                    Astra Contact Manager</h1>--%>
                     <h1>
                     <%= Html.Resource("Web_Resources, Site_Title") %></h1>
             </div>
@@ -34,7 +32,7 @@
                 <%= Html.MenuItem(Html.Resource("Web_Resources, Site_MenuItem_Users"), "Index", "User", "Users")%>
                 <%= Html.MenuItem(Html.Resource("Web_Resources, Site_MenuItem_Profiles"), "Index", "Profile", "PPP")%>
                 <%= Html.MenuItem(Html.Resource("Web_Resources, Site_MenuItem_Pools"), "Index", "Pool", "PPP")%>
-                <%= Html.MenuItem(Html.Resource("Web_Resources, Site_MenuItem_Sync"), "Index", "Sync", "")%>
+                <%= Html.MenuItem(Html.Resource("Web_Resources, Site_MenuItem_Sync"), "Index", "Sync", "Synchronizations")%>
                 <%= Html.MenuItem(Html.Resource("Web_Resources, Site_MenuItem_ActiveConnections"), "Index", "ActiveConnections", "PPP")%>
                 <%= Html.MenuItem(Html.Resource("Web_Resources, Site_MenuItem_Transactions"), "Index", "Transaction", "Accounts")%>
                 <%= Html.MenuItem(Html.Resource("Web_Resources, Site_MenuItem_Services"), "Index", "Service", "Services")%>
