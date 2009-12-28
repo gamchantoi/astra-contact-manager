@@ -30,7 +30,8 @@ namespace ContactManager.PPP.SSH
         {
             var command = new StringBuilder("ppp profile set ");
             string retVal;
-            command.Append(profile.Name + " ")
+            command.Append((string.IsNullOrEmpty(profile.OldName)? profile.Name : profile.OldName) + " ")
+                .Append(Repository.BuildCommand("name", profile.Name))
                 .Append(Repository.BuildCommand("local-address", profile.LocalAddress))
                 .Append(Repository.BuildCommand("remote-address", profile.PoolName))
                 .Append(Repository.BuildCommand("rate-limit", profile.RateLimit));

@@ -367,6 +367,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DisplayName.
+        /// </summary>
+        internal static string PPP_View_Profile_Create_DisplayName {
+            get {
+                return ResourceManager.GetString("PPP_View_Profile_Create_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LocalAddress.
         /// </summary>
         internal static string PPP_View_Profile_Create_LocalAddress {
@@ -439,6 +448,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Display Name.
+        /// </summary>
+        internal static string PPP_View_Profile_Edit_DisplayName {
+            get {
+                return ResourceManager.GetString("PPP_View_Profile_Edit_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Profile.
         /// </summary>
         internal static string PPP_View_Profile_Edit_EditProfile {
@@ -453,6 +471,15 @@ namespace Resources {
         internal static string PPP_View_Profile_Edit_LocalAddress {
             get {
                 return ResourceManager.GetString("PPP_View_Profile_Edit_LocalAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string PPP_View_Profile_Edit_Name {
+            get {
+                return ResourceManager.GetString("PPP_View_Profile_Edit_Name", resourceCulture);
             }
         }
         

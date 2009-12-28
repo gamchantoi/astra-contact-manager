@@ -332,6 +332,7 @@
           </Key>
           <Property Name="PoolId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="OldName" Type="nvarchar" MaxLength="64" />
           <Property Name="Addresses" Type="nvarchar" Nullable="false" MaxLength="64" />
           <Property Name="NextPool" Type="int" />
           <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
@@ -341,7 +342,9 @@
             <PropertyRef Name="ProfileId" />
           </Key>
           <Property Name="ProfileId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DisplayName" Type="nvarchar" Nullable="false" MaxLength="64" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="OldName" Type="nvarchar" MaxLength="64" />
           <Property Name="LocalAddress" Type="nvarchar" MaxLength="16" />
           <Property Name="RemoteAddress" Type="int" />
           <Property Name="RateLimit" Type="nvarchar" MaxLength="64" />
@@ -355,6 +358,7 @@
           </Key>
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="256" />
+          <Property Name="OldName" Type="nvarchar" MaxLength="64" />
           <Property Name="Password" Type="nvarchar" MaxLength="128" />
           <Property Name="Comment" Type="nvarchar" MaxLength="64" />
           <Property Name="Service" Type="nvarchar" MaxLength="16" />
@@ -930,7 +934,7 @@
           <Property Name="NextPool" Type="Int32" />
           <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="mkt_PPPProfiles" Relationship="AstraModel.FK_mkt_PPPProfiles_mkt_IPPool" FromRole="mkt_IPPools" ToRole="mkt_PPPProfiles" />
-        </EntityType>
+          <Property Name="OldName" Type="String" Nullable="true" /></EntityType>
         <EntityType Name="Profile">
           <Key>
             <PropertyRef Name="ProfileId" />
@@ -944,7 +948,9 @@
           <Property Name="Comment" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="IPPool" Relationship="AstraModel.FK_mkt_PPPProfiles_mkt_IPPool" FromRole="mkt_PPPProfiles" ToRole="mkt_IPPools" />
           <NavigationProperty Name="PPPSecrets" Relationship="AstraModel.FK_mkt_PPPSecrets_mkt_PPPProfiles" FromRole="mkt_PPPProfiles" ToRole="mkt_PPPSecrets" />
-          <NavigationProperty Name="Transactions" Relationship="AstraModel.acc_ProfilesInTransactions" FromRole="Profile" ToRole="acc_Transactions" /></EntityType>
+          <NavigationProperty Name="Transactions" Relationship="AstraModel.acc_ProfilesInTransactions" FromRole="Profile" ToRole="acc_Transactions" />
+          <Property Name="DisplayName" Type="String" Nullable="false" />
+          <Property Name="OldName" Type="String" Nullable="true" /></EntityType>
         <EntityType Name="PPPSecret">
           <Key>
             <PropertyRef Name="UserId" />
@@ -965,7 +971,8 @@
           <NavigationProperty Name="Profile" Relationship="AstraModel.FK_mkt_PPPSecrets_mkt_PPPProfiles" FromRole="mkt_PPPSecrets" ToRole="mkt_PPPProfiles" />
           <Property Name="Name" Type="String" Nullable="true" />
           <Property Name="Password" Type="String" Nullable="true" />
-          <Property Name="Disabled" Type="Boolean" Nullable="true" /></EntityType>
+          <Property Name="Disabled" Type="Boolean" Nullable="true" />
+          <Property Name="OldName" Type="String" Nullable="true" /></EntityType>
         <Association Name="FK_astra_Clients_aspnet_Users">
           <End Role="aspnet_Users" Type="AstraModel.User" Multiplicity="1" />
           <End Role="astra_Clients" Type="AstraModel.Client" Multiplicity="0..1" />
@@ -1215,6 +1222,7 @@
           <EntitySetMapping Name="PoolSet">
             <EntityTypeMapping TypeName="IsTypeOf(AstraModel.Pool)">
               <MappingFragment StoreEntitySet="mkt_IPPools">
+                <ScalarProperty Name="OldName" ColumnName="OldName" />
                 <ScalarProperty Name="PoolId" ColumnName="PoolId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Addresses" ColumnName="Addresses" />
@@ -1226,6 +1234,8 @@
           <EntitySetMapping Name="ProfileSet">
             <EntityTypeMapping TypeName="IsTypeOf(AstraModel.Profile)">
               <MappingFragment StoreEntitySet="mkt_PPPProfiles">
+                <ScalarProperty Name="OldName" ColumnName="OldName" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
                 <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="LocalAddress" ColumnName="LocalAddress" />
@@ -1239,6 +1249,7 @@
           <EntitySetMapping Name="PPPSecrets">
             <EntityTypeMapping TypeName="IsTypeOf(AstraModel.PPPSecret)">
               <MappingFragment StoreEntitySet="mkt_PPPSecrets">
+                <ScalarProperty Name="OldName" ColumnName="OldName" />
                 <ScalarProperty Name="Disabled" ColumnName="Disabled" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

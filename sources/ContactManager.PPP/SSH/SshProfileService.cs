@@ -53,6 +53,9 @@ namespace ContactManager.PPP.SSH
             {
                 var profile = _pppProfileService.GetProfile(id);
                 _repository.ppp_profile_set(profile);
+                //todo : resync update logic 
+                profile.OldName = null;
+                _pppProfileService.EditProfile(profile);
             }
             catch (Exception ex)
             {
