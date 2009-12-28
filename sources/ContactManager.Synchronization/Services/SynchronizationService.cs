@@ -149,7 +149,7 @@ namespace ContactManager.Synchronization.Services
                 HttpContext.Current.Application.Add("SyncStatus", "Started");
                 Connect();
 
-                var sshSecrets = _sshSevice.ListPPPSecrets();
+                //var sshSecrets = _sshSevice.ListPPPSecrets();
                 //var sshProfiles = _sshSevice.ListPPPProfiles();
                 //var sshPools = _sshSevice.ListPools();
                 //_sshSevice.Disconnect();

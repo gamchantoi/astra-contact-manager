@@ -56,8 +56,7 @@ namespace ContactManager.PPP.Controllers
             return View();
         }
 
-        //
-        // GET: /Tariff/Edit/5
+
         [Authorize(Roles = "admin")]
         public ActionResult Edit(int id)
         {
@@ -65,14 +64,14 @@ namespace ContactManager.PPP.Controllers
             return View(_service.GetProfile(id));
         }
 
-        //
-        // POST: /Tariff/Edit/5
+
         [Authorize(Roles = "admin")]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Edit(Profile profile)
         {
             if (_service.EditProfile(profile))
             {
+                var _profile = _service.GetProfile(profile.ProfileId);
                 _sshService.EditPPPProfile(profile.ProfileId);
                 return View("Index", PrepareIndex());
             }

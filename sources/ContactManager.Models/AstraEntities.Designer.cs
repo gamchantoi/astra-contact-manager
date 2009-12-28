@@ -34,7 +34,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Messages_astra_MessagesType", "astra_MessagesType", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.MessageType), "astra_Messages", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Message))]
 
 // Original file name:
-// Generation date: 12/28/2009 12:57:19 PM
+// Generation date: 28.12.2009 16:52:15
 namespace ContactManager.Models
 {
     
@@ -2581,6 +2581,29 @@ namespace ContactManager.Models
         partial void OnLastUpdatedDateChanging(global::System.DateTime value);
         partial void OnLastUpdatedDateChanged();
         /// <summary>
+        /// There are no comments for Property OldName in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string OldName
+        {
+            get
+            {
+                return this._OldName;
+            }
+            set
+            {
+                this.OnOldNameChanging(value);
+                this.ReportPropertyChanging("OldName");
+                this._OldName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("OldName");
+                this.OnOldNameChanged();
+            }
+        }
+        private string _OldName;
+        partial void OnOldNameChanging(string value);
+        partial void OnOldNameChanged();
+        /// <summary>
         /// There are no comments for mkt_PPPProfiles in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("AstraModel", "FK_mkt_PPPProfiles_mkt_IPPool", "mkt_PPPProfiles")]
@@ -2619,12 +2642,14 @@ namespace ContactManager.Models
         /// <param name="profileId">Initial value of ProfileId.</param>
         /// <param name="name">Initial value of Name.</param>
         /// <param name="lastUpdatedDate">Initial value of LastUpdatedDate.</param>
-        public static Profile CreateProfile(int profileId, string name, global::System.DateTime lastUpdatedDate)
+        /// <param name="displayName">Initial value of DisplayName.</param>
+        public static Profile CreateProfile(int profileId, string name, global::System.DateTime lastUpdatedDate, string displayName)
         {
             Profile profile = new Profile();
             profile.ProfileId = profileId;
             profile.Name = name;
             profile.LastUpdatedDate = lastUpdatedDate;
+            profile.DisplayName = displayName;
             return profile;
         }
         /// <summary>
@@ -2788,6 +2813,52 @@ namespace ContactManager.Models
         private string _Comment;
         partial void OnCommentChanging(string value);
         partial void OnCommentChanged();
+        /// <summary>
+        /// There are no comments for Property DisplayName in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string DisplayName
+        {
+            get
+            {
+                return this._DisplayName;
+            }
+            set
+            {
+                this.OnDisplayNameChanging(value);
+                this.ReportPropertyChanging("DisplayName");
+                this._DisplayName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("DisplayName");
+                this.OnDisplayNameChanged();
+            }
+        }
+        private string _DisplayName;
+        partial void OnDisplayNameChanging(string value);
+        partial void OnDisplayNameChanged();
+        /// <summary>
+        /// There are no comments for Property OldName in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string OldName
+        {
+            get
+            {
+                return this._OldName;
+            }
+            set
+            {
+                this.OnOldNameChanging(value);
+                this.ReportPropertyChanging("OldName");
+                this._OldName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("OldName");
+                this.OnOldNameChanged();
+            }
+        }
+        private string _OldName;
+        partial void OnOldNameChanging(string value);
+        partial void OnOldNameChanged();
         /// <summary>
         /// There are no comments for IPPool in the schema.
         /// </summary>
@@ -3236,6 +3307,29 @@ namespace ContactManager.Models
         private global::System.Nullable<bool> _Disabled;
         partial void OnDisabledChanging(global::System.Nullable<bool> value);
         partial void OnDisabledChanged();
+        /// <summary>
+        /// There are no comments for Property OldName in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string OldName
+        {
+            get
+            {
+                return this._OldName;
+            }
+            set
+            {
+                this.OnOldNameChanging(value);
+                this.ReportPropertyChanging("OldName");
+                this._OldName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("OldName");
+                this.OnOldNameChanged();
+            }
+        }
+        private string _OldName;
+        partial void OnOldNameChanging(string value);
+        partial void OnOldNameChanged();
         /// <summary>
         /// There are no comments for Client in the schema.
         /// </summary>

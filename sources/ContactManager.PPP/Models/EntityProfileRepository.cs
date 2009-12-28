@@ -34,15 +34,22 @@ namespace ContactManager.PPP.Models
         }
 
         public Profile EditProfile(Profile profile)
-        {            
+        {
             var _profile = ObjectContext.ProfileSet.Where(p => p.ProfileId == profile.ProfileId).FirstOrDefault();
             var cost = _profile.Cost;
+
+            profile.OldName = _profile.OldName;
+
+            if (String.IsNullOrEmpty(_profile.OldName) && (!_profile.Name.Equals(profile.Name)))
+                profile.OldName = _profile.Name;
+            
             ObjectContext.ApplyPropertyChanges(_profile.EntityKey.EntitySetName, profile);
             if (!profile.Cost.HasValue)
                 _profile.Cost = cost;
             _profile.IPPool = ObjectContext.PoolSet.Where(p => p.PoolId == profile.PoolId).FirstOrDefault();
             _profile.LastUpdatedDate = DateTime.Now;
             ObjectContext.SaveChanges();
+
             return _profile;
         }
 

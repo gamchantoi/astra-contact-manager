@@ -219,6 +219,9 @@
   <data name="PPP_View_Profile_Create_CreateNewProfile" xml:space="preserve">
     <value>Create New Profile</value>
   </data>
+  <data name="PPP_View_Profile_Create_DisplayName" xml:space="preserve">
+    <value>DisplayName</value>
+  </data>
   <data name="PPP_View_Profile_Create_LocalAddress" xml:space="preserve">
     <value>LocalAddress</value>
   </data>
@@ -243,11 +246,17 @@
   <data name="PPP_View_Profile_Edit_Cost" xml:space="preserve">
     <value>Cost</value>
   </data>
+  <data name="PPP_View_Profile_Edit_DisplayName" xml:space="preserve">
+    <value>Display Name</value>
+  </data>
   <data name="PPP_View_Profile_Edit_EditProfile" xml:space="preserve">
     <value>Edit Profile</value>
   </data>
   <data name="PPP_View_Profile_Edit_LocalAddress" xml:space="preserve">
     <value>LocalAddress</value>
+  </data>
+  <data name="PPP_View_Profile_Edit_Name" xml:space="preserve">
+    <value>Name</value>
   </data>
   <data name="PPP_View_Profile_Edit_Pool" xml:space="preserve">
     <value>Pool</value>

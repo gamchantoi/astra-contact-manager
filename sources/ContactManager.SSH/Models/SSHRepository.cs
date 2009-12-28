@@ -15,6 +15,7 @@ namespace ContactManager.SSH.Models
 
         public bool AutoMode { get; set; }
 
+
         public SSHRepository(Host host)
         {
             _host = host;
@@ -38,12 +39,15 @@ namespace ContactManager.SSH.Models
         public void Disconnect()
         {
             if (_sshStream != null)
+            {
                 _sshStream.Close();
+                
+            }
         }
 
         public string RunCommand(string command)
         {
-            if (AutoMode && _sshStream == null) Connect();
+            if (AutoMode) Connect();
             string retVal;
             try
             {
