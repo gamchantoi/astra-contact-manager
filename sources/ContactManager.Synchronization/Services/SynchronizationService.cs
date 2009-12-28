@@ -5,11 +5,12 @@ using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.PPP.Intefaces;
 using ContactManager.PPP.Models;
+using ContactManager.SSH.Models;
 using ContactManager.Synchronization.Interfaces;
 
 namespace ContactManager.Synchronization.Services
 {
-    public class SynchronizationService : ISynchronizationService
+    public class SynchronizationService : SSHService, ISynchronizationService
     {
         private readonly IValidationDictionary _validationDictionary;
         //private readonly ISSHService _sshSevice;
@@ -22,11 +23,7 @@ namespace ContactManager.Synchronization.Services
         #region Constructors
 
         public SynchronizationService(IValidationDictionary validationDictionary)
-            : this(validationDictionary, new AstraEntities())
-        { }
-
-        public SynchronizationService(IValidationDictionary validationDictionary,
-                                      AstraEntities entities)
+            :base(validationDictionary, false)
         {
             //_astraEntities = entities;
             //_validationDictionary = validationDictionary;
@@ -149,10 +146,10 @@ namespace ContactManager.Synchronization.Services
 
             try
             {
-                //HttpContext.Current.Application.Add("SyncStatus", "Started");
-                //var helper = new UserHelper();
-                //if (!_sshSevice.Connect(helper.GetCurrentHost())) return false;
-                //var sshSecrets = _sshSevice.ListPPPSecrets();
+                HttpContext.Current.Application.Add("SyncStatus", "Started");
+                Connect();
+
+                var sshSecrets = _sshSevice.ListPPPSecrets();
                 //var sshProfiles = _sshSevice.ListPPPProfiles();
                 //var sshPools = _sshSevice.ListPools();
                 //_sshSevice.Disconnect();
