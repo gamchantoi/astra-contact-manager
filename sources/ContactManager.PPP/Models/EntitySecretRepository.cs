@@ -11,11 +11,6 @@ namespace ContactManager.PPP.Models
 
         public PPPSecret CreatePPPSecret(PPPSecret secret)
         {
-            //secret.Client = ObjectContext.Clients.Where(c => c.UserId == secret.UserId).FirstOrDefault();
-            //if(secret.Profile != null)
-            //    secret.Profile = ObjectContext.ProfileSet.Where(p => p.Name == secret.Profile.Name).FirstOrDefault();
-            //else if(secret.ProfileId > 0)
-            //    secret.Profile = ObjectContext.ProfileSet.Where(p => p.ProfileId == secret.ProfileId).FirstOrDefault();
             secret.LastUpdatedDate = DateTime.Now;
             ObjectContext.AddToPPPSecrets(secret);
             ObjectContext.SaveChanges();
@@ -39,11 +34,6 @@ namespace ContactManager.PPP.Models
             else
             {
                 ObjectContext.ApplyPropertyChanges(_secret.EntityKey.EntitySetName, secret);
-                //_secret.Client = ObjectContext.Clients.Where(c => c.UserId == secret.UserId).FirstOrDefault();
-                //if (secret.ProfileId > 0)
-                //    _secret.Profile = ObjectContext.ProfileSet.Where(p => p.ProfileId == secret.ProfileId).FirstOrDefault();
-                //else if (!string.IsNullOrEmpty(secret.Profile.Name))
-                //    _secret.Profile = ObjectContext.ProfileSet.Where(p => p.Name == secret.Profile.Name).FirstOrDefault();
                 _secret.LastUpdatedDate = DateTime.Now;
                 ObjectContext.SaveChanges();
             }
@@ -56,8 +46,8 @@ namespace ContactManager.PPP.Models
             if (secret == null)
                 return null;
             secret.ProfileReference.Load();
-            if (secret.ProfileReference.Value == null)
-                return secret;
+            //if (secret.ProfileReference.Value == null)
+            //    return secret;
             //secret.Profile = secret.ProfileReference.Value.Name;
             return secret;
         }

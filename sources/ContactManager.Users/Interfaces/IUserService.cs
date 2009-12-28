@@ -8,9 +8,7 @@ namespace ContactManager.Users.Interfaces
     public interface IUserService
     {
         int MinPasswordLength { get; }
-        //Guid CreatedUserId { get; }
-        //Guid GetCurrentUserId { get; }
-        //bool UserExist(string name);
+
         bool ValidateUser(string userName, string password);        
         bool DeleteUser(Guid id);
         bool ChangePassword(string userName, string oldPassword, string newPassword);
@@ -23,8 +21,6 @@ namespace ContactManager.Users.Interfaces
         User CreateUser(User user);
         MembershipUser GetUser(Guid id);
         MembershipUser GetUser(string name);
-        //MembershipUser GetCurrentUser();
-        //MembershipUser GetSystemUser();
 
         bool ClearAllData();
     }

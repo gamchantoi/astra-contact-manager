@@ -702,6 +702,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="astra_ChangeUsername" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+          <Parameter Name="OldUserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="NewUserName" Type="nvarchar" Mode="In" />
+        </Function>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -803,7 +808,11 @@
             <End Role="astra_Messages" EntitySet="Messages" /></AssociationSet>
           <AssociationSet Name="FK_astra_Messages_astra_MessagesType" Association="AstraModel.FK_astra_Messages_astra_MessagesType">
             <End Role="astra_MessagesType" EntitySet="MessageTypes" />
-            <End Role="astra_Messages" EntitySet="Messages" /></AssociationSet></EntityContainer>
+            <End Role="astra_Messages" EntitySet="Messages" /></AssociationSet>
+          <FunctionImport Name="SP_ChangeUsername" ReturnType="Collection(Int16)">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="OldUserName" Mode="In" Type="String" />
+            <Parameter Name="NewUserName" Mode="In" Type="String" /></FunctionImport></EntityContainer>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="UserId" />
@@ -1121,7 +1130,7 @@
                 <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
               </MappingFragment>
             </EntityTypeMapping>
-          </EntitySetMapping>
+            </EntitySetMapping>
           <EntitySetMapping Name="Addresses">
             <EntityTypeMapping TypeName="IsTypeOf(AstraModel.Address)">
               <MappingFragment StoreEntitySet="astra_Addresses">
@@ -1446,7 +1455,8 @@
             <EndProperty Name="astra_Messages">
               <ScalarProperty Name="MessageId" ColumnName="MessageId" /></EndProperty>
             <EndProperty Name="astra_MessagesType">
-              <ScalarProperty Name="TypeId" ColumnName="TypeId" /></EndProperty></AssociationSetMapping></EntityContainerMapping>
+              <ScalarProperty Name="TypeId" ColumnName="TypeId" /></EndProperty></AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="SP_ChangeUsername" FunctionName="AstraModel.Store.astra_ChangeUsername" /></EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

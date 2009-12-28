@@ -9,10 +9,10 @@ namespace ContactManager.PPP.Intefaces
         ProfileService ProfileService { get; set; }
 
         bool CreatePPPSecret(PPPSecret secret);
-        bool CreatePPPSecret(Client client);
+        //bool CreatePPPSecret(Client client);
         bool DeletePPPSecret(Guid id);
         bool EditPPPSecret(PPPSecret secret);
-        bool EditPPPSecret(Client client);
+        //bool EditPPPSecret(Client client);
         bool UpdatePPPSecretAddresses(PPPSecret secret);
         PPPSecret GetPPPSecret(Guid id);
     }

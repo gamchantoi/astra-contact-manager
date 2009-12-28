@@ -14,16 +14,17 @@ namespace ContactManager.Users.Services
     {
         private readonly IValidationDictionary _validationDictionary;
         private readonly IClientRepository _repository;
-        private readonly IStatusService _statusService;
 
         #region Constructors
         public ClientService(IValidationDictionary validationDictionary)
         {
             _validationDictionary = validationDictionary;
             _repository = new EntityClientRepository();
-            _statusService = new StatusService(validationDictionary);
+            StatusService = new StatusService(validationDictionary);
         }
         #endregion
+
+        public IStatusService StatusService { get; private set; }
 
         #region IClientService Members
 
@@ -99,7 +100,7 @@ namespace ContactManager.Users.Services
         public List<Client> ListClients(bool deleted)
         {
             var ctx = new CurrentContext();
-            var _status = _statusService.GetStatus(STATUSES.Deleted);
+            var _status = StatusService.GetStatus(STATUSES.Deleted);
 
             var list = _repository.ListClients(_status, deleted);
             

@@ -8,17 +8,6 @@ namespace ContactManager.Users.Models
 {
     public class EntityStatusRepository : RepositoryBase<Status>, IStatusRepository
     {
-        //private readonly AstraEntities _entities;
-
-        //#region Constructors
-        //public EntityStatusRepository() : this(new AstraEntities()) { }
-
-        //public EntityStatusRepository(AstraEntities entities)
-        //{
-        //    _entities = entities;
-        //}
-        //#endregion
-
         public List<Status> ListStatuses()
         {
             return ObjectContext.Statuses.ToList();

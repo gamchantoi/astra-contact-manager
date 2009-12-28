@@ -7,6 +7,8 @@ namespace ContactManager.Users.Interfaces
 {
     public interface IClientService
     {
+        IStatusService StatusService { get; }
+
         bool CreateClient(Client client);
         bool DeleteClient(Guid id);
         bool EditClient(Client client);

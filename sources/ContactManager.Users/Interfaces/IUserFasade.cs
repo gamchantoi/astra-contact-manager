@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ContactManager.Models;
+using ContactManager.PPP.Intefaces;
 using ContactManager.Users.ViewModels;
 
 namespace ContactManager.Users.Interfaces
@@ -10,6 +11,8 @@ namespace ContactManager.Users.Interfaces
         ILoadMoneyService LoadMoneyService { get; }
         IUserService UserService { get; }
         IClientService ClientService { get; }
+        ISecretService SecretService { get; }
+        IStatusService StatusService { get; }
 
         bool CreateContact(ClientViewModel viewModel);
         bool CreateContact(PPPSecret pppSecret);

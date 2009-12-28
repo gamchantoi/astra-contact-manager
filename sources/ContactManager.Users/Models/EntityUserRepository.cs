@@ -48,5 +48,27 @@ namespace ContactManager.Users.Models
             }
             return _users;
         }
+
+        public User EditUser(User user)
+        {
+            var mUser = Provider.GetUser(user.UserId, true);
+
+            if (!String.IsNullOrEmpty(user.Email)) mUser.Email = user.Email;
+
+            if (!String.Equals(mUser.GetPassword(), user.Password))
+                mUser.ChangePassword(mUser.GetPassword(), user.Password);
+            Provider.UpdateUser(mUser);
+
+            var _user = GetUser(user.UserId);
+
+            if (!_user.UserName.Equals(user.UserName))
+            {
+                _user.UserName = user.UserName;
+                _user.LoweredUserName = user.UserName.ToLower();
+                ObjectContext.SaveChanges();
+            }
+
+            return _user;
+        }
     }
 }

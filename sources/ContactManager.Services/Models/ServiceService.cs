@@ -6,9 +6,6 @@ using ContactManager.Models.Validation;
 using ContactManager.Services.Helpers;
 using ContactManager.Services.Interfaces;
 using ContactManager.Services.Models;
-using ContactManager.Services.ViewModels;
-using ContactManager.Users.Interfaces;
-using ContactManager.Users.Services;
 
 namespace ContactManager.Services.Models
 {
