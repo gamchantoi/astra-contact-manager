@@ -1,32 +1,25 @@
 using System.Web.Mvc;
-using ContactManager.Hosts.Helpers;
+using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.Synchronization.Interfaces;
-using ContactManager.Synchronization.Models;
+using ContactManager.Synchronization.Services;
 
 namespace ContactManager.Synchronization.Controllers
 {
     public class SyncController : Controller
     {
         private readonly ISynchronizationService _service;
-        private readonly HostHelper _helper = new HostHelper();
+        private readonly CurrentContext _context;
 
         public SyncController()
         {
             _service = new SynchronizationService(new ModelStateWrapper(ModelState));
+            _context = new CurrentContext();
         }
-
-        public SyncController(ISynchronizationService service)
-        {
-            _service = service;
-        }
-
-        //
-        // GET: /Sync/
 
         public ActionResult Index()
         {
-            ViewData["HostName"] = _helper.GetCurrentHost().Address;
+            ViewData["HostName"] = _context.GetCurrentHost().Address;
             return View();
         }
 
@@ -34,7 +27,7 @@ namespace ContactManager.Synchronization.Controllers
         public ActionResult SyncFromHost()
         {
             _service.SyncFromHost();
-            ViewData["HostName"] = _helper.GetCurrentHost().Address;
+            ViewData["HostName"] = _context.GetCurrentHost().Address;
             return View("Index");
         }
 
@@ -42,7 +35,7 @@ namespace ContactManager.Synchronization.Controllers
         public ActionResult SyncToHost()
         {
             _service.SyncToHost();
-            ViewData["HostName"] = _helper.GetCurrentHost().Address;
+            ViewData["HostName"] = _context.GetCurrentHost().Address;
             return View("Index");
         }
 
