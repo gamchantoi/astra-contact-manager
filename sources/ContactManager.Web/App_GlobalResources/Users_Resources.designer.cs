@@ -61,6 +61,348 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        internal static string Users_Shared_AddressUserControl_Address {
+            get {
+                return ResourceManager.GetString("Users_Shared_AddressUserControl_Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comment.
+        /// </summary>
+        internal static string Users_Shared_ContractUserControl_Comment {
+            get {
+                return ResourceManager.GetString("Users_Shared_ContractUserControl_Comment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contract.
+        /// </summary>
+        internal static string Users_Shared_ContractUserControl_Contract {
+            get {
+                return ResourceManager.GetString("Users_Shared_ContractUserControl_Contract", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ContractNumber.
+        /// </summary>
+        internal static string Users_Shared_ContractUserControl_ContractNumber {
+            get {
+                return ResourceManager.GetString("Users_Shared_ContractUserControl_ContractNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CreateDate.
+        /// </summary>
+        internal static string Users_Shared_ContractUserControl_CreateDate {
+            get {
+                return ResourceManager.GetString("Users_Shared_ContractUserControl_CreateDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ExpiredDate.
+        /// </summary>
+        internal static string Users_Shared_ContractUserControl_ExpiredDate {
+            get {
+                return ResourceManager.GetString("Users_Shared_ContractUserControl_ExpiredDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Balance:.
+        /// </summary>
+        internal static string Users_Shared_DetailsUserControl_Balance {
+            get {
+                return ResourceManager.GetString("Users_Shared_DetailsUserControl_Balance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comment:.
+        /// </summary>
+        internal static string Users_Shared_DetailsUserControl_Comment {
+            get {
+                return ResourceManager.GetString("Users_Shared_DetailsUserControl_Comment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        internal static string Users_Shared_DetailsUserControl_Details {
+            get {
+                return ResourceManager.GetString("Users_Shared_DetailsUserControl_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email:.
+        /// </summary>
+        internal static string Users_Shared_DetailsUserControl_Email {
+            get {
+                return ResourceManager.GetString("Users_Shared_DetailsUserControl_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Full Name:.
+        /// </summary>
+        internal static string Users_Shared_DetailsUserControl_FullName {
+            get {
+                return ResourceManager.GetString("Users_Shared_DetailsUserControl_FullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passport:.
+        /// </summary>
+        internal static string Users_Shared_DetailsUserControl_Passport {
+            get {
+                return ResourceManager.GetString("Users_Shared_DetailsUserControl_Passport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passport Comment:.
+        /// </summary>
+        internal static string Users_Shared_DetailsUserControl_PassportComment {
+            get {
+                return ResourceManager.GetString("Users_Shared_DetailsUserControl_PassportComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passport Delivery Date:.
+        /// </summary>
+        internal static string Users_Shared_DetailsUserControl_PassportDeliveryDate {
+            get {
+                return ResourceManager.GetString("Users_Shared_DetailsUserControl_PassportDeliveryDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status:.
+        /// </summary>
+        internal static string Users_Shared_DetailsUserControl_Status {
+            get {
+                return ResourceManager.GetString("Users_Shared_DetailsUserControl_Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comment:.
+        /// </summary>
+        internal static string Users_Shared_PPPSecretUserControl_Comment {
+            get {
+                return ResourceManager.GetString("Users_Shared_PPPSecretUserControl_Comment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DHCP Address:.
+        /// </summary>
+        internal static string Users_Shared_PPPSecretUserControl_DHCPAddress {
+            get {
+                return ResourceManager.GetString("Users_Shared_PPPSecretUserControl_DHCPAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Local Address:.
+        /// </summary>
+        internal static string Users_Shared_PPPSecretUserControl_LocalAddress {
+            get {
+                return ResourceManager.GetString("Users_Shared_PPPSecretUserControl_LocalAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MAC Address:.
+        /// </summary>
+        internal static string Users_Shared_PPPSecretUserControl_MACAddress {
+            get {
+                return ResourceManager.GetString("Users_Shared_PPPSecretUserControl_MACAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name:.
+        /// </summary>
+        internal static string Users_Shared_PPPSecretUserControl_Name {
+            get {
+                return ResourceManager.GetString("Users_Shared_PPPSecretUserControl_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password:.
+        /// </summary>
+        internal static string Users_Shared_PPPSecretUserControl_Password {
+            get {
+                return ResourceManager.GetString("Users_Shared_PPPSecretUserControl_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PPP Secret.
+        /// </summary>
+        internal static string Users_Shared_PPPSecretUserControl_PPPSecret {
+            get {
+                return ResourceManager.GetString("Users_Shared_PPPSecretUserControl_PPPSecret", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remote Address:.
+        /// </summary>
+        internal static string Users_Shared_PPPSecretUserControl_RemoteAddress {
+            get {
+                return ResourceManager.GetString("Users_Shared_PPPSecretUserControl_RemoteAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Routes:.
+        /// </summary>
+        internal static string Users_Shared_PPPSecretUserControl_Routes {
+            get {
+                return ResourceManager.GetString("Users_Shared_PPPSecretUserControl_Routes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string Users_Shared_ServicesUserControl_Name {
+            get {
+                return ResourceManager.GetString("Users_Shared_ServicesUserControl_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Services.
+        /// </summary>
+        internal static string Users_Shared_ServicesUserControl_Services {
+            get {
+                return ResourceManager.GetString("Users_Shared_ServicesUserControl_Services", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Back to List.
+        /// </summary>
+        internal static string Users_User_Create_BackToList {
+            get {
+                return ResourceManager.GetString("Users_User_Create_BackToList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create.
+        /// </summary>
+        internal static string Users_User_Create_Create {
+            get {
+                return ResourceManager.GetString("Users_User_Create_Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create New User.
+        /// </summary>
+        internal static string Users_User_Create_CreateNewUser {
+            get {
+                return ResourceManager.GetString("Users_User_Create_CreateNewUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Credit.
+        /// </summary>
+        internal static string Users_User_Create_Credit {
+            get {
+                return ResourceManager.GetString("Users_User_Create_Credit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        internal static string Users_User_Create_Email {
+            get {
+                return ResourceManager.GetString("Users_User_Create_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generate.
+        /// </summary>
+        internal static string Users_User_Create_Generate {
+            get {
+                return ResourceManager.GetString("Users_User_Create_Generate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        internal static string Users_User_Create_Password {
+            get {
+                return ResourceManager.GetString("Users_User_Create_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile.
+        /// </summary>
+        internal static string Users_User_Create_Profile {
+            get {
+                return ResourceManager.GetString("Users_User_Create_Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Role.
+        /// </summary>
+        internal static string Users_User_Create_Role {
+            get {
+                return ResourceManager.GetString("Users_User_Create_Role", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        internal static string Users_User_Create_Status {
+            get {
+                return ResourceManager.GetString("Users_User_Create_Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UserName.
+        /// </summary>
+        internal static string Users_User_Create_UserName {
+            get {
+                return ResourceManager.GetString("Users_User_Create_UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create was unsuccessful. Please correct the errors and try again..
+        /// </summary>
+        internal static string Users_User_Create_ValidationSummary {
+            get {
+                return ResourceManager.GetString("Users_User_Create_ValidationSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back to List.
         /// </summary>
         internal static string Users_User_Edit_BackToList {

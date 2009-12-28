@@ -4,14 +4,14 @@
 <%if (Model.ClientDetails != null)
   {%>
 <fieldset class="fields">
-    <legend><a href="#">Details</a></legend>
-    <%=Html.BuildItem("Full Name: ", Model.FullName)%>
-    <%=Html.BuildItem("Balance: ", Model.Balance.ToString())%>
-    <%=Html.BuildItem("Comment: ", Model.Comment)%>
-    <%=Html.BuildItem("Email: ", Model.Email)%>
-    <%=Html.BuildItem("Status: ", Model.StatusDisplayName)%>
-    <%=Html.BuildItem("Passport: ", Model.ClientDetails.PassportID)%>
-    <%=Html.BuildItem("Passport Comment: ", Model.ClientDetails.PassportComment)%>
-    <%=Html.BuildItem("Passport Delivery Date: ", Model.ClientDetails.PassportDeliveryDate.HasValue ? Model.ClientDetails.PassportDeliveryDate.Value.ToShortDateString() : "")%>
+    <legend><a href="#"><%=Html.Resource("Users_Resources, Users_Shared_DetailsUserControl_Details")%></a></legend>
+    <%=Html.BuildItem(Html.Resource("Users_Resources, Users_Shared_DetailsUserControl_FullName"), Model.FullName)%>
+    <%=Html.BuildItem(Html.Resource("Users_Resources, Users_Shared_DetailsUserControl_Balance"), Model.Balance.ToString())%>
+    <%=Html.BuildItem(Html.Resource("Users_Resources, Users_Shared_DetailsUserControl_Comment"), Model.Comment)%>
+    <%=Html.BuildItem(Html.Resource("Users_Resources, Users_Shared_DetailsUserControl_Email"), Model.Email)%>
+    <%=Html.BuildItem(Html.Resource("Users_Resources, Users_Shared_DetailsUserControl_Status"), Model.StatusDisplayName)%>
+    <%=Html.BuildItem(Html.Resource("Users_Resources, Users_Shared_DetailsUserControl_Passport"), Model.ClientDetails.PassportID)%>
+    <%=Html.BuildItem(Html.Resource("Users_Resources, Users_Shared_DetailsUserControl_PassportComment"), Model.ClientDetails.PassportComment)%>
+    <%=Html.BuildItem(Html.Resource("Users_Resources, Users_Shared_DetailsUserControl_PassportDeliveryDate"), Model.ClientDetails.PassportDeliveryDate.HasValue ? Model.ClientDetails.PassportDeliveryDate.Value.ToShortDateString() : "")%>
 </fieldset>
 <%} %>

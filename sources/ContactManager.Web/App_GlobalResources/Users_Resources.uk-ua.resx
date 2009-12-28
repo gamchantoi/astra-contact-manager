@@ -117,6 +117,84 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Users_Shared_AddressUserControl_Address" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="Users_Shared_ContractUserControl_Comment" xml:space="preserve">
+    <value>Коментар</value>
+  </data>
+  <data name="Users_Shared_ContractUserControl_Contract" xml:space="preserve">
+    <value>Контракт</value>
+  </data>
+  <data name="Users_Shared_ContractUserControl_ContractNumber" xml:space="preserve">
+    <value>Номер контракту</value>
+  </data>
+  <data name="Users_Shared_ContractUserControl_CreateDate" xml:space="preserve">
+    <value>Дата створення</value>
+  </data>
+  <data name="Users_Shared_ContractUserControl_ExpiredDate" xml:space="preserve">
+    <value>Дата закінчення</value>
+  </data>
+  <data name="Users_Shared_DetailsUserControl_Balance" xml:space="preserve">
+    <value>Баланс:</value>
+  </data>
+  <data name="Users_Shared_DetailsUserControl_Comment" xml:space="preserve">
+    <value>Коментарі:</value>
+  </data>
+  <data name="Users_Shared_DetailsUserControl_Details" xml:space="preserve">
+    <value>Деталі</value>
+  </data>
+  <data name="Users_Shared_DetailsUserControl_Email" xml:space="preserve">
+    <value>Email:</value>
+  </data>
+  <data name="Users_Shared_DetailsUserControl_FullName" xml:space="preserve">
+    <value>Повне імя:</value>
+  </data>
+  <data name="Users_Shared_DetailsUserControl_Passport" xml:space="preserve">
+    <value>Паспорт:</value>
+  </data>
+  <data name="Users_Shared_DetailsUserControl_PassportComment" xml:space="preserve">
+    <value>Коментарі до паспорта:</value>
+  </data>
+  <data name="Users_Shared_DetailsUserControl_PassportDeliveryDate" xml:space="preserve">
+    <value>Дата видачі паспорта:</value>
+  </data>
+  <data name="Users_Shared_DetailsUserControl_Status" xml:space="preserve">
+    <value>Статус:</value>
+  </data>
+  <data name="Users_Shared_PPPSecretUserControl_Comment" xml:space="preserve">
+    <value>Коментар:</value>
+  </data>
+  <data name="Users_Shared_PPPSecretUserControl_DHCPAddress" xml:space="preserve">
+    <value>DHCP Address:</value>
+  </data>
+  <data name="Users_Shared_PPPSecretUserControl_LocalAddress" xml:space="preserve">
+    <value>Локальний адрес:</value>
+  </data>
+  <data name="Users_Shared_PPPSecretUserControl_MACAddress" xml:space="preserve">
+    <value>MAC Address:</value>
+  </data>
+  <data name="Users_Shared_PPPSecretUserControl_Name" xml:space="preserve">
+    <value>Імя:</value>
+  </data>
+  <data name="Users_Shared_PPPSecretUserControl_Password" xml:space="preserve">
+    <value>Пароль:</value>
+  </data>
+  <data name="Users_Shared_PPPSecretUserControl_PPPSecret" xml:space="preserve">
+    <value>PPP Secret</value>
+  </data>
+  <data name="Users_Shared_PPPSecretUserControl_RemoteAddress" xml:space="preserve">
+    <value>Віддалений адрес:</value>
+  </data>
+  <data name="Users_Shared_PPPSecretUserControl_Routes" xml:space="preserve">
+    <value>Routes:</value>
+  </data>
+  <data name="Users_Shared_ServicesUserControl_Name" xml:space="preserve">
+    <value>Імя</value>
+  </data>
+  <data name="Users_Shared_ServicesUserControl_Services" xml:space="preserve">
+    <value>Сервіс</value>
+  </data>
   <data name="Users_User_Edit_BackToList" xml:space="preserve">
     <value>Назад до списку</value>
   </data>
@@ -224,5 +302,41 @@
   </data>
   <data name="Users_User_Load_ValidationSummary" xml:space="preserve">
     <value>Невдала операція. Перегляньте деталі та спробуйте ще раз.</value>
+  </data>
+  <data name="Users_User_Create_BackToList" xml:space="preserve">
+    <value>Назад до списку</value>
+  </data>
+  <data name="Users_User_Create_Create" xml:space="preserve">
+    <value>Створити</value>
+  </data>
+  <data name="Users_User_Create_CreateNewUser" xml:space="preserve">
+    <value>Створення нового користувача</value>
+  </data>
+  <data name="Users_User_Create_Credit" xml:space="preserve">
+    <value>Кредит</value>
+  </data>
+  <data name="Users_User_Create_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Users_User_Create_Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="Users_User_Create_Profile" xml:space="preserve">
+    <value>Профіль</value>
+  </data>
+  <data name="Users_User_Create_Role" xml:space="preserve">
+    <value>Роль</value>
+  </data>
+  <data name="Users_User_Create_Status" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="Users_User_Create_UserName" xml:space="preserve">
+    <value>Імя</value>
+  </data>
+  <data name="Users_User_Create_ValidationSummary" xml:space="preserve">
+    <value>Невдале створення. Виправте помилки та спробуйте ще раз.</value>
+  </data>
+  <data name="Users_User_Create_Generate" xml:space="preserve">
+    <value>Згенерувати</value>
   </data>
 </root>
