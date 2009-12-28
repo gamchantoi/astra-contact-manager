@@ -1,4 +1,5 @@
-﻿<%@ Import Namespace="ContactManager.Models.Enums" %>
+﻿<%@ Import Namespace="Resources"%>
+<%@ Import Namespace="ContactManager.Models.Enums" %>
 <%@ Import Namespace="ContactManager.Users.Services" %>
 <%@ Import Namespace="ContactManager.Users.ViewModels" %>
 <%@ Import Namespace="ContactManager.Models" %>
@@ -7,14 +8,14 @@
 <%if (!Model.Role.Equals(ROLES.admin.ToString()) && Model.PPPSecret != null)
   {%>
 <fieldset class="fields">
-    <legend><a href="#" onclick="ShowDialog('../GetPopupData');">PPP Secret</a></legend>
-    <%=Html.BuildItem("Name: ", Model.PPPSecret.Name)%>
-    <%=Html.BuildItem("Password: ", Model.PPPSecret.Password)%>
-    <%=Html.BuildItem("Local Address: ", Model.PPPSecret.LocalAddress)%>
-    <%=Html.BuildItem("Remote Address: ", Model.PPPSecret.RemoteAddress)%>
-    <%=Html.BuildItem("MAC Address: ", Model.PPPSecret.MACAddress)%>
-    <%=Html.BuildItem("DHCP Address: ", Model.PPPSecret.DHCPAddress)%>
-    <%=Html.BuildItem("Comment: ", Model.PPPSecret.Comment)%>
-    <%=Html.BuildItem("Routes: ", Model.PPPSecret.Routes)%>
+    <legend><a href="#" onclick="ShowDialog('../GetPopupData');"><%=Html.Resource("Users_Resources, Users_Shared_PPPSecretUserControl_PPPSecret")%></a></legend>
+    <%=Html.BuildItem(Html.Resource("Users_Resources, Users_Shared_PPPSecretUserControl_Name"), Model.PPPSecret.Name)%>
+    <%=Html.BuildItem(Html.Resource("Users_Resources, Users_Shared_PPPSecretUserControl_Password"), Model.PPPSecret.Password)%>
+    <%=Html.BuildItem(Html.Resource("Users_Resources, Users_Shared_PPPSecretUserControl_LocalAddress"), Model.PPPSecret.LocalAddress)%>
+    <%=Html.BuildItem(Html.Resource("Users_Resources, Users_Shared_PPPSecretUserControl_RemoteAddress"), Model.PPPSecret.RemoteAddress)%>
+    <%=Html.BuildItem(Html.Resource("Users_Resources, Users_Shared_PPPSecretUserControl_MACAddress"), Model.PPPSecret.MACAddress)%>
+    <%=Html.BuildItem(Html.Resource("Users_Resources, Users_Shared_PPPSecretUserControl_DHCPAddress"), Model.PPPSecret.DHCPAddress)%>
+    <%=Html.BuildItem(Html.Resource("Users_Resources, Users_Shared_PPPSecretUserControl_Comment"), Model.PPPSecret.Comment)%>
+    <%=Html.BuildItem(Html.Resource("Users_Resources, Users_Shared_PPPSecretUserControl_Routes"), Model.PPPSecret.Routes)%>
 </fieldset>
 <%} %>

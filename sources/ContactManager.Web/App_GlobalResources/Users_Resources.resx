@@ -117,6 +117,84 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Users_Shared_AddressUserControl_Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Users_Shared_ContractUserControl_Comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="Users_Shared_ContractUserControl_Contract" xml:space="preserve">
+    <value>Contract</value>
+  </data>
+  <data name="Users_Shared_ContractUserControl_ContractNumber" xml:space="preserve">
+    <value>ContractNumber</value>
+  </data>
+  <data name="Users_Shared_ContractUserControl_CreateDate" xml:space="preserve">
+    <value>CreateDate</value>
+  </data>
+  <data name="Users_Shared_ContractUserControl_ExpiredDate" xml:space="preserve">
+    <value>ExpiredDate</value>
+  </data>
+  <data name="Users_Shared_DetailsUserControl_Balance" xml:space="preserve">
+    <value>Balance:</value>
+  </data>
+  <data name="Users_Shared_DetailsUserControl_Comment" xml:space="preserve">
+    <value>Comment:</value>
+  </data>
+  <data name="Users_Shared_DetailsUserControl_Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Users_Shared_DetailsUserControl_Email" xml:space="preserve">
+    <value>Email:</value>
+  </data>
+  <data name="Users_Shared_DetailsUserControl_FullName" xml:space="preserve">
+    <value>Full Name:</value>
+  </data>
+  <data name="Users_Shared_DetailsUserControl_Passport" xml:space="preserve">
+    <value>Passport:</value>
+  </data>
+  <data name="Users_Shared_DetailsUserControl_PassportComment" xml:space="preserve">
+    <value>Passport Comment:</value>
+  </data>
+  <data name="Users_Shared_DetailsUserControl_PassportDeliveryDate" xml:space="preserve">
+    <value>Passport Delivery Date:</value>
+  </data>
+  <data name="Users_Shared_DetailsUserControl_Status" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="Users_Shared_PPPSecretUserControl_Comment" xml:space="preserve">
+    <value>Comment:</value>
+  </data>
+  <data name="Users_Shared_PPPSecretUserControl_DHCPAddress" xml:space="preserve">
+    <value>DHCP Address:</value>
+  </data>
+  <data name="Users_Shared_PPPSecretUserControl_LocalAddress" xml:space="preserve">
+    <value>Local Address:</value>
+  </data>
+  <data name="Users_Shared_PPPSecretUserControl_MACAddress" xml:space="preserve">
+    <value>MAC Address:</value>
+  </data>
+  <data name="Users_Shared_PPPSecretUserControl_Name" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="Users_Shared_PPPSecretUserControl_Password" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="Users_Shared_PPPSecretUserControl_PPPSecret" xml:space="preserve">
+    <value>PPP Secret</value>
+  </data>
+  <data name="Users_Shared_PPPSecretUserControl_RemoteAddress" xml:space="preserve">
+    <value>Remote Address:</value>
+  </data>
+  <data name="Users_Shared_PPPSecretUserControl_Routes" xml:space="preserve">
+    <value>Routes:</value>
+  </data>
+  <data name="Users_Shared_ServicesUserControl_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Users_Shared_ServicesUserControl_Services" xml:space="preserve">
+    <value>Services</value>
+  </data>
   <data name="Users_User_Edit_BackToList" xml:space="preserve">
     <value>Back to List</value>
   </data>
@@ -224,5 +302,41 @@
   </data>
   <data name="Users_User_Load_ValidationSummary" xml:space="preserve">
     <value>Operation was unsuccessful. Please view details and try again.</value>
+  </data>
+  <data name="Users_User_Create_BackToList" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+  <data name="Users_User_Create_Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="Users_User_Create_CreateNewUser" xml:space="preserve">
+    <value>Create New User</value>
+  </data>
+  <data name="Users_User_Create_Credit" xml:space="preserve">
+    <value>Credit</value>
+  </data>
+  <data name="Users_User_Create_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Users_User_Create_Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Users_User_Create_Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Users_User_Create_Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="Users_User_Create_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Users_User_Create_UserName" xml:space="preserve">
+    <value>UserName</value>
+  </data>
+  <data name="Users_User_Create_ValidationSummary" xml:space="preserve">
+    <value>Create was unsuccessful. Please correct the errors and try again.</value>
+  </data>
+  <data name="Users_User_Create_Generate" xml:space="preserve">
+    <value>Generate</value>
   </data>
 </root>
