@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using AutoMapper;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
-using System.Web.Security;
 using System.Text.RegularExpressions;
 using ContactManager.PPP.Intefaces;
 using ContactManager.PPP.Models;
@@ -16,7 +15,6 @@ namespace ContactManager.Users.Services
     public class UserFasade : IUserFasade
     {
         private readonly IValidationDictionary _validationDictionary;
-        private readonly ISecretService _pppSecretService;
         private const string PATTERN = @"[\(*\)*\[*\]*]";
 
         #region Constructors
@@ -26,8 +24,8 @@ namespace ContactManager.Users.Services
             _validationDictionary = validationDictionary;
             UserService = new UserService(validationDictionary);
             ClientService = new ClientService(validationDictionary);
-            _pppSecretService = new SecretService(validationDictionary);
-            LoadMoneyService = new LoadMoneyService(validationDictionary);
+            SecretService = new SecretService(validationDictionary);
+            LoadMoneyService = new LoadMoneyService(validationDictionary, this);
             StatusService = new StatusService(validationDictionary);
         }
 
@@ -78,6 +76,7 @@ namespace ContactManager.Users.Services
         public IUserService UserService { get; private set; }
         public IClientService ClientService { get; private set; }
         public IStatusService StatusService { get; private set; }
+        public ISecretService SecretService { get; private set; }
 
         public bool CreateContact(ClientViewModel viewModel)
         {
@@ -91,7 +90,7 @@ namespace ContactManager.Users.Services
                 viewModel.UserId = UserService.CreateUser(BuildUser(viewModel)).UserId;
                 ClientService.CreateClient(BuildClient(viewModel));
                 if (viewModel.Role.Equals("client"))
-                    return _pppSecretService.CreatePPPSecret(BuildSecret(viewModel));
+                    return SecretService.CreatePPPSecret(BuildSecret(viewModel));
                 return true;
             }
             catch (Exception ex)
@@ -115,7 +114,7 @@ namespace ContactManager.Users.Services
                 //UserService.CreateUser(client);
                 ClientService.CreateClient(client);
                 pppSecret.UserId = client.UserId;
-                _pppSecretService.CreatePPPSecret(pppSecret);
+                SecretService.CreatePPPSecret(pppSecret);
             }
             catch (Exception ex)
             {
@@ -169,7 +168,7 @@ namespace ContactManager.Users.Services
                 ClientService.EditClient(BuildClient(viewModel));
                 if (viewModel.Role.Equals("client"))
                 {
-                    _pppSecretService.EditPPPSecret(BuildSecret(viewModel));
+                    SecretService.EditPPPSecret(BuildSecret(viewModel));
                 }
             }
             catch (Exception ex)
@@ -182,7 +181,7 @@ namespace ContactManager.Users.Services
 
         private PPPSecret BuildSecret(ClientViewModel viewModel)
         {
-            var secret = _pppSecretService.GetPPPSecret(viewModel.UserId) 
+            var secret = SecretService.GetPPPSecret(viewModel.UserId) 
                 ?? new PPPSecret
                        {
                            Client = ClientService.GetClient(viewModel.UserId),
@@ -190,7 +189,7 @@ namespace ContactManager.Users.Services
                        };
 
             secret.Client = ClientService.GetClient(viewModel.UserId); ;
-            secret.Profile = _pppSecretService.ProfileService.GetProfile(viewModel.ProfileId);
+            secret.Profile = SecretService.ProfileService.GetProfile(viewModel.ProfileId);
             secret.Disabled = !StatusService.GetStatus(viewModel.StatusId).IsActive;
             secret.Password = viewModel.Password;
             secret.Comment = viewModel.Comment;
@@ -230,7 +229,7 @@ namespace ContactManager.Users.Services
                 //UserService.EditUser(client);
                 //_clientService.EditClient(client);
                 pppSecret.UserId = client.UserId;
-                _pppSecretService.EditPPPSecret(pppSecret);
+                SecretService.EditPPPSecret(pppSecret);
             }
             catch (Exception ex)
             {
@@ -244,7 +243,7 @@ namespace ContactManager.Users.Services
         {
             var client = ClientService.GetClient(id);
             var mUser = UserService.GetUser(id);
-            var secret = _pppSecretService.GetPPPSecret(id);
+            var secret = SecretService.GetPPPSecret(id);
             client.Role = UserService.GetRoleForUser(mUser.UserName);
             client.Password = mUser.GetPassword();
             client.Email = mUser.Email;

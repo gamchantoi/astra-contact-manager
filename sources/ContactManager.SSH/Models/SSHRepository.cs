@@ -44,9 +44,17 @@ namespace ContactManager.SSH.Models
         public string RunCommand(string command)
         {
             if (AutoMode && _sshStream == null) Connect();
-
-            _sshStream.Write(command);
-            var retVal = ParseResponse(_sshStream.ReadResponse(), command);
+            string retVal;
+            try
+            {
+                _sshStream.Write(command);
+                retVal = ParseResponse(_sshStream.ReadResponse(), command);
+            }
+            catch (Exception)
+            {
+                Disconnect();
+                throw ;
+            }
             
             if (AutoMode) Disconnect();
             

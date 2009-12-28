@@ -1,6 +1,7 @@
 ﻿using System;
 using ContactManager.Accounts.Interfaces;
 using ContactManager.Accounts.Services;
+using ContactManager.Models.Enums;
 using ContactManager.Models.Validation;
 using ContactManager.Models.ViewModels;
 using ContactManager.Users.Interfaces;
@@ -10,21 +11,26 @@ namespace ContactManager.Users.Services
     public class LoadMoneyService : ILoadMoneyService
     {
         private readonly IValidationDictionary _validationDictionary;
-        private readonly IClientService _clientService;
+        private readonly IUserFasade _userFacade;
         private readonly ITransactionService _transactionService;
 
         #region Constructors
         public LoadMoneyService(IValidationDictionary validationDictionary)
+            :this(validationDictionary, new UserFasade(validationDictionary))
+        {
+        }
+
+        public LoadMoneyService(IValidationDictionary validationDictionary, IUserFasade facade)
         {
             _validationDictionary = validationDictionary;
-            _clientService = new ClientService(validationDictionary);
+            _userFacade = facade;
             _transactionService = new TransactionService(validationDictionary);
         }
         #endregion
 
         public LoadMoneyViewModel GetViewModel(Guid UserId)
         {
-            var client = _clientService.GetClient(UserId);
+            var client = _userFacade.ClientService.GetClient(UserId);
             client.LoadDetailsReferences();
             var model = new LoadMoneyViewModel
                             {
@@ -47,13 +53,26 @@ namespace ContactManager.Users.Services
                     return false;
                 }
 
-                var client = _clientService.GetClient(model.ClientId);
+                var client = _userFacade.ClientService.GetClient(model.ClientId);
+                
+
                 model.Balance = client.Balance;
 
                 _transactionService.CreateTransaction(model);
                 
                 client.Balance = client.Balance + model.Sum;
-                _clientService.EditClient(client);
+
+                client.LoadStatusReferences();
+                if (!client.Status.IsActive && client.Balance > 0)
+                {
+                    client.Status = _userFacade.ClientService.StatusService.GetStatus(STATUSES.Active);
+
+                    var secret = _userFacade.SecretService.GetPPPSecret(model.ClientId);
+                    secret.Disabled = !client.Status.IsActive;
+                    _userFacade.SecretService.EditPPPSecret(secret);
+                }
+                _userFacade.ClientService.EditClient(client);
+
                 return true;
             }
             catch (Exception ex)

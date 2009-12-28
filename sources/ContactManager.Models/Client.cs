@@ -18,7 +18,7 @@ namespace ContactManager.Models
             set { }
         }
 
-        public string SecretStatus { get; set; }
+        //public string SecretStatus { get; set; }
         public string Comment { get; set; }
         public string Role { get; set; }
         //public string FullName { get; set; }
@@ -67,10 +67,6 @@ namespace ContactManager.Models
             var pppSecret = PPPSecretReference.Value;
             if (pppSecret != null)
             {
-                Comment = pppSecret.Comment;
-                if (pppSecret.Disabled.HasValue)
-                    SecretStatus = pppSecret.Disabled.Value ? "Active" : "Disabled";
-
                 pppSecret.ProfileReference.Load();
                 var profile = pppSecret.ProfileReference.Value;
                 if (profile != null)
@@ -126,7 +122,6 @@ namespace ContactManager.Models
             if (Address != null)
                 Address.StreetReference.Load();
         }
-
 
         public void LoadContractReferences()
         {

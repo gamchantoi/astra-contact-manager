@@ -86,7 +86,7 @@ namespace ContactManager.Users.Controllers
                 {
                     _sshSecretService.EditPPPSecret(viewModel.UserId);
                 }
-                return RedirectToAction("Index", PrepareIndex(false));
+                return View("Index", PrepareIndex(false));
             }
             //var wClient = _facade.GetContact(viewModel.UserId);
             return View(FillViewData(_facade.ClientService.GetModel(viewModel)));
@@ -193,7 +193,10 @@ namespace ContactManager.Users.Controllers
         public ActionResult Load(LoadMoneyViewModel model)
         {
             if (_facade.LoadMoneyService.LoadMoney(model))
+            {
+                _sshSecretService.EditPPPSecret(model.ClientId);
                 return View("Index", PrepareIndex(false));
+            }
             var loadModel = _facade.LoadMoneyService.GetViewModel(model.ClientId);
             return View(loadModel);
         }

@@ -37,11 +37,11 @@ namespace ContactManager.PPP.Models
             }
         }
 
-        public bool CreatePPPSecret(Client client)
-        {
-            CreateSecret(client);
-            return true;
-        }
+        //public bool CreatePPPSecret(Client client)
+        //{
+        //    CreateSecret(client);
+        //    return true;
+        //}
 
         public bool DeletePPPSecret(Guid id)
         {
@@ -71,24 +71,24 @@ namespace ContactManager.PPP.Models
             return true;
         }
 
-        public bool EditPPPSecret(Client client)
-        {
-            var ctx = new CurrentContext();
-            var secret = GetPPPSecret(client.UserId) ?? CreateSecret(client);
-            secret.Profile = ProfileService.GetProfile(client.ProfileId);
-            secret.Client = ctx.GetClient(client.UserId);
-            secret.Disabled = !client.Status.IsActive;
-            secret.Comment = client.Comment;
-            try
-            {
-                return EditPPPSecret(secret);
-            }
-            catch (Exception ex)
-            {
-                _validationDictionary.AddError("_FORM", "PPP Secret is not saved. " + ex.Message);
-                return false;
-            }
-        }
+        //public bool EditPPPSecret(Client client)
+        //{
+        //    var ctx = new CurrentContext();
+        //    var secret = GetPPPSecret(client.UserId) ?? CreateSecret(client);
+        //    secret.Profile = ProfileService.GetProfile(client.ProfileId);
+        //    secret.Client = ctx.GetClient(client.UserId);
+        //    secret.Disabled = !client.Status.IsActive;
+        //    secret.Comment = client.Comment;
+        //    try
+        //    {
+        //        return EditPPPSecret(secret);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _validationDictionary.AddError("_FORM", "PPP Secret is not saved. " + ex.Message);
+        //        return false;
+        //    }
+        //}
 
         public PPPSecret GetPPPSecret(Guid id)
         {
@@ -122,8 +122,8 @@ namespace ContactManager.PPP.Models
         {
             var secret = _secretRepository.GetDefaultPPPSecret();
             secret.UserId = client.UserId;
-            secret.Disabled = client.SecretStatus.Equals("Active");
-            secret.ProfileId = client.ProfileId;
+            //secret.Disabled = client.SecretStatus.Equals("Active");
+            //secret.ProfileId = client.ProfileId;
             secret.Password = client.Password;
 
             CreatePPPSecret(secret);

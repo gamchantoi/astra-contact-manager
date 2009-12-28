@@ -105,20 +105,12 @@ namespace ContactManager.Users.Services
 
         public void EditUser(User user)
         {
-            var mUser = Membership.Provider.GetUser(user.UserId, true);
+            var _user = _repository.EditUser(user);
 
-            if (!String.IsNullOrEmpty(user.Email)) mUser.Email = user.Email;
-
-            if (!String.Equals(mUser.GetPassword(), user.Password))
-                mUser.ChangePassword(mUser.GetPassword(), user.Password);
-            //if (!user.UserName.Equals(mUser.UserName))
-            //    mUser.UserName = user.UserName;
-            Membership.Provider.UpdateUser(mUser);
-
-            if (!String.IsNullOrEmpty(user.Role) && !Roles.IsUserInRole(mUser.UserName, user.Role))
+            if (!String.IsNullOrEmpty(user.Role) && !Roles.IsUserInRole(_user.UserName, user.Role))
             {
-                Roles.RemoveUserFromRoles(mUser.UserName, Roles.GetRolesForUser(mUser.UserName));
-                Roles.AddUserToRole(mUser.UserName, user.Role);
+                Roles.RemoveUserFromRoles(_user.UserName, Roles.GetRolesForUser(_user.UserName));
+                Roles.AddUserToRole(_user.UserName, user.Role);
             }
         }
 

@@ -13,10 +13,7 @@ namespace ContactManager.Users.Models
 
         public Client CreateClient(Client client)
         {
-            //client.User = ObjectContext.Users.FirstOrDefault(u => u.UserId == client.UserId);
             client.LastUpdatedDate = DateTime.Now;
-            //client.Balance = client.Load;
-
             ObjectContext.AddToClients(client);
             ObjectContext.SaveChanges();
             return client;
