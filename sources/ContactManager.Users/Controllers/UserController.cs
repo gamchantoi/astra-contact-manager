@@ -144,7 +144,7 @@ namespace ContactManager.Users.Controllers
                 viewModel = _facade.ClientService.GetViewModel(client); 
                 viewModel.Roles = userHelper.GetRoles(client.Role);
                 viewModel.Profiles = pppHelper.GetProfiles(client.ProfileId);
-                viewModel.Statuses = _statusService.ListStatuses(client.Status != null ? client.Status.StatusId : 0);
+                viewModel.Statuses = _statusService.ListStatuses(2);
             }
             return viewModel;
         }

@@ -27,10 +27,10 @@ namespace ContactManager.Users.Services
             return _repository.ListStatuses();
         }
 
-        public SelectList ListStatuses(int? selectedId)
+        public SelectList ListStatuses(int? selectedValue)
         {
-            if (selectedId.HasValue)
-                return new SelectList(ListStatuses(), "StatusId", "DisplayName", selectedId.Value);
+            if (selectedValue.HasValue)
+                return new SelectList(ListStatuses(), "StatusId", "DisplayName", selectedValue);
             return new SelectList(ListStatuses(), "StatusId", "DisplayName");
         }
 

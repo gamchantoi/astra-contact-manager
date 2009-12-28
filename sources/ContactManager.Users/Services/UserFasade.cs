@@ -82,7 +82,7 @@ namespace ContactManager.Users.Services
         {
             // Validation logic
             if (!ValidateContact(viewModel, true))
-            return false;
+                return false;
 
             // Database logic
             try
@@ -181,7 +181,7 @@ namespace ContactManager.Users.Services
 
         private PPPSecret BuildSecret(ClientViewModel viewModel)
         {
-            var secret = SecretService.GetPPPSecret(viewModel.UserId) 
+            var secret = SecretService.GetPPPSecret(viewModel.UserId)
                 ?? new PPPSecret
                        {
                            Client = ClientService.GetClient(viewModel.UserId),
@@ -199,7 +199,7 @@ namespace ContactManager.Users.Services
         private Client BuildClient(ClientViewModel viewModel)
         {
             var ctx = new CurrentContext();
-            var client = ClientService.GetClient(viewModel.UserId) 
+            var client = ClientService.GetClient(viewModel.UserId)
                 ?? new Client
                        {
                            User = ctx.GetUser(viewModel.UserId)
@@ -248,7 +248,11 @@ namespace ContactManager.Users.Services
             client.Password = mUser.GetPassword();
             client.Email = mUser.Email;
             if (secret != null)
+            {
                 client.Comment = secret.Comment;
+                client.ProfileId = secret.Profile.ProfileId;
+            }
+
             return client;
         }
 

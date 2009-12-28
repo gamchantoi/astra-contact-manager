@@ -79,11 +79,11 @@
             <p>
                 <label for="StatusId">
                     <%= Html.Resource("Users_Resources, Users_User_Edit_Status")%>:</label>
-                <%= Html.DropDownList("StatusId", Model.Statuses)%>
+                <%= Html.DropDownListFor(s => s.StatusId, Model.Statuses)%>
                 <%= Html.ValidationMessage("StatusId", "*")%>
             </p>
             <p>
-                <input name="button" type="submit" value=<%= Html.Resource("Users_Resources, Users_User_Edit_Save")%> />
+                <input name="button" type="submit" value="<%= Html.Resource("Users_Resources, Users_User_Edit_Save")%>" />
             </p>
             <% } %>
         </fieldset>
