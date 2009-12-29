@@ -61,6 +61,105 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back to List.
+        /// </summary>
+        internal static string Addresses_Street_Create_BackToList {
+            get {
+                return ResourceManager.GetString("Addresses_Street_Create_BackToList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create.
+        /// </summary>
+        internal static string Addresses_Street_Create_Create {
+            get {
+                return ResourceManager.GetString("Addresses_Street_Create_Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create street.
+        /// </summary>
+        internal static string Addresses_Street_Create_CreateStreet {
+            get {
+                return ResourceManager.GetString("Addresses_Street_Create_CreateStreet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string Addresses_Street_Create_Name {
+            get {
+                return ResourceManager.GetString("Addresses_Street_Create_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tag.
+        /// </summary>
+        internal static string Addresses_Street_Create_Tag {
+            get {
+                return ResourceManager.GetString("Addresses_Street_Create_Tag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Street.
+        /// </summary>
+        internal static string Addresses_Street_Edit_EditStreet {
+            get {
+                return ResourceManager.GetString("Addresses_Street_Edit_EditStreet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string Addresses_Street_Edit_Save {
+            get {
+                return ResourceManager.GetString("Addresses_Street_Edit_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create New.
+        /// </summary>
+        internal static string Addresses_Street_Index_CreateNew {
+            get {
+                return ResourceManager.GetString("Addresses_Street_Index_CreateNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        internal static string Addresses_Street_Index_Edit {
+            get {
+                return ResourceManager.GetString("Addresses_Street_Index_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string Addresses_Street_Index_Name {
+            get {
+                return ResourceManager.GetString("Addresses_Street_Index_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tag.
+        /// </summary>
+        internal static string Addresses_Street_Index_Tag {
+            get {
+                return ResourceManager.GetString("Addresses_Street_Index_Tag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add New.
         /// </summary>
         internal static string Addresses_View_Create_AddNew {
