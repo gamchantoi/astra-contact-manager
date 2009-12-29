@@ -19,7 +19,7 @@
                 <%= Html.Resource("Addresses_Resources, Addresses_View_Create_Street")%></label>
             <%= Html.DropDownList("Street.StreetId", (SelectList)ViewData["Streets"])%>
             <%= Html.ValidationMessage("Street.StreetId", "*")%>
-            <%= Html.ActionLink(Html.Resource("Addresses_Resources, Addresses_View_Create_AddNew"), "CreateStreet")%>
+            <%= Html.ActionLink(Html.Resource("Addresses_Resources, Addresses_View_Create_AddNew"), "Create", "Street")%>
         </p>
         <p>
             <label for="Building">
