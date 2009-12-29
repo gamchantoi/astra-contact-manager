@@ -34,7 +34,6 @@ namespace ContactManager.Addresses.Controllers
             return View(address);
         }
 
-
         public ActionResult Edit(int id)
         {
             Address _address = _addressService.GetAddress(id);

@@ -42,6 +42,10 @@ namespace ContactManager.PPP.Models
         public Pool EditPool(Pool pool)
         {
             var _pool = ObjectContext.PoolSet.Where(p => p.PoolId == pool.PoolId).FirstOrDefault();
+
+            if (String.IsNullOrEmpty(_pool.OldName) && (!_pool.Name.Equals(pool.Name)))
+                pool.OldName = _pool.Name;
+
             ObjectContext.ApplyPropertyChanges(_pool.EntityKey.EntitySetName, pool);
             _pool.LastUpdatedDate = DateTime.Now;
             ObjectContext.SaveChanges();

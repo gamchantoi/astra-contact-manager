@@ -75,12 +75,16 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Controllers\AddressController.cs" />
+    <Compile Include="Controllers\StreetController.cs" />
+    <Compile Include="Interfaces\IStreetRepository.cs" />
+    <Compile Include="Interfaces\IStreetService.cs" />
     <Compile Include="Models\EntityAddressRepository.cs" />
     <Compile Include="Models\EntityStreetRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routes.cs" />
     <Compile Include="Services\AddressService.cs" />
     <Compile Include="Interfaces\IAddressService.cs" />
+    <Compile Include="Services\StreetService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />

@@ -48,6 +48,10 @@ namespace ContactManager.PPP.SSH
             {
                 var pool = _poolService.GetPool(id);
                 _repository.ip_pool_set(pool);
+                //todo : resync update logic 
+                pool.OldName = null;
+                _poolService.EditPool(pool);
+                //---------------------------
             }
             catch (Exception ex)
             {

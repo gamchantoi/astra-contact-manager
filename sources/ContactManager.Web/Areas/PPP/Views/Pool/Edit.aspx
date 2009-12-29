@@ -6,9 +6,14 @@
 
     <% using (Html.BeginForm()) {%>
     <%= Html.Hidden("PoolId", Model.PoolId)%>
-    <%= Html.Hidden("Name", Model.Name)%>
+    <%--<%= Html.Hidden("Name", Model.Name)%>--%>
         <fieldset class="fields">
             <legend><%= Html.Resource("PPP_Resources, PPP_View_Pool_Edit_EditPool")%><%=Html.Encode(Model.Name)%></legend>
+                        <p>
+                <label for="Name"><%= Html.Resource("PPP_Resources, PPP_View_Pool_Edit_Name")%></label>
+                <%= Html.TextBox("Name", Model.Name)%>
+                <%= Html.ValidationMessage("Name", "*")%>
+            </p>
             <p>
                 <label for="Addresses"><%= Html.Resource("PPP_Resources, PPP_View_Pool_Edit_Addresses")%></label>
                 <%= Html.TextBox("Addresses", Model.Addresses) %>

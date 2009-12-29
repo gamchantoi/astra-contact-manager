@@ -232,6 +232,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string PPP_View_Pool_Edit_Name {
+            get {
+                return ResourceManager.GetString("PPP_View_Pool_Edit_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NextPool:.
         /// </summary>
         internal static string PPP_View_Pool_Edit_NextPool {

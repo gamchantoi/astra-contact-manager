@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using ContactManager.Models;
+using ContactManager.Addresses.Interfaces;
 
 namespace ContactManager.Addresses.Models
 {
-    public class EntityStreetRepository : RepositoryBase<Street>
+    public class EntityStreetRepository : RepositoryBase<Street> , IStreetRepository
     {
         public List<Street> ListStreets()
         {
@@ -17,12 +18,20 @@ namespace ContactManager.Addresses.Models
             return street;
         }
 
-        public Street Edit(Street street)
+        public Street EditStreet(Street street)
         {
             var _street = GetStreet(street.StreetId);
             ObjectContext.ApplyPropertyChanges(_street.EntityKey.EntitySetName, street);
             ObjectContext.SaveChanges();
             return street;
         }
+
+        public Street CreateStreet(Street street)
+        {
+            ObjectContext.AddToStreets(street);
+            ObjectContext.SaveChanges();
+            return street;
+        }
+
     }
 }

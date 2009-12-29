@@ -29,7 +29,8 @@ namespace ContactManager.PPP.SSH
         public string ip_pool_set(Pool pool)
         {
             var command = new StringBuilder("ip pool set ");
-            command.Append(pool.Name + " ")
+            command.Append((string.IsNullOrEmpty(pool.OldName) ? pool.Name : pool.OldName) + " ")
+                .Append(Repository.BuildCommand("name", pool.Name))
                 .Append(Repository.BuildCommand("ranges", pool.Addresses))
                 .Append(Repository.BuildCommand("next-pool", pool.NextPoolName));
 
