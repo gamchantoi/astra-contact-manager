@@ -1,6 +1,6 @@
 ﻿using System;
 using ContactManager.Models;
-using ContactManager.PPP.Models;
+using ContactManager.PPP.Services;
 
 namespace ContactManager.PPP.Intefaces
 {

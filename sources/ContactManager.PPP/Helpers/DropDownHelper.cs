@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using ContactManager.PPP.Models;
+using ContactManager.PPP.Services;
 
 namespace ContactManager.PPP.Helpers
 {

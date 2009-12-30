@@ -3,7 +3,7 @@ using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.PPP.Helpers;
 using ContactManager.PPP.Intefaces;
-using ContactManager.PPP.Models;
+using ContactManager.PPP.Services;
 using ContactManager.PPP.SSH;
 
 namespace ContactManager.PPP.Controllers

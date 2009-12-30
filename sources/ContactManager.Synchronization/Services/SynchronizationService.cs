@@ -1,21 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using ContactManager.Models;
+using ContactManager.Models.Enums;
 using ContactManager.Models.Validation;
+using ContactManager.PPP;
 using ContactManager.PPP.Intefaces;
-using ContactManager.PPP.Models;
+using ContactManager.PPP.Services;
 using ContactManager.SSH.Models;
 using ContactManager.Synchronization.Interfaces;
+using ContactManager.Users.Interfaces;
+using ContactManager.Users.Services;
 
 namespace ContactManager.Synchronization.Services
 {
     public class SynchronizationService : SSHService, ISynchronizationService
     {
         private readonly IValidationDictionary _validationDictionary;
-        //private readonly ISSHService _sshSevice;
-        private AstraEntities _astraEntities;
-        //private readonly IContactService _contactService;
+        private readonly IUserFasade _userFacade;
+        private readonly PPPFactory _pppFactory;
         private readonly IPoolService _poolService;
         private readonly IProfileService _profileService;
         private readonly ISecretService _secretService;
@@ -25,13 +29,12 @@ namespace ContactManager.Synchronization.Services
         public SynchronizationService(IValidationDictionary validationDictionary)
             :base(validationDictionary, false)
         {
-            //_astraEntities = entities;
-            //_validationDictionary = validationDictionary;
-            //_contactService = new ContactService(validationDictionary);
-            //_poolService = new PoolService(validationDictionary, new EntityPoolRepository(entities));
-            //_profileService = new ProfileService(validationDictionary, new EntityProfileRepository(entities));
-            //_secretService = new SecretService(validationDictionary, new EntityPPPSecretRepository(entities));
-            //_sshSevice = new SSHService(validationDictionary);
+            _validationDictionary = validationDictionary;
+            _userFacade = new UserFasade(validationDictionary);
+            _pppFactory = new PPPFactory(validationDictionary) {SSHAutoMode = false};
+            _poolService = new PoolService(validationDictionary);
+            _profileService = new ProfileService(validationDictionary);
+            _secretService = new SecretService(validationDictionary);
         }
 
         #endregion
@@ -148,30 +151,29 @@ namespace ContactManager.Synchronization.Services
             {
                 HttpContext.Current.Application.Add("SyncStatus", "Started");
                 Connect();
+                var sshSecrets = _pppFactory.SSHSecretsService.ListPPPSecrets();
+                var sshProfiles = _pppFactory.SSHProfilesService.ListPPPProfiles();
+                var sshPools = _pppFactory.SSHPoolsService.ListPools();
+                Disconnect();
 
-                //var sshSecrets = _sshSevice.ListPPPSecrets();
-                //var sshProfiles = _sshSevice.ListPPPProfiles();
-                //var sshPools = _sshSevice.ListPools();
-                //_sshSevice.Disconnect();
-                //var dbUsers = _contactService.ListContacts();
+                var dbUsers = _userFacade.UserService.ListUsers(ROLES.client.ToString());
 
-                //_poolService.CreateOrEditPools(sshPools);
-                //_profileService.CreateOrEditProfiles(sshProfiles);
+                _pppFactory.PoolsService.CreateOrEditPools(sshPools);
+                _pppFactory.ProfilesService.CreateOrEditProfiles(sshProfiles);
 
-                //foreach (var user in sshSecrets)
-                //{
-                //    var user1 = user;
-                //    if (dbUsers.Exists(u => u.UserName.Trim().Equals(user1.Name.Trim(), StringComparison.Ordinal)))
-                //    {
-                //        var _user = dbUsers.Where(u => u.UserName.Trim().Equals(user1.Name.Trim(), StringComparison.Ordinal)).FirstOrDefault();
-                //        if (_user.Role == "admin") continue;
-                //        if(_user.Status == 0)
-                //            _contactService.ActivateContact(_user.UserId);
-                //        _contactService.EditContact(user1);
-                //    }
-                //    else
-                //        _contactService.CreateContact(user1);
-                //}
+                foreach (var user in sshSecrets)
+                {
+                    var user1 = user;
+                    if (dbUsers.Exists(u => u.UserName.Trim().Equals(user1.Name.Trim(), StringComparison.Ordinal)))
+                    {
+                        //var _user = dbUsers.FirstOrDefault(u => u.UserName.Trim().Equals(user1.Name.Trim(), StringComparison.Ordinal));
+                        //if (_user.Role == "admin") continue;
+
+                        _userFacade.EditContact(user1);
+                    }
+                    else
+                        _userFacade.CreateContact(user1);
+                }
             }
             catch (Exception)
             {

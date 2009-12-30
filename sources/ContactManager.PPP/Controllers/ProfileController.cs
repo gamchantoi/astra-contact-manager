@@ -3,7 +3,7 @@ using ContactManager.Models;
 using ContactManager.Models.Validation;
 using System.Collections.Generic;
 using ContactManager.PPP.Intefaces;
-using ContactManager.PPP.Models;
+using ContactManager.PPP.Services;
 using ContactManager.PPP.SSH;
 using ContactManager.PPP.Helpers;
 
@@ -24,16 +24,12 @@ namespace ContactManager.PPP.Controllers
             _sshService = new SshProfileService(validationDictionary);
         }
 
-        //
-        // GET: /Tariff/
         [Authorize(Roles = "admin")]
         public ActionResult Index()
         {            
             return View(PrepareIndex());
         }
 
-        //
-        // GET: /Tariff/Create
         [Authorize(Roles = "admin")]
         public ActionResult Create()
         {            
@@ -41,8 +37,6 @@ namespace ContactManager.PPP.Controllers
             return View();
         } 
 
-        //
-        // POST: /Tariff/Create
         [Authorize(Roles = "admin")]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create([Bind(Exclude = "ProfileId")]Profile profile)
@@ -71,7 +65,7 @@ namespace ContactManager.PPP.Controllers
         {
             if (_service.EditProfile(profile))
             {
-                var _profile = _service.GetProfile(profile.ProfileId);
+                //var _profile = _service.GetProfile(profile.ProfileId);
                 _sshService.EditPPPProfile(profile.ProfileId);
                 return View("Index", PrepareIndex());
             }

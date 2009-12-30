@@ -5,7 +5,7 @@ using ContactManager.Models;
 using ContactManager.Models.Validation;
 using System.Text.RegularExpressions;
 using ContactManager.PPP.Intefaces;
-using ContactManager.PPP.Models;
+using ContactManager.PPP.Services;
 using ContactManager.Users.Interfaces;
 using ContactManager.Users.Services;
 using ContactManager.Users.ViewModels;
@@ -179,6 +179,33 @@ namespace ContactManager.Users.Services
             return true;
         }
 
+        public bool EditContact(PPPSecret pppSecret)
+        {
+            var user = UserService.GetUser(pppSecret.Name);
+            pppSecret.UserId = new Guid(user.ProviderUserKey.ToString());
+            
+            var client = ClientService.BuildClient(pppSecret);
+            
+            // Validation logic
+            //if (!ValidateContact(client, false))
+            //    return false;
+
+            // Database logic
+            try
+            {
+                //UserService.EditUser(client);
+                //_clientService.EditClient(client);
+                pppSecret.UserId = client.UserId;
+                SecretService.EditPPPSecret(pppSecret);
+            }
+            catch (Exception ex)
+            {
+                _validationDictionary.AddError("_FORM", "Contact is not saved. " + ex.Message);
+                return false;
+            }
+            return true;
+        }
+
         private PPPSecret BuildSecret(ClientViewModel viewModel)
         {
             var secret = SecretService.GetPPPSecret(viewModel.UserId)
@@ -213,30 +240,6 @@ namespace ContactManager.Users.Services
         {
             Mapper.CreateMap<ClientViewModel, User>();
             return Mapper.Map<ClientViewModel, User>(viewModel);
-        }
-
-        public bool EditContact(PPPSecret pppSecret)
-        {
-            var client = ClientService.BuildClient(pppSecret);
-            client.UserId = new Guid(UserService.GetUser(client.UserName).ProviderUserKey.ToString());
-            // Validation logic
-            //if (!ValidateContact(client, false))
-            //    return false;
-
-            // Database logic
-            try
-            {
-                //UserService.EditUser(client);
-                //_clientService.EditClient(client);
-                pppSecret.UserId = client.UserId;
-                SecretService.EditPPPSecret(pppSecret);
-            }
-            catch (Exception ex)
-            {
-                _validationDictionary.AddError("_FORM", "Contact is not saved. " + ex.Message);
-                return false;
-            }
-            return true;
         }
 
         public Client GetContact(Guid id)
