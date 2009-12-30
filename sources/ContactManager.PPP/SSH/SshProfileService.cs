@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.PPP.Intefaces;
-using ContactManager.PPP.Models;
-using ContactManager.SSH.Intefaces;
+using ContactManager.PPP.Services;
 using SSHService=ContactManager.SSH.Models.SSHService;
 
 namespace ContactManager.PPP.SSH
@@ -16,12 +15,8 @@ namespace ContactManager.PPP.SSH
         private readonly IProfileService _pppProfileService;
 
         public SshProfileService(IValidationDictionary validationDictionary) 
-            //: base(validationDictionary)
             : this(validationDictionary, true)
         {
-            //_validationDictionary = validationDictionary;
-            //_repository = new SshProfileRepository(Repository);
-            //_pppProfileService = new ProfileService(validationDictionary);
         }
 
         public SshProfileService(IValidationDictionary validationDictionary, bool autoMode) 

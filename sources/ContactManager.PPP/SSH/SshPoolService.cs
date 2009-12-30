@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.PPP.Intefaces;
-using ContactManager.PPP.Models;
-using ContactManager.SSH.Intefaces;
+using ContactManager.PPP.Services;
 using ContactManager.SSH.Models;
 
 namespace ContactManager.PPP.SSH

@@ -89,11 +89,19 @@ namespace ContactManager.Users.Services
 
         public Client BuildClient(PPPSecret secret)
         {
+            Status status;
+            if(secret.Disabled.HasValue)
+                status = StatusService.GetStatus(secret.Disabled.Value ? STATUSES.Inactive : STATUSES.Active );
+            else
+                status = StatusService.GetStatus(STATUSES.Active);
+
             return new Client
                        {
+                           UserId = secret.UserId,
                            UserName = secret.Name,
                            Password = secret.Password,
-                           Role = "client"
+                           Role = ROLES.client.ToString(),
+                           Status = status
                        };
         }
 
