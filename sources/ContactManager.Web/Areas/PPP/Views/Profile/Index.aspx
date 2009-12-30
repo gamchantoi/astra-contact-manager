@@ -36,7 +36,7 @@
                 </td>
                 <td>
                     <a href='<%= Url.Action("Edit", new {id=item.ProfileId}) %>'>
-                        <%= Html.Encode(item.Name) %></a>
+                        <%= Html.Encode(item.DisplayName) %></a>
                 </td>
                 <td>
                     <%= Html.Encode(item.LocalAddress) %>

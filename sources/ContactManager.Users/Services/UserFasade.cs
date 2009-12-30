@@ -183,9 +183,9 @@ namespace ContactManager.Users.Services
         {
             var user = UserService.GetUser(pppSecret.Name);
             pppSecret.UserId = new Guid(user.ProviderUserKey.ToString());
-            
+
             var client = ClientService.BuildClient(pppSecret);
-            
+
             // Validation logic
             //if (!ValidateContact(client, false))
             //    return false;
@@ -253,7 +253,8 @@ namespace ContactManager.Users.Services
             if (secret != null)
             {
                 client.Comment = secret.Comment;
-                client.ProfileId = secret.Profile.ProfileId;
+                if (secret.Profile != null)
+                    client.ProfileId = secret.Profile.ProfileId;
             }
 
             return client;
