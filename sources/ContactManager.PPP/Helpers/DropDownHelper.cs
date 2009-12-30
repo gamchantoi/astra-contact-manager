@@ -21,8 +21,8 @@ namespace ContactManager.PPP.Helpers
         {
             var profileService = new ProfileService(null);
             if (selectedValue.HasValue)
-                return new SelectList(profileService.ListProfiles(), "ProfileId", "Name", selectedValue);
-            return new SelectList(profileService.ListProfiles(), "ProfileId", "Name");
+                return new SelectList(profileService.ListProfiles(), "ProfileId", "DisplayName", selectedValue);
+            return new SelectList(profileService.ListProfiles(), "ProfileId", "DisplayName");
         }
     }
 }
