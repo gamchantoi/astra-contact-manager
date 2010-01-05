@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using ContactManager.Models;
 using ContactManager.Models.Enums;
 using ContactManager.Models.Validation;
 using ContactManager.PPP;
-using ContactManager.PPP.Intefaces;
-using ContactManager.PPP.Services;
-using ContactManager.SSH.Models;
 using ContactManager.Synchronization.Interfaces;
 using ContactManager.Users.Interfaces;
 using ContactManager.Users.Services;
@@ -20,9 +16,6 @@ namespace ContactManager.Synchronization.Services
         private readonly IValidationDictionary _validationDictionary;
         private readonly IUserFasade _userFacade;
         private readonly PPPFactory _pppFactory;
-        private readonly IPoolService _poolService;
-        private readonly IProfileService _profileService;
-        private readonly ISecretService _secretService;
 
         #region Constructors
 
@@ -31,9 +24,6 @@ namespace ContactManager.Synchronization.Services
             _validationDictionary = validationDictionary;
             _userFacade = new UserFasade(validationDictionary);
             _pppFactory = new PPPFactory(validationDictionary) {SSHAutoMode = false};
-            _poolService = new PoolService(validationDictionary);
-            _profileService = new ProfileService(validationDictionary);
-            _secretService = new SecretService(validationDictionary);
         }
 
         #endregion
@@ -42,98 +32,100 @@ namespace ContactManager.Synchronization.Services
 
         public bool SyncToHost()
         {
-            //var status = HttpContext.Current.Application["SyncStatus"];
-            //if (status != null && status.ToString().Equals("Started"))
-            //{
-            //    _validationDictionary.AddError("_FORM", "Currently Server is Synchronizing..");
-            //    return false;
-            //}
+            var status = HttpContext.Current.Application["SyncStatus"];
+            if (status != null && status.ToString().Equals("Started"))
+            {
+                _validationDictionary.AddError("_FORM", "Currently Server is Synchronizing..");
+                return false;
+            }
 
-            //try
-            //{
-            //    HttpContext.Current.Application.Add("SyncStatus", "Started");
+            try
+            {
+                HttpContext.Current.Application.Add("SyncStatus", "Started");
 
-            //    var helper = new UserHelper();
-            //    if (!_sshSevice.Connect(helper.GetCurrentHost())) return false;
+                _pppFactory.SSHConnect();
 
-            //    var sshSecrets = _sshSevice.ListPPPSecrets();
-            //    var sshProfiles = _sshSevice.ListPPPProfiles();
-            //    var sssPools = _sshSevice.ListPools();
-            //    //var dbUsers = _contactService.ListContacts();
+                var sshSecrets = _pppFactory.SSHSecretsService.ListPPPSecrets();
+                var sshProfiles = _pppFactory.SSHProfilesService.ListPPPProfiles();
+                var sssPools = _pppFactory.SSHPoolsService.ListPools();
+                //var dbUsers = _contactService.ListContacts();
 
-            //    ProcessPools(sssPools);
-            //    ProcessProfiles(sshProfiles);
-            //    ProcessPPPSecrets(sshSecrets);
-            //}
-            //catch (Exception)
-            //{
-            //    _sshSevice.Disconnect();
-            //    return false;
-            //}
-            //finally
-            //{
-            //    HttpContext.Current.Application.Remove("SyncStatus");
-            //}
+                ProcessPools(sssPools);
+                ProcessProfiles(sshProfiles);
+                ProcessPPPSecrets(sshSecrets);
+            }
+            catch (Exception ex)
+            {
+                _validationDictionary.AddError("_FORM", "Server not synchronized. " + ex.Message);
+            }
+            finally
+            {
+                _pppFactory.SSHDisconnect();
+                HttpContext.Current.Application.Remove("SyncStatus");
+            }
             return true;
         }
 
         private void ProcessPPPSecrets(List<PPPSecret> sshSecrets)
         {
             //_sshSevice.CacheBegin();
-            //int count = 0;
-            //var contacts = _contactService.ListContacts("client", false);
-            //foreach (var contact in contacts)
-            //{
-            //    var _contact = _secretService.GetPPPSecret(contact.UserId);
-            //    if (_contact == null) continue;
+            //var count = 0;
+            var contacts = _userFacade.UserService.ListUsers(ROLES.client.ToString());
+            foreach (var contact in contacts)
+            {
+                var _contact = _pppFactory.SecretService.GetPPPSecret(contact.UserId);
+                if (_contact == null) continue;
 
-            //    if (sshSecrets.Exists(c => c.Name == _contact.Name))
-            //        _sshSevice.EditPPPSecret(_contact.UserId);
-            //    else
-            //        _sshSevice.CreatePPPSecret(_contact.UserId);
-            //    //if (count == 100)
-            //    //{
-            //    //    _sshSevice.CacheCommit();
-            //    //    count = 0;
-            //    //}
-            //    //count++;
-            //}
+                if (sshSecrets.Exists(c => c.Name == _contact.Name))
+                    _pppFactory.SSHSecretsService.EditPPPSecret(_contact.UserId);
+                else
+                    _pppFactory.SSHSecretsService.CreatePPPSecret(_contact.UserId);
+                //if (count == 100)
+                //{
+                //    _sshSevice.CacheCommit();
+                //    count = 0;
+                //}
+                //count++;
+            }
             ////_sshSevice.CacheCommit();
         }
 
         private void ProcessProfiles(List<Profile> sshProfiles)
         {
-            foreach (var profile in _profileService.ListProfiles())
+            foreach (var profile in _pppFactory.ProfilesService.ListProfiles())
             {
-                //if (sshProfiles.Exists(p => p.Name == profile.Name))
-                //    _sshSevice.EditPPPProfile(profile.ProfileId);
-                //else
-                //    _sshSevice.CreatePPPProfile(profile.ProfileId);
+                var profile1 = profile;
+                if (sshProfiles.Exists(p => p.Name == profile1.Name))
+                    _pppFactory.SSHProfilesService.EditPPPProfile(profile.ProfileId);
+                else
+                    _pppFactory.SSHProfilesService.CreatePPPProfile(profile.ProfileId);
             }
         }
 
-        private void ProcessPools(List<Pool> sssPools)
+        private void ProcessPools(List<Pool> sshPools)
         {
             var aditionalPools = new List<Pool>();
-            foreach (var pool in _poolService.ListPools())
+            foreach (var pool in _pppFactory.PoolsService.ListPools())
             {
-                if (pool.NextPool.HasValue && !sssPools.Exists(p => p.Name == pool.NextPoolName))
+                var pool1 = pool;
+                if (pool.NextPool.HasValue && !sshPools.Exists(p => p.Name == pool1.NextPoolName))
                 {
                     aditionalPools.Add(pool);
                     continue;
                 }
-                //if (sssPools.Exists(p => p.Name == pool.Name))
-                //    _sshSevice.EditPool(pool.PoolId);
-                //else
-                //    _sshSevice.CreatePool(pool.PoolId);
+                if (sshPools.Exists(p => p.Name == pool1.Name))
+                    _pppFactory.SSHPoolsService.EditPool(pool.PoolId);
+                else
+                    _pppFactory.SSHPoolsService.CreatePool(pool.PoolId);
             }
 
             foreach (var pool in aditionalPools)
             {
-                //if (sssPools.Exists(p => p.Name == pool.Name))
-                //    _sshSevice.EditPool(pool.PoolId);
-                //else
-                //    _sshSevice.CreatePool(pool.PoolId);
+                var pool1 = pool;
+                if (sshPools.Exists(p => p.Name == pool1.Name))
+                    _pppFactory.SSHPoolsService.EditPool(pool.PoolId);
+                else
+                    _pppFactory.SSHPoolsService.CreatePool(pool.PoolId);
             }
         }
 
@@ -167,20 +159,16 @@ namespace ContactManager.Synchronization.Services
                     var user1 = user;
                     if (dbUsers.Exists(u => u.UserName.Trim().Equals(user1.Name.Trim(), StringComparison.Ordinal)))
                     {
-                        //var _user = dbUsers.FirstOrDefault(u => u.UserName.Trim().Equals(user1.Name.Trim(), StringComparison.Ordinal));
-                        //if (_user.Role == "admin") continue;
-
                         _userFacade.EditContact(user1);
                     }
                     else
                         _userFacade.CreateContact(user1);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
                 HttpContext.Current.Application.Remove("SyncStatus");
-                throw;
+                _validationDictionary.AddError("_FORM", "Server not synchronized. " + ex.Message);
             }
             finally
             {

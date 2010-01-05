@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using ContactManager.Models;
 using ContactManager.PPP.Intefaces;
 
@@ -67,7 +66,8 @@ namespace ContactManager.PPP.Models
             foreach (var pool in ObjectContext.PoolSet.ToList())
             {
                 if (!pool.NextPool.HasValue) continue;
-                var _pool = ObjectContext.PoolSet.Where(p => p.PoolId == pool.NextPool);
+                var pool1 = pool;
+                var _pool = ObjectContext.PoolSet.Where(p => p.PoolId == pool1.NextPool);
                 if (_pool.Count() > 0)
                     pool.NextPoolName = _pool.FirstOrDefault().Name;
             }
