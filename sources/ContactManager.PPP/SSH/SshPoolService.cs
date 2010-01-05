@@ -82,10 +82,5 @@ namespace ContactManager.PPP.SSH
         {
             return _repository.ip_pool_print();
         }
-
-        //public new bool Connect(Host host)
-        //{
-        //    return Connect(host.Address, host.UserName, host.UserPassword);
-        //}
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using ContactManager.Models.Validation;
+﻿using ContactManager.Models.Validation;
 using ContactManager.PPP.Intefaces;
 using ContactManager.PPP.Services;
 using ContactManager.PPP.SSH;
@@ -70,6 +66,14 @@ namespace ContactManager.PPP
             get
             {
                 return new ProfileService(_validationDictionary);
+            }
+        }
+
+        public ISecretService SecretService
+        {
+            get
+            {
+                return new SecretService(_validationDictionary);
             }
         }
         #endregion
