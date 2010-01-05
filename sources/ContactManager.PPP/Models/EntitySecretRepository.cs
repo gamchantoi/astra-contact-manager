@@ -33,6 +33,11 @@ namespace ContactManager.PPP.Models
                 CreatePPPSecret(secret);
             else
             {
+                secret.OldName = _secret.OldName;
+
+                if (String.IsNullOrEmpty(_secret.OldName) && (!_secret.Name.Equals(secret.Name)))
+                    secret.OldName = _secret.Name;
+
                 ObjectContext.ApplyPropertyChanges(_secret.EntityKey.EntitySetName, secret);
                 _secret.LastUpdatedDate = DateTime.Now;
                 ObjectContext.SaveChanges();

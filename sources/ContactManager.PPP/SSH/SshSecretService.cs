@@ -4,43 +4,28 @@ using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.PPP.Intefaces;
 using ContactManager.PPP.Services;
-using ContactManager.SSH.Intefaces;
-using SSHService=ContactManager.SSH.Models.SSHService;
 
 namespace ContactManager.PPP.SSH
 {
-    public class SshSecretService : SSHService, ISshSecretService
+    public class SshSecretService : ISshSecretService
     {
-        private IValidationDictionary _validationDictionary;
-        private SshSecretRepository _repository;
-        private ISecretService _pppSecretService;
+        private readonly IValidationDictionary _validationDictionary;
+        private readonly SshSecretRepository _repository;
+        private readonly ISecretService _pppSecretService;
 
         #region Constructors
         public SshSecretService(IValidationDictionary validationDictionary)
-            : base(validationDictionary)
+            : this(validationDictionary, true)
         {
-            Init(validationDictionary, null, false);
         }
 
         public SshSecretService(IValidationDictionary validationDictionary, bool autoMode)
-            : base(validationDictionary)
         {
-            Init(validationDictionary, null, autoMode);
-        }
-
-        public SshSecretService(IValidationDictionary validationDictionary, ISSHRepository repository)
-            : base(validationDictionary, repository)
-        {
-            Init(validationDictionary, repository, false);
-        }
-
-        private void Init(IValidationDictionary validationDictionary, ISSHRepository repository, bool autoMode)
-        {
-            AutoMode = autoMode;
             _validationDictionary = validationDictionary;
-            _repository = repository != null ? new SshSecretRepository(repository) : new SshSecretRepository(Repository);
+            _repository = new SshSecretRepository(autoMode);
             _pppSecretService = new SecretService(validationDictionary);
-        } 
+        }
+
         #endregion
 
         public bool CreatePPPSecret(Guid id)
@@ -64,6 +49,9 @@ namespace ContactManager.PPP.SSH
             {
                 var secret = _pppSecretService.GetPPPSecret(id);
                 _repository.ppp_secret_set(secret);
+                
+                secret.OldName = null;
+                _pppSecretService.EditPPPSecret(secret);
             }
             catch (Exception ex)
             {

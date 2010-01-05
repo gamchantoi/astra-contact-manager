@@ -2,14 +2,16 @@
 using System.Text.RegularExpressions;
 using ContactManager.PPP.Intefaces;
 using ContactManager.SSH.Intefaces;
+using ContactManager.SSH.Models;
 
 namespace ContactManager.PPP.Models
 {
     public class ActiveConnectionsRepository : IActiveConnectionsRepository
     {
-        public ActiveConnectionsRepository(ISSHRepository repository)
+        public ActiveConnectionsRepository(bool auto)
         {
-            Repository = repository;
+            Repository = SSHRepository.Instance;
+            Repository.AutoMode = auto;
         }
 
         public ISSHRepository Repository { get; private set; }

@@ -66,18 +66,6 @@ namespace ContactManager.Users.Services
             return _repository.ListUser();
         }
 
-        //public List<MembershipUser> ListUsers(string role)
-        //{
-        //    var users = new List<MembershipUser>();
-        //    var usersNames = Roles.GetUsersInRole(role);
-        //    foreach(var user in usersNames)
-        //    {
-        //        var mUser = Membership.Provider.GetUser(user, false);
-        //        users.Add(mUser);
-        //    }
-        //    return users;
-        //}
-
         public string GetRoleForUser(string name)
         {
             //var role = String.Empty;
@@ -93,15 +81,10 @@ namespace ContactManager.Users.Services
             return Membership.Provider.GetUser(id, false);
         }
 
-        public MembershipUser GetUser(string name)
+        public User GetUser(string name)
         {
-            return Membership.Provider.GetUser(name, false);
+            return _repository.GetUser(name);
         }
-
-        //public MembershipUser GetCurrentUser() 
-        //{ 
-        //    return Membership.GetUser(HttpContext.Current.User.Identity.Name);
-        //}
 
         public void EditUser(User user)
         {

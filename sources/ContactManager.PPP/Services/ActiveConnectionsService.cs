@@ -2,20 +2,18 @@
 using ContactManager.Models.Validation;
 using ContactManager.PPP.Intefaces;
 using ContactManager.PPP.Models;
-using ContactManager.SSH.Models;
 
 namespace ContactManager.PPP.Services
 {
-    public class ActiveConnectionsService : SSHService, IActiveConnectionsService
+    public class ActiveConnectionsService : IActiveConnectionsService
     {
         private readonly IActiveConnectionsRepository _activeConnectionRepository;
         //private readonly IValidationDictionary _validationDictionary;
 
         public ActiveConnectionsService(IValidationDictionary validationDictionary)
-            :base (validationDictionary, true)
         {
             // _validationDictionary = validationDictionary;
-            _activeConnectionRepository = new ActiveConnectionsRepository(Repository);
+            _activeConnectionRepository = new ActiveConnectionsRepository(true);
         }
 
         public List<ActiveConnections> ListActiveConnections()

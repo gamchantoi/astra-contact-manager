@@ -70,8 +70,13 @@ namespace ContactManager.PPP.Services
             {
                 var p = _repository.GetProfile(profile.Name);
                 var pool = _poolService.GetPool(profile.PoolName);
+
                 if (pool != null)
                     profile.PoolId = pool.PoolId;
+
+                if (string.IsNullOrEmpty(profile.DisplayName))
+                    profile.DisplayName = profile.Name;
+
                 if (p == null)
                 {
                     CreateProfile(profile);

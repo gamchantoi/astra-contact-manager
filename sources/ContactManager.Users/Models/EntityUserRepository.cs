@@ -20,7 +20,7 @@ namespace ContactManager.Users.Models
             MembershipCreateStatus status;
             var _user = Provider.CreateUser(user.UserName, user.Password, user.Email, null, null, true, null, out status);
             var userId = new Guid(_user.ProviderUserKey.ToString());
-            
+
             if (status != MembershipCreateStatus.Success) return null;
 
             Roles.AddUserToRole(user.UserName, user.Role);
@@ -30,6 +30,11 @@ namespace ContactManager.Users.Models
         public User GetUser(Guid userId)
         {
             return ObjectContext.Users.FirstOrDefault(u => u.UserId == userId);
+        }
+
+        public User GetUser(string name)
+        {
+            return ObjectContext.Users.FirstOrDefault(u => u.UserName == name);
         }
 
         public List<User> ListUser()
@@ -55,7 +60,9 @@ namespace ContactManager.Users.Models
 
             if (!String.IsNullOrEmpty(user.Email)) mUser.Email = user.Email;
 
-            if (!String.Equals(mUser.GetPassword(), user.Password))
+            if (!String.Equals(mUser.GetPassword(), user.Password)
+                && !string.IsNullOrEmpty(user.Password))
+
                 mUser.ChangePassword(mUser.GetPassword(), user.Password);
             Provider.UpdateUser(mUser);
 

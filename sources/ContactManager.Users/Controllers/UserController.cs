@@ -103,9 +103,9 @@ namespace ContactManager.Users.Controllers
                 {
                     if (canSync)
                     {
-                        _sshSecretService.Connect(_ctx.GetCurrentHost());
+                        //_sshSecretService.Connect(_ctx.GetCurrentHost());
                         _sshSecretService.CreatePPPSecret(id);
-                        _sshSecretService.Disconnect();
+                        //_sshSecretService.Disconnect();
                     }
                 }
             }
@@ -115,9 +115,9 @@ namespace ContactManager.Users.Controllers
                 {
                     if (canSync)
                     {
-                        _sshSecretService.Connect(_ctx.GetCurrentHost());
+                        //_sshSecretService.Connect(_ctx.GetCurrentHost());
                         _sshSecretService.DeletePPPSecret(name);
-                        _sshSecretService.Disconnect();
+                        //_sshSecretService.Disconnect();
                     }
                 }
             }

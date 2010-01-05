@@ -12,7 +12,7 @@
 <%= Html.Resource("Web_Resources, Site_LogOnUserControl_Welcome") %>
 <b>
     <%= Html.Encode(Page.User.Identity.Name) %></b>! [
-<%= Html.ActionLink(Html.Resource("Web_Resources, Site_LogOnUserControl_LogOff"), "LogOff", "Account")%>
+<%= Html.ActionLink(Html.Resource("Web_Resources, Site_LogOnUserControl_LogOff"), "LogOff", "Account", null, null)%>
 ]
 <%
     }

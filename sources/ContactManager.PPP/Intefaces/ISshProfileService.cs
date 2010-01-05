@@ -11,8 +11,8 @@ namespace ContactManager.PPP.Intefaces
         bool DeletePPPProfile(int id);
         bool DeletePPPProfile(string name);
         List<Profile> ListPPPProfiles();
-        ISSHRepository Repository { get; }
-        bool Connect(Host host);
-        void Disconnect();
+        //ISSHRepository Repository { get; }
+        //bool Connect(Host host);
+        //void Disconnect();
     }
 }

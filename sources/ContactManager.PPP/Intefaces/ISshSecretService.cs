@@ -11,7 +11,7 @@ namespace ContactManager.PPP.Intefaces
         bool DeletePPPSecret(Guid id);
         bool DeletePPPSecret(string name);
         List<PPPSecret> ListPPPSecrets();
-        bool Connect(Host host);
-        void Disconnect();
+        //bool Connect(Host host);
+        //void Disconnect();
     }
 }
