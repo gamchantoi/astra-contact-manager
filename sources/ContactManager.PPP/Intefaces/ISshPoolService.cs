@@ -11,8 +11,8 @@ namespace ContactManager.PPP.Intefaces
         bool DeletePool(int id);
         bool DeletePool(string name);
         List<Pool> ListPools();
-        ISSHRepository Repository { get; }
-        bool Connect();
-        void Disconnect();
+        //ISSHRepository Repository { get; }
+        //bool Connect();
+        //void Disconnect();
     }
 }

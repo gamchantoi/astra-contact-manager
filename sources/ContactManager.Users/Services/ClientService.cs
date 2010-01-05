@@ -95,14 +95,16 @@ namespace ContactManager.Users.Services
             else
                 status = StatusService.GetStatus(STATUSES.Active);
 
-            return new Client
-                       {
-                           UserId = secret.UserId,
-                           UserName = secret.Name,
-                           Password = secret.Password,
-                           Role = ROLES.client.ToString(),
-                           Status = status
-                       };
+            var client = !secret.UserId.Equals(Guid.Empty) 
+                                ? GetClient(secret.UserId) : new Client();
+
+            //client.UserId = secret.UserId;
+            client.UserName = secret.Name;
+            client.Password = secret.Password;
+            client.Role = ROLES.client.ToString();
+            client.Status = status;
+
+            return client;
         }
 
         public List<Client> ListClients(bool deleted)

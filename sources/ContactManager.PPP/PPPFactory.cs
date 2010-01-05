@@ -6,6 +6,7 @@ using ContactManager.Models.Validation;
 using ContactManager.PPP.Intefaces;
 using ContactManager.PPP.Services;
 using ContactManager.PPP.SSH;
+using ContactManager.SSH.Models;
 
 namespace ContactManager.PPP
 {
@@ -19,6 +20,15 @@ namespace ContactManager.PPP
         }
 
         public bool SSHAutoMode { get; set; }
+        public void SSHConnect()
+        {
+            SSHRepository.Instance.Connect();
+        }
+
+        public void SSHDisconnect() 
+        {
+            SSHRepository.Instance.Disconnect();
+        }
 
         #region SSH PPP
         public ISshSecretService SSHSecretsService

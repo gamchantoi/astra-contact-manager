@@ -15,7 +15,7 @@ using ContactManager.Users.Services;
 
 namespace ContactManager.Synchronization.Services
 {
-    public class SynchronizationService : SSHService, ISynchronizationService
+    public class SynchronizationService : ISynchronizationService
     {
         private readonly IValidationDictionary _validationDictionary;
         private readonly IUserFasade _userFacade;
@@ -27,7 +27,6 @@ namespace ContactManager.Synchronization.Services
         #region Constructors
 
         public SynchronizationService(IValidationDictionary validationDictionary)
-            :base(validationDictionary, false)
         {
             _validationDictionary = validationDictionary;
             _userFacade = new UserFasade(validationDictionary);
@@ -150,12 +149,14 @@ namespace ContactManager.Synchronization.Services
             try
             {
                 HttpContext.Current.Application.Add("SyncStatus", "Started");
-                Connect();
+                _pppFactory.SSHAutoMode = false;
+
+                _pppFactory.SSHConnect();
                 var sshSecrets = _pppFactory.SSHSecretsService.ListPPPSecrets();
                 var sshProfiles = _pppFactory.SSHProfilesService.ListPPPProfiles();
                 var sshPools = _pppFactory.SSHPoolsService.ListPools();
-                Disconnect();
-
+                _pppFactory.SSHDisconnect();
+  
                 var dbUsers = _userFacade.UserService.ListUsers(ROLES.client.ToString());
 
                 _pppFactory.PoolsService.CreateOrEditPools(sshPools);

@@ -20,7 +20,7 @@ namespace ContactManager.Users.Interfaces
 
         User CreateUser(User user);
         MembershipUser GetUser(Guid id);
-        MembershipUser GetUser(string name);
+        User GetUser(string name);
 
         bool ClearAllData();
     }

@@ -9,9 +9,10 @@ namespace ContactManager.PPP.SSH
 {
     public class SshPoolRepository
     {
-        public SshPoolRepository(ISSHRepository repository)
+        public SshPoolRepository(bool auto)
         {
-            Repository = repository;
+            Repository = SSHRepository.Instance;
+            Repository.AutoMode = auto;
         }
 
         public ISSHRepository Repository { get; private set; }

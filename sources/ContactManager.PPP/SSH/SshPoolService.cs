@@ -4,11 +4,10 @@ using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.PPP.Intefaces;
 using ContactManager.PPP.Services;
-using ContactManager.SSH.Models;
 
 namespace ContactManager.PPP.SSH
 {
-    public class SshPoolService : SSHService, ISshPoolService
+    public class SshPoolService : ISshPoolService
     {
         private readonly IValidationDictionary _validationDictionary;
         private readonly SshPoolRepository _repository;
@@ -19,10 +18,9 @@ namespace ContactManager.PPP.SSH
         { }
 
         public SshPoolService(IValidationDictionary validationDictionary, bool autoMode)
-            : base(validationDictionary, autoMode)
         {
             _validationDictionary = validationDictionary;
-            _repository = new SshPoolRepository(Repository);
+            _repository = new SshPoolRepository(autoMode);
             _poolService = new PoolService(validationDictionary);
         }
 
@@ -85,9 +83,9 @@ namespace ContactManager.PPP.SSH
             return _repository.ip_pool_print();
         }
 
-        public new bool Connect(Host host)
-        {
-            return Connect(host.Address, host.UserName, host.UserPassword);
-        }
+        //public new bool Connect(Host host)
+        //{
+        //    return Connect(host.Address, host.UserName, host.UserPassword);
+        //}
     }
 }

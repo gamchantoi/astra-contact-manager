@@ -3,14 +3,16 @@ using System.Text;
 using System.Text.RegularExpressions;
 using ContactManager.Models;
 using ContactManager.SSH.Intefaces;
+using ContactManager.SSH.Models;
 
 namespace ContactManager.PPP.SSH
 {
     public class SshSecretRepository
     {
-        public SshSecretRepository(ISSHRepository repository)
+        public SshSecretRepository(bool auto)
         {
-            Repository = repository;
+            Repository = SSHRepository.Instance;
+            Repository.AutoMode = auto;
         }
 
         public ISSHRepository Repository { get; private set; }
@@ -59,7 +61,9 @@ namespace ContactManager.PPP.SSH
         public string ppp_secret_set(PPPSecret secret)
         {
             var command = new StringBuilder("ppp secret set ");
-            command.Append(secret.Name + " ")
+
+            command.Append((string.IsNullOrEmpty(secret.OldName) ? secret.Name : secret.OldName) + " ")
+                .Append(Repository.BuildCommand("name", secret.Name))
                 .Append(Repository.BuildCommand("password", secret.Password))
                 .Append(Repository.BuildCommand("profile", secret.Profile.Name))
                 .Append(Repository.BuildCommand("service", secret.Service))
@@ -86,15 +90,16 @@ namespace ContactManager.PPP.SSH
                 var pppS = new PPPSecret();
                 var properties = Repository.BuildProperties(val);
                 pppS.Name = Repository.GetValue(properties, "name");
+
+                if (string.IsNullOrEmpty(pppS.Name)) continue;
+
                 pppS.Password = Repository.GetValue(properties, "password");
-                pppS.Profile = new Profile 
-                    {Name = Repository.GetValue(properties, "profile")};
+                pppS.Profile = new Profile { Name = Repository.GetValue(properties, "profile") };
                 pppS.LocalAddress = Repository.GetValue(properties, "local-address");
                 pppS.RemoteAddress = Repository.GetValue(properties, "remote-address");
-                pppS.Disabled = bool.Parse(Repository.GetValue(properties, "status"));
+                pppS.Disabled = Repository.GetValue(properties, "status").Equals("0");
                 pppS.Comment = Repository.GetValue(properties, "comment");
-                if (!string.IsNullOrEmpty(pppS.Name))
-                    pppSec.Add(pppS);
+                pppSec.Add(pppS);
             }
             return pppSec;
         }

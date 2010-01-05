@@ -3,14 +3,16 @@ using System.Text;
 using System.Text.RegularExpressions;
 using ContactManager.Models;
 using ContactManager.SSH.Intefaces;
+using ContactManager.SSH.Models;
 
 namespace ContactManager.PPP.SSH
 {
     public class SshProfileRepository
     {
-        public SshProfileRepository(ISSHRepository repository)
+        public SshProfileRepository(bool auto)
         {
-            Repository = repository;
+            Repository = SSHRepository.Instance;
+            Repository.AutoMode = auto;
         }
 
         public ISSHRepository Repository { get; private set; }

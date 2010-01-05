@@ -8,21 +8,39 @@ using Tamir.SharpSsh;
 
 namespace ContactManager.SSH.Models
 {
-    public class SSHRepository : ISSHRepository
+    public sealed class SSHRepository : ISSHRepository
     {
+        static SSHRepository instance;
+        static readonly object padlock = new object();
+
         private SshStream _sshStream;
-        private readonly Host _host;
+
+        SSHRepository()
+        {
+            
+        }
+
+        public static SSHRepository Instance
+        {
+            get
+            {
+                lock (padlock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new SSHRepository();
+                    }
+                    return instance;
+                }
+            }
+        }
 
         public bool AutoMode { get; set; }
 
-
-        public SSHRepository(Host host)
-        {
-            _host = host;
-        }
-
         public string Connect()
         {
+            var ctx = new CurrentContext();
+            var _host = ctx.GetCurrentHost();
             return Connect(_host.Address, _host.UserName, _host.UserPassword);
         }
 
@@ -65,7 +83,7 @@ namespace ContactManager.SSH.Models
             return retVal;
         }
 
-        public string BuildCommand(String key, String value)
+        public string BuildCommand(string key, string value)
         {
             if (String.IsNullOrEmpty(value)) return String.Empty;
             var builder = new StringBuilder(value);
@@ -77,7 +95,7 @@ namespace ContactManager.SSH.Models
             return String.Format("{0}=\"{1}\" ", key, builder.ToString().Trim());
         }
 
-        public string ParseResponse(string response, string command)
+        private static string ParseResponse(string response, string command)
         {
             string error;
             if (!IsSuccess(response, out error))
@@ -85,7 +103,7 @@ namespace ContactManager.SSH.Models
             return response;
         }
 
-        public bool IsSuccess(string result, out string error)
+        private static bool IsSuccess(string result, out string error)
         {
             error = "";
             if (result.Contains("input does not match any value"))
