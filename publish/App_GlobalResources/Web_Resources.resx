@@ -201,6 +201,9 @@
   <data name="Site_View_Account_Index_FullName" xml:space="preserve">
     <value>FullName:</value>
   </data>
+  <data name="Site_View_Account_Index_Status" xml:space="preserve">
+    <value>Status:</value>
+  </data>
   <data name="Site_View_Account_Index_TariffName" xml:space="preserve">
     <value>TariffName:</value>
   </data>
