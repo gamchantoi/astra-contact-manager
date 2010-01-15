@@ -72,7 +72,10 @@ namespace ContactManager.Users.Services
 
         public Client GetClient(Guid id)
         {
-            return _repository.GetClient(id);
+            var _client = _repository.GetClient(id);
+            if (_client != null)
+                _client.LoadStatusReferences();
+            return _client;
         }
 
         public ClientViewModel GetViewModel(Client client)
@@ -90,13 +93,12 @@ namespace ContactManager.Users.Services
         public Client BuildClient(PPPSecret secret)
         {
             Status status;
-            if(secret.Disabled.HasValue)
-                status = StatusService.GetStatus(secret.Disabled.Value ? STATUSES.Inactive : STATUSES.Active );
+            if (secret.Disabled.HasValue)
+                status = StatusService.GetStatus(secret.Disabled.Value ? STATUSES.Inactive : STATUSES.Active);
             else
                 status = StatusService.GetStatus(STATUSES.Active);
 
-            var client = !secret.UserId.Equals(Guid.Empty) 
-                                ? GetClient(secret.UserId) : new Client();
+            var client = GetClient(secret.UserId) ?? new Client();
 
             //client.UserId = secret.UserId;
             client.UserName = secret.Name;
@@ -113,11 +115,11 @@ namespace ContactManager.Users.Services
             var _status = StatusService.GetStatus(STATUSES.Deleted);
 
             var list = _repository.ListClients(_status, deleted);
-            
+
             var system = list.Find(c => c.UserId == ctx.GetSystemUser().UserId);
             if (system != null)
                 list.Remove(system);
-            
+
             return list;
         }
 

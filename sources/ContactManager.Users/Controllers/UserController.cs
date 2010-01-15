@@ -162,24 +162,19 @@ namespace ContactManager.Users.Controllers
         private ListClientViewModel PrepareIndex(bool deleted)
         {
             var _model = new ListClientViewModel();
-            var users = _facade.ListContacts(deleted);
-            users.Sort((c1, c2) => c1.UserName.CompareTo(c2.UserName));
+            //var users = _facade.ListContacts(deleted);
+            //users.Sort((c1, c2) => c1.UserName.CompareTo(c2.UserName));
 
-            Mapper.CreateMap<Client, ClientViewModel>();
-            var viewModelList = Mapper.Map<List<Client>, List<ClientViewModel>>(users);
+            //Mapper.CreateMap<Client, ClientViewModel>();
+            //var viewModelList = Mapper.Map<List<Client>, List<ClientViewModel>>(users);
 
-            _model.Clients = viewModelList;
-            _model.TotalUsers = users.Count();
-            _model.TotalBalance = users.Sum(u => u.Balance);
+            _model.Clients = _facade.UserService.ListUsersModels();
+            _model.Clients.Sort((c1, c2) => c1.UserName.CompareTo(c2.UserName));
+            //_model.Clients = viewModelList;
+            _model.TotalUsers = _model.Clients.Count();
+            _model.TotalBalance = _model.Clients.Sum(u => u.Balance);
             _model.Deleted = deleted;
             return _model;
-        }
-
-        [Authorize(Roles = "admin")]
-        public ActionResult ClearAllData()
-        {
-            _facade.DeleteAllData();
-            return View("Index", PrepareIndex(false));
         }
 
         [Authorize(Roles = "admin")]

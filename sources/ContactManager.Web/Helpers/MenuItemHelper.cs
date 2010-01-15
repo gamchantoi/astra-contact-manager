@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
+using System.Web.Security;
+using ContactManager.Models.Enums;
 
 namespace ContactManager.Web.Helpers
 {
@@ -17,8 +19,7 @@ namespace ContactManager.Web.Helpers
     {
         public static string MenuItem(this HtmlHelper helper, string linkText, string actionName, string controllerName, string area)
         {
-            var uHelper = new UserHelper();
-            if (uHelper.IsUserInRole("admin") 
+            if (Roles.IsUserInRole(ROLES.admin.ToString()) 
                 || controllerName.Equals("Home")
                 || controllerName.Equals("AccountTransactions"))
             {

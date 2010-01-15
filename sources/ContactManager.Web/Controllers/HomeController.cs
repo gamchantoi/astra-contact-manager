@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.Users.Interfaces;
 using ContactManager.Users.Services;
@@ -9,28 +10,32 @@ namespace ContactManager.Web.Controllers
     [HandleError]
     public class HomeController : Controller
     {
-        private readonly IUserFasade _service;
+        private readonly IUserFasade _facade;
+        private readonly CurrentContext _ctx;
 
         public HomeController() 
         {
-            _service = new UserFasade(new ModelStateWrapper(ModelState));
-        }
-
-        public HomeController(IUserFasade service) 
-        {
-            _service = service;
+            _facade = new UserFasade(new ModelStateWrapper(ModelState));
+            _ctx = new CurrentContext();
         }
 
         [Authorize]
         public ActionResult Index()
         {
-            var helper = new UserHelper();
-            return View(_service.GetContact(helper.CurrentUserId));
+            return View(_facade.GetContact(_ctx.CurrentUserId));
         }
 
         public ActionResult About()
         {
             return View();
+        }
+
+        [Authorize(Roles = "admin")]
+        public ActionResult CleanDatabase()
+        {
+            var helper = new UserHelper();
+            helper.CleanDatabase();
+            return View("Index", _facade.GetContact(_ctx.CurrentUserId));
         }
     }
 }

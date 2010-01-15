@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.Mvc;
 
 namespace ContactManager.Accounts.ViewModels
 {
@@ -12,5 +13,8 @@ namespace ContactManager.Accounts.ViewModels
         public string ClientUserName { get; set; }
         public string UserUserName { get; set; }
         public string TransactionName { get; set; }
+
+        public SelectList Filter_Years { get; set; }
+        public SelectList Filter_Month { get; set; }
     }
 }

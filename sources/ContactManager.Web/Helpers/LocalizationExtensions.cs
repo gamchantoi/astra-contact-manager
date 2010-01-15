@@ -9,9 +9,9 @@ namespace ContactManager.Web.Helpers
 
         public static string Resource(this HtmlHelper html, string expr, params object[] args)
         {
-            string path = ((WebFormView)html.ViewContext.View).ViewPath;
+            var path = ((WebFormView)html.ViewContext.View).ViewPath;
 
-            ResourceExpressionFields fields = (ResourceExpressionFields)(new ResourceExpressionBuilder()).ParseExpression(
+            var fields = (ResourceExpressionFields)(new ResourceExpressionBuilder()).ParseExpression(
                 expr,
                 typeof(string),
                 new ExpressionBuilderContext(path)

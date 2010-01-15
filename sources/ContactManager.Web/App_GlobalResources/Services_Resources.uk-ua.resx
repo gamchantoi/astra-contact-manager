@@ -145,7 +145,7 @@
     <value>Створити новий сервіс</value>
   </data>
   <data name="Services_View_Create_IsRegular" xml:space="preserve">
-    <value>IsRegular</value>
+    <value>Регулярний</value>
   </data>
   <data name="Services_View_Create_Name" xml:space="preserve">
     <value>Імя</value>

@@ -127,6 +127,11 @@ namespace ContactManager.PPP.Services
             return _repository.GetProfile(id);
         }
 
+        public Profile GetProfile(string name)
+        {
+            return _repository.GetProfile(name);
+        }
+
         //public Profile GetTariff(Profile tariff)
         //{
         //    if(tariff == null)

@@ -71,7 +71,7 @@ namespace ContactManager.PPP.Models
             if (profile == null)
                 return null;
             profile.IPPoolReference.Load();
-            if (profile.IPPoolReference.Value != null)
+            if (profile.IPPool != null)
             {
                 profile.PoolName = profile.IPPoolReference.Value.Name;
                 profile.PoolId = profile.IPPoolReference.Value.PoolId;

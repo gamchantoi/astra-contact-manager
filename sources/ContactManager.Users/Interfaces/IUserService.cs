@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ContactManager.Models;
 using System;
+using ContactManager.Users.ViewModels;
 
 namespace ContactManager.Users.Interfaces
 {
@@ -17,6 +18,7 @@ namespace ContactManager.Users.Interfaces
 
         List<User> ListUsers(string role);
         List<User> ListUsers();
+        List<ClientViewModel> ListUsersModels();
 
         User CreateUser(User user);
         MembershipUser GetUser(Guid id);
