@@ -313,6 +313,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Status:.
+        /// </summary>
+        internal static string Site_View_Account_Index_Status {
+            get {
+                return ResourceManager.GetString("Site_View_Account_Index_Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TariffName:.
         /// </summary>
         internal static string Site_View_Account_Index_TariffName {

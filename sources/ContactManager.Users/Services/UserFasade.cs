@@ -52,6 +52,16 @@ namespace ContactManager.Users.Services
             return isValid;
         }
 
+        public bool ValidateContact(PPPSecret secret, bool creatingUser)
+        {
+            var model = new ClientViewModel
+                            {
+                                UserName = secret.Name,
+                                Password = secret.Password
+                            };
+            return ValidateContact(model, creatingUser);
+        }
+
         private bool ValidateField(string fieldName, string fieldValue, string userName, bool specialSymbols)
         {
             var isValid = true;
@@ -90,7 +100,7 @@ namespace ContactManager.Users.Services
             {
                 viewModel.UserId = UserService.CreateUser(BuildUser(viewModel)).UserId;
                 ClientService.CreateClient(BuildClient(viewModel));
-                if (viewModel.Role.Equals("client"))
+                if (viewModel.Role.Equals(ROLES.client.ToString()))
                     return SecretService.CreatePPPSecret(BuildSecret(viewModel));
                 return true;
             }
@@ -104,17 +114,15 @@ namespace ContactManager.Users.Services
 
         public bool CreateContact(PPPSecret pppSecret)
         {
-            var client = ClientService.BuildClient(pppSecret);
             // Validation logic
-            //if (!ValidateContact(client, true))
-            //    return false;
+            if (!ValidateContact(pppSecret, true))
+                return false;
 
             // Database logic
             try
             {
-                //UserService.CreateUser(client);
-                ClientService.CreateClient(client);
-                pppSecret.UserId = client.UserId;
+                pppSecret.UserId = UserService.CreateUser(BuildUser(pppSecret)).UserId;
+                ClientService.CreateClient(BuildClient(pppSecret));
                 SecretService.CreatePPPSecret(pppSecret);
             }
             catch (Exception ex)
@@ -182,21 +190,24 @@ namespace ContactManager.Users.Services
 
         public bool EditContact(PPPSecret pppSecret)
         {
-            var user = UserService.GetUser(pppSecret.Name);
-            pppSecret.UserId = user.UserId;
-
-            var _user = BuildUser(pppSecret);
-            _user.UserId = user.UserId;
-
-            //if (!ValidateContact(client, false))
-            //    return false;
+            if (!ValidateContact(pppSecret, false))
+                return false;
 
             try
             {
-                UserService.EditUser(user);
-                ClientService.EditClient(ClientService.BuildClient(pppSecret));
-                pppSecret.UserId = user.UserId;
-                SecretService.EditPPPSecret(pppSecret);
+                UserService.EditUser(BuildUser(pppSecret));
+
+                var _client = BuildClient(pppSecret);
+                if (_client.UserId.Equals(Guid.Empty))
+                    ClientService.CreateClient(_client);
+                else
+                    ClientService.EditClient(_client);
+
+                var _secret = BuildSecret(pppSecret);
+                if (_secret.UserId.Equals(Guid.Empty))
+                    SecretService.CreatePPPSecret(_secret);
+                else
+                    SecretService.EditPPPSecret(_secret);
             }
             catch (Exception ex)
             {
@@ -212,11 +223,11 @@ namespace ContactManager.Users.Services
             var secret = SecretService.GetPPPSecret(viewModel.UserId)
                 ?? new PPPSecret
                        {
-                           Client = ClientService.GetClient(viewModel.UserId),
+                           //Client = ClientService.GetClient(viewModel.UserId),
                            Name = viewModel.UserName
                        };
 
-            if(!viewModel.UserName.Equals(secret.Name))
+            if (!viewModel.UserName.Equals(secret.Name))
             {
                 secret.OldName = secret.Name;
                 secret.Name = viewModel.UserName;
@@ -228,6 +239,25 @@ namespace ContactManager.Users.Services
             secret.Password = viewModel.Password;
             secret.Comment = viewModel.Comment;
             return secret;
+        }
+
+        private PPPSecret BuildSecret(PPPSecret secret)
+        {
+            var _secret = SecretService.GetPPPSecret(secret.UserId) ?? new PPPSecret();
+            _secret.CallerId = secret.CallerId;
+            _secret.Comment = secret.Comment;
+            _secret.Disabled = secret.Disabled;
+            _secret.LimitBytesIn = secret.LimitBytesIn;
+            _secret.LimitBytesOut = secret.LimitBytesOut;
+            _secret.Name = secret.Name;
+            _secret.Password = secret.Password;
+            _secret.RemoteAddress = secret.RemoteAddress;
+            _secret.Routes = secret.Routes;
+            _secret.Service = secret.Service;
+            _secret.Client = ClientService.GetClient(secret.UserId);
+            _secret.Profile = SecretService.ProfileService.GetProfile(secret.Profile.Name);
+
+            return _secret;
         }
 
         private Client BuildClient(ClientViewModel viewModel)
@@ -243,19 +273,41 @@ namespace ContactManager.Users.Services
             return client;
         }
 
+        private Client BuildClient(PPPSecret secret)
+        {
+            Status status;
+            if (secret.Disabled.HasValue)
+                status = StatusService.GetStatus(secret.Disabled.Value ? STATUSES.Inactive : STATUSES.Active);
+            else
+                status = StatusService.GetStatus(STATUSES.Active);
+
+            var client = ClientService.GetClient(secret.UserId) ??
+                new Client
+                  {
+                      User = UserService.GetUser(secret.Name),
+                      Credit = decimal.Zero,
+
+                  };
+            client.Status = status;
+
+            return client;
+        }
+
         private static User BuildUser(ClientViewModel viewModel)
         {
             Mapper.CreateMap<ClientViewModel, User>();
             return Mapper.Map<ClientViewModel, User>(viewModel);
         }
 
-        private static User BuildUser(PPPSecret secret)
+        private User BuildUser(PPPSecret secret)
         {
-            Mapper.CreateMap<PPPSecret, User>();
-            var user = Mapper.Map<PPPSecret, User>(secret);
+            var user = UserService.GetUser(secret.Name) ?? new User();
+            //user.UserId = secret.UserId;
+            user.UserName = secret.Name;
+            user.Password = secret.Password;
             user.Role = ROLES.client.ToString();
             return user;
-        } 
+        }
         #endregion
 
         public Client GetContact(Guid id)

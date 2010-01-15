@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using ContactManager.Models;
 using ContactManager.Models.Enums;
@@ -157,8 +158,10 @@ namespace ContactManager.Synchronization.Services
                 foreach (var user in sshSecrets)
                 {
                     var user1 = user;
-                    if (dbUsers.Exists(u => u.UserName.Trim().Equals(user1.Name.Trim(), StringComparison.Ordinal)))
+                    var _user = dbUsers.FirstOrDefault(u => u.UserName.Equals(user1.Name.Trim(), StringComparison.OrdinalIgnoreCase));
+                    if (_user != null)
                     {
+                        user1.UserId = _user.UserId;
                         _userFacade.EditContact(user1);
                     }
                     else

@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.EntityClient;
+using System.Data.Objects;
 using System.Linq;
 using System.Web.Security;
 using ContactManager.Models;
+using ContactManager.Users.ViewModels;
+using Microsoft.Data.Extensions;
 
 namespace ContactManager.Users.Models
 {
@@ -40,6 +45,42 @@ namespace ContactManager.Users.Models
         public List<User> ListUser()
         {
             return ObjectContext.Users.ToList();
+        }
+
+        public List<ClientViewModel> ListModels()
+        {
+            var users = new List<ClientViewModel>();
+ 
+            var connection = ObjectContext.Connection;
+            var command = ObjectContext.CreateStoreCommand("astra_Users_List", CommandType.StoredProcedure);
+            
+            using (command.Connection.CreateConnectionScope())
+            using (var dataReader = command.ExecuteReader())
+            {
+                while (dataReader.Read())
+                {
+                    var model = new ClientViewModel
+                                    {
+                                        UserId = !dataReader.IsDBNull(0) ? dataReader.GetGuid(0) : Guid.Empty,
+                                        UserName = !dataReader.IsDBNull(1) ? dataReader.GetString(1) : "",
+                                        Balance = !dataReader.IsDBNull(2) ? dataReader.GetDecimal(2) : decimal.Zero,
+                                        Role = !dataReader.IsDBNull(3) ? dataReader.GetString(3) : "",
+                                        ProfileId = !dataReader.IsDBNull(4) ? dataReader.GetInt32(4) : 0,
+                                        ProfileName = !dataReader.IsDBNull(5) ? dataReader.GetString(5) : "",
+                                        StatusDisplayName = !dataReader.IsDBNull(9) ? dataReader.GetString(9) : ""
+                                    };
+
+                    model.FullName = string.Format("{0} {1} {2}", 
+                        !dataReader.IsDBNull(6) ? dataReader.GetString(6) : "", 
+                        !dataReader.IsDBNull(7) ? dataReader.GetString(7) : "",
+                        !dataReader.IsDBNull(8) ? dataReader.GetString(8) : "")
+                        .Trim();
+
+                    users.Add(model);
+                }
+            }
+
+            return users;
         }
 
         public List<User> ListUser(string role)

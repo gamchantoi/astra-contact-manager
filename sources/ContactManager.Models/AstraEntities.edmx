@@ -342,9 +342,9 @@
             <PropertyRef Name="ProfileId" />
           </Key>
           <Property Name="ProfileId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="DisplayName" Type="nvarchar" Nullable="false" MaxLength="64" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="64" />
           <Property Name="OldName" Type="nvarchar" MaxLength="64" />
+          <Property Name="DisplayName" Type="nvarchar" Nullable="false" MaxLength="64" />
           <Property Name="LocalAddress" Type="nvarchar" MaxLength="16" />
           <Property Name="RemoteAddress" Type="int" />
           <Property Name="RateLimit" Type="nvarchar" MaxLength="64" />
@@ -358,9 +358,9 @@
           </Key>
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="256" />
-          <Property Name="OldName" Type="nvarchar" MaxLength="64" />
+          <Property Name="OldName" Type="nvarchar" MaxLength="256" />
           <Property Name="Password" Type="nvarchar" MaxLength="128" />
-          <Property Name="Comment" Type="nvarchar" MaxLength="64" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="128" />
           <Property Name="Service" Type="nvarchar" MaxLength="16" />
           <Property Name="CallerId" Type="nvarchar" MaxLength="32" />
           <Property Name="Profile" Type="int" />
@@ -706,11 +706,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="astra_ChangeUsername" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
-          <Parameter Name="OldUserName" Type="nvarchar" Mode="In" />
-          <Parameter Name="NewUserName" Type="nvarchar" Mode="In" />
-        </Function>
+        <Function Name="astra_Users_List" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -1467,7 +1463,7 @@
               <ScalarProperty Name="MessageId" ColumnName="MessageId" /></EndProperty>
             <EndProperty Name="astra_MessagesType">
               <ScalarProperty Name="TypeId" ColumnName="TypeId" /></EndProperty></AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="SP_ChangeUsername" FunctionName="AstraModel.Store.astra_ChangeUsername" /></EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

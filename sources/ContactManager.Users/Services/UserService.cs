@@ -5,6 +5,7 @@ using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.Users.Interfaces;
 using ContactManager.Users.Models;
+using ContactManager.Users.ViewModels;
 
 namespace ContactManager.Users.Services
 {
@@ -64,6 +65,11 @@ namespace ContactManager.Users.Services
         public List<User> ListUsers()
         {
             return _repository.ListUser();
+        }
+
+        public List<ClientViewModel> ListUsersModels()
+        {
+            return _repository.ListModels();
         }
 
         public string GetRoleForUser(string name)

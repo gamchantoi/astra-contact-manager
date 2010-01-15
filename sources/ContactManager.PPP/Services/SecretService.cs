@@ -120,18 +120,18 @@ namespace ContactManager.PPP.Services
             }            
         }
 
-        private PPPSecret CreateSecret(Client client)
-        {
-            var secret = _secretRepository.GetDefaultPPPSecret();
-            secret.UserId = client.UserId;
-            //secret.Disabled = client.SecretStatus.Equals("Active");
-            //secret.ProfileId = client.ProfileId;
-            secret.Password = client.Password;
+        //private PPPSecret CreateSecret(Client client)
+        //{
+        //    var secret = _secretRepository.GetDefaultPPPSecret();
+        //    secret.UserId = client.UserId;
+        //    //secret.Disabled = client.SecretStatus.Equals("Active");
+        //    //secret.ProfileId = client.ProfileId;
+        //    secret.Password = client.Password;
 
-            CreatePPPSecret(secret);
+        //    CreatePPPSecret(secret);
 
-            return secret;
-        }
+        //    return secret;
+        //}
 
         #endregion
     }
