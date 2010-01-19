@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using AutoMapper;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.Models.ViewModels;
@@ -141,7 +139,7 @@ namespace ContactManager.Users.Controllers
             }
             else
             {
-                viewModel = _facade.ClientService.GetViewModel(client); 
+                viewModel = _facade.ClientService.GetViewModel(client);
                 viewModel.Roles = userHelper.GetRoles(client.Role);
                 viewModel.Profiles = pppHelper.GetProfiles(client.ProfileId);
                 viewModel.Statuses = _statusService.ListStatuses(2);
@@ -189,7 +187,8 @@ namespace ContactManager.Users.Controllers
         {
             if (_facade.LoadMoneyService.LoadMoney(model))
             {
-                _sshSecretService.EditPPPSecret(model.ClientId);
+                if (model.NeedUpdate)
+                    _sshSecretService.EditPPPSecret(model.ClientId);
                 return View("Index", PrepareIndex(false));
             }
             var loadModel = _facade.LoadMoneyService.GetViewModel(model.ClientId);

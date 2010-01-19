@@ -51,7 +51,6 @@ namespace ContactManager.Users.Models
         {
             var users = new List<ClientViewModel>();
  
-            var connection = ObjectContext.Connection;
             var command = ObjectContext.CreateStoreCommand("astra_Users_List", CommandType.StoredProcedure);
             
             using (command.Connection.CreateConnectionScope())

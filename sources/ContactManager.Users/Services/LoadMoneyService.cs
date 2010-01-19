@@ -47,6 +47,8 @@ namespace ContactManager.Users.Services
         {
             try
             {
+                model.NeedUpdate = false;
+
                 if (model.MethodId == 0)
                 {
                     _validationDictionary.AddError("MethodId", "Please select Peyment Method");
@@ -70,6 +72,7 @@ namespace ContactManager.Users.Services
                     var secret = _userFacade.SecretService.GetPPPSecret(model.ClientId);
                     secret.Disabled = !client.Status.IsActive;
                     _userFacade.SecretService.EditPPPSecret(secret);
+                    model.NeedUpdate = true;
                 }
                 _userFacade.ClientService.EditClient(client);
 
