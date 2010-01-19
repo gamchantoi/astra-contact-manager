@@ -16,5 +16,7 @@ namespace ContactManager.Models.ViewModels
 
         public int MethodId { get; set; }
         public IEnumerable<SelectListItem> LoadMethods { get; set; }
+
+        public bool NeedUpdate { get; set; }
     }
 }
