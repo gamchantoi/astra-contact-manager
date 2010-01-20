@@ -40,7 +40,7 @@ namespace ContactManager.Models
 
             if (PPPSecret == null || PPPSecret.Profile == null) return string.Empty;
 
-            return PPPSecret.Profile.Name;
+            return PPPSecret.Profile.DisplayName;
         }
 
         public string GetFullName()

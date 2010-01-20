@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.Security;
 using ContactManager.Models;
+using ContactManager.Models.Enums;
 using ContactManager.Models.Validation;
 
 namespace ContactManager.Messages.Models
@@ -22,7 +24,11 @@ namespace ContactManager.Messages.Models
 
         public List<Message> ListMessages()
         {
+            CurrentContext ctx = new CurrentContext();
+            
+            if(Roles.IsUserInRole(ctx.CurrentASPUser.UserName, ROLES.admin.ToString()))
             return _messagesRepository.ListMessages();
+            return _messagesRepository.ListMessages(ctx.CurrentASPUser.UserId);
         }
 
         public bool CreateMessage(Message message)

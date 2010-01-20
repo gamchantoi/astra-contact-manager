@@ -156,6 +156,7 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -165,8 +166,10 @@
     <Compile Include="Helpers\LocalizationExtensions.cs" />
     <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="Interfaces\IFormsAuthentication.cs" />
+    <Compile Include="Models\EntitySettingsRepository.cs" />
     <Compile Include="Models\FormsAuthenticationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\SettingsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bg-header.png" />
@@ -441,6 +444,7 @@
     <Content Include="Areas\Addresses\Views\Street\Edit.aspx" />
     <Content Include="Areas\Addresses\Views\Street\Index.aspx" />
     <Content Include="Areas\Synchronizations\Views\Web.config" />
+    <Content Include="Views\Settings\Index.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

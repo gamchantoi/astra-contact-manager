@@ -21,7 +21,8 @@ namespace ContactManager.Web.Helpers
         {
             if (Roles.IsUserInRole(ROLES.admin.ToString()) 
                 || controllerName.Equals("Home")
-                || controllerName.Equals("AccountTransactions"))
+                || controllerName.Equals("AccountTransactions")
+                || controllerName.Equals("Message"))
             {
 
                 var currentControllerName = (string)helper.ViewContext.RouteData.Values["controller"];

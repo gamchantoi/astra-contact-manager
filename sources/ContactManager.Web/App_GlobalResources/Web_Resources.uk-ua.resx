@@ -153,6 +153,9 @@
   <data name="Site_MenuItem_Services" xml:space="preserve">
     <value>Послуги</value>
   </data>
+  <data name="Site_MenuItem_Settings" xml:space="preserve">
+    <value>Налаштування</value>
+  </data>
   <data name="Site_MenuItem_Sync" xml:space="preserve">
     <value>Синхронізація</value>
   </data>

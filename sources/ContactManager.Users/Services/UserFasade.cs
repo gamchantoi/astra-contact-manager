@@ -315,16 +315,19 @@ namespace ContactManager.Users.Services
             var client = ClientService.GetClient(id);
             var mUser = UserService.GetUser(id);
             var secret = SecretService.GetPPPSecret(id);
-            client.Role = UserService.GetRoleForUser(mUser.UserName);
-            client.Password = mUser.GetPassword();
-            client.Email = mUser.Email;
-            if (secret != null)
+            if (client != null)
             {
-                client.Comment = secret.Comment;
-                if (secret.Profile != null)
-                    client.ProfileId = secret.Profile.ProfileId;
+                client.Role = UserService.GetRoleForUser(mUser.UserName);
+                client.Password = mUser.GetPassword();
+                client.Email = mUser.Email;
+                client.StatusReference.Load();
+                if (secret != null)
+                {
+                    client.Comment = secret.Comment;
+                    if (secret.Profile != null)
+                        client.ProfileId = secret.Profile.ProfileId;
+                }
             }
-
             return client;
         }
 

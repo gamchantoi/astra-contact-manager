@@ -169,6 +169,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string Site_MenuItem_Settings {
+            get {
+                return ResourceManager.GetString("Site_MenuItem_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sync.
         /// </summary>
         internal static string Site_MenuItem_Sync {
