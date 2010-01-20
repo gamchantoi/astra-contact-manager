@@ -6,13 +6,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <%--<script src="<%= Url.Content("~/Scripts/MicrosoftAjax.js")%>" type="text/javascript"></script>
-    <script src="<%= Url.Content("~/Scripts/MicrosoftMvcAjax.js")%>" type="text/javascript"></script>--%>    
     <script src="<%= Url.Content("~/Scripts/jquery-1.3.2.min.js")%>" type="text/javascript"></script>
     <script src="<%= Url.Content("~/Scripts/StyleSetter.js")%>" type="text/javascript"></script>
+    <script src="<%= Url.Content("~/Scripts/jdMenu/jquery.bgiframe.js")%>" type="text/javascript"></script>
+    <script src="<%= Url.Content("~/Scripts/jdMenu/jquery.dimensions.js")%>" type="text/javascript"></script>
+    <script src="<%= Url.Content("~/Scripts/jdMenu/jquery.jdMenu.js")%>" type="text/javascript"></script>
+    <script src="<%= Url.Content("~/Scripts/jquery-ui-1.7.2/jquery-ui-1.7.2.custom.min.js")%>" type="text/javascript"></script>
+    <script type="text/javascript">
+        // Initialization, you can leave this here or move this somewhere else
+        $(function() {
+        $('ul.jd_menu').jdMenu({ 
+                //onShow: loadMenu
+                //onHideCheck: onHideCheckMenu,
+                //onHide: onHideMenu, 
+                //onClick: onClickMenu, 
+                //onAnimate: onAnimate
+            });
+        });
+    </script>
+    
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="<%= Url.Content("~/Content/Site.css")%>" rel="stylesheet" type="text/css" />
+    <link href="<%= Url.Content("~/Content/jdMenu.css")%>" rel="stylesheet" type="text/css" />
+    <link href="<%= Url.Content("~/Content/jdMenu.slate.css")%>" rel="stylesheet" type="text/css" />
+    <link href="<%= Url.Content("~/Scripts/jquery-ui-1.7.2/themes/vader/jquery-ui-1.7.2.custom.css")%>" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div class="page">
@@ -28,7 +46,7 @@
         <div id="menucontainer">
             <%if (HttpContext.Current.User.Identity.IsAuthenticated)
               {%>
-            <ul id="menu"> 
+            <ul id="menu" class="jd_menu jd_menu_slate"> 
                 <%= Html.MenuItem(Html.Resource("Web_Resources, Site_MenuItem_Users"), "Index", "User", "Users")%>
                 <%= Html.MenuItem(Html.Resource("Web_Resources, Site_MenuItem_Profiles"), "Index", "Profile", "PPP")%>
                 <%= Html.MenuItem(Html.Resource("Web_Resources, Site_MenuItem_Pools"), "Index", "Pool", "PPP")%>
@@ -49,7 +67,6 @@
             <div id="bottom-shadow">
             </div>
         </div>
-        <div id="dialog"></div>
     </div>
 </body>
 </html>

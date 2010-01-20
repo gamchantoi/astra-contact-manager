@@ -1,6 +1,6 @@
 ﻿function ShowDialog(url) {
     jQuery.ajax({
-        type: "POST",
+        type: "GET",
         url: url,
         data: {},
         success: function(html) {
