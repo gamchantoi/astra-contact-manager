@@ -197,9 +197,9 @@ namespace ContactManager.Users.Controllers
 
         [Authorize(Roles = "admin")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public string GetPopupData()
+        public string GetPopupData(Guid id)
         {
-            return "Hello word";
+            return id.ToString();
         }
 
         //[Authorize(Roles = "admin")]

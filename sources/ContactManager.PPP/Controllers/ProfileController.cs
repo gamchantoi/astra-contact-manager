@@ -1,3 +1,4 @@
+using System;
 using System.Web.Mvc;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
@@ -15,6 +16,8 @@ namespace ContactManager.PPP.Controllers
         private readonly DropDownHelper _ddhelper;
         private readonly IProfileService _service;
         private readonly ISshProfileService _sshService;
+        private readonly ISshSecretService _sshSecretService;
+        private readonly ISecretService _secretService;
 
         public ProfileController()
         {
@@ -22,6 +25,8 @@ namespace ContactManager.PPP.Controllers
             IValidationDictionary validationDictionary = new ModelStateWrapper(ModelState);
             _service = new ProfileService(validationDictionary);
             _sshService = new SshProfileService(validationDictionary);
+            _secretService = new SecretService(validationDictionary);
+            _sshSecretService = new SshSecretService(validationDictionary);
         }
 
         [Authorize(Roles = "admin")]
@@ -50,14 +55,12 @@ namespace ContactManager.PPP.Controllers
             return View();
         }
 
-
         [Authorize(Roles = "admin")]
         public ActionResult Edit(int id)
         {
             ViewData["Pools"] = _ddhelper.GetPools(id);
             return View(_service.GetProfile(id));
         }
-
 
         [Authorize(Roles = "admin")]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -92,11 +95,32 @@ namespace ContactManager.PPP.Controllers
             return View("Index", PrepareIndex());
         }
 
+        [Authorize(Roles = "admin")]
+        public ActionResult EditSecret(Guid id)
+        {
+            return View(_secretService.GetPPPSecret(id));
+            //return id.ToString();
+        }
+
+        [Authorize(Roles = "admin")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult EditSecret(PPPSecret secret)
+        {
+            if (_secretService.EditPPPSecret(secret))
+            {
+                _sshSecretService.EditPPPSecret(secret.UserId);
+                return View("Index", PrepareIndex());
+            }
+
+            return View(secret);
+        }
+
         private List<Profile> PrepareIndex()
         {
             var profiles = _service.ListProfiles();
             profiles.Sort((c1, c2) => c1.Name.CompareTo(c2.Name));
             return profiles;
         }
+
     }
 }

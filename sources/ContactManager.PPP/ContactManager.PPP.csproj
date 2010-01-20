@@ -67,9 +67,6 @@
     <Compile Include="Controllers\ActiveConnectionsController.cs" />
     <Compile Include="Controllers\PoolController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Helpers\DropDownHelper.cs" />
     <Compile Include="Intefaces\IActiveConnections.cs" />
     <Compile Include="Intefaces\IActiveConnectionsRepository.cs" />
@@ -103,7 +100,6 @@
     <Compile Include="SSH\SshSecretService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

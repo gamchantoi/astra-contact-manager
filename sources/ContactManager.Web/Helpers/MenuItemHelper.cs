@@ -32,7 +32,7 @@ namespace ContactManager.Web.Helpers
 
                 // Add selected class
                 if (currentControllerName.Equals(controllerName, StringComparison.CurrentCultureIgnoreCase))
-                    builder.AddCssClass("selected");
+                    builder.AddCssClass("jd_menu_active_menubar");
 
                 // Add link
                 builder.InnerHtml = helper.ActionLink(linkText, actionName, controllerName, new { area = area }, null).ToHtmlString();
