@@ -150,6 +150,9 @@
   <data name="Site_MenuItem_Profiles" xml:space="preserve">
     <value>Profiles</value>
   </data>
+  <data name="Site_MenuItem_Server" xml:space="preserve">
+    <value>Server</value>
+  </data>
   <data name="Site_MenuItem_Services" xml:space="preserve">
     <value>Services</value>
   </data>
