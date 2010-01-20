@@ -21,9 +21,7 @@ namespace ContactManager.Users.Interfaces
         List<ClientViewModel> ListUsersModels();
 
         User CreateUser(User user);
-        MembershipUser GetUser(Guid id);
+        User GetUser(Guid id);
         User GetUser(string name);
-
-        bool ClearAllData();
     }
 }

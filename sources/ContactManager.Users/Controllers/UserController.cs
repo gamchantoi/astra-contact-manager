@@ -93,7 +93,7 @@ namespace ContactManager.Users.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult Status(Guid id, bool status)
         {
-            var name = _facade.GetName(id);
+            var name = _facade.GetContact(id).UserName;
             var canSync = _facade.CanSynchronize(id);
             if (status)
             {
@@ -101,9 +101,7 @@ namespace ContactManager.Users.Controllers
                 {
                     if (canSync)
                     {
-                        //_sshSecretService.Connect(_ctx.GetCurrentHost());
                         _sshSecretService.CreatePPPSecret(id);
-                        //_sshSecretService.Disconnect();
                     }
                 }
             }
@@ -113,9 +111,7 @@ namespace ContactManager.Users.Controllers
                 {
                     if (canSync)
                     {
-                        //_sshSecretService.Connect(_ctx.GetCurrentHost());
                         _sshSecretService.DeletePPPSecret(name);
-                        //_sshSecretService.Disconnect();
                     }
                 }
             }
@@ -160,15 +156,8 @@ namespace ContactManager.Users.Controllers
         private ListClientViewModel PrepareIndex(bool deleted)
         {
             var _model = new ListClientViewModel();
-            //var users = _facade.ListContacts(deleted);
-            //users.Sort((c1, c2) => c1.UserName.CompareTo(c2.UserName));
-
-            //Mapper.CreateMap<Client, ClientViewModel>();
-            //var viewModelList = Mapper.Map<List<Client>, List<ClientViewModel>>(users);
-
             _model.Clients = _facade.UserService.ListUsersModels();
             _model.Clients.Sort((c1, c2) => c1.UserName.CompareTo(c2.UserName));
-            //_model.Clients = viewModelList;
             _model.TotalUsers = _model.Clients.Count();
             _model.TotalBalance = _model.Clients.Sum(u => u.Balance);
             _model.Deleted = deleted;
