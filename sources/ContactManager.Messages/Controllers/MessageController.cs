@@ -22,7 +22,6 @@ namespace ContactManager.Messages.Controllers
 
         public ActionResult Index()
         {
-            //_messageService.ListMessages();
             return View(_messageService.ListMessages());
         }
         

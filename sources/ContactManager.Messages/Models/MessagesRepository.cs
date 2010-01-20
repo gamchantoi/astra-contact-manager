@@ -37,5 +37,11 @@ namespace ContactManager.Messages.Models
             ObjectContext.DeleteObject(_message);
             ObjectContext.SaveChanges();
         }
+
+        internal List<Message> ListMessages(Guid id)
+        {
+            
+            return ObjectContext.Messages.Where(m => m.User.UserId == id).ToList();
+        }
     }
 }
