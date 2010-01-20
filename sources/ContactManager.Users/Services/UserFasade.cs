@@ -313,13 +313,13 @@ namespace ContactManager.Users.Services
         public Client GetContact(Guid id)
         {
             var client = ClientService.GetClient(id);
-            var mUser = UserService.GetUser(id);
+            var user = UserService.GetUser(id);
             var secret = SecretService.GetPPPSecret(id);
             if (client != null)
             {
-                client.Role = UserService.GetRoleForUser(mUser.UserName);
-                client.Password = mUser.GetPassword();
-                client.Email = mUser.Email;
+                client.Role = UserService.GetRoleForUser(user.UserName);
+                client.Password = user.Password;
+                client.Email = user.Email;
                 client.StatusReference.Load();
                 if (secret != null)
                 {
@@ -329,11 +329,6 @@ namespace ContactManager.Users.Services
                 }
             }
             return client;
-        }
-
-        public string GetName(Guid id)
-        {
-            return UserService.GetUser(id).UserName;
         }
 
         public List<Client> ListContacts()
@@ -405,20 +400,6 @@ namespace ContactManager.Users.Services
             var user = UserService.GetUser(id);
             var role = UserService.GetRoleForUser(user.UserName);
             return role.Contains("client");
-        }
-
-        public bool DeleteAllData()
-        {
-            try
-            {
-                UserService.ClearAllData();
-            }
-            catch (Exception ex)
-            {
-                _validationDictionary.AddError("_FORM", "Database not cleaned. " + ex.Message + ex.InnerException.Message);
-                return false;
-            }
-            return true;
         }
 
         #endregion

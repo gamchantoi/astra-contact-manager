@@ -21,15 +21,11 @@ namespace ContactManager.Users.Interfaces
         bool EditContact(ClientViewModel viewModel);
         bool EditContact(PPPSecret pppSecret);
         bool CanSynchronize(Guid id);
-        string GetName(Guid id);
         Client GetContact(Guid id);
 
         List<Client> ListContacts();
         List<Client> ListContacts(string role);
         List<Client> ListContacts(bool deleted);
         List<Client> ListContacts(string role, bool deleted);
-
-        bool DeleteAllData();
-
     }
 }

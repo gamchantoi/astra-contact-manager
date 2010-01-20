@@ -32,7 +32,11 @@ namespace ContactManager.Users.Models
 
         public User GetUser(Guid userId)
         {
-            return ObjectContext.Users.FirstOrDefault(u => u.UserId == userId);
+            var mUser = Provider.GetUser(userId, true);
+            var user = ObjectContext.Users.FirstOrDefault(u => u.UserId == userId);
+            user.Password = mUser.GetPassword();
+            user.Email = mUser.Email;
+            return user;
         }
 
         public User GetUser(string name)

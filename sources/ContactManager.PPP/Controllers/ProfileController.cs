@@ -101,6 +101,7 @@ namespace ContactManager.PPP.Controllers
             var secret = _secretService.GetPPPSecret(id);
             if(secret == null)
             {
+
             }
 
             return View(secret);

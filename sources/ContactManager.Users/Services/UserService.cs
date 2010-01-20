@@ -82,9 +82,9 @@ namespace ContactManager.Users.Services
             return Roles.GetRolesForUser(name)[0];
         }
 
-        public MembershipUser GetUser(Guid id)
+        public User GetUser(Guid id)
         {
-            return Membership.Provider.GetUser(id, false);
+            return _repository.GetUser(id);
         }
 
         public User GetUser(string name)
@@ -109,62 +109,6 @@ namespace ContactManager.Users.Services
             Membership.Provider.DeleteUser(user.UserName, true);
             return true;
         }
-
-        public bool ClearAllData()
-        {
-            //foreach (var transaction in _entities.Transactions.ToList())
-            //{
-            //    _entities.DeleteObject(transaction);
-            //}
-            //foreach (var secret in _entities.PPPSecretSet.ToList())
-            //{
-            //    _entities.DeleteObject(secret);
-            //}
-            //foreach (var profile in _entities.ProfileSet.ToList())
-            //{
-            //    _entities.DeleteObject(profile);
-            //}
-            //foreach (var pool in _entities.PoolSet.ToList())
-            //{
-            //    _entities.DeleteObject(pool);
-            //}
-            //foreach (var transaction in _entities.Transactions.ToList())
-            //{
-            //    _entities.DeleteObject(transaction);
-            //}
-            ////foreach (var transactionmethod in _entities.AccountTransactionMethodSet.ToList())
-            ////{
-            ////    _entities.DeleteObject(transactionmethod);
-            ////}
-            ////foreach (var activity in _entities.ClientServiceActivitiySet.ToList())
-            ////{
-            ////    _entities.DeleteObject(activity);
-            ////}
-            //foreach (var systemservice in _entities.SystemServiceSet.ToList())
-            //{
-            //    systemservice.astra_Services.Load();
-            //    systemservice.astra_Services.Clear();
-            //    _entities.DeleteObject(systemservice);
-            //}
-            //foreach (var service in _entities.ServiceSet.ToList())
-            //{
-            //    _entities.DeleteObject(service);
-            //}
-            //foreach (var client in _entities.ClientSet.ToList())
-            //{
-            //    var user = GetUser(client.UserId);
-            //    if(GetRoleForUser(user.UserName).Equals("admin")) continue;                
-            //    _entities.DeleteObject(client);
-            //}
-            //_entities.SaveChanges();
-            //foreach (var user in ListUsers("client"))
-            //{                
-            //    Membership.Provider.DeleteUser(user.UserName, true);
-            //}
-
-            return true;
-        }
-
         #endregion
     }
 
