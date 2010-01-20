@@ -160,6 +160,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Server.
+        /// </summary>
+        internal static string Site_MenuItem_Server {
+            get {
+                return ResourceManager.GetString("Site_MenuItem_Server", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Services.
         /// </summary>
         internal static string Site_MenuItem_Services {

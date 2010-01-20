@@ -98,7 +98,12 @@ namespace ContactManager.PPP.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult EditSecret(Guid id)
         {
-            return View(_secretService.GetPPPSecret(id));
+            var secret = _secretService.GetPPPSecret(id);
+            if(secret == null)
+            {
+            }
+
+            return View(secret);
             //return id.ToString();
         }
 
@@ -106,12 +111,20 @@ namespace ContactManager.PPP.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult EditSecret(PPPSecret secret)
         {
+            if (secret.UserId.Equals(Guid.Empty))
+            {
+                if(_secretService.CreatePPPSecret(secret))
+                {
+                    return View("Index", PrepareIndex());
+                }
+            }
+
             if (_secretService.EditPPPSecret(secret))
             {
                 _sshSecretService.EditPPPSecret(secret.UserId);
                 return View("Index", PrepareIndex());
             }
-
+            //TODO: Return nothing for dialog
             return View(secret);
         }
 
