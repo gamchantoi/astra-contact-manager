@@ -166,10 +166,10 @@
     <Compile Include="Helpers\LocalizationExtensions.cs" />
     <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="Interfaces\IFormsAuthentication.cs" />
-    <Compile Include="Models\EntitySettingsRepository.cs" />
-    <Compile Include="Models\FormsAuthenticationService.cs" />
+    <Compile Include="Controllers\Models\EntitySettingsRepository.cs" />
+    <Compile Include="Controllers\Models\FormsAuthenticationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\SettingsService.cs" />
+    <Compile Include="Controllers\Models\SettingsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
