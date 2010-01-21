@@ -345,4 +345,10 @@
   <data name="Users_Shared_PPPSecretUserControl_Profile" xml:space="preserve">
     <value>Profile</value>
   </data>
+  <data name="Users_User_Edit_Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="Users_User_Edit_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
 </root>

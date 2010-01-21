@@ -421,6 +421,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        internal static string Users_User_Edit_Add {
+            get {
+                return ResourceManager.GetString("Users_User_Edit_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back to List.
         /// </summary>
         internal static string Users_User_Edit_BackToList {
@@ -453,6 +462,15 @@ namespace Resources {
         internal static string Users_User_Edit_Credit {
             get {
                 return ResourceManager.GetString("Users_User_Edit_Credit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        internal static string Users_User_Edit_Edit {
+            get {
+                return ResourceManager.GetString("Users_User_Edit_Edit", resourceCulture);
             }
         }
         
