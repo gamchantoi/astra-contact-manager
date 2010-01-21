@@ -4,7 +4,8 @@
 
 <fieldset class="fields">
     <legend><a href="#" onclick="ShowDialog('../../../Addresses/Address/Edit/<%= Model.Address != null ? Model.Address.AddressId : 0%>');">
-    <%=Html.Resource("Users_Resources, Users_Shared_AddressUserControl_Address")%></a></legend>
+    <%=Model.Address == null ? Html.Resource("Users_Resources, Users_User_Edit_Add")
+                                        : Html.Resource("Users_Resources, Users_User_Edit_Edit")%></a></legend>
     <%if (Model.Address != null)
   {%>
     

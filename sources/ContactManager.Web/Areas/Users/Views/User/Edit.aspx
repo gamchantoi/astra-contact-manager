@@ -98,25 +98,25 @@
                     <div id="details-accordion">
                         <div>
                             <h3>
-                                <a href="#">PPP Secret</a></h3>
+                                <a href="#"><%=Html.Resource("Users_Resources, Users_Shared_PPPSecretUserControl_PPPSecret")%></a></h3>
                             <div>
                                 <%Html.RenderPartial("PPPSecretUserControl", Model); %></div>
                         </div>
                         <div>
                             <h3>
-                                <a href="#">Details</a></h3>
+                                <a href="#"><%=Html.Resource("Users_Resources, Users_Shared_DetailsUserControl_Details")%></a></h3>
                             <div>
                                 <%Html.RenderPartial("DetailsUserControl", Model); %></div>
                         </div>
                         <div>
                             <h3>
-                                <a href="#">Services</a></h3>
+                                <a href="#"><%=Html.Resource("Users_Resources, Users_Shared_ServicesUserControl_Services")%></a></h3>
                             <div>
                                 <%Html.RenderPartial("ServicesUserControl", Model); %></div>
                         </div>
                         <div>
                             <h3>
-                                <a href="#">Address</a></h3>
+                                <a href="#"><%=Html.Resource("Users_Resources, Users_Shared_AddressUserControl_Address")%></a></h3>
                             <div>
                                 <%Html.RenderPartial("AddressUserControl", Model); %></div>
                         </div>
