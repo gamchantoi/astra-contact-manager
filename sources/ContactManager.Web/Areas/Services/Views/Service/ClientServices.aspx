@@ -1,7 +1,6 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Services.ViewModels.ClientServicesViewModel>" %>
+<%@ Page Title="" Language="C#" Inherits="System.Web.Mvc.ViewPage<ContactManager.Services.ViewModels.ClientServicesViewModel>" %>
 <%@ Import Namespace="ContactManager.Web.Helpers"%>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <% using (Html.BeginForm())
        {%>
     <%= Html.Hidden("UserId", ViewData["UserId"])%>
@@ -24,9 +23,4 @@
         </p>
     </fieldset>
     <%} %>
-    <div>
-        <%=Html.ActionLink(Html.Resource("Services_Resources, Services_View_ClientServices_BackToList"), "Index", "User", new {Area="Users"},null) %>
-    </div>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
+

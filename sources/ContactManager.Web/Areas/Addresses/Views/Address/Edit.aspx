@@ -1,15 +1,12 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Address>" %>
+<%@ Page Title="" Language="C#"Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Address>" %>
 <%@ Import Namespace="ContactManager.Web.Helpers"%>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
     <% using (Html.BeginForm())
        {%>
     <fieldset>
         <legend><%= Html.Resource("Addresses_Resources, Addresses_View_Edit_EditAddress") %></legend>
         <p>
             <%= Html.Hidden("AddressId", Model.AddressId)%>
-<%--            <%= Html.LabelFor(model => model.AddressId) %>
-            <%= Html.TextBoxFor(model => model.AddressId) %>
-            <%= Html.ValidationMessageFor(model => model.AddressId) %>--%>
         </p>
         <p>
             <label for="Street.StreetId">
@@ -43,9 +40,3 @@
         </p>
     </fieldset>
     <% } %>
-    <div>
-        <%=Html.ActionLink(Html.Resource("Addresses_Resources, Addresses_View_Edit_BackToList"), "Index")%>
-    </div>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-</asp:Content>

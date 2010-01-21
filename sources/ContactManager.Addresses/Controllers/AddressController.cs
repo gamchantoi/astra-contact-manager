@@ -1,4 +1,5 @@
 using System.Web.Mvc;
+using System.Web.Routing;
 using ContactManager.Addresses.Services;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
@@ -8,6 +9,7 @@ namespace ContactManager.Addresses.Controllers
     public class AddressController : Controller
     {
         private readonly AddressService _addressService;
+        private CurrentContext _ctx;
 
         public AddressController()
         {
@@ -44,9 +46,9 @@ namespace ContactManager.Addresses.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Edit(Address address)
         {
-            
+            _ctx = new CurrentContext();
             if (_addressService.EditAddress(address))
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "User", new { id = _ctx.CurrentUserId, area = "Users" });
             FillViewData(address);
             return View(address);
         }
