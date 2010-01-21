@@ -166,10 +166,10 @@
     <Compile Include="Helpers\LocalizationExtensions.cs" />
     <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="Interfaces\IFormsAuthentication.cs" />
-    <Compile Include="Controllers\Models\EntitySettingsRepository.cs" />
-    <Compile Include="Controllers\Models\FormsAuthenticationService.cs" />
+    <Compile Include="Models\EntitySettingsRepository.cs" />
+    <Compile Include="Models\FormsAuthenticationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\Models\SettingsService.cs" />
+    <Compile Include="Models\SettingsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -454,6 +454,7 @@
     <Content Include="Scripts\jdMenu\jquery.dimensions.js" />
     <Content Include="Scripts\jdMenu\jquery.jdMenu.js" />
     <Content Include="Scripts\jdMenu\jquery.jdMenu.packed.js" />
+    <Content Include="Scripts\jdMenu\jquery.positionBy.js" />
     <Content Include="Scripts\jquery-ui-1.7.2\jquery-ui-1.7.2.custom.min.js" />
     <Content Include="Scripts\jquery-ui-1.7.2\themes\vader\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Scripts\jquery-ui-1.7.2\themes\vader\images\ui-bg_glass_95_fef1ec_1x400.png" />
