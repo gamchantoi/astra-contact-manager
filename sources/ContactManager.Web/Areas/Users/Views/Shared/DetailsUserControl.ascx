@@ -4,7 +4,8 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<ClientViewModel>" %>
 <fieldset class="fields">
     <legend><a href="#" onclick="ShowDialog('../../../Users/Detail/Edit/<%= Model.ClientDetails == null ? 0 : Model.ClientDetails.DetailId %>');">
-        <%=Html.Resource("Users_Resources, Users_Shared_DetailsUserControl_Details")%></a></legend>
+        <%=Model.ClientDetails == null ? Html.Resource("Users_Resources, Users_User_Edit_Add")
+                                        : Html.Resource("Users_Resources, Users_User_Edit_Edit")%></a></legend>
     <%if (Model.ClientDetails != null)
       {%>
     <%if (!Model.Role.Equals(ROLES.admin.ToString()) && Model.PPPSecret != null)

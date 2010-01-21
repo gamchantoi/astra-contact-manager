@@ -6,8 +6,9 @@
 <%@ Import Namespace="ContactManager.Web.Helpers" %>
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<ClientViewModel>" %>
 <fieldset class="fields">
-    <legend><a href="#" onclick="ShowDialog('../../../PPP/Secret/Edit/<%= Model.UserId %>');">
-        <%=Html.Resource("Users_Resources, Users_Shared_PPPSecretUserControl_PPPSecret")%></a></legend>
+    <legend><a href="#" onclick="ShowDialog('../../../PPP/Secret/Edit/<%= Model.UserId %>');">        
+        <%=Model.PPPSecret == null ? Html.Resource("Users_Resources, Users_User_Edit_Add")
+                                        : Html.Resource("Users_Resources, Users_User_Edit_Edit") %></a></legend>
     <%if (!Model.Role.Equals(ROLES.admin.ToString()) && Model.PPPSecret != null)
       {%>
     <%=Html.BuildItem(Html.Resource("Users_Resources, Users_Shared_PPPSecretUserControl_Name"), Model.PPPSecret.Name)%>
