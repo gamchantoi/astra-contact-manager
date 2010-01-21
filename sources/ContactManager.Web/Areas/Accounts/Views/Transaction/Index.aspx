@@ -7,8 +7,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
     <link href="<%= Url.Content("~/media/css/Grid.css")%>" rel="stylesheet" type="text/css" />
 
-    <script src="<%= Url.Content("~/media/js/jquery.js")%>" type="text/javascript"></script>
-
     <script src="<%= Url.Content("~/media/js/jquery.dataTables.js")%>" type="text/javascript"></script>
 
     <script language="javascript" type="text/javascript">
