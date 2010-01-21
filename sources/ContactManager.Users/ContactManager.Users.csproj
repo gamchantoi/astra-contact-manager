@@ -90,7 +90,9 @@
     <Compile Include="Interfaces\IClientService.cs" />
     <Compile Include="Interfaces\IUserFasade.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
+    <Compile Include="Models\EntityDetailRepository.cs" />
     <Compile Include="Models\EntityUserRepository.cs" />
+    <Compile Include="Services\DetailService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\ClientService.cs" />
     <Compile Include="Services\UserFasade.cs" />

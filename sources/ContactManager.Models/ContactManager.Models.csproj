@@ -62,6 +62,7 @@
       <DependentUpon>AstraEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Client.cs" />
+    <Compile Include="ClientDetail.cs" />
     <Compile Include="ClientInServices.cs" />
     <Compile Include="CurrentContext.cs" />
     <Compile Include="Message.cs" />
