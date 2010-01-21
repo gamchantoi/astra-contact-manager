@@ -39,7 +39,11 @@ namespace ContactManager.Models
 
         public User GetUser(Guid userId)
         {
-            return ObjectContext.Users.FirstOrDefault(c => c.UserId == userId);
+            var mUser = Membership.Provider.GetUser(userId, true);
+            var user = ObjectContext.Users.FirstOrDefault(u => u.UserId == userId);
+            user.Password = mUser.GetPassword();
+            user.Email = mUser.Email;
+            return user;
         }
 
         public Host GetCurrentHost()

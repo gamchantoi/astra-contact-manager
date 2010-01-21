@@ -90,7 +90,7 @@ table.data-table th.actions { font-weight: normal; color: #4d8aa2; text-align: c
 fieldset { padding: 0 20px 20px 20px; border: 1px solid #e3e3e3; }
 fieldset fieldset { float: left; min-width: 350px; }
 
-legend { font-size: 1.6em; padding: 0 10px 20px 10px; color: #000; }
+legend { font-size: 1.6em; padding: 0 10px 20px 10px; }
 label { display: block; float: left; width: 120px; text-align: right; margin: 0 10px 0 0; }
 p.submit, p.checkbox { padding-left: 130px; }
 p.checkbox label { display: inline; float: none; }

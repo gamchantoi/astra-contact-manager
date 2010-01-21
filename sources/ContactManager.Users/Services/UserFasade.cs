@@ -320,7 +320,6 @@ namespace ContactManager.Users.Services
                 client.Role = UserService.GetRoleForUser(user.UserName);
                 client.Password = user.Password;
                 client.Email = user.Email;
-                client.StatusReference.Load();
                 if (secret != null)
                 {
                     client.Comment = secret.Comment;

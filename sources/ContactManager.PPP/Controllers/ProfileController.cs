@@ -1,4 +1,3 @@
-using System;
 using System.Web.Mvc;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
@@ -16,8 +15,6 @@ namespace ContactManager.PPP.Controllers
         private readonly DropDownHelper _ddhelper;
         private readonly IProfileService _service;
         private readonly ISshProfileService _sshService;
-        private readonly ISshSecretService _sshSecretService;
-        private readonly ISecretService _secretService;
 
         public ProfileController()
         {
@@ -25,8 +22,6 @@ namespace ContactManager.PPP.Controllers
             IValidationDictionary validationDictionary = new ModelStateWrapper(ModelState);
             _service = new ProfileService(validationDictionary);
             _sshService = new SshProfileService(validationDictionary);
-            _secretService = new SecretService(validationDictionary);
-            _sshSecretService = new SshSecretService(validationDictionary);
         }
 
         [Authorize(Roles = "admin")]
@@ -93,40 +88,6 @@ namespace ContactManager.PPP.Controllers
             foreach (var profile in _service.ListProfiles())
                 Delete(profile.ProfileId);
             return View("Index", PrepareIndex());
-        }
-
-        [Authorize(Roles = "admin")]
-        public ActionResult EditSecret(Guid id)
-        {
-            var secret = _secretService.GetPPPSecret(id);
-            if(secret == null)
-            {
-
-            }
-
-            return View(secret);
-            //return id.ToString();
-        }
-
-        [Authorize(Roles = "admin")]
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult EditSecret(PPPSecret secret)
-        {
-            if (secret.UserId.Equals(Guid.Empty))
-            {
-                if(_secretService.CreatePPPSecret(secret))
-                {
-                    return View("Index", PrepareIndex());
-                }
-            }
-
-            if (_secretService.EditPPPSecret(secret))
-            {
-                _sshSecretService.EditPPPSecret(secret.UserId);
-                return View("Index", PrepareIndex());
-            }
-            //TODO: Return nothing for dialog
-            return View(secret);
         }
 
         private List<Profile> PrepareIndex()
