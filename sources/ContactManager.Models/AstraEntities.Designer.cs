@@ -34,7 +34,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Messages_astra_MessagesType", "astra_MessagesType", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.MessageType), "astra_Messages", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Message))]
 
 // Original file name:
-// Generation date: 1/15/2010 1:48:02 PM
+// Generation date: 1/21/2010 5:11:38 PM
 namespace ContactManager.Models
 {
     
@@ -1462,17 +1462,11 @@ namespace ContactManager.Models
         /// Create a new ClientDetail object.
         /// </summary>
         /// <param name="detailId">Initial value of DetailId.</param>
-        /// <param name="firstName">Initial value of FirstName.</param>
-        /// <param name="middleName">Initial value of MiddleName.</param>
-        /// <param name="lastName">Initial value of LastName.</param>
         /// <param name="lastUpdatedDate">Initial value of LastUpdatedDate.</param>
-        public static ClientDetail CreateClientDetail(int detailId, string firstName, string middleName, string lastName, global::System.DateTime lastUpdatedDate)
+        public static ClientDetail CreateClientDetail(int detailId, global::System.DateTime lastUpdatedDate)
         {
             ClientDetail clientDetail = new ClientDetail();
             clientDetail.DetailId = detailId;
-            clientDetail.FirstName = firstName;
-            clientDetail.MiddleName = middleName;
-            clientDetail.LastName = lastName;
             clientDetail.LastUpdatedDate = lastUpdatedDate;
             return clientDetail;
         }
@@ -1571,7 +1565,7 @@ namespace ContactManager.Models
         /// <summary>
         /// There are no comments for Property FirstName in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         public string FirstName
         {
@@ -1583,7 +1577,7 @@ namespace ContactManager.Models
             {
                 this.OnFirstNameChanging(value);
                 this.ReportPropertyChanging("FirstName");
-                this._FirstName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this._FirstName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
                 this.ReportPropertyChanged("FirstName");
                 this.OnFirstNameChanged();
             }
@@ -1594,7 +1588,7 @@ namespace ContactManager.Models
         /// <summary>
         /// There are no comments for Property MiddleName in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         public string MiddleName
         {
@@ -1606,7 +1600,7 @@ namespace ContactManager.Models
             {
                 this.OnMiddleNameChanging(value);
                 this.ReportPropertyChanging("MiddleName");
-                this._MiddleName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this._MiddleName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
                 this.ReportPropertyChanged("MiddleName");
                 this.OnMiddleNameChanged();
             }
@@ -1617,7 +1611,7 @@ namespace ContactManager.Models
         /// <summary>
         /// There are no comments for Property LastName in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         public string LastName
         {
@@ -1629,7 +1623,7 @@ namespace ContactManager.Models
             {
                 this.OnLastNameChanging(value);
                 this.ReportPropertyChanging("LastName");
-                this._LastName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this._LastName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
                 this.ReportPropertyChanged("LastName");
                 this.OnLastNameChanged();
             }
