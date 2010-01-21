@@ -128,10 +128,12 @@ namespace ContactManager.Users.Controllers
 
             if (client == null)
             {
-                viewModel = new ClientViewModel();
-                viewModel.Roles = userHelper.GetRoles("client");
-                viewModel.Profiles = pppHelper.GetProfiles(null);
-                viewModel.Statuses = _statusService.ListStatuses(null);
+                viewModel = new ClientViewModel
+                                {
+                                    Roles = userHelper.GetRoles("client"),
+                                    Profiles = pppHelper.GetProfiles(null),
+                                    Statuses = _statusService.ListStatuses(null)
+                                };
             }
             else
             {
@@ -182,13 +184,6 @@ namespace ContactManager.Users.Controllers
             }
             var loadModel = _facade.LoadMoneyService.GetViewModel(model.ClientId);
             return View(loadModel);
-        }
-
-        [Authorize(Roles = "admin")]
-        [AcceptVerbs(HttpVerbs.Post)]
-        public string GetPopupData(Guid id)
-        {
-            return id.ToString();
         }
 
         //[Authorize(Roles = "admin")]

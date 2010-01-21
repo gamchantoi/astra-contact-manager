@@ -439,7 +439,7 @@
     <Content Include="Areas\Addresses\Views\Street\Create.aspx" />
     <Content Include="Areas\Addresses\Views\Street\Edit.aspx" />
     <Content Include="Areas\Addresses\Views\Street\Index.aspx" />
-    <Content Include="Areas\PPP\Views\Profile\EditSecret.aspx" />
+    <Content Include="Areas\PPP\Views\Secret\Edit.aspx" />
     <Content Include="Areas\Synchronizations\Views\Web.config" />
     <Content Include="Content\Images\bg-header.png" />
     <Content Include="Content\Images\bg-main-corner-sprite.png" />

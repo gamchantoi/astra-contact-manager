@@ -339,4 +339,10 @@
   <data name="Users_User_Create_Generate" xml:space="preserve">
     <value>Згенерувати</value>
   </data>
+  <data name="Users_Shared_PPPSecretUserControl_Disabled" xml:space="preserve">
+    <value>Вимкнений</value>
+  </data>
+  <data name="Users_Shared_PPPSecretUserControl_Profile" xml:space="preserve">
+    <value>Профіль</value>
+  </data>
 </root>

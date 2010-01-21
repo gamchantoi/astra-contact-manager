@@ -5,7 +5,7 @@
 
         <fieldset class="fields">
             <legend><%= Html.DisplayFor(s => s.Name) %></legend>
-            <p>
+ <%--           <p>
                 <%= Html.LabelFor(model => model.Name) %>
                 <%= Html.TextBoxFor(model => model.Name) %>
                 <%= Html.ValidationMessageFor(model => model.Name) %>
@@ -19,7 +19,7 @@
                 <%= Html.LabelFor(model => model.Comment) %>
                 <%= Html.TextBoxFor(model => model.Comment) %>
                 <%= Html.ValidationMessageFor(model => model.Comment) %>
-            </p>
+            </p>--%>
             <p>
                 <%= Html.LabelFor(model => model.Service) %>
                 <%= Html.TextBoxFor(model => model.Service) %>
@@ -65,11 +65,11 @@
                 <%= Html.TextBoxFor(model => model.LimitBytesOut) %>
                 <%= Html.ValidationMessageFor(model => model.LimitBytesOut) %>
             </p>
-            <p>
+<%--            <p>
                 <%= Html.LabelFor(model => model.Disabled) %>
-                <%= Html.TextBoxFor(model => model.Disabled) %>
+                <%= Html.CheckBox("Disabled", Model.Disabled.HasValue ? Model.Disabled : false) %>
                 <%= Html.ValidationMessageFor(model => model.Disabled) %>
-            </p>
+            </p>--%>
             <p>
                 <input type="submit" value="Save" />
             </p>

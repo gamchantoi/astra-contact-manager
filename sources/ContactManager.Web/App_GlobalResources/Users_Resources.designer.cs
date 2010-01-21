@@ -214,6 +214,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disabled.
+        /// </summary>
+        internal static string Users_Shared_PPPSecretUserControl_Disabled {
+            get {
+                return ResourceManager.GetString("Users_Shared_PPPSecretUserControl_Disabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Local Address:.
         /// </summary>
         internal static string Users_Shared_PPPSecretUserControl_LocalAddress {
@@ -255,6 +264,15 @@ namespace Resources {
         internal static string Users_Shared_PPPSecretUserControl_PPPSecret {
             get {
                 return ResourceManager.GetString("Users_Shared_PPPSecretUserControl_PPPSecret", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile.
+        /// </summary>
+        internal static string Users_Shared_PPPSecretUserControl_Profile {
+            get {
+                return ResourceManager.GetString("Users_Shared_PPPSecretUserControl_Profile", resourceCulture);
             }
         }
         
