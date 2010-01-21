@@ -122,7 +122,7 @@
                         </div>
                         <div>
                             <h3>
-                                <a href="#">Contract</a></h3>
+                                <a href="#"><%=Html.Resource("Users_Resources, Users_Shared_ContractUserControl_Contract")%></a></h3>
                             <div>
                                 <%Html.RenderPartial("ContractUserControl", Model); %></div>
                         </div>

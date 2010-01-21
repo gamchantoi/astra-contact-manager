@@ -500,5 +500,50 @@ namespace Resources {
                 return ResourceManager.GetString("Site_View_Account_Register_Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear Database.
+        /// </summary>
+        internal static string Site_View_Settings_ClearDB {
+            get {
+                return ResourceManager.GetString("Site_View_Settings_ClearDB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synchronize from server.
+        /// </summary>
+        internal static string Site_View_Settings_SynchronizationFrom {
+            get {
+                return ResourceManager.GetString("Site_View_Settings_SynchronizationFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synchronize to server.
+        /// </summary>
+        internal static string Site_View_Settings_SynchronizationTo {
+            get {
+                return ResourceManager.GetString("Site_View_Settings_SynchronizationTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synchronization with:.
+        /// </summary>
+        internal static string Site_View_Settings_SynchronizationWith {
+            get {
+                return ResourceManager.GetString("Site_View_Settings_SynchronizationWith", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System settings.
+        /// </summary>
+        internal static string Site_View_Settings_SystemSettings {
+            get {
+                return ResourceManager.GetString("Site_View_Settings_SystemSettings", resourceCulture);
+            }
+        }
     }
 }

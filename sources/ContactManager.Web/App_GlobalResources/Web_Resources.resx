@@ -264,4 +264,19 @@
   <data name="Site_View_Account_Register_Title" xml:space="preserve">
     <value>Register</value>
   </data>
+  <data name="Site_View_Settings_ClearDB" xml:space="preserve">
+    <value>Clear Database</value>
+  </data>
+  <data name="Site_View_Settings_SynchronizationFrom" xml:space="preserve">
+    <value>Synchronize from server</value>
+  </data>
+  <data name="Site_View_Settings_SynchronizationTo" xml:space="preserve">
+    <value>Synchronize to server</value>
+  </data>
+  <data name="Site_View_Settings_SynchronizationWith" xml:space="preserve">
+    <value>Synchronization with:</value>
+  </data>
+  <data name="Site_View_Settings_SystemSettings" xml:space="preserve">
+    <value>System settings</value>
+  </data>
 </root>

@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Users_Shared_AddressUserControl_Address" xml:space="preserve">
-    <value>Адрес</value>
+    <value>Адреса</value>
   </data>
   <data name="Users_Shared_ContractUserControl_Comment" xml:space="preserve">
     <value>Коментар</value>
   </data>
   <data name="Users_Shared_ContractUserControl_Contract" xml:space="preserve">
-    <value>Контракт</value>
+    <value>Угода</value>
   </data>
   <data name="Users_Shared_ContractUserControl_ContractNumber" xml:space="preserve">
     <value>Номер контракту</value>
@@ -193,7 +193,7 @@
     <value>Імя</value>
   </data>
   <data name="Users_Shared_ServicesUserControl_Services" xml:space="preserve">
-    <value>Сервіс</value>
+    <value>Послуги</value>
   </data>
   <data name="Users_User_Edit_BackToList" xml:space="preserve">
     <value>Назад до списку</value>
@@ -344,5 +344,11 @@
   </data>
   <data name="Users_Shared_PPPSecretUserControl_Profile" xml:space="preserve">
     <value>Профіль</value>
+  </data>
+  <data name="Users_User_Edit_Add" xml:space="preserve">
+    <value>Додати</value>
+  </data>
+  <data name="Users_User_Edit_Edit" xml:space="preserve">
+    <value>Редагувати</value>
   </data>
 </root>

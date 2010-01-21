@@ -1,10 +1,34 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
-<%@ Import Namespace="ContactManager.Web.Helpers"%>
 
+<%@ Import Namespace="ContactManager.Web.Helpers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-<%= Html.ValidationSummary("Error")%>
-    <%= Html.ActionLink("Clear DataBase", "ClearDB") %>
+    <%= Html.ValidationSummary("Error")%>
+    <table style="width: 100%">
+        <tr>
+            <td>
+                <fieldset class="fields">
+                    <legend>
+                        <%= Html.Resource("Web_Resources, Site_View_Settings_SystemSettings")%></legend>
+                    <p>
+                        <%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_ClearDB"), "ClearDB")%>
+                    </p>
+                </fieldset>
+            </td>
+            <td>
+                <fieldset class="fields">
+                    <legend>
+                        <%= Html.Resource("Web_Resources, Site_View_Settings_SynchronizationWith")%>
+                        <%= Html.Encode(ViewData["HostName"])%></legend>
+                    <p>
+                        <%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_SynchronizationTo"), "SyncFromHost", "Sync", new { area = "Synchronizations" }, null)%>
+                    </p>
+                    <p>
+                        <%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_SynchronizationFrom"), "SyncToHost", "Sync", new { area = "Synchronizations" }, null)%>
+                    </p>
+                </fieldset>
+            </td>
+        </tr>
+    </table>
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

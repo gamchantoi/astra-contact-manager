@@ -264,4 +264,19 @@
   <data name="Site_View_Account_Register_Title" xml:space="preserve">
     <value>Реєстрація</value>
   </data>
+  <data name="Site_View_Settings_ClearDB" xml:space="preserve">
+    <value>Очистка Бази даних</value>
+  </data>
+  <data name="Site_View_Settings_SynchronizationFrom" xml:space="preserve">
+    <value>Синхронізувати з сервера</value>
+  </data>
+  <data name="Site_View_Settings_SynchronizationTo" xml:space="preserve">
+    <value>Синхронізувати на сервер</value>
+  </data>
+  <data name="Site_View_Settings_SynchronizationWith" xml:space="preserve">
+    <value>Синхронізація з: </value>
+  </data>
+  <data name="Site_View_Settings_SystemSettings" xml:space="preserve">
+    <value>Системні налаштування</value>
+  </data>
 </root>

@@ -3,10 +3,10 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<ClientViewModel>" %>
 
 <fieldset class="fields">
-    <legend><a href="#">
+    <legend><a href="#"><%=Model.Contract == null ? Html.Resource("Users_Resources, Users_User_Edit_Add")
+                                        : Html.Resource("Users_Resources, Users_User_Edit_Edit")%></a></legend>
     <%if (Model.Contract != null)
   {%>
-    <%=Html.Resource("Users_Resources, Users_Shared_ContractUserControl_Contract")%></a></legend>
     <%=Html.BuildItem(Html.Resource("Users_Resources, Users_Shared_ContractUserControl_ContractNumber")+": ", Model.Contract.ContractNumber)%>
     <%=Html.BuildItem(Html.Resource("Users_Resources, Users_Shared_ContractUserControl_Comment")+": ", Model.Contract.Comment)%>
     <%=Html.BuildItem(Html.Resource("Users_Resources, Users_Shared_ContractUserControl_CreateDate")+": ", Model.Contract.CreateDate.HasValue ? Model.Contract.CreateDate.Value.ToShortDateString() :"" )%>
