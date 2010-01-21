@@ -25,6 +25,8 @@ function ShowPopup(html, height, width) {
     popup.empty()
     .append(html)
     .dialog('option', 'modal', true)
+    .dialog('option', 'resizable', false)
+    .dialog('option', 'position', 'top')
     .dialog('option', 'height', height)
     .dialog('option', 'width', width)
     //.dialog('option', 'show', 'slide')

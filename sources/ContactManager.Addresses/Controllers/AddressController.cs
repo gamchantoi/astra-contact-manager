@@ -1,5 +1,4 @@
 using System.Web.Mvc;
-using System.Web.Routing;
 using ContactManager.Addresses.Services;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
@@ -38,7 +37,7 @@ namespace ContactManager.Addresses.Controllers
 
         public ActionResult Edit(int id)
         {
-            Address _address = _addressService.GetAddress(id);
+            var _address = _addressService.GetAddress(id);
             FillViewData(_address);
             return View(_address);
         }

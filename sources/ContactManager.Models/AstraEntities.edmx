@@ -225,9 +225,9 @@
           <Property Name="PassportID" Type="nvarchar" MaxLength="8" />
           <Property Name="PassportDeliveryDate" Type="date" />
           <Property Name="PassportComment" Type="nvarchar" MaxLength="128" />
-          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="64" />
-          <Property Name="MiddleName" Type="nvarchar" Nullable="false" MaxLength="64" />
-          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="64" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="64" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="64" />
           <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="astra_ClientsInServices">
@@ -867,9 +867,9 @@
           <Property Name="PassportID" Type="String" MaxLength="8" Unicode="true" FixedLength="false" />
           <Property Name="PassportDeliveryDate" Type="DateTime" />
           <Property Name="PassportComment" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
-          <Property Name="MiddleName" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
-          <Property Name="LastName" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="FirstName" Type="String" Nullable="true" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="MiddleName" Type="String" Nullable="true" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="true" MaxLength="64" Unicode="true" FixedLength="false" />
           <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="astra_Clients" Relationship="AstraModel.FK_astra_Clients_astra_ClientsDetails" FromRole="astra_ClientsDetails" ToRole="astra_Clients" />
         </EntityType>

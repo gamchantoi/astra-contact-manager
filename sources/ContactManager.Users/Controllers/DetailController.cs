@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using System.Web.Mvc;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
@@ -26,30 +25,29 @@ namespace ContactManager.Users.Controllers
             return View(_detailService.ListDetails());
         }
 
-
-        //[AcceptVerbs(HttpVerbs.Post)]
-        //public ActionResult Create(ClientDetail detail)
-        //{
-        //    if (_detailService.CreateDetail(detail))
-        //        return View("Index");
-        //    return View(detail);
-        //}
-
-        public ActionResult Edit(int id)
+        public ActionResult Create(Guid id)
         {
-            if (id == 0)
-            {
-                return View("Create");
-            }
+            ViewData["UserId"] = id;
+            return View();
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Create(ClientDetail detail)
+        {
+            _detailService.CreateDetail(detail);
+            return RedirectToAction("Edit", "User", new { id = detail.UserId, area = "Users" });
+        }
+
+        public ActionResult Edit(Guid id)
+        {
             return View(_detailService.GetDetails(id));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Edit(ClientDetail detail)
         {
-            if (_detailService.EditDetail(detail))
-                return RedirectToAction("Index", "User");
-            return View(detail);
+            _detailService.EditDetail(detail);
+            return RedirectToAction("Edit", "User", new { id = detail.UserId, area = "Users" });
         }
     }
 }

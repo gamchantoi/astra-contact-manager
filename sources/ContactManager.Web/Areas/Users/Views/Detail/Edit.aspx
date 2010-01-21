@@ -7,8 +7,8 @@
     <%= Html.Hidden("DetailId", Model.DetailId)%>
     <%= Html.Hidden("UserId", Model.UserId)%>
     <fieldset class="fields">
-        <legend>Edit Details for User:
-            <%=Html.Encode(Model.UserName)%></legend>
+        <legend><a>Edit Details for User:
+            <%=Html.Encode(Model.UserName)%></a></legend>
             <p>
                 <label for="FirstName">
                     FirstName:</label> 

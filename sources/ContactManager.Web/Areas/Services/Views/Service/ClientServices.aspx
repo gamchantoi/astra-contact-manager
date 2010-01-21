@@ -5,7 +5,7 @@
        {%>
     <%= Html.Hidden("UserId", ViewData["UserId"])%>
     <fieldset>
-        <legend><%= Html.Resource("Services_Resources, Services_View_ClientServices_Services")%></legend>
+        <legend><a><%= Html.Resource("Services_Resources, Services_View_ClientServices_Services")%></a></legend>
         <table>
             <% foreach (var item in Model.ListServices)
                { %>
@@ -19,7 +19,7 @@
             <% } %>
         </table>
         <p>
-            <input type="submit" value=<%= Html.Resource("Services_Resources, Services_View_ClientServices_Save")%> />
+            <input type="submit" value="<%= Html.Resource("Services_Resources, Services_View_ClientServices_Save")%>" />
         </p>
     </fieldset>
     <%} %>

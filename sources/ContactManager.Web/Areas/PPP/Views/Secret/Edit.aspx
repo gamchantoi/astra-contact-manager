@@ -4,7 +4,7 @@
     <%= Html.HiddenFor(s => s.UserId) %>
 
         <fieldset class="fields">
-            <legend><%= Html.DisplayFor(s => s.Name) %></legend>
+            <legend><a><%= Html.DisplayFor(s => s.Name) %></a></legend>
  <%--           <p>
                 <%= Html.LabelFor(model => model.Name) %>
                 <%= Html.TextBoxFor(model => model.Name) %>

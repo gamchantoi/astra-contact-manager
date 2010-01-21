@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using ContactManager.Models;
 
 namespace ContactManager.Users.Models
@@ -23,6 +22,13 @@ namespace ContactManager.Users.Models
         public ClientDetail GetDetails(int id)
         {
             return ObjectContext.ClientDetailSet.Where(m => m.DetailId == id).FirstOrDefault();
+        }
+
+        public ClientDetail GetDetails(Guid userId)
+        {
+            var client = ObjectContext.Clients.FirstOrDefault(c => c.UserId.Equals(userId));
+            client.ClientDetailsReference.Load();
+            return client.ClientDetails;
         }
 
         public void EditDetail(ClientDetail detail)
