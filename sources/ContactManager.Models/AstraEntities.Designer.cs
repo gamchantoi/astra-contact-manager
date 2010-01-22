@@ -34,7 +34,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Messages_astra_MessagesType", "astra_MessagesType", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.MessageType), "astra_Messages", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Message))]
 
 // Original file name:
-// Generation date: 1/21/2010 5:11:38 PM
+// Generation date: 1/22/2010 2:36:04 PM
 namespace ContactManager.Models
 {
     
@@ -796,15 +796,13 @@ namespace ContactManager.Models
         /// <param name="addressId">Initial value of AddressId.</param>
         /// <param name="city">Initial value of City.</param>
         /// <param name="building">Initial value of Building.</param>
-        /// <param name="details">Initial value of Details.</param>
         /// <param name="lastUpdatedDate">Initial value of LastUpdatedDate.</param>
-        public static Address CreateAddress(int addressId, string city, string building, string details, global::System.DateTime lastUpdatedDate)
+        public static Address CreateAddress(int addressId, string city, string building, global::System.DateTime lastUpdatedDate)
         {
             Address address = new Address();
             address.AddressId = addressId;
             address.City = city;
             address.Building = building;
-            address.Details = details;
             address.LastUpdatedDate = lastUpdatedDate;
             return address;
         }
@@ -880,7 +878,7 @@ namespace ContactManager.Models
         /// <summary>
         /// There are no comments for Property Details in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         public string Details
         {
@@ -892,7 +890,7 @@ namespace ContactManager.Models
             {
                 this.OnDetailsChanging(value);
                 this.ReportPropertyChanging("Details");
-                this._Details = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this._Details = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
                 this.ReportPropertyChanged("Details");
                 this.OnDetailsChanged();
             }

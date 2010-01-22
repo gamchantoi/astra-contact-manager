@@ -200,7 +200,7 @@
           <Property Name="StreetId" Type="int" Nullable="false" />
           <Property Name="Building" Type="nvarchar" Nullable="false" MaxLength="20" />
           <Property Name="Room" Type="nvarchar" MaxLength="8" />
-          <Property Name="Details" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Details" Type="nvarchar" MaxLength="20" />
           <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="astra_Clients">
@@ -836,7 +836,7 @@
           <Property Name="AddressId" Type="Int32" Nullable="false" />
           <Property Name="City" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
           <Property Name="Building" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="Details" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Details" Type="String" Nullable="true" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="Client" Relationship="AstraModel.FK_astra_Clients_astra_Addresses" FromRole="astra_Addresses" ToRole="astra_Clients" />
           <Property Name="Room" Type="String" Nullable="true" />

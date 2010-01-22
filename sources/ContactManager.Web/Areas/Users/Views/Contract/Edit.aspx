@@ -4,12 +4,8 @@
 
         <fieldset>
          <%= Html.Hidden("UserId", ViewData["UserId"])%>
-            <legend>Edit</legend>
-            <p>
-                <%= Html.LabelFor(model => model.ContractId) %>
-                <%= Html.TextBoxFor(model => model.ContractId) %>
-                <%= Html.ValidationMessageFor(model => model.ContractId) %>
-            </p>
+         <%= Html.Hidden("ContractId", Model.ContractId)%>
+            <legend><a>Edit</a></legend>
             <p>
                 <%= Html.LabelFor(model => model.ContractNumber) %>
                 <%= Html.TextBoxFor(model => model.ContractNumber) %>
