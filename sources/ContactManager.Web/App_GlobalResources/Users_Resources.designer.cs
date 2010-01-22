@@ -61,6 +61,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to First name:.
+        /// </summary>
+        internal static string Users_Detail_Edit_FirstName {
+            get {
+                return ResourceManager.GetString("Users_Detail_Edit_FirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name:.
+        /// </summary>
+        internal static string Users_Detail_Edit_LastName {
+            get {
+                return ResourceManager.GetString("Users_Detail_Edit_LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Middle name:.
+        /// </summary>
+        internal static string Users_Detail_Edit_MiddleName {
+            get {
+                return ResourceManager.GetString("Users_Detail_Edit_MiddleName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Address.
         /// </summary>
         internal static string Users_Shared_AddressUserControl_Address {
@@ -561,15 +588,6 @@ namespace Resources {
         internal static string Users_User_Edit_ValidationSummary {
             get {
                 return ResourceManager.GetString("Users_User_Edit_ValidationSummary", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Addresses.
-        /// </summary>
-        internal static string Users_User_Index_Addresses {
-            get {
-                return ResourceManager.GetString("Users_User_Index_Addresses", resourceCulture);
             }
         }
         

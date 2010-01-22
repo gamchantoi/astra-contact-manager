@@ -44,6 +44,10 @@ namespace ContactManager.PPP.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Edit(PPPSecret secret)
         {
+            var user = _ctx.GetUser(secret.UserId);
+            secret.Name = user.UserName;
+            secret.Password = user.Password;
+
             if (_secretService.GetPPPSecret(secret.UserId) == null)
             {
                 secret.Client = _ctx.GetClient(secret.UserId);
@@ -62,7 +66,7 @@ namespace ContactManager.PPP.Controllers
             }
             //if (ModelState.IsValid)
             return RedirectToAction("Edit", "User", new { id = secret.UserId, area = "Users" });
-            //TODO: Return nothing for dialog
+            //TODO: Return nothing for dialog and exception info display
             //return View(secret);
         }
 

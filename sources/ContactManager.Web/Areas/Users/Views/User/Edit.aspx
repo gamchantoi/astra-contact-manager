@@ -24,9 +24,6 @@
         <table>
             <tr>
                 <td>
-                    <fieldset class="fields">
-                        <legend>
-                            <%= Html.Resource("Users_Resources, Users_User_Edit_General")%></legend>
                         <% using (Html.BeginForm())
                            {%>
                         <%= Html.Hidden("UserId", Model.UserId) %>
@@ -92,7 +89,6 @@
                             <input name="button" type="submit" value="<%= Html.Resource("Users_Resources, Users_User_Edit_Save")%>" />
                         </p>
                         <% } %>
-                    </fieldset>
                 </td>
                 <td>
                     <div id="details-accordion">

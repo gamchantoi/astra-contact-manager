@@ -160,10 +160,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\DetailsHelper.cs" />
+    <Compile Include="Helpers\HtmlExtensions.cs" />
     <Compile Include="Helpers\DropDownHelper.cs" />
     <Compile Include="Helpers\MenuItemHelper.cs" />
-    <Compile Include="Helpers\LocalizationExtensions.cs" />
     <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="Interfaces\IFormsAuthentication.cs" />
     <Compile Include="Models\EntitySettingsRepository.cs" />

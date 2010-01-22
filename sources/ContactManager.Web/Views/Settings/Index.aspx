@@ -12,6 +12,12 @@
                     <p>
                         <%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_ClearDB"), "ClearDB")%>
                     </p>
+                    <p>
+                        <%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_Index_EditStatuses"), "Index", "Status", new {@area="Users"}, null)%>
+                    </p>
+                    <p>
+                        <%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_Index_Addreses"), "Index", "Address", new { area = "Addresses" }, null)%>
+                    </p>
                 </fieldset>
             </td>
             <td>
@@ -31,4 +37,7 @@
     </table>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+
+    <script language="javascript" type="text/javascript" src="<%= Url.Content("~/Scripts/astra-dialog.js")%>"></script>
+
 </asp:Content>
