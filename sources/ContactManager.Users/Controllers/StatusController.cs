@@ -31,7 +31,6 @@ namespace ContactManager.Users.Controllers
             try
             {
                 _statusService.EditStatus(status);
-
                 return RedirectToAction("Index");
             }
             catch

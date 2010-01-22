@@ -7,6 +7,7 @@
         <legend><%= Html.Resource("Addresses_Resources, Addresses_View_Edit_EditAddress") %></legend>
         <p>
             <%= Html.Hidden("AddressId", Model.AddressId)%>
+            <%= Html.Hidden("UserId", ViewData["UserId"])%>
         </p>
         <p>
             <label for="Street.StreetId">

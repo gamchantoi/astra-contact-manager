@@ -13,12 +13,14 @@ namespace ContactManager.Services.Controllers
     {
         private readonly IServiceService _service;
         private readonly IClientInServicesService _clientInServicesService;
+        private CurrentContext _ctx;
 
         public ServiceController()
         {
             IValidationDictionary validationDictionary = new ModelStateWrapper(ModelState);
             _service = new ServiceService(validationDictionary);
             _clientInServicesService = new ClientInServicesService(validationDictionary);
+            _ctx = new CurrentContext();
         }
 
         [Authorize(Roles = "admin")]
@@ -38,7 +40,7 @@ namespace ContactManager.Services.Controllers
         public ActionResult Create(Service service)
         {
             if (_service.CreateService(service))
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", "User", new { id = _ctx.CurrentUserId, area = "Users" });
             return View();
         }
 
@@ -52,8 +54,9 @@ namespace ContactManager.Services.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Edit(Service service)
         {
+            
             if (_service.EditService(service))
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", "User", new { id = _ctx.CurrentUserId, area = "Users" });
             return View(service);
         }
 
@@ -75,7 +78,8 @@ namespace ContactManager.Services.Controllers
         public ActionResult ClientServices(FormCollection collection, Guid id)
         {
             if (_clientInServicesService.UpdateClientServices(collection, id))
-                return RedirectToAction("Index", "User", new {Area="Users"});
+                return RedirectToAction("Edit", "User", new { id, area = "Users" });
+                //return RedirectToAction("Index", "User", new {Area="Users"});
             return View(collection);
         }
     }

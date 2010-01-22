@@ -13,6 +13,7 @@ namespace ContactManager.Addresses.Services
         private readonly IValidationDictionary _validationDictionary;
         private readonly EntityAddressRepository _addressRepository;
         private readonly EntityStreetRepository _streetRepository;
+        private CurrentContext _ctx;
 
         #region Constructors
         public AddressService(IValidationDictionary validationDictionary)
@@ -20,6 +21,7 @@ namespace ContactManager.Addresses.Services
             _validationDictionary = validationDictionary;
             _addressRepository = new EntityAddressRepository();
             _streetRepository = new EntityStreetRepository();
+            _ctx = new CurrentContext();
         }
         #endregion
 
@@ -50,6 +52,8 @@ namespace ContactManager.Addresses.Services
             try
             {
                 address.Street = GetStreet(address.Street.StreetId);
+                var client = _ctx.GetClient(address.UserId);
+                address.Client.Add(client);
                 _addressRepository.Create(address);
                 return true;
             }
@@ -78,6 +82,18 @@ namespace ContactManager.Addresses.Services
             var address = _addressRepository.GetAddress(id);
             address.LoadStreetReferences();
             return address;
+        }
+
+        public Address GetAddress(Guid id)
+        {
+            var addres = _addressRepository.GetAddress(id);
+
+            if (addres != null)
+            {
+                addres.StreetReference.Load();
+                addres.UserId = id;
+            }
+            return addres;
         }
     }
 }

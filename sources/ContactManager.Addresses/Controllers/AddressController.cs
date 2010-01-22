@@ -1,4 +1,6 @@
+using System;
 using System.Web.Mvc;
+using System.Web.Routing;
 using ContactManager.Addresses.Services;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
@@ -12,6 +14,7 @@ namespace ContactManager.Addresses.Controllers
 
         public AddressController()
         {
+            _ctx = new CurrentContext();
             _addressService = new AddressService(new ModelStateWrapper(ModelState));
         }
 
@@ -20,8 +23,9 @@ namespace ContactManager.Addresses.Controllers
             return View(_addressService.ListAddresses());
         }
 
-        public ActionResult Create()
+        public ActionResult Create(Guid id)
         {
+            ViewData["UserId"] = id;
             FillViewData(null);
             return View();
         }
@@ -30,24 +34,23 @@ namespace ContactManager.Addresses.Controllers
         public ActionResult Create([Bind(Exclude = "AddressId")]Address address)
         {
             if (_addressService.CreateAddress(address))
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", "User", new { id = address.UserId, area = "Users" });
             FillViewData(address);
             return View(address);
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Guid id)
         {
-            var _address = _addressService.GetAddress(id);
-            FillViewData(_address);
-            return View(_address);
+            var address = _addressService.GetAddress(id);
+            FillViewData(address);
+            return View(address);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Edit(Address address)
         {
-            _ctx = new CurrentContext();
             if (_addressService.EditAddress(address))
-                return RedirectToAction("Index", "User", new { id = _ctx.CurrentUserId, area = "Users" });
+                return RedirectToAction("Edit", "User", new { id = address.UserId, area = "Users" });
             FillViewData(address);
             return View(address);
         }

@@ -1,7 +1,5 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Address>" %>
+<%@ Page Title="" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Address>" %>
 <%@ Import Namespace="ContactManager.Web.Helpers"%>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <%= Html.ValidationSummary(Html.Resource("Addresses_Resources, Addresses_View_Create_ValidationSummary")) %>
     <% using (Html.BeginForm("Create", "Address"))
@@ -9,6 +7,7 @@
     <fieldset class="fields">
         <legend><%= Html.Resource("Addresses_Resources, Addresses_View_Create_CreateAddress")%></legend>
         <p>
+        <%= Html.Hidden("UserId", ViewData["UserId"])%>
             <label for="City">
                 <%= Html.Resource("Addresses_Resources, Addresses_View_Create_City")%></label>
             <%= Html.TextBox("City") %>
@@ -47,6 +46,4 @@
     <div>
         <%=Html.ActionLink(Html.Resource("Addresses_Resources, Addresses_View_Create_BackToList"), "Index") %>
     </div>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
+

@@ -82,6 +82,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Controllers\ContractController.cs" />
     <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -90,8 +91,10 @@
     <Compile Include="Interfaces\IClientService.cs" />
     <Compile Include="Interfaces\IUserFasade.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
+    <Compile Include="Models\EntityContractRepository.cs" />
     <Compile Include="Models\EntityDetailRepository.cs" />
     <Compile Include="Models\EntityUserRepository.cs" />
+    <Compile Include="Services\ContractService.cs" />
     <Compile Include="Services\DetailService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\ClientService.cs" />

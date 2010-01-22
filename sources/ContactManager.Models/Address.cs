@@ -1,4 +1,6 @@
-﻿namespace ContactManager.Models
+﻿using System;
+
+namespace ContactManager.Models
 {
     public partial class Address
     {
@@ -7,5 +9,7 @@
             if (!StreetReference.IsLoaded)
                 StreetReference.Load();
         }
+
+        public Guid UserId { get; set; }
     }
 }
