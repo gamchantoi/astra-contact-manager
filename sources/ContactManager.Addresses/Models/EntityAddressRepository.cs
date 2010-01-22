@@ -12,12 +12,12 @@ namespace ContactManager.Addresses.Models
             return ObjectContext.Addresses.ToList();
         }
 
-        public Address Create(Address address)
+        public void Create(Address address)
         {
             ObjectContext.AddToAddresses(address);
             address.LastUpdatedDate = DateTime.Now;
             ObjectContext.SaveChanges();
-            return address;
+            
         }
 
         public Address GetAddress(int id)
@@ -35,6 +35,14 @@ namespace ContactManager.Addresses.Models
             _address.LastUpdatedDate = DateTime.Now;
             ObjectContext.SaveChanges();
             return _address;
+        }
+
+        public Address GetAddress(Guid id)
+        {
+            var client = ObjectContext.Clients.FirstOrDefault(m => m.UserId == id);
+            client.AddressReference.Load();
+
+            return client.Address;
         }
     }
 }

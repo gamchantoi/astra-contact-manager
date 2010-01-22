@@ -439,6 +439,9 @@
     <Content Include="Areas\Addresses\Views\Street\Index.aspx" />
     <Content Include="Areas\PPP\Views\Secret\Edit.aspx" />
     <Content Include="Areas\Synchronizations\Views\Web.config" />
+    <Content Include="Areas\Users\Views\Contract\Create.aspx" />
+    <Content Include="Areas\Users\Views\Contract\Edit.aspx" />
+    <Content Include="Areas\Users\Views\Contract\Index.aspx" />
     <Content Include="Content\Images\bg-header.png" />
     <Content Include="Content\Images\bg-main-corner-sprite.png" />
     <Content Include="Content\Images\bg-nav-corner-sprite.png" />
