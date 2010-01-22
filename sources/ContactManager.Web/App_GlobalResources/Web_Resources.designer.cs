@@ -511,6 +511,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Addreses.
+        /// </summary>
+        internal static string Site_View_Settings_Index_Addreses {
+            get {
+                return ResourceManager.GetString("Site_View_Settings_Index_Addreses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Statuses.
+        /// </summary>
+        internal static string Site_View_Settings_Index_EditStatuses {
+            get {
+                return ResourceManager.GetString("Site_View_Settings_Index_EditStatuses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Synchronize from server.
         /// </summary>
         internal static string Site_View_Settings_SynchronizationFrom {

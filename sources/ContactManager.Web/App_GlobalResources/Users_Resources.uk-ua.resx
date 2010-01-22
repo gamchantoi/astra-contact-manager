@@ -127,7 +127,7 @@
     <value>Угода</value>
   </data>
   <data name="Users_Shared_ContractUserControl_ContractNumber" xml:space="preserve">
-    <value>Номер контракту</value>
+    <value>Номер угоди</value>
   </data>
   <data name="Users_Shared_ContractUserControl_CreateDate" xml:space="preserve">
     <value>Дата створення</value>
@@ -154,7 +154,7 @@
     <value>Паспорт:</value>
   </data>
   <data name="Users_Shared_DetailsUserControl_PassportComment" xml:space="preserve">
-    <value>Коментарі до паспорта:</value>
+    <value>Коментар до паспорта:</value>
   </data>
   <data name="Users_Shared_DetailsUserControl_PassportDeliveryDate" xml:space="preserve">
     <value>Дата видачі паспорта:</value>
@@ -236,9 +236,6 @@
   </data>
   <data name="Users_User_Edit_ValidationSummary" xml:space="preserve">
     <value>Невдале редагування . Виправте помилки та спробуйте ще раз</value>
-  </data>
-  <data name="Users_User_Index_Addresses" xml:space="preserve">
-    <value>Адреси</value>
   </data>
   <data name="Users_User_Index_Balance" xml:space="preserve">
     <value>Баланс</value>
@@ -350,5 +347,14 @@
   </data>
   <data name="Users_User_Edit_Edit" xml:space="preserve">
     <value>Редагувати</value>
+  </data>
+  <data name="Users_Detail_Edit_FirstName" xml:space="preserve">
+    <value>Ім'я:</value>
+  </data>
+  <data name="Users_Detail_Edit_LastName" xml:space="preserve">
+    <value>Прізвище:</value>
+  </data>
+  <data name="Users_Detail_Edit_MiddleName" xml:space="preserve">
+    <value>Побатькові:</value>
   </data>
 </root>

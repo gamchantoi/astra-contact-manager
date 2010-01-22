@@ -42,13 +42,7 @@
     <p>
         <% if (!Model.Deleted)
            {%>
-        <%= Html.ActionLink(Html.Resource("Users_Resources, Users_User_Index_CreateNew"), "Create")%>&nbsp;|&nbsp;
-        <%= Html.ActionLink(Html.Resource("Users_Resources, Users_User_Index_DeleteAllUsers"), "DeleteAll")%>&nbsp;|&nbsp;
-        <%= Html.ActionLink(Html.Resource("Users_Resources, Users_User_Index_Statuses"), "Index", "Status")%>&nbsp;|&nbsp;
-        <%= Html.ActionLink(Html.Resource("Users_Resources, Users_User_Index_Addresses"), "Index", "Address", new { area = "Addresses" }, null)%>
+        <%= Html.ActionLink(Html.Resource("Users_Resources, Users_User_Index_CreateNew"), "Create")%>        
         <%} %>
     </p>
-    <div style="text-align: right;">
-        <%= Html.ActionLink("Clear database", "ClearAllData")%>
-    </div>
 </asp:Content>
