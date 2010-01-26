@@ -16,7 +16,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <%= Html.ValidationSummary(Html.Resource("Users_Resources, Users_User_Edit_ValidationSummary"))%>
+    <%= Html.ValidationSummary(Html.Resource("Users_Resources, Users_User_Edit_ValidationSummary"), new { @class = "ui-state-error ui-corner-all" })%>
     <fieldset class="fields">
         <legend>
             <%= Html.Resource("Users_Resources, Users_User_Edit_EditUser")%>
@@ -44,7 +44,7 @@
                                 <%= Html.Resource("Users_Resources, Users_User_Edit_Password")%>:</label>
                             <%= Html.TextBox("Password", Model.Password) %>
                             <%= Html.ValidationMessage("Password", "*") %>
-                            <input type="button" value="Generate" onclick="javascript: generatePassword('8', '#Password');" />
+                            <%= Html.JSLink(Html.Resource("Users_Resources, Users_User_Create_Generate"), "generatePassword", "#Password")%>
                         </p>
                         <p>
                             <label for="Role">

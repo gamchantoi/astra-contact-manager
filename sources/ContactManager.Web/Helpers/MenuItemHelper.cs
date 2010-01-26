@@ -30,9 +30,11 @@ namespace ContactManager.Web.Helpers
 
                 var builder = new TagBuilder("li");
 
+                builder.AddCssClass("ui-state-default ui-corner-top");
+
                 // Add selected class
                 if (currentControllerName.Equals(controllerName, StringComparison.CurrentCultureIgnoreCase))
-                    builder.AddCssClass("jd_menu_active_menubar");
+                    builder.AddCssClass("ui-state-active");
 
                 // Add link
                 builder.InnerHtml = helper.ActionLink(linkText, actionName, controllerName, new { area = area }, null).ToHtmlString();
