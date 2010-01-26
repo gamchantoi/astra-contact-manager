@@ -223,7 +223,7 @@
     <value>Дані користувача</value>
   </data>
   <data name="Site_View_Account_LogOn_Button_LogOn" xml:space="preserve">
-    <value>Ввійти</value>
+    <value>Увійти</value>
   </data>
   <data name="Site_View_Account_LogOn_Password" xml:space="preserve">
     <value>Пароль:</value>

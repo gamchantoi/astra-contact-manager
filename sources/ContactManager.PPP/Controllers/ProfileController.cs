@@ -5,23 +5,22 @@ using System.Collections.Generic;
 using ContactManager.PPP.Intefaces;
 using ContactManager.PPP.Services;
 using ContactManager.PPP.SSH;
-using ContactManager.PPP.Helpers;
 
 namespace ContactManager.PPP.Controllers
 {
     [HandleError]
     public class ProfileController : Controller
     {
-        private readonly DropDownHelper _ddhelper;
         private readonly IProfileService _service;
         private readonly ISshProfileService _sshService;
+        private readonly IPoolService _poolService;
 
         public ProfileController()
         {
-            _ddhelper = new DropDownHelper();
             IValidationDictionary validationDictionary = new ModelStateWrapper(ModelState);
             _service = new ProfileService(validationDictionary);
             _sshService = new SshProfileService(validationDictionary);
+            _poolService = new PoolService(validationDictionary);
         }
 
         [Authorize(Roles = "admin")]
@@ -32,8 +31,8 @@ namespace ContactManager.PPP.Controllers
 
         [Authorize(Roles = "admin")]
         public ActionResult Create()
-        {            
-            ViewData["Pools"] = _ddhelper.GetPools(null);
+        {
+            ViewData["Pools"] = _poolService.ListPools(null);
             return View();
         } 
 
@@ -46,14 +45,14 @@ namespace ContactManager.PPP.Controllers
                 _sshService.CreatePPPProfile(profile.ProfileId);
                 return View("Index", PrepareIndex());
             }
-            ViewData["Pools"] = _ddhelper.GetPools(null);
+            ViewData["Pools"] = _poolService.ListPools(null);
             return View();
         }
 
         [Authorize(Roles = "admin")]
         public ActionResult Edit(int id)
         {
-            ViewData["Pools"] = _ddhelper.GetPools(id);
+            ViewData["Pools"] = _poolService.ListPools(id);
             return View(_service.GetProfile(id));
         }
 

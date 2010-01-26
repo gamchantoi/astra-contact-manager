@@ -94,7 +94,7 @@ namespace ContactManager.PPP.SSH
                 if (string.IsNullOrEmpty(pppS.Name)) continue;
 
                 pppS.Password = Repository.GetValue(properties, "password");
-                pppS.Profile = new Profile { Name = Repository.GetValue(properties, "profile") };
+                pppS.ProfileName = Repository.GetValue(properties, "profile");
                 pppS.LocalAddress = Repository.GetValue(properties, "local-address");
                 pppS.RemoteAddress = Repository.GetValue(properties, "remote-address");
                 pppS.Disabled = Repository.GetValue(properties, "status").Equals("0");

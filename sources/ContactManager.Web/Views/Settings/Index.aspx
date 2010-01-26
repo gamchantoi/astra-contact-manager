@@ -26,10 +26,10 @@
                         <%= Html.Resource("Web_Resources, Site_View_Settings_SynchronizationWith")%>
                         <%= Html.Encode(ViewData["HostName"])%></legend>
                     <p>
-                        <%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_SynchronizationTo"), "SyncFromHost", "Sync", new { area = "Synchronizations" }, null)%>
+                        <%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_SynchronizationTo"), "SyncToHost", "Sync", new { area = "Synchronizations" }, null)%>
                     </p>
                     <p>
-                        <%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_SynchronizationFrom"), "SyncToHost", "Sync", new { area = "Synchronizations" }, null)%>
+                        <%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_SynchronizationFrom"), "SyncFromHost", "Sync", new { area = "Synchronizations" }, null)%>
                     </p>
                 </fieldset>
             </td>

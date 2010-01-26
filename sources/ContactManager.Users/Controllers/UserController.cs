@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Web.Mvc;
 using ContactManager.Models;
+using ContactManager.Models.Enums;
 using ContactManager.Models.Validation;
 using ContactManager.Models.ViewModels;
 using ContactManager.PPP.Intefaces;
@@ -43,11 +44,13 @@ namespace ContactManager.Users.Controllers
             return View();
         }
 
+        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
             return View(FillViewData(null));
         }
 
+        [Authorize(Roles = "admin")]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(ClientViewModel viewModel)
         {
@@ -130,7 +133,7 @@ namespace ContactManager.Users.Controllers
             {
                 viewModel = new ClientViewModel
                                 {
-                                    Roles = userHelper.GetRoles("client"),
+                                    Roles = userHelper.GetRoles(ROLES.client.ToString()),
                                     Profiles = pppHelper.GetProfiles(null),
                                     Statuses = _statusService.ListStatuses(null)
                                 };

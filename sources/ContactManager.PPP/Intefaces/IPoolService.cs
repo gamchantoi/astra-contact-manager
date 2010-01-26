@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using ContactManager.Models;
 
 namespace ContactManager.PPP.Intefaces
@@ -12,5 +13,6 @@ namespace ContactManager.PPP.Intefaces
         Pool GetPool(int id);
         Pool GetPool(string name);
         List<Pool> ListPools();
+        SelectList ListPools(int? selectedValue);
     }
 }

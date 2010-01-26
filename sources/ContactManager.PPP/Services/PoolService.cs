@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.Mvc;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
 using System.Text.RegularExpressions;
@@ -111,6 +112,22 @@ namespace ContactManager.PPP.Services
         public List<Pool> ListPools()
         {
             return _repository.ListPools();
+        }
+
+        public SelectList ListPools(int? selectedValue)
+        {
+            var list = ListPools();
+            SelectList returnList;
+            if (selectedValue.HasValue)
+                returnList =  new SelectList(list, "PoolId", "Name", selectedValue.Value);
+            else
+                returnList = new SelectList(list, "PoolId", "Name");
+
+            var pool = new Pool { PoolId = 0, Name = "None"};
+            list.Add(pool);
+            list.Sort((c1, c2) => c1.PoolId.CompareTo(c2.PoolId));
+            return returnList;
+
         }
 
         public bool CreateOrEditPools(List<Pool> pools)

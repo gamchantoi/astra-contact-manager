@@ -123,6 +123,8 @@ namespace ContactManager.Users.Services
             {
                 pppSecret.UserId = UserService.CreateUser(BuildUser(pppSecret)).UserId;
                 ClientService.CreateClient(BuildClient(pppSecret));
+                pppSecret.Client = ClientService.GetClient(pppSecret.UserId);
+                pppSecret.Profile = SecretService.ProfileService.GetProfile(pppSecret.ProfileName);
                 SecretService.CreatePPPSecret(pppSecret);
             }
             catch (Exception ex)
@@ -255,7 +257,7 @@ namespace ContactManager.Users.Services
             _secret.Routes = secret.Routes;
             _secret.Service = secret.Service;
             _secret.Client = ClientService.GetClient(secret.UserId);
-            _secret.Profile = SecretService.ProfileService.GetProfile(secret.Profile.Name);
+            _secret.Profile = SecretService.ProfileService.GetProfile(secret.ProfileName);
 
             return _secret;
         }
