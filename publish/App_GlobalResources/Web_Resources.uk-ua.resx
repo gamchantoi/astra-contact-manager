@@ -150,8 +150,14 @@
   <data name="Site_MenuItem_Profiles" xml:space="preserve">
     <value>Профілі</value>
   </data>
+  <data name="Site_MenuItem_Server" xml:space="preserve">
+    <value>Сервер</value>
+  </data>
   <data name="Site_MenuItem_Services" xml:space="preserve">
-    <value>Сервіси</value>
+    <value>Послуги</value>
+  </data>
+  <data name="Site_MenuItem_Settings" xml:space="preserve">
+    <value>Налаштування</value>
   </data>
   <data name="Site_MenuItem_Sync" xml:space="preserve">
     <value>Синхронізація</value>
@@ -217,7 +223,7 @@
     <value>Дані користувача</value>
   </data>
   <data name="Site_View_Account_LogOn_Button_LogOn" xml:space="preserve">
-    <value>Ввійти</value>
+    <value>Увійти</value>
   </data>
   <data name="Site_View_Account_LogOn_Password" xml:space="preserve">
     <value>Пароль:</value>
@@ -257,5 +263,26 @@
   </data>
   <data name="Site_View_Account_Register_Title" xml:space="preserve">
     <value>Реєстрація</value>
+  </data>
+  <data name="Site_View_Settings_ClearDB" xml:space="preserve">
+    <value>Очистка Бази даних</value>
+  </data>
+  <data name="Site_View_Settings_Index_Addreses" xml:space="preserve">
+    <value>Редагувати адреси</value>
+  </data>
+  <data name="Site_View_Settings_Index_EditStatuses" xml:space="preserve">
+    <value>Редагувати статусів</value>
+  </data>
+  <data name="Site_View_Settings_SynchronizationFrom" xml:space="preserve">
+    <value>Синхронізувати з сервера</value>
+  </data>
+  <data name="Site_View_Settings_SynchronizationTo" xml:space="preserve">
+    <value>Синхронізувати на сервер</value>
+  </data>
+  <data name="Site_View_Settings_SynchronizationWith" xml:space="preserve">
+    <value>Синхронізація з: </value>
+  </data>
+  <data name="Site_View_Settings_SystemSettings" xml:space="preserve">
+    <value>Системні налаштування</value>
   </data>
 </root>

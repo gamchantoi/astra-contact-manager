@@ -124,7 +124,7 @@
     <value>Зберегти</value>
   </data>
   <data name="Services_View_ClientServices_Services" xml:space="preserve">
-    <value>Сервіс</value>
+    <value>Послуги</value>
   </data>
   <data name="Services_View_Create_Active" xml:space="preserve">
     <value>Активний</value>
@@ -136,13 +136,13 @@
     <value>Коментар</value>
   </data>
   <data name="Services_View_Create_Cost" xml:space="preserve">
-    <value>Cost</value>
+    <value>Ціна</value>
   </data>
   <data name="Services_View_Create_Create" xml:space="preserve">
     <value>Створити</value>
   </data>
   <data name="Services_View_Create_CreateNewService" xml:space="preserve">
-    <value>Створити новий сервіс</value>
+    <value>Створити нову послугу</value>
   </data>
   <data name="Services_View_Create_IsRegular" xml:space="preserve">
     <value>Регулярний</value>
@@ -151,19 +151,19 @@
     <value>Імя</value>
   </data>
   <data name="Services_View_Create_ValidationSummary" xml:space="preserve">
-    <value>Сервіс не створено . Відкорегуйте помилки та спробуйте ще раз.</value>
+    <value>Послугу не створено . Відкорегуйте помилки та спробуйте ще раз.</value>
   </data>
   <data name="Services_View_Create_Visible" xml:space="preserve">
     <value>Видимий</value>
   </data>
   <data name="Services_View_Edit_EditService" xml:space="preserve">
-    <value>Редагування сервісу</value>
+    <value>Редагування послуги</value>
   </data>
   <data name="Services_View_Edit_Save" xml:space="preserve">
     <value>Зберегти</value>
   </data>
   <data name="Services_View_Edit_ValidationSummary" xml:space="preserve">
-    <value>Сервіс не відредаговано. Відкорегуйте помилки та спробуйте ще раз.</value>
+    <value>Послугу не відредаговано. Відкорегуйте помилки та спробуйте ще раз.</value>
   </data>
   <data name="Services_View_Index_BackToList" xml:space="preserve">
     <value>Назад до списку</value>
@@ -172,7 +172,7 @@
     <value>Клієнт</value>
   </data>
   <data name="Services_View_Index_Cost" xml:space="preserve">
-    <value>Cost</value>
+    <value>Ціна</value>
   </data>
   <data name="Services_View_Index_CreateNew" xml:space="preserve">
     <value>Створити</value>

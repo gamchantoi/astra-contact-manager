@@ -6,16 +6,18 @@
 <%@ Import Namespace="MvcContrib.UI.Grid.ActionSyntax" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="<%= Url.Content("~/media/css/Grid.css")%>" rel="stylesheet" type="text/css" />
-    <script src="<%= Url.Content("~/media/js/jquery.js")%>" type="text/javascript"></script>
     <script src="<%= Url.Content("~/media/js/jquery.dataTables.js")%>" type="text/javascript"></script>
 
     <script language="javascript" type="text/javascript">
         $(document).ready(function() {
-            $('#grid').dataTable({
-                "iDisplayLength": 10,
-                "aaSorting": [[1, "asc"]],
-                "aoColumns": [{ "bSortable": false }, null, null, null, null, { "bSortable": false }, null, null]
-            });
+            if(<%=Model.Clients.Count() %> > 0)
+            {
+                jQuery('#grid').dataTable({
+                    "iDisplayLength": 10,
+                    "aaSorting": [[1, "asc"]],
+                    "aoColumns": [{ "bSortable": false }, null, null, null, null, { "bSortable": false }, null, null]
+                });
+            }
         });
     </script>
 
@@ -27,7 +29,9 @@
            .Columns(column =>
            {
                column.For(c => Html.ActionLink(Html.Resource("Users_Resources, Users_User_Index_Load"), "Load", new { id = c.UserId })).DoNotEncode();
-               column.For(c => Html.ActionLink(c.UserName, "Edit", new { id = c.UserId })).DoNotEncode()
+               //column.For(c => Html.ActionLink(c.UserName, "Edit", new { id = c.UserId })).DoNotEncode()
+               //    .Named(Html.Resource("Users_Resources, Users_User_Index_UserName"));
+               column.For(c => c.UserName + "<span class='ui-icon-click ui-icon ui-icon-person' onclick=\"javascript:window.location='Users/User/Edit/" + c.UserId + "';\"></span>").DoNotEncode()
                    .Named(Html.Resource("Users_Resources, Users_User_Index_UserName"));
                column.For(c => c.Role).Named(Html.Resource("Users_Resources, Users_User_Index_Role"));
                column.For(c => c.FullName).Named(Html.Resource("Users_Resources, Users_User_Index_FullName"));
@@ -43,13 +47,7 @@
     <p>
         <% if (!Model.Deleted)
            {%>
-        <%= Html.ActionLink(Html.Resource("Users_Resources, Users_User_Index_CreateNew"), "Create")%>&nbsp;|&nbsp;
-        <%= Html.ActionLink(Html.Resource("Users_Resources, Users_User_Index_DeleteAllUsers"), "DeleteAll")%>&nbsp;|&nbsp;
-        <%= Html.ActionLink(Html.Resource("Users_Resources, Users_User_Index_Statuses"), "Index", "Status")%>&nbsp;|&nbsp;
-        <%= Html.ActionLink(Html.Resource("Users_Resources, Users_User_Index_Addresses"), "Index", "Address", new { area = "Addresses" }, null)%>
+        <%= Html.ActionLink(Html.Resource("Users_Resources, Users_User_Index_CreateNew"), "Create")%>        
         <%} %>
     </p>
-    <div style="text-align: right;">
-        <%= Html.ActionLink("Clear database", "ClearAllData")%>
-    </div>
 </asp:Content>
