@@ -3,6 +3,7 @@ using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.Users.Interfaces;
 using ContactManager.Users.Services;
+using ContactManager.Users.ViewModels;
 using ContactManager.Web.Helpers;
 
 namespace ContactManager.Web.Controllers
@@ -22,7 +23,13 @@ namespace ContactManager.Web.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            return View(_facade.GetContact(_ctx.CurrentUserId));
+            var client = _facade.ClientService.GetClient(_ctx.CurrentUserId);
+            ClientViewModel viewModel;
+            
+            viewModel = _facade.ClientService.GetViewModel(client);
+            //viewModel.Profiles = pppHelper.GetProfiles(client.ProfileId);
+            //viewModel.Statuses = _statusService.ListStatuses(2);
+            return View(viewModel);
         }
 
         public ActionResult About()

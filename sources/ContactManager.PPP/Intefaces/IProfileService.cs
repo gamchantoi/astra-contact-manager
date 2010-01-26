@@ -10,8 +10,6 @@ namespace ContactManager.PPP.Intefaces
         bool DeleteProfile(int id);
         bool EditProfile(Profile profile);
         Profile GetProfile(int id);        
-        //Profile GetTariff(Profile tariff);
         List<Profile> ListProfiles();
-        //void DeleteUnAssignedTariffs();
     }
 }

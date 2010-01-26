@@ -132,27 +132,10 @@ namespace ContactManager.PPP.Services
             return _repository.GetProfile(name);
         }
 
-        //public Profile GetTariff(Profile tariff)
-        //{
-        //    if(tariff == null)
-        //        return _repository.GetProfile("Default");
-
-        //    var _tariff = _repository.GetProfile(tariff);
-        //    if (_tariff == null)
-        //        _tariff = _repository.CreateProfile(tariff);
-        //    _tariff.TargetAddresses = tariff.TargetAddresses;
-        //    return _tariff;
-        //}
-
         public List<Profile> ListProfiles()
         {
             return _repository.ListProfiles();
         }
-
-        //public void DeleteUnAssignedTariffs()
-        //{
-        //    _validationDictionary.AddError("_FORM", string.Format("Deleted {0} profiles.", _repository.DeleteUnAssignedProfiles()));
-        //}
 
         #endregion
     }

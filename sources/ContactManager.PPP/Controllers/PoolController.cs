@@ -10,7 +10,6 @@ namespace ContactManager.PPP.Controllers
 {
     public class PoolController : Controller
     {
-        private readonly DropDownHelper _ddhelper = new DropDownHelper();
         private readonly IPoolService _service;
         private readonly ISshPoolService _sshService;
 
@@ -35,7 +34,7 @@ namespace ContactManager.PPP.Controllers
 
         public ActionResult Create()
         {
-            ViewData["Pools"] = _ddhelper.GetPools(null);
+            ViewData["Pools"] = _service.ListPools(null);
             return View();
         }
 
@@ -47,13 +46,13 @@ namespace ContactManager.PPP.Controllers
                 _sshService.CreatePool(pool.PoolId);
                 return View("Index", _service.ListPools());
             }
-            ViewData["Pools"] = _ddhelper.GetPools(null);
+            ViewData["Pools"] = _service.ListPools(null);
             return View();
         }
 
         public ActionResult Edit(int id)
         {
-            ViewData["Pools"] = _ddhelper.GetPools(id);
+            ViewData["Pools"] = _service.ListPools(id);
             return View(_service.GetPool(id));
         }
 
@@ -65,7 +64,7 @@ namespace ContactManager.PPP.Controllers
                 _sshService.EditPool(pool.PoolId);
                 return View("Index", _service.ListPools());
             }
-            ViewData["Pools"] = _ddhelper.GetPools(pool.PoolId);
+            ViewData["Pools"] = _service.ListPools(pool.PoolId);
             return View(pool);
         }
 
