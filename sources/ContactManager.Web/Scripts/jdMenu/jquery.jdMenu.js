@@ -21,7 +21,7 @@ $(function() {
 		var settings = $.data( $(ul).parents().andSelf().filter('ul.jd_menu')[0], 'jdMenuSettings' );
 		$('> li', ul)
 			.bind('mouseenter.jdmenu mouseleave.jdmenu', function(evt) {
-				$(this).toggleClass('jdm_hover');
+		    $(this).toggleClass('ui-state-hover');
 				var ul = $('> ul', this);
 				if ( ul.length == 1 ) {
 					clearTimeout( this.$jdTimer );
@@ -62,9 +62,9 @@ $(function() {
 				.bind('focus.jdmenu blur.jdmenu', function(evt) {
 					var p = $(this).parents('li:eq(0)');
 					if ( evt.type == 'focus' ) {
-						p.addClass('jdm_hover');
-					} else { 
-						p.removeClass('jdm_hover');
+					    p.addClass('ui-state-hover');
+					} else {
+					    p.removeClass('ui-state-hover');
 					}
 				})
 				.filter('.accessible')
@@ -90,7 +90,7 @@ $(function() {
 			ul.addClass('jdm_events');
 			addEvents(ul);
 		}
-		li	.addClass('jdm_active')
+		li.addClass('ui-state-active')
 			// Hide any adjacent menus
 			.siblings('li').find('> ul:eq(0):visible')
 				.each(function(){
@@ -120,10 +120,10 @@ $(function() {
 
 		ul	.trigger('jdMenuHide')
 			.parents('li:eq(0)')
-				.removeClass('jdm_active jdm_hover')
+				.removeClass('ui-state-active ui-state-hover')
 			.end()
 				.find('> li')
-				.removeClass('jdm_active jdm_hover');
+				.removeClass('ui-state-active ui-state-hover');
 	}
 	
 	// Public methods

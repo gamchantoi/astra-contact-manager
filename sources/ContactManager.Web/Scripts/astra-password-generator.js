@@ -27,6 +27,6 @@ latterNumber, latterLower, latterUpper, latterOther) {
     }
     return rc;
 }
-function generatePassword(length, outElement) {
-    $(outElement).val(getPassword(length, true, true, true, true, false, true, true, true, false));
+function generatePassword(outElement) {
+    $(outElement).val(getPassword(8, true, true, true, true, false, true, true, true, false));
 }
