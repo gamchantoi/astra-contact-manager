@@ -52,9 +52,9 @@ namespace ContactManager.Users.Models
         public List<ClientViewModel> ListModels()
         {
             var users = new List<ClientViewModel>();
- 
+
             var command = ObjectContext.CreateStoreCommand("astra_Users_List", CommandType.StoredProcedure);
-            
+
             using (command.Connection.CreateConnectionScope())
             using (var dataReader = command.ExecuteReader())
             {
@@ -71,13 +71,13 @@ namespace ContactManager.Users.Models
                                         StatusDisplayName = !dataReader.IsDBNull(9) ? dataReader.GetString(9) : ""
                                     };
 
-                    model.FullName = string.Format("{0} {1} {2}", 
-                        !dataReader.IsDBNull(6) ? dataReader.GetString(6) : "", 
+                    model.FullName = string.Format("{0} {1} {2}",
+                        !dataReader.IsDBNull(6) ? dataReader.GetString(6) : "",
                         !dataReader.IsDBNull(7) ? dataReader.GetString(7) : "",
                         !dataReader.IsDBNull(8) ? dataReader.GetString(8) : "")
                         .Trim();
-
-                    users.Add(model);
+                    if (model.UserName != "System")
+                        users.Add(model);
                 }
             }
 

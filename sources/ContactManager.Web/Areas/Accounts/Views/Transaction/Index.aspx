@@ -11,17 +11,19 @@
 
     <script language="javascript" type="text/javascript">
         $(document).ready(function() {
-            $('#grid').dataTable({
-                "iDisplayLength": 10,
-                "aaSorting": [[1, "asc"]],
-                "aoColumns": [null, null, null, null, null, null, null]
-            });
+            if(<%=Model.Count() %> > 0)
+            {
+                $('#grid').dataTable({
+                    "iDisplayLength": 10,
+                    "aaSorting": [[1, "asc"]],
+                    "aoColumns": [null, null, null, null, null, null, null]
+                });
+            }
         });
     </script>
 
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    
     <div id="container">
         <% Html.Grid(Model)
            .Columns(column =>

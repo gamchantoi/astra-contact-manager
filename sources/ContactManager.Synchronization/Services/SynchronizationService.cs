@@ -158,7 +158,7 @@ namespace ContactManager.Synchronization.Services
                 foreach (var user in sshSecrets)
                 {
                     var user1 = user;
-                    var _user = dbUsers.FirstOrDefault(u => u.UserName.Equals(user1.Name.Trim(), StringComparison.OrdinalIgnoreCase));
+                    var _user = dbUsers.Find(u => u.UserName.Equals(user1.Name.Trim(), StringComparison.OrdinalIgnoreCase));
                     if (_user != null)
                     {
                         user1.UserId = _user.UserId;
