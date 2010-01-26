@@ -10,11 +10,14 @@
 
     <script language="javascript" type="text/javascript">
         $(document).ready(function() {
-            jQuery('#grid').dataTable({
-                "iDisplayLength": 10,
-                "aaSorting": [[1, "asc"]],
-                "aoColumns": [{ "bSortable": false }, null, null, null, null, { "bSortable": false }, null, null]
-            });
+            if(<%=Model.Clients.Count() %> > 0)
+            {
+                jQuery('#grid').dataTable({
+                    "iDisplayLength": 10,
+                    "aaSorting": [[1, "asc"]],
+                    "aoColumns": [{ "bSortable": false }, null, null, null, null, { "bSortable": false }, null, null]
+                });
+            }
         });
     </script>
 
@@ -26,7 +29,9 @@
            .Columns(column =>
            {
                column.For(c => Html.ActionLink(Html.Resource("Users_Resources, Users_User_Index_Load"), "Load", new { id = c.UserId })).DoNotEncode();
-               column.For(c => Html.ActionLink(c.UserName, "Edit", new { id = c.UserId })).DoNotEncode()
+               //column.For(c => Html.ActionLink(c.UserName, "Edit", new { id = c.UserId })).DoNotEncode()
+               //    .Named(Html.Resource("Users_Resources, Users_User_Index_UserName"));
+               column.For(c => c.UserName + "<span class='ui-icon-click ui-icon ui-icon-person' onclick=\"javascript:window.location='Users/User/Edit/" + c.UserId + "';\"></span>").DoNotEncode()
                    .Named(Html.Resource("Users_Resources, Users_User_Index_UserName"));
                column.For(c => c.Role).Named(Html.Resource("Users_Resources, Users_User_Index_Role"));
                column.For(c => c.FullName).Named(Html.Resource("Users_Resources, Users_User_Index_FullName"));

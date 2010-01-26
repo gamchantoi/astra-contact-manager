@@ -102,4 +102,6 @@ table { border: 1px solid #E8EEF4; border-collapse: collapse; }
 table th { background-color: #E8EEF4; border: 1px solid #E8EEF4; padding: 6px 5px; text-align: left; }
 table td { border: 1px solid #E8EEF4; padding: 5px; }
 
-#details-accordion { min-width:450px; }
+#details-accordion { min-width: 450px; }
+
+.ui-icon-click { cursor: pointer; display: inline-block !important; margin-left: 5px; vertical-align:text-bottom; }
