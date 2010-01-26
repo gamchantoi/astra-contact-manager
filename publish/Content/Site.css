@@ -30,7 +30,8 @@ first child of the left and right table columns */
 #title { padding: 4px 0 25px 0; }
 #logindisplay { font-size: 1.1em; display: block; text-align: right; color: #ccc; position: absolute; top: 13px; right: 25px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; }
 #menucontainer { }
-#main { padding: 30px 30px 15px 30px; background: #fff url(Images/bg-main-corner-sprite.png) no-repeat; margin-bottom: 30px; _height: 1px; clear: both; position: relative; width: 890px; }
+/*#main { padding: 30px 30px 15px 30px; background: #fff url(Images/bg-main-corner-sprite.png) no-repeat; margin-bottom: 30px; _height: 1px; clear: both; position: relative; width: 890px; }*/
+#main { padding: 30px 30px 15px 30px; margin-bottom: 30px; _height: 1px; clear: both; position: relative; width: 890px; }
 #footer { clear: both; color: #999; padding: 30px 0 0 0; text-align: center; }
 #bottom-shadow { position: absolute; bottom: 0; left: 0; font-size: .9em; background: #FFF url(Images/bg-main-corner-sprite.png) no-repeat -950px bottom; width: 950px; clear: both; height: 15px; }
 input[type="button"], input[type="submit"], input[type="checkbox"] { cursor: pointer; }
@@ -99,7 +100,7 @@ p.checkbox label { display: inline; float: none; }
 /* TABLES 
 ----------------------------------------------------------*/
 table { border: 1px solid #E8EEF4; border-collapse: collapse; }
-table th { background-color: #E8EEF4; border: 1px solid #E8EEF4; padding: 6px 5px; text-align: left; }
+table th { border: 1px solid #E8EEF4; padding: 6px 5px; text-align: left; }
 table td { border: 1px solid #E8EEF4; padding: 5px; }
 
 #details-accordion { min-width: 450px; }
