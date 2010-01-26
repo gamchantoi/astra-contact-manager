@@ -23,7 +23,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <%= Html.ValidationSummary(Html.Resource("Users_Resources, Users_User_Index_ValidationSummary"))%>
+    <%= Html.ValidationSummary(Html.Resource("Users_Resources, Users_User_Index_ValidationSummary"), new { @class = "ui-state-error ui-corner-all" })%>
     <div id="container">
         <% Html.Grid(Model.Clients)
            .Columns(column =>
@@ -31,7 +31,7 @@
                column.For(c => Html.ActionLink(Html.Resource("Users_Resources, Users_User_Index_Load"), "Load", new { id = c.UserId })).DoNotEncode();
                //column.For(c => Html.ActionLink(c.UserName, "Edit", new { id = c.UserId })).DoNotEncode()
                //    .Named(Html.Resource("Users_Resources, Users_User_Index_UserName"));
-               column.For(c => c.UserName + "<span class='ui-icon-click ui-icon ui-icon-person' onclick=\"javascript:window.location='Users/User/Edit/" + c.UserId + "';\"></span>").DoNotEncode()
+               column.For(c => c.UserName + "<span class='ui-icon-click ui-icon ui-icon-person' onclick=\"javascript:window.location='" + Url.Content("~/Users/User/Edit/") + c.UserId + "';\"></span>").DoNotEncode()
                    .Named(Html.Resource("Users_Resources, Users_User_Index_UserName"));
                column.For(c => c.Role).Named(Html.Resource("Users_Resources, Users_User_Index_Role"));
                column.For(c => c.FullName).Named(Html.Resource("Users_Resources, Users_User_Index_FullName"));
@@ -41,7 +41,7 @@
                column.For(c => c.Balance).Named(Html.Resource("Users_Resources, Users_User_Index_Balance") + Html.Encode(String.Format("({0:F})", Model.TotalBalance)));
                column.For(c => c.StatusDisplayName).Named(Html.Resource("Users_Resources, Users_User_Index_Status"));
 
-           }).Attributes(id => "grid").Render();
+           }).Attributes(id => "grid").HeaderRowAttributes(new Hash(@class => "ui-widget-header")).Render();
         %>
     </div>
     <p>

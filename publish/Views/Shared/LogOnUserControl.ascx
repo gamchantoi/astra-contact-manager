@@ -10,7 +10,7 @@
 <% var host = ctx.GetCurrentHost();%>
 <%
     if (!Page.User.IsInRole(ROLES.client.ToString()))
-    {  %>
+    {  %>    
 <%= Html.Resource("Web_Resources, Site_LogOnUserControl_ActiveServer")%>
 <%= Html.ActionLink(host != null ? host.Address : Html.Resource("Web_Resources, Site_LogOnUserControl_NoServerSelected"), "Index", "Host", new { area = "Hosts" }, null)%>
 <%} %>
