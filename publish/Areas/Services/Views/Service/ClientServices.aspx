@@ -1,12 +1,11 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Services.ViewModels.ClientServicesViewModel>" %>
+<%@ Page Title="" Language="C#" Inherits="System.Web.Mvc.ViewPage<ContactManager.Services.ViewModels.ClientServicesViewModel>" %>
 <%@ Import Namespace="ContactManager.Web.Helpers"%>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <% using (Html.BeginForm())
        {%>
     <%= Html.Hidden("UserId", ViewData["UserId"])%>
     <fieldset>
-        <legend><%= Html.Resource("Services_Resources, Services_View_ClientServices_Services")%></legend>
+        <legend><a><%= Html.Resource("Services_Resources, Services_View_ClientServices_Services")%></a></legend>
         <table>
             <% foreach (var item in Model.ListServices)
                { %>
@@ -20,13 +19,8 @@
             <% } %>
         </table>
         <p>
-            <input type="submit" value=<%= Html.Resource("Services_Resources, Services_View_ClientServices_Save")%> />
+            <input type="submit" value="<%= Html.Resource("Services_Resources, Services_View_ClientServices_Save")%>" />
         </p>
     </fieldset>
     <%} %>
-    <div>
-        <%=Html.ActionLink(Html.Resource("Services_Resources, Services_View_ClientServices_BackToList"), "Index", "User", new {Area="Users"},null) %>
-    </div>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
+

@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Users_Shared_AddressUserControl_Address" xml:space="preserve">
-    <value>Адрес</value>
+    <value>Адреса</value>
   </data>
   <data name="Users_Shared_ContractUserControl_Comment" xml:space="preserve">
     <value>Коментар</value>
   </data>
   <data name="Users_Shared_ContractUserControl_Contract" xml:space="preserve">
-    <value>Контракт</value>
+    <value>Угода</value>
   </data>
   <data name="Users_Shared_ContractUserControl_ContractNumber" xml:space="preserve">
-    <value>Номер контракту</value>
+    <value>Номер угоди</value>
   </data>
   <data name="Users_Shared_ContractUserControl_CreateDate" xml:space="preserve">
     <value>Дата створення</value>
@@ -154,7 +154,7 @@
     <value>Паспорт:</value>
   </data>
   <data name="Users_Shared_DetailsUserControl_PassportComment" xml:space="preserve">
-    <value>Коментарі до паспорта:</value>
+    <value>Коментар до паспорта:</value>
   </data>
   <data name="Users_Shared_DetailsUserControl_PassportDeliveryDate" xml:space="preserve">
     <value>Дата видачі паспорта:</value>
@@ -193,7 +193,7 @@
     <value>Імя</value>
   </data>
   <data name="Users_Shared_ServicesUserControl_Services" xml:space="preserve">
-    <value>Сервіс</value>
+    <value>Послуги</value>
   </data>
   <data name="Users_User_Edit_BackToList" xml:space="preserve">
     <value>Назад до списку</value>
@@ -237,9 +237,6 @@
   <data name="Users_User_Edit_ValidationSummary" xml:space="preserve">
     <value>Невдале редагування . Виправте помилки та спробуйте ще раз</value>
   </data>
-  <data name="Users_User_Index_Addresses" xml:space="preserve">
-    <value>Адреси</value>
-  </data>
   <data name="Users_User_Index_Balance" xml:space="preserve">
     <value>Баланс</value>
   </data>
@@ -262,7 +259,7 @@
     <value>Роль</value>
   </data>
   <data name="Users_User_Index_Services" xml:space="preserve">
-    <value>Сервіси</value>
+    <value>Послуги</value>
   </data>
   <data name="Users_User_Index_Status" xml:space="preserve">
     <value>Статус</value>
@@ -338,5 +335,26 @@
   </data>
   <data name="Users_User_Create_Generate" xml:space="preserve">
     <value>Згенерувати</value>
+  </data>
+  <data name="Users_Shared_PPPSecretUserControl_Disabled" xml:space="preserve">
+    <value>Вимкнений</value>
+  </data>
+  <data name="Users_Shared_PPPSecretUserControl_Profile" xml:space="preserve">
+    <value>Профіль</value>
+  </data>
+  <data name="Users_User_Edit_Add" xml:space="preserve">
+    <value>Додати</value>
+  </data>
+  <data name="Users_User_Edit_Edit" xml:space="preserve">
+    <value>Редагувати</value>
+  </data>
+  <data name="Users_Detail_Edit_FirstName" xml:space="preserve">
+    <value>Ім'я:</value>
+  </data>
+  <data name="Users_Detail_Edit_LastName" xml:space="preserve">
+    <value>Прізвище:</value>
+  </data>
+  <data name="Users_Detail_Edit_MiddleName" xml:space="preserve">
+    <value>Побатькові:</value>
   </data>
 </root>
