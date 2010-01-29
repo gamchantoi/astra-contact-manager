@@ -74,7 +74,7 @@ namespace ContactManager.SSH.Models
             }
             catch (Exception)
             {
-                Disconnect();
+                if (AutoMode) Disconnect();
                 throw ;
             }
             

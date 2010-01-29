@@ -4,14 +4,16 @@
 <fieldset class="fields">
     <%if (Model.Address != null)
       {%>
-    <legend><a href="#" onclick="ShowDialog('../../../Addresses/Address/Edit/<%= Model.UserId %>');">
-        <%= Html.Resource("Users_Resources, Users_User_Edit_Edit")%></a></legend>
+    <legend>
+        <%=Html.JSLink(Html.Resource("Users_Resources, Users_User_Edit_Edit"), "ShowDialog", Url.Content("~/Addresses/Address/Edit/") + Model.UserId)%>
+    </legend>
     <%=Html.BuildItem(Html.Resource("Users_Resources, Users_Shared_AddressUserControl_Address")+": ", 
         string.Format("м.{0} вул.{1} дім {2} кв.{3}", Model.Address.City, Model.Address.Street.Name,  Model.Address.Building, Model.Address.Room ))%>
     <%}%>
     <%else
         {%>
-    <legend><a href="#" onclick="ShowDialog('../../../Addresses/Address/Create/<%= Model.UserId %>');">
-        <%= Html.Resource("Users_Resources, Users_User_Edit_Add") %></a></legend>
+    <legend>
+        <%=Html.JSLink(Html.Resource("Users_Resources, Users_User_Edit_Add"), "ShowDialog", Url.Content("~/Addresses/Address/Create/") + Model.UserId)%>
+    </legend>
     <%}%>
 </fieldset>

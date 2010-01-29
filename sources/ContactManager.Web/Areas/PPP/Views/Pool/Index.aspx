@@ -1,51 +1,45 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ContactManager.Models.Pool>>" %>
-<%@ Import Namespace="ContactManager.Web.Helpers"%>
 
+<%@ Import Namespace="MvcContrib.UI.Grid" %>
+<%@ Import Namespace="ContactManager.Web.Helpers" %>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function() {
+            if(<%=Model.Count() %> > 0)
+            {
+                $('#grid').dataTable({
+                    "iDisplayLength": 10,
+                    "aaSorting": [[1, "asc"]],
+                    "aoColumns": [{ "bSortable": false }, null, null, null]
+                });
+            }
+            $("#grid thead").addClass("ui-widget-header");
+        });
+    </script>
+
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <%= Html.ValidationSummary(Html.Resource("PPP_Resources, PPP_View_Pool_Index_Delete"))%>
-    <table class="data-table" cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th>
-                    <%= Html.Resource("PPP_Resources, PPP_View_Pool_Index_Delete")%>
-                </th>
-                <th>
-                    <%= Html.Resource("PPP_Resources, PPP_View_Pool_Index_Name")%>
-                </th>
-                <th>
-                    <%= Html.Resource("PPP_Resources, PPP_View_Pool_Index_Addresses")%>
-                </th>
-                <th>
-                    <%= Html.Resource("PPP_Resources, PPP_View_Pool_Index_NextPool")%>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-        <% foreach (var item in Model)
-           { %>
-        
-            <tr>
-                <td>
-                    <a href='<%= Url.Action("Delete", new {id=item.PoolId}) %>'><%= Html.Resource("PPP_Resources, PPP_View_Pool_Index_Delete")%></a>
-                </td>
-                <td>
-                    <a href='<%= Url.Action("Edit", new {id=item.PoolId}) %>'>
-                        <%= Html.Encode(item.Name) %></a>
-                </td>
-                <td>
-                    <%= Html.Encode(item.Addresses) %>
-                </td>
-                <td>
-                    <%= Html.Encode(item.NextPoolName) %>
-                </td>
-            </tr>
-            <% } %>
-        </tbody>
-    </table>
+    <%= Html.ValidationSummary(Html.Resource("PPP_Resources, PPP_View_Pool_Index_ValidationSummary"), new { @class = "ui-state-error ui-corner-all" })%>
+    <div id="container">
+        <% Html.Grid(Model)
+           .Columns(column =>
+           {
+               column.For(
+                   c =>
+                       Html.JSIconLink("Delete", "window.location", Url.Content("~/PPP/Pool/Delete/") + c.PoolId, "ui-icon-trash")).DoNotEncode();
+               column.For(c => c.Name + Html.JSIconLink("Edit", "ShowDialog", Url.Content("~/PPP/Pool/Edit/") + c.PoolId, "ui-icon-wrench")).DoNotEncode()
+                   .Named(Html.Resource("PPP_Resources, PPP_View_Pool_Index_Name"));
+               column.For(c => c.Addresses).Named(Html.Resource("PPP_Resources, PPP_View_Pool_Index_Addresses"));
+               column.For(c => c.NextPoolName).Named(Html.Resource("PPP_Resources, PPP_View_Pool_Index_NextPool"));
+
+           }).Attributes(id => "grid").Render();
+        %>
+    </div>
+    <div>
     <p>
-        <%= Html.ActionLink(Html.Resource("PPP_Resources, PPP_View_Pool_Index_CreateNew"), "Create") %> | 
+        <%= Html.ActionLink(Html.Resource("PPP_Resources, PPP_View_Pool_Index_CreateNew"), "Create") %>
+        |
         <%= Html.ActionLink(Html.Resource("PPP_Resources, PPP_View_Pool_Index_DeleteAll"), "DeleteAll")%>
     </p>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+    </div>
 </asp:Content>

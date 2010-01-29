@@ -1,63 +1,46 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ContactManager.Models.Profile>>" %>
-<%@ Import Namespace="ContactManager.Web.Helpers"%>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <%= Html.ValidationSummary(Html.Resource("PPP_Resources, PPP_View_Profile_Index_ValidationSummary"))%>
-    <table class="data-table" cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th>
-                    <%= Html.Resource("PPP_Resources, PPP_View_Profile_Index_Delete")%>
-                </th>
-                <th>
-                    <%= Html.Resource("PPP_Resources, PPP_View_Profile_Index_Name")%>
-                </th>
-                <th>
-                    <%= Html.Resource("PPP_Resources, PPP_View_Profile_Index_LocalAddress")%>
-                </th>
-                <th>
-                    <%= Html.Resource("PPP_Resources, PPP_View_Profile_Index_Pool")%>
-                </th>
-                <th>
-                    <%= Html.Resource("PPP_Resources, PPP_View_Profile_Index_RateLimit")%>
-                </th>
-                <th>
-                    <%= Html.Resource("PPP_Resources, PPP_View_Profile_Index_Cost")%>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-        <% foreach (var item in Model)
-           { %>
-            <tr>
-                <td>
-                    <a href='<%= Url.Action("Delete", new {id=item.ProfileId}) %>'>
-                        <%= Html.Resource("PPP_Resources, PPP_View_Profile_Index_Delete")%></a>
-                </td>
-                <td>
-                    <a href='<%= Url.Action("Edit", new {id=item.ProfileId}) %>'>
-                        <%= Html.Encode(item.DisplayName) %></a>
-                </td>
-                <td>
-                    <%= Html.Encode(item.LocalAddress) %>
-                </td>
-                <td>
-                    <%= Html.Encode(item.PoolName) %>
-                </td>
-                <td>
-                    <%= Html.Encode(item.RateLimit) %>
-                </td>
-                <td>
-                    <%= Html.Encode(String.Format("{0:F}", item.Cost)) %>
-                </td>
-            </tr>        
-        <% } %>
-        </tbody>
-    </table>
-    <p>
-        <%= Html.ActionLink(Html.Resource("PPP_Resources, PPP_View_Profile_Index_CreateNew"), "Create") %>    |
-        <%= Html.ActionLink(Html.Resource("PPP_Resources, PPP_View_Profile_Index_DeleteProfiles"), "DeleteUnused")%>
-    </p>
-</asp:Content>
+<%@ Import Namespace="MvcContrib.UI.Grid" %>
+<%@ Import Namespace="ContactManager.Web.Helpers" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function() {
+            if(<%=Model.Count() %> > 0)
+            {
+                $('#grid').dataTable({
+                    "iDisplayLength": 10,
+                    "aaSorting": [[1, "asc"]],
+                    "aoColumns": [{ "bSortable": false }, null, null, null, null, null]
+                });
+            }
+            $("#grid thead").addClass("ui-widget-header");
+        });
+    </script>
+
+</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <%= Html.ValidationSummary(Html.Resource("PPP_Resources, PPP_View_Profile_Index_ValidationSummary"), new { @class = "ui-state-error ui-corner-all" })%>
+    <div id="container">
+        <% Html.Grid(Model)
+           .Columns(column =>
+           {
+               column.For(
+                   c =>
+                       Html.JSIconLink("Delete", "window.location", Url.Content("~/PPP/Profile/Delete/") + c.ProfileId, "ui-icon-trash")).DoNotEncode();
+               column.For(c => c.Name + Html.JSIconLink("Edit", "ShowDialog", Url.Content("~/PPP/Profile/Edit/") + c.PoolId, "ui-icon-wrench")).DoNotEncode()
+                   .Named(Html.Resource("PPP_Resources, PPP_View_Pool_Index_Name"));
+               column.For(c => c.LocalAddress).Named(Html.Resource("PPP_Resources, PPP_View_Pool_Index_Addresses"));
+               column.For(c => c.PoolName).Named(Html.Resource("PPP_Resources, PPP_View_Pool_Index_Addresses"));
+               column.For(c => c.RateLimit).Named(Html.Resource("PPP_Resources, PPP_View_Pool_Index_Addresses"));
+               column.For(c => String.Format("{0:F}", c.Cost)).Named(Html.Resource("PPP_Resources, PPP_View_Pool_Index_NextPool"));
+
+           }).Attributes(id => "grid").Render();
+        %>
+    </div>
+    <p>
+        <%= Html.ActionLink(Html.Resource("PPP_Resources, PPP_View_Profile_Index_CreateNew"), "Create") %>
+        <%--|
+        <%= Html.ActionLink(Html.Resource("PPP_Resources, PPP_View_Profile_Index_DeleteProfiles"), "DeleteUnused")%>--%>
+    </p>
 </asp:Content>
