@@ -73,6 +73,7 @@ namespace ContactManager.Users.Controllers
             client.LoadContractReferences();
             client.LoadClientServices();
             client.LoadAddressReferences();
+            //TempData["Message"] = id;
             return View(FillViewData(client));
         }
 

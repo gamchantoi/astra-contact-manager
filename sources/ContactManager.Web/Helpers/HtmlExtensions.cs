@@ -43,12 +43,53 @@ namespace ContactManager.Web.Helpers
                     args);
         }
 
-        public static string JSLink(this HtmlHelper html,string text, string function, string args)
+        public static string JSLink(this HtmlHelper html, string text, string function, string args)
         {
             var builder = new TagBuilder("a");
             builder.Attributes.Add("onclick", string.Format("{0}('{1}');", function, args));
             builder.Attributes.Add("href", "#");
             builder.SetInnerText(text);
+            return builder.ToString();
+        }
+
+        public static string JSIconLink(this HtmlHelper html, string alt, string function, string args, string cssClass)
+        {
+            var builder = new TagBuilder("span");
+            builder.AddCssClass("ui-icon-click ui-icon " + cssClass);
+            if (function.Equals("window.location"))
+                builder.Attributes.Add("onclick", string.Format("{0} = '{1}';", function, args));
+            else
+                builder.Attributes.Add("onclick", string.Format("{0}('{1}');", function, args));
+            //builder.SetInnerText(text);
+            return builder.ToString();
+        }
+
+        public static string Message(this HtmlHelper html, string text, string elemetId)
+        {
+            if (string.IsNullOrEmpty(text))
+                return string.Empty;
+
+            var builder = new TagBuilder("div");
+            builder.AddCssClass("ui-widget ui-message");
+            builder.Attributes.Add("id", elemetId);
+
+            var div = new TagBuilder("div");
+            var div2 = new TagBuilder("div");
+            var p = new TagBuilder("p");
+
+            var info = new TagBuilder("span");
+            var close = new TagBuilder("span");
+            close.Attributes.Add("onclick", "javascript:$('#" + elemetId + "').slideUp();");
+
+            info.AddCssClass("ui-icon ui-icon-info");
+            div.AddCssClass("ui-state-highlight ui-corner-all");
+            div2.AddCssClass("container");
+            close.AddCssClass("ui-icon-click ui-icon ui-icon-close");
+
+            p.InnerHtml = info + text;
+            div2.InnerHtml = p.ToString();
+            div.InnerHtml = div2.ToString() + close;
+            builder.InnerHtml = div.ToString();
             return builder.ToString();
         }
     }

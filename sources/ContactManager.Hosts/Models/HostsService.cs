@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections;
-using System.Linq;
-using System.Web;
 using ContactManager.Hosts.Interfaces;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
@@ -12,7 +9,7 @@ namespace ContactManager.Hosts.Models
     public class HostsService : IHostsService
     {
         private readonly IValidationDictionary _validationDictionary;
-        private IHostsRepository _repository;
+        private readonly IHostsRepository _repository;
 
         public HostsService(IValidationDictionary validationDictionary)
             : this(validationDictionary, new AstraEntities())
