@@ -5,9 +5,6 @@
 <%@ Import Namespace="MvcContrib.UI.Grid" %>
 <%@ Import Namespace="MvcContrib.UI.Grid.ActionSyntax" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-    <link href="<%= Url.Content("~/media/css/Grid.css")%>" rel="stylesheet" type="text/css" />
-
-    <script src="<%= Url.Content("~/media/js/jquery.dataTables.js")%>" type="text/javascript"></script>
 
     <script language="javascript" type="text/javascript">
         $(document).ready(function() {
@@ -19,6 +16,7 @@
                     "aoColumns": [null, null, null, null, null, null, null]
                 });
             }
+            $("#grid thead").addClass("ui-widget-header");
         });
     </script>
 
