@@ -48,7 +48,7 @@
             </p>
     </fieldset>
     <p>
-        <input type="submit" value="Save" />
+        <input type="submit" value=<%=Html.Resource("Users_Resources, Users_User_Edit_Save")%> />
     </p>
     <% } %>
 

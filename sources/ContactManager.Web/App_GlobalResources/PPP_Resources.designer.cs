@@ -608,5 +608,68 @@ namespace Resources {
                 return ResourceManager.GetString("PPP_View_Profile_Index_ValidationSummary", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CallerId.
+        /// </summary>
+        internal static string PPP_View_Secret_Edit_CallerId {
+            get {
+                return ResourceManager.GetString("PPP_View_Secret_Edit_CallerId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LimitBytesIn.
+        /// </summary>
+        internal static string PPP_View_Secret_Edit_LimitBytesIn {
+            get {
+                return ResourceManager.GetString("PPP_View_Secret_Edit_LimitBytesIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LimitBytesOut.
+        /// </summary>
+        internal static string PPP_View_Secret_Edit_LimitBytesOut {
+            get {
+                return ResourceManager.GetString("PPP_View_Secret_Edit_LimitBytesOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LocalAddress.
+        /// </summary>
+        internal static string PPP_View_Secret_Edit_LocalAddress {
+            get {
+                return ResourceManager.GetString("PPP_View_Secret_Edit_LocalAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RemoteAddress.
+        /// </summary>
+        internal static string PPP_View_Secret_Edit_RemoteAddress {
+            get {
+                return ResourceManager.GetString("PPP_View_Secret_Edit_RemoteAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Routes.
+        /// </summary>
+        internal static string PPP_View_Secret_Edit_Routes {
+            get {
+                return ResourceManager.GetString("PPP_View_Secret_Edit_Routes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service.
+        /// </summary>
+        internal static string PPP_View_Secret_Edit_Service {
+            get {
+                return ResourceManager.GetString("PPP_View_Secret_Edit_Service", resourceCulture);
+            }
+        }
     }
 }
