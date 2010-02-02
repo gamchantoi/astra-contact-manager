@@ -37,7 +37,6 @@ namespace ContactManager.Users.Models
             detail.LastUpdatedDate = DateTime.Now;
             ObjectContext.ApplyPropertyChanges(det.EntityKey.EntitySetName, detail);
             ObjectContext.SaveChanges();
-
         }
     }
 }

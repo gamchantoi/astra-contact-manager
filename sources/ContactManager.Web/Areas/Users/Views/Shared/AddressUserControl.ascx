@@ -13,7 +13,7 @@
     <%else
         {%>
     <legend>
-        <%=Html.JSLink(Html.Resource("Users_Resources, Users_User_Edit_Add"), "ShowDialog", System.Security.Policy.Url.Content("~/Addresses/Address/Create/") + Model.UserId)%>
+        <%=Html.JSLink(Html.Resource("Users_Resources, Users_User_Edit_Add"), "ShowDialog", Url.Content("~/Addresses/Address/Create/") + Model.UserId)%>
     </legend>
     <%}%>
 </fieldset>

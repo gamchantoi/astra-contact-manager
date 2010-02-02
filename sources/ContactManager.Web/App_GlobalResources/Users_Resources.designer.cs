@@ -124,6 +124,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create.
+        /// </summary>
+        internal static string Users_Shared_ContractUserControl_Create {
+            get {
+                return ResourceManager.GetString("Users_Shared_ContractUserControl_Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CreateDate.
         /// </summary>
         internal static string Users_Shared_ContractUserControl_CreateDate {
@@ -133,11 +142,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        internal static string Users_Shared_ContractUserControl_Edit {
+            get {
+                return ResourceManager.GetString("Users_Shared_ContractUserControl_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ExpiredDate.
         /// </summary>
         internal static string Users_Shared_ContractUserControl_ExpiredDate {
             get {
                 return ResourceManager.GetString("Users_Shared_ContractUserControl_ExpiredDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string Users_Shared_ContractUserControl_Save {
+            get {
+                return ResourceManager.GetString("Users_Shared_ContractUserControl_Save", resourceCulture);
             }
         }
         

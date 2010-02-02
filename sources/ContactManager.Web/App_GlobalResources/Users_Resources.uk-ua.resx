@@ -357,4 +357,13 @@
   <data name="Users_Detail_Edit_MiddleName" xml:space="preserve">
     <value>Побатькові:</value>
   </data>
+  <data name="Users_Shared_ContractUserControl_Create" xml:space="preserve">
+    <value>Створити</value>
+  </data>
+  <data name="Users_Shared_ContractUserControl_Edit" xml:space="preserve">
+    <value>Редагувати</value>
+  </data>
+  <data name="Users_Shared_ContractUserControl_Save" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
 </root>
