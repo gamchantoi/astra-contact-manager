@@ -165,10 +165,12 @@
     <Compile Include="Helpers\MenuItemHelper.cs" />
     <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="Interfaces\IFormsAuthentication.cs" />
+    <Compile Include="Models\AssemblyVersion.cs" />
     <Compile Include="Models\EntitySettingsRepository.cs" />
     <Compile Include="Models\FormsAuthenticationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\SettingsService.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -548,6 +550,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
+      <UserProperties BuildVersion_StartDate="2010/2/3" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_UpdateAssemblyVersion="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

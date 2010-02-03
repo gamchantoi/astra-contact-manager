@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using ContactManager.Models.Validation;
 using ContactManager.Web.Models;
 
-namespace ContactManager.Web.Services
+namespace ContactManager.Web.Models
 {
-     
-
     public class SettingsService
     {
-        private IValidationDictionary _validationDictionary;
-        private EntitySettingsRepository _entitySettingsRepository;
+        private readonly IValidationDictionary _validationDictionary;
+        private readonly EntitySettingsRepository _entitySettingsRepository;
 
         public SettingsService(IValidationDictionary validationDictionary)
         {

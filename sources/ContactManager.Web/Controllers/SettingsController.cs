@@ -1,6 +1,8 @@
 using System.Web.Mvc;
+using ContactManager.Models;
 using ContactManager.Models.Validation;
-using ContactManager.Web.Services;
+using ContactManager.Web.Models;
+using ContactManager.Web.ViewModels;
 
 namespace ContactManager.Web.Controllers
 {
@@ -17,7 +19,13 @@ namespace ContactManager.Web.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var ctx = new CurrentContext();
+            var model = new SettingsViewModel
+                            {
+                                BuildVersion = AssemblyVersion.Version,
+                                ServerName = ctx.GetCurrentHost().Address
+                            };
+            return View(model);
         }
 
         public ActionResult ClearDB()
@@ -26,6 +34,11 @@ namespace ContactManager.Web.Controllers
                 return RedirectToAction("Index");
             return View("Index");
         }
+
+        //public ActionResult GetBuildData()
+        //{
+
+        //}
 
     }
 }
