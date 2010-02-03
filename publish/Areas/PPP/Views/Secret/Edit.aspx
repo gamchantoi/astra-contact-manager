@@ -1,4 +1,5 @@
 <%@ Page Title="" Language="C#" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.PPPSecret>" %>
+<%@ Import Namespace="ContactManager.Web.Helpers"%>
 
     <% using (Html.BeginForm()) {%>
     <%= Html.HiddenFor(s => s.UserId) %>
@@ -21,22 +22,22 @@
                 <%= Html.ValidationMessageFor(model => model.Comment) %>
             </p>--%>
             <p>
-                <%= Html.LabelFor(model => model.Service) %>
+                <%= Html.Label( Html.Resource("PPP_Resources, PPP_View_Secret_Edit_Service")) %>
                 <%= Html.TextBoxFor(model => model.Service) %>
                 <%= Html.ValidationMessageFor(model => model.Service) %>
             </p>
             <p>
-                <%= Html.LabelFor(model => model.CallerId) %>
+                <%= Html.Label( Html.Resource("PPP_Resources, PPP_View_Secret_Edit_CallerId")) %>
                 <%= Html.TextBoxFor(model => model.CallerId) %>
                 <%= Html.ValidationMessageFor(model => model.CallerId) %>
             </p>
             <p>
-                <%= Html.LabelFor(model => model.LocalAddress) %>
+                <%= Html.Label( Html.Resource("PPP_Resources, PPP_View_Secret_Edit_LocalAddress")) %>
                 <%= Html.TextBoxFor(model => model.LocalAddress) %>
                 <%= Html.ValidationMessageFor(model => model.LocalAddress) %>
             </p>
             <p>
-                <%= Html.LabelFor(model => model.RemoteAddress) %>
+                <%= Html.Label( Html.Resource("PPP_Resources, PPP_View_Secret_Edit_RemoteAddress")) %>
                 <%= Html.TextBoxFor(model => model.RemoteAddress) %>
                 <%= Html.ValidationMessageFor(model => model.RemoteAddress) %>
             </p>
@@ -51,17 +52,17 @@
                 <%= Html.ValidationMessageFor(model => model.MACAddress) %>
             </p>--%>
             <p>
-                <%= Html.LabelFor(model => model.Routes) %>
+                <%= Html.Label( Html.Resource("PPP_Resources, PPP_View_Secret_Edit_Routes")) %>
                 <%= Html.TextBoxFor(model => model.Routes) %>
                 <%= Html.ValidationMessageFor(model => model.Routes) %>
             </p>
             <p>
-                <%= Html.LabelFor(model => model.LimitBytesIn) %>
+                <%= Html.Label( Html.Resource("PPP_Resources, PPP_View_Secret_Edit_LimitBytesIn")) %>
                 <%= Html.TextBoxFor(model => model.LimitBytesIn) %>
                 <%= Html.ValidationMessageFor(model => model.LimitBytesIn) %>
             </p>
             <p>
-                <%= Html.LabelFor(model => model.LimitBytesOut) %>
+                <%= Html.Label( Html.Resource("PPP_Resources, PPP_View_Secret_Edit_LimitBytesOut")) %>
                 <%= Html.TextBoxFor(model => model.LimitBytesOut) %>
                 <%= Html.ValidationMessageFor(model => model.LimitBytesOut) %>
             </p>
@@ -71,7 +72,7 @@
                 <%= Html.ValidationMessageFor(model => model.Disabled) %>
             </p>--%>
             <p>
-                <input type="submit" value="Save" />
+                <input type="submit" value=<%= Html.Resource("PPP_Resources, PPP_View_Profile_Edit_Save") %> />
             </p>
         </fieldset>
 

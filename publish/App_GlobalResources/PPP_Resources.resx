@@ -300,4 +300,25 @@
   <data name="PPP_View_Profile_Index_ValidationSummary" xml:space="preserve">
     <value>Operation was unsuccessful. Please view details and try again.</value>
   </data>
+  <data name="PPP_View_Secret_Edit_CallerId" xml:space="preserve">
+    <value>CallerId</value>
+  </data>
+  <data name="PPP_View_Secret_Edit_LimitBytesIn" xml:space="preserve">
+    <value>LimitBytesIn</value>
+  </data>
+  <data name="PPP_View_Secret_Edit_LimitBytesOut" xml:space="preserve">
+    <value>LimitBytesOut</value>
+  </data>
+  <data name="PPP_View_Secret_Edit_LocalAddress" xml:space="preserve">
+    <value>LocalAddress</value>
+  </data>
+  <data name="PPP_View_Secret_Edit_RemoteAddress" xml:space="preserve">
+    <value>RemoteAddress</value>
+  </data>
+  <data name="PPP_View_Secret_Edit_Routes" xml:space="preserve">
+    <value>Routes</value>
+  </data>
+  <data name="PPP_View_Secret_Edit_Service" xml:space="preserve">
+    <value>Service</value>
+  </data>
 </root>
