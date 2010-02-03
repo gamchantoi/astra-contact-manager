@@ -288,11 +288,11 @@
     <Content Include="Areas\Messages\Views\Message\Delete.aspx" />
     <Content Include="Areas\Messages\Views\Message\Details.aspx" />
     <Content Include="Areas\Messages\Web.config" />
-    <Content Include="Areas\Users\Views\Shared\AddressUserControl.ascx" />
-    <Content Include="Areas\Users\Views\Shared\ContractUserControl.ascx" />
-    <Content Include="Areas\Users\Views\Shared\DetailsUserControl.ascx" />
-    <Content Include="Areas\Users\Views\Shared\PPPSecretUserControl.ascx" />
-    <Content Include="Areas\Users\Views\Shared\ServicesUserControl.ascx" />
+    <Content Include="Views\Shared\AddressUserControl.ascx" />
+    <Content Include="Views\Shared\ContractUserControl.ascx" />
+    <Content Include="Views\Shared\DetailsUserControl.ascx" />
+    <Content Include="Views\Shared\PPPSecretUserControl.ascx" />
+    <Content Include="Views\Shared\ServicesUserControl.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\Web_Resources.uk-ua.resx">
@@ -508,6 +508,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Users\Views\Shared\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -550,7 +551,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties BuildVersion_StartDate="2010/2/3" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_UpdateAssemblyVersion="True" />
+      <UserProperties BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_StartDate="2010/2/3" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

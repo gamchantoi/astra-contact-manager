@@ -6,7 +6,7 @@
    {%>
 <%= Html.Hidden("UserId", ViewData["UserId"]) %>
     <fieldset class="fields">
-        <legend>Details</legend>
+        <legend><%=Html.Resource("Users_Resources, Users_Shared_DetailsUserControl_Details")%></legend>
         <p>
             <label for="FirstName">
                 <%=Html.Resource("Users_Resources, Users_Detail_Edit_FirstName")%></label>
