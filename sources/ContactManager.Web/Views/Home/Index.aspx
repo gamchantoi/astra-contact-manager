@@ -2,7 +2,7 @@
 
 <%@ Import Namespace="ContactManager.Web.Helpers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <table class="data-table">
+    <table class="container">
         <tr>
             <td>
                 <fieldset class="fields">
@@ -39,8 +39,42 @@
         </tr>
         <tr>
             <td>
+                <div>
+                    <h3>
+                        <a href="#">
+                            <%=Html.Resource("Users_Resources, Users_Shared_DetailsUserControl_Details")%></a></h3>
+                    <div>
+                        <%Html.RenderPartial("DetailsUserControl", Model); %></div>
+                </div>
             </td>
             <td>
+                <div>
+                    <h3>
+                        <a href="#">
+                            <%=Html.Resource("Users_Resources, Users_Shared_ServicesUserControl_Services")%></a></h3>
+                    <div>
+                        <%Html.RenderPartial("ServicesUserControl", Model); %></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    <h3>
+                        <a href="#">
+                            <%=Html.Resource("Users_Resources, Users_Shared_AddressUserControl_Address")%></a></h3>
+                    <div>
+                        <%Html.RenderPartial("AddressUserControl", Model); %></div>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <h3>
+                        <a href="#">
+                            <%=Html.Resource("Users_Resources, Users_Shared_ContractUserControl_Contract")%></a></h3>
+                    <div>
+                        <%Html.RenderPartial("ContractUserControl", Model); %></div>
+                </div>
             </td>
         </tr>
     </table>
