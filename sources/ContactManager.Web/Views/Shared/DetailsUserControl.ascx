@@ -6,7 +6,8 @@
     <%if (Model.ClientDetails != null)
       {%>
     <legend>
-        <%=Html.JSLink(Html.Resource("Users_Resources, Users_User_Edit_Edit"), "ShowDialog", Url.Content("~/Users/Detail/Edit/") + Model.UserId)%>
+        <%=Html.SecureLink(Html.Resource("Users_Resources, Users_Shared_DetailsUserControl_Details")
+                        , Html.JSLink(Html.Resource("Users_Resources, Users_User_Edit_Edit"), "ShowDialog", Url.Content("~/Users/Detail/Edit/") + Model.UserId))%>
     </legend>
     <%if (!Model.Role.Equals(ROLES.admin.ToString()) && Model.PPPSecret != null)
       {%>
@@ -20,7 +21,8 @@
       else
       {%>
     <legend>
-        <%=Html.JSLink(Html.Resource("Users_Resources, Users_User_Edit_Add"), "ShowDialog",  Url.Content("~/Users/Detail/Create/") + Model.UserId)%>
+        <%=Html.SecureLink(Html.Resource("Users_Resources, Users_Shared_DetailsUserControl_Details")
+                        , Html.JSLink(Html.Resource("Users_Resources, Users_User_Edit_Add"), "ShowDialog", Url.Content("~/Users/Detail/Create/") + Model.UserId))%>
     </legend>
     <%} %>
 </fieldset>

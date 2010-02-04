@@ -56,6 +56,9 @@ namespace ContactManager.PPP.Models
         public Profile GetProfile(int id)
         {
             var profile = ObjectContext.ProfileSet.Where(p => p.ProfileId == id).FirstOrDefault();
+            
+            if (profile == null) return null;
+
             profile.IPPoolReference.Load();
             if (profile.IPPoolReference.Value != null)
             {

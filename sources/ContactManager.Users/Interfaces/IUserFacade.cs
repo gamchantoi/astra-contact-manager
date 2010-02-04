@@ -6,7 +6,7 @@ using ContactManager.Users.ViewModels;
 
 namespace ContactManager.Users.Interfaces
 {
-    public interface IUserFasade
+    public interface IUserFacade
     {
         ILoadMoneyService LoadMoneyService { get; }
         IUserService UserService { get; }

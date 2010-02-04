@@ -18,7 +18,7 @@ namespace ContactManager.Users.Controllers
     public class UserController : Controller
     {
         private readonly IValidationDictionary validationDictionary;
-        private readonly IUserFasade _facade;
+        private readonly IUserFacade _facade;
         private readonly ISshSecretService _sshSecretService;
         private readonly CurrentContext _ctx;
         private readonly IStatusService _statusService;
@@ -27,7 +27,7 @@ namespace ContactManager.Users.Controllers
         {
             _ctx = new CurrentContext();
             validationDictionary = new ModelStateWrapper(ModelState);
-            _facade = new UserFasade(validationDictionary);
+            _facade = new UserFacade(validationDictionary);
             _sshSecretService = new SshSecretService(validationDictionary, true);
             _statusService = new StatusService(validationDictionary);
         }

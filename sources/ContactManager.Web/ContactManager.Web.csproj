@@ -342,13 +342,6 @@
       <LastGenOutput>Messages_Resources.uk-ua.designer.cs</LastGenOutput>
     </Content>
     <Content Include="media\css\Grid.css" />
-    <Content Include="media\images\back_disabled.jpg" />
-    <Content Include="media\images\back_enabled.jpg" />
-    <Content Include="media\images\forward_disabled.jpg" />
-    <Content Include="media\images\forward_enabled.jpg" />
-    <Content Include="media\images\sort_asc.jpg" />
-    <Content Include="media\images\sort_both.jpg" />
-    <Content Include="media\images\sort_desc.jpg" />
     <Content Include="media\js\jquery.dataTables.js" />
     <Content Include="media\js\jquery.dataTables.min.js" />
     <Content Include="media\js\jquery.js" />
@@ -453,6 +446,13 @@
     <Content Include="Content\Images\gradient.png" />
     <Content Include="Content\jdMenu.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="media\images\back_disabled.png" />
+    <Content Include="media\images\back_enabled.png" />
+    <Content Include="media\images\forward_disabled.png" />
+    <Content Include="media\images\forward_enabled.png" />
+    <Content Include="media\images\sort_asc.png" />
+    <Content Include="media\images\sort_both.png" />
+    <Content Include="media\images\sort_desc.png" />
     <Content Include="Scripts\jdMenu\jquery.bgiframe.js" />
     <Content Include="Scripts\jdMenu\jquery.dimensions.js" />
     <Content Include="Scripts\jdMenu\jquery.jdMenu.js" />
@@ -552,7 +552,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_StartDate="2010/2/3" />
+      <UserProperties BuildVersion_StartDate="2010/2/3" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_UpdateAssemblyVersion="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

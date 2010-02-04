@@ -22,7 +22,7 @@ namespace ContactManager.Services.Models
         //private readonly IClientService _clientService;
         private readonly IServiceService _serviceService;
         //private readonly IAccountTransactionService _transactionService;
-        private readonly IUserFasade _userFasade;
+        private readonly IUserFacade _userFasade;
 
         #region Constructors
         public ClientInServicesService(IValidationDictionary validationDictionary)
@@ -39,7 +39,7 @@ namespace ContactManager.Services.Models
             _serviceService = new ServiceService(validationDictionary);
             //_transactionService = new AccountTransactionService(validationDictionary);
             _userHelper = new UserHelper();
-            _userFasade = new UserFasade(_validationDictionary);
+            _userFasade = new UserFacade(_validationDictionary);
         }
         #endregion
 
@@ -119,7 +119,7 @@ namespace ContactManager.Services.Models
                         continue;      
                     if (!service.IsRegular)
                     {
-                        client.Load = -service.Cost;
+                        //client.Load = -service.Cost;
                         _userFasade.ClientService.EditClient(client);
                         //_transactionService.CreateTransaction(client, service, new Guid(_accountService.GetCurrentUser().ProviderUserKey.ToString()));
                         _repository.RemoveClientFromService(activity);

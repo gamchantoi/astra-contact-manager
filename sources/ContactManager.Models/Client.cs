@@ -23,8 +23,6 @@ namespace ContactManager.Models
         public string Password { get; set; }
         public string Email { get; set; }
         public int ProfileId { get; set; }
-        public decimal Load { get; set; }
-
 
         public List<Service> Services { get; set; }
 

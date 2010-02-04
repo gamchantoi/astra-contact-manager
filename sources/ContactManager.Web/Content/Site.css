@@ -82,6 +82,8 @@ table.data-table tr.Disabled { width: 100%; border: 5px solid #f9fbfc; border-to
 table.data-table tr.admin { font-style: italic; font-weight: bold; }
 table.data-table tr.client { }
 
+table.container td { width: 50%; vertical-align:top; }
+table.container { width: 100%; }
 table.grid tr.odd { background: white; }
 
 /* action cells */
@@ -111,5 +113,5 @@ table td { border: 1px solid #E3E3E3; padding: 5px; }
 .ui-icon-click { cursor: pointer; display: inline-block !important; margin-left: 5px; vertical-align: text-bottom; }
 .ui-message { overflow: hidden; position: fixed; width: 950px; z-index: 10; }
 .ui-message span { float: left; margin-right: .3em; }
-.ui-message .container { float: left; width: 910px; padding-left:10px;}
-.ui-message div { overflow:hidden; }
+.ui-message .container { float: left; width: 910px; padding-left: 10px; }
+.ui-message div { overflow: hidden; }

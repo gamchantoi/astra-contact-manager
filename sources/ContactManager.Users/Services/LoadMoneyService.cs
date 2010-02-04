@@ -11,16 +11,16 @@ namespace ContactManager.Users.Services
     public class LoadMoneyService : ILoadMoneyService
     {
         private readonly IValidationDictionary _validationDictionary;
-        private readonly IUserFasade _userFacade;
+        private readonly IUserFacade _userFacade;
         private readonly ITransactionService _transactionService;
 
         #region Constructors
         public LoadMoneyService(IValidationDictionary validationDictionary)
-            :this(validationDictionary, new UserFasade(validationDictionary))
+            :this(validationDictionary, new UserFacade(validationDictionary))
         {
         }
 
-        public LoadMoneyService(IValidationDictionary validationDictionary, IUserFasade facade)
+        public LoadMoneyService(IValidationDictionary validationDictionary, IUserFacade facade)
         {
             _validationDictionary = validationDictionary;
             _userFacade = facade;

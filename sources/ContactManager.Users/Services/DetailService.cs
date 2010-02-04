@@ -11,13 +11,13 @@ namespace ContactManager.Users.Services
     {
         private readonly IValidationDictionary _validationDictionary;
         private readonly EntityDetailRepository _entityDetailRepository;
-        private readonly IUserFasade _userFasade;
+        private readonly IUserFacade _userFasade;
 
         public DetailService(IValidationDictionary validationDictionary)
         {
             _validationDictionary = validationDictionary;
             _entityDetailRepository = new EntityDetailRepository();
-            _userFasade = new UserFasade(_validationDictionary);
+            _userFasade = new UserFacade(_validationDictionary);
         }
         
         public List<ClientDetail> ListDetails()

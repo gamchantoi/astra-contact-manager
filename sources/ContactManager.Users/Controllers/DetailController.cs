@@ -11,13 +11,13 @@ namespace ContactManager.Users.Controllers
     {
         private readonly DetailService _detailService;
         private readonly IValidationDictionary _validationDictionary;
-        private readonly IUserFasade _userFasade;
+        private readonly IUserFacade _userFasade;
 
         public DetailController()
         {
             _validationDictionary = new ModelStateWrapper(ModelState);
             _detailService = new DetailService(_validationDictionary);
-            _userFasade = new UserFasade(_validationDictionary);
+            _userFasade = new UserFacade(_validationDictionary);
         }
 
         public ActionResult Index(Guid id)

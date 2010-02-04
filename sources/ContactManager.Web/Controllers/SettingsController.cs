@@ -17,6 +17,7 @@ namespace ContactManager.Web.Controllers
             _settingsServices = new SettingsService(validationDictionary);
         }
 
+        [Authorize(Roles = "admin")]
         public ActionResult Index()
         {
             var ctx = new CurrentContext();
@@ -28,17 +29,12 @@ namespace ContactManager.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "admin")]
         public ActionResult ClearDB()
         {
             if(_settingsServices.ClearDB())
                 return RedirectToAction("Index");
             return View("Index");
         }
-
-        //public ActionResult GetBuildData()
-        //{
-
-        //}
-
     }
 }

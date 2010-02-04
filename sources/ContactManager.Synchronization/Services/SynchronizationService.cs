@@ -15,7 +15,7 @@ namespace ContactManager.Synchronization.Services
     public class SynchronizationService : ISynchronizationService
     {
         private readonly IValidationDictionary _validationDictionary;
-        private readonly IUserFasade _userFacade;
+        private readonly IUserFacade _userFacade;
         private readonly PPPFactory _pppFactory;
 
         #region Constructors
@@ -23,7 +23,7 @@ namespace ContactManager.Synchronization.Services
         public SynchronizationService(IValidationDictionary validationDictionary)
         {
             _validationDictionary = validationDictionary;
-            _userFacade = new UserFasade(validationDictionary);
+            _userFacade = new UserFacade(validationDictionary);
             _pppFactory = new PPPFactory(validationDictionary) {SSHAutoMode = false};
         }
 
