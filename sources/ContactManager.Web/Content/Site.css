@@ -93,7 +93,7 @@ table.data-table th.actions { font-weight: normal; color: #4d8aa2; text-align: c
 
 /* FORMS  
 ----------------------------------------------------------*/
-fieldset { padding: 0 20px 20px 20px; border: 1px solid #e3e3e3; }
+fieldset { padding: 0 20px 20px 20px; border: 1px solid #e3e3e3; min-height : 150px; }
 fieldset fieldset { float: left; min-width: 350px; }
 
 legend { font-size: 1.6em; padding: 0 10px 20px 10px; }
