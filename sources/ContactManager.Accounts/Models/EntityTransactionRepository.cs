@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Objects;
 using System.Linq;
 using ContactManager.Accounts.Interfaces;
+using ContactManager.Accounts.ViewModels;
 using ContactManager.Models;
 using ContactManager.Models.ViewModels;
+using System.Web.Mvc;
 
 namespace ContactManager.Accounts.Models
 {
@@ -124,6 +127,16 @@ namespace ContactManager.Accounts.Models
             //}
         }
 
+        public IQueryable<int> GetTransactionYears()
+        {
+            return ObjectContext.Transactions.Select(t => t.Date.Year).Distinct();
+        }
+
+        public IQueryable<int> GetTransactionMonths()
+        {
+            return ObjectContext.Transactions.Select(t => t.Date.Month).Distinct();
+        }
+
         //private AccountTransactionMethod CreateSystemTransactionMethod(string name, string comment)
         //{
         //    var method = new AccountTransactionMethod
@@ -135,5 +148,22 @@ namespace ContactManager.Accounts.Models
         //    _entities.SaveChanges();
         //    return method;
         //}
+
+
+        public List<Transaction> ListTransaction(Filter filter)
+        {
+            //var filterYear = filter.Years.SelectedValue
+
+            var list = ObjectContext.Transactions.Where(y => y.Date.Year == filter.Years).ToList();
+            list = list.Where(m => m.Date.Month == filter.Months).ToList();
+            foreach (var item in list)
+            {
+                item.ClientReference.Load();
+                item.Client = item.ClientReference.Value;
+                item.UserReference.Load();
+                item.User = item.UserReference.Value;
+            }
+            return list;
+        }
     }
 }

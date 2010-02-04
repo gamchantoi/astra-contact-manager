@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using ContactManager.Accounts.ViewModels;
 using ContactManager.Models;
 
 namespace ContactManager.Accounts.Interfaces
@@ -10,7 +12,11 @@ namespace ContactManager.Accounts.Interfaces
         List<Transaction> ListTransaction(Guid userId);
         bool CreateTransaction(Transaction transaction);
         bool DeleteTransactions(Guid userId);
-
+        IQueryable<int> GetTransactionYears();
         void ProcessClientPayment();
+
+        List<Transaction> ListTransaction(Filter filter);
+
+        IQueryable<int> GetTransactionMonths();
     }
 }

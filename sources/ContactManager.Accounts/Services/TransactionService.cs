@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.Mvc;
 using ContactManager.Accounts.Interfaces;
 using ContactManager.Accounts.Models;
+using ContactManager.Accounts.ViewModels;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.Models.ViewModels;
@@ -66,5 +68,33 @@ namespace ContactManager.Accounts.Services
         }
 
         #endregion
+
+        public SelectList GetTransactionYears()
+        {
+            var list = _repository.GetTransactionYears();
+            return new SelectList(list, null);
+        }
+
+        public SelectList GetTransactionMonths()
+        {
+            var list = _repository.GetTransactionMonths();
+            return new SelectList(list, null);
+        }
+
+        public Filter GetFilter()
+        {
+            var filter = new Filter();
+            filter.YearsList = GetTransactionYears();
+            //--------------------/
+            filter.MonthsList = GetTransactionMonths();
+            filter.PaymentMethodsList = PaymentMethodService.SelectListPaymentMethods(0);
+            return filter;
+        }
+        
+        public List<Transaction> ListTransactions(Filter filter)
+        {
+
+            return _repository.ListTransaction(filter);
+        }
     }
 }
