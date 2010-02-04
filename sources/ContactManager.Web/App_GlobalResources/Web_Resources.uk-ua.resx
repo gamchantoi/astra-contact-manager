@@ -214,10 +214,10 @@
     <value>Тариф:</value>
   </data>
   <data name="Site_View_Account_Index_UserData" xml:space="preserve">
-    <value>Інформація про користувача</value>
+    <value>Основна</value>
   </data>
   <data name="Site_View_Account_Index_UserName" xml:space="preserve">
-    <value>Імя користувача:</value>
+    <value>Логін:</value>
   </data>
   <data name="Site_View_Account_LogOn_AccountInformation" xml:space="preserve">
     <value>Дані користувача</value>
