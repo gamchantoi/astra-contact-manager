@@ -89,7 +89,7 @@
     <Compile Include="Helpers\DropDownHelper.cs" />
     <Compile Include="Interfaces\IClientRepository.cs" />
     <Compile Include="Interfaces\IClientService.cs" />
-    <Compile Include="Interfaces\IUserFasade.cs" />
+    <Compile Include="Interfaces\IUserFacade.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Models\EntityContractRepository.cs" />
     <Compile Include="Models\EntityDetailRepository.cs" />
@@ -98,7 +98,7 @@
     <Compile Include="Services\DetailService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\ClientService.cs" />
-    <Compile Include="Services\UserFasade.cs" />
+    <Compile Include="Services\UserFacade.cs" />
     <Compile Include="Models\EntityClientRepository.cs" />
     <Compile Include="Models\EntityStatusRepository.cs" />
     <Compile Include="Interfaces\IStatusService.cs" />

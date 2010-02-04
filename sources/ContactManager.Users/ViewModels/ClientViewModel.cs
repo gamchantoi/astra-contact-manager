@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using ContactManager.Models;
+using ContactManager.Models.Enums;
 
 namespace ContactManager.Users.ViewModels
 {
@@ -14,6 +15,7 @@ namespace ContactManager.Users.ViewModels
         public string Role { get; set; }
 
         public string ProfileName { get; set; }
+        public string ProfileDisplayName { get; set; }
         public int ProfileId { get; set; }
         
         public string StatusDisplayName { get; set; }
@@ -34,5 +36,10 @@ namespace ContactManager.Users.ViewModels
         public SelectList Roles { get; set; }
         public SelectList Profiles { get; set; }
         public SelectList Statuses { get; set; }
+
+        public bool IsAdmin()
+        {
+            return Role.Equals(ROLES.admin.ToString());
+        }
     }
 }

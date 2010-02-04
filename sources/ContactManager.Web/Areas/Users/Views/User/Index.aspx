@@ -8,7 +8,7 @@
 
     <script language="javascript" type="text/javascript">
         $(document).ready(function() {
-            if(<%=Model.Clients.Count() %> > 0)
+            if('<%=Model.Clients.Count() %>' > 0)
             {
                 jQuery('#grid').dataTable({
                     "iDisplayLength": 10,
@@ -27,18 +27,17 @@
         <% Html.Grid(Model.Clients)
            .Columns(column =>
            {
-               //column.For(c => Html.ActionLink(Html.Resource("Users_Resources, Users_User_Index_Load"), "Load", new { id = c.UserId })).DoNotEncode();
                column.For(
                    c =>
                        Html.JSIconLink("Load", "ShowDialog", Url.Content("~/Users/User/Load/") + c.UserId, "ui-icon-circle-plus")).DoNotEncode();
-               column.For(c => c.UserName + "<span class='ui-icon-click ui-icon ui-icon-person' onclick=\"javascript:window.location='" + Url.Content("~/Users/User/Edit/") + c.UserId + "';\"></span>").DoNotEncode()
+               column.For(c => c.UserName + Html.JSIconLink("Edit", "window.location", Url.Content("~/Users/User/Edit/") + c.UserId, "ui-icon-person")).DoNotEncode()
                    .Named(Html.Resource("Users_Resources, Users_User_Index_UserName"));
                column.For(c => c.Role).Named(Html.Resource("Users_Resources, Users_User_Index_Role"));
                column.For(c => c.FullName).Named(Html.Resource("Users_Resources, Users_User_Index_FullName"));
                column.For(c => c.ProfileName).Named(Html.Resource("Users_Resources, Users_User_Index_ProfileName"));
                column.For(c => Html.ActionLink(Html.Resource("Users_Resources, Users_User_Index_View"), "ClientServices", "Service", new { area = "Services", id = c.UserId }, null)).DoNotEncode()
                    .Named(Html.Resource("Users_Resources, Users_User_Index_Services"));
-               column.For(c => c.Balance).Named(Html.Resource("Users_Resources, Users_User_Index_Balance") + Html.Encode(String.Format("({0:F})", Model.TotalBalance)));
+               column.For(c => c.Balance.ToString("C")).Named(string.Format("{0} ({1})", Html.Resource("Users_Resources, Users_User_Index_Balance"), Html.Encode(Model.TotalBalance.ToString("C"))));
                column.For(c => c.StatusDisplayName).Named(Html.Resource("Users_Resources, Users_User_Index_Status"));
 
            }).Attributes(id => "grid").Render();

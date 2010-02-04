@@ -4,7 +4,7 @@
 <%@ Import Namespace="ContactManager.Web.Helpers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <%= Html.ValidationSummary("Error")%>
-    <table style="width: 100%">
+    <table class="container">
         <tr>
             <td>
                 <fieldset class="fields">

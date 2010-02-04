@@ -13,12 +13,12 @@ namespace ContactManager.Web.Models
     public class EntitySettingsRepository:RepositoryBase<User>
     {
         private IValidationDictionary _validationDictionary;
-        private IUserFasade _fasade;
+        private IUserFacade _fasade;
 
         public EntitySettingsRepository(IValidationDictionary validationDictionary)
         {
             _validationDictionary = validationDictionary;
-            _fasade = new UserFasade(validationDictionary);
+            _fasade = new UserFacade(validationDictionary);
         }
 
         public void ClearDB()

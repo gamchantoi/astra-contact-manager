@@ -19,10 +19,10 @@ namespace ContactManager.Web.Controllers
         {
         }
 
-        public AccountController(IFormsAuthentication formsAuth, IUserFasade fasade)
+        public AccountController(IFormsAuthentication formsAuth, IUserFacade fasade)
         {
             FormsAuth = formsAuth ?? new FormsAuthenticationService();
-            var _fasade = fasade ?? new UserFasade(new ModelStateWrapper(ModelState));
+            var _fasade = fasade ?? new UserFacade(new ModelStateWrapper(ModelState));
             MembershipService = _fasade.UserService;
         }
 

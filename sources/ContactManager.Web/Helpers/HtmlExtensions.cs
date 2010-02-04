@@ -1,7 +1,10 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Web.Compilation;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
+using ContactManager.Models;
+using ContactManager.Models.Enums;
 
 namespace ContactManager.Web.Helpers
 {
@@ -62,6 +65,14 @@ namespace ContactManager.Web.Helpers
                 builder.Attributes.Add("onclick", string.Format("{0}('{1}');", function, args));
             //builder.SetInnerText(text);
             return builder.ToString();
+        }
+
+        public static string SecureLink(this HtmlHelper html, string label, string link)
+        {
+            var ctx = new CurrentContext();
+            var user = ctx.GetUser(ctx.CurrentUserId);
+
+            return user.IsInRole(ROLES.admin) ? link : label;
         }
 
         public static string Message(this HtmlHelper html, string text, string elemetId)

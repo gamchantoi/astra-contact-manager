@@ -13,13 +13,13 @@ namespace ContactManager.Users.Services
     {
         private EntityContractRepository _contractRepository;
         private IValidationDictionary _validationDictionary;
-        private readonly IUserFasade _userFasade;
+        private readonly IUserFacade _userFasade;
 
         public ContractService(IValidationDictionary validationDictionary)
         {
             _validationDictionary = validationDictionary;
             _contractRepository = new EntityContractRepository();
-            _userFasade = new UserFasade(_validationDictionary);
+            _userFasade = new UserFacade(_validationDictionary);
         }
 
         public List<Contract> ListContracts()
