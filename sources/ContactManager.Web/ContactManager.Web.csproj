@@ -436,6 +436,7 @@
     <Content Include="Areas\Synchronizations\Views\Sync\Index.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Accounts\Views\Shared\TransactionsFilterUserControl.ascx" />
     <Content Include="Areas\Addresses\Views\Street\Create.aspx" />
     <Content Include="Areas\Addresses\Views\Street\Edit.aspx" />
     <Content Include="Areas\Addresses\Views\Street\Index.aspx" />

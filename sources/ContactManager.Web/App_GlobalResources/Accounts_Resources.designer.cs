@@ -61,6 +61,42 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Months.
+        /// </summary>
+        internal static string Accounts_Shared_TransactionsFilterUserControl_Months {
+            get {
+                return ResourceManager.GetString("Accounts_Shared_TransactionsFilterUserControl_Months", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PaymentMethods.
+        /// </summary>
+        internal static string Accounts_Shared_TransactionsFilterUserControl_PaymentMethods {
+            get {
+                return ResourceManager.GetString("Accounts_Shared_TransactionsFilterUserControl_PaymentMethods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select.
+        /// </summary>
+        internal static string Accounts_Shared_TransactionsFilterUserControl_Select {
+            get {
+                return ResourceManager.GetString("Accounts_Shared_TransactionsFilterUserControl_Select", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Years.
+        /// </summary>
+        internal static string Accounts_Shared_TransactionsFilterUserControl_Years {
+            get {
+                return ResourceManager.GetString("Accounts_Shared_TransactionsFilterUserControl_Years", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Balance.
         /// </summary>
         internal static string Accounts_View_Index_Balance {

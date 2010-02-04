@@ -28,10 +28,10 @@
 
 /* Pagination nested */
 .paginate_disabled_previous, .paginate_enabled_previous, .paginate_disabled_next, .paginate_enabled_next { height: 19px; width: 19px; margin-left: 3px; float: left; }
-.paginate_disabled_previous { background-image: url('../images/back_disabled.jpg'); }
-.paginate_enabled_previous { background-image: url('../images/back_enabled.jpg'); cursor:pointer;}
-.paginate_disabled_next { background-image: url('../images/forward_disabled.jpg'); }
-.paginate_enabled_next { background-image: url('../images/forward_enabled.jpg'); cursor:pointer; }
+.paginate_disabled_previous { background-image: url('../images/back_disabled.png'); }
+.paginate_enabled_previous { background-image: url('../images/back_enabled.png'); cursor:pointer;}
+.paginate_disabled_next { background-image: url('../images/forward_disabled.png'); }
+.paginate_enabled_next { background-image: url('../images/forward_enabled.png'); cursor:pointer; }
 
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -49,9 +49,9 @@ table.display td.center { text-align: center; }
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * DataTables sorting
  */
-.sorting_asc { background: url('../images/sort_asc.jpg') no-repeat center right; cursor:pointer; }
-.sorting_desc { background: url('../images/sort_desc.jpg') no-repeat center right; cursor:pointer; }
-.sorting { background: url('../images/sort_both.jpg') no-repeat center right; cursor:pointer; }
+.sorting_asc { background: url('../images/sort_asc.png') no-repeat center right; cursor:pointer; }
+.sorting_desc { background: url('../images/sort_desc.png') no-repeat center right; cursor:pointer; }
+.sorting { background: url('../images/sort_both.png') no-repeat center right; cursor:pointer; }
 
 
 

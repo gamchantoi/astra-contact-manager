@@ -1,4 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ContactManager.Accounts.ViewModels.TransactionVewModel>>" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Accounts.ViewModels.TransactionViewModel>" %>
 
 <%@ Import Namespace="ContactManager.Web.Helpers" %>
 <%@ Import Namespace="MvcContrib" %>
@@ -8,7 +8,7 @@
 
     <script language="javascript" type="text/javascript">
         $(document).ready(function() {
-            if(<%=Model.Count() %> > 0)
+            if(<%=Model.Transactions.Count() %> > 0)
             {
                 $('#grid').dataTable({
                     "iDisplayLength": 10,
@@ -22,8 +22,10 @@
 
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+                        <%Html.RenderPartial("TransactionsFilterUserControl", Model); %>
     <div id="container">
-        <% Html.Grid(Model)
+        <% Html.Grid(Model.Transactions)
            .Columns(column =>
            {
                column.For(t => t.ClientUserName).Named(Html.Resource("Accounts_Resources, Accounts_View_Index_ClientName"));

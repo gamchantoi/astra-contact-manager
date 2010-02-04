@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Accounts_Shared_TransactionsFilterUserControl_Months" xml:space="preserve">
+    <value>Місяці</value>
+  </data>
+  <data name="Accounts_Shared_TransactionsFilterUserControl_PaymentMethods" xml:space="preserve">
+    <value>Методи оплат</value>
+  </data>
+  <data name="Accounts_Shared_TransactionsFilterUserControl_Select" xml:space="preserve">
+    <value>Вибірка</value>
+  </data>
+  <data name="Accounts_Shared_TransactionsFilterUserControl_Years" xml:space="preserve">
+    <value>Роки</value>
+  </data>
   <data name="Accounts_View_Index_Balance" xml:space="preserve">
     <value>Баланс</value>
   </data>
