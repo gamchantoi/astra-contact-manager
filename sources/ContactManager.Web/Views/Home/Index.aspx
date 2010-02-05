@@ -12,6 +12,7 @@
                     <%=Html.BuildItem(Html.Resource("Web_Resources, Site_View_Account_Index_Email"), Model.Email)%>
                     <%=Html.BuildItem(Html.Resource("Web_Resources, Site_View_Account_Index_Status"), Model.StatusDisplayName)%>
                     <%=Html.BuildItem(Html.Resource("Web_Resources, Site_View_Account_Index_Balance"), Model.Balance.ToString("C"))%>
+                    <%=Html.BuildItem(Html.Resource("Users_Resources, Users_User_Edit_Credit") + ":", Model.Credit.ToString("C"))%>
                     <%=Html.BuildItem(Html.Resource("Web_Resources, Site_View_Account_Index_TariffName"), Model.ProfileDisplayName)%>
                 </fieldset>
             </td>
