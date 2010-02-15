@@ -385,6 +385,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to List Street.
+        /// </summary>
+        internal static string Addresses_View_Index_ListStreet {
+            get {
+                return ResourceManager.GetString("Addresses_View_Index_ListStreet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Room.
         /// </summary>
         internal static string Addresses_View_Index_Room {
