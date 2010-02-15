@@ -225,6 +225,9 @@
   <data name="Addresses_View_Index_Edit" xml:space="preserve">
     <value>Редагувати</value>
   </data>
+  <data name="Addresses_View_Index_ListStreet" xml:space="preserve">
+    <value>Список вулиць</value>
+  </data>
   <data name="Addresses_View_Index_Room" xml:space="preserve">
     <value>Квартира</value>
   </data>

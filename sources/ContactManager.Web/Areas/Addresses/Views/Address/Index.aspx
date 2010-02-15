@@ -19,7 +19,8 @@
         %>
     </div>
     <p>
-        <%= Html.JSLink(Html.Resource("Addresses_Resources, Addresses_View_Index_CreateNewStreet"), "ShowDialog", Url.Content("~/Addresses/Street/Create/"))%>
+        <%= Html.JSLink(Html.Resource("Addresses_Resources, Addresses_View_Index_CreateNewStreet"), "ShowDialog", Url.Content("~/Addresses/Street/Create/"))%> | 
+        <%= Html.JSLink(Html.Resource("Addresses_Resources, Addresses_View_Index_ListStreet"), "ShowDialog", Url.Content("~/Addresses/Street/Index/"))%>
     </p>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
