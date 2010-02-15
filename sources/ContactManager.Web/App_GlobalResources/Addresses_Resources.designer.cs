@@ -358,6 +358,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create New Street.
+        /// </summary>
+        internal static string Addresses_View_Index_CreateNewStreet {
+            get {
+                return ResourceManager.GetString("Addresses_View_Index_CreateNewStreet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Details.
         /// </summary>
         internal static string Addresses_View_Index_Details {

@@ -28,6 +28,7 @@ namespace ContactManager.Addresses.Models
         public Address Edit(Address address)
         {
             var _address = GetAddress(address.AddressId);
+            
             var _street =
                 (from m in ObjectContext.Streets where m.StreetId == address.Street.StreetId select m).FirstOrDefault();
             _address.Street = _street;

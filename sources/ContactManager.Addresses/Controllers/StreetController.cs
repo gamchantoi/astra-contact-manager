@@ -44,7 +44,7 @@ namespace ContactManager.Addresses.Controllers
         public ActionResult Create(Street street)
         {
             if (_streetService.CreateStreet(street))
-                return View("Index");
+                return RedirectToAction("Index", "Address");
             return View(street);
         }
 

@@ -216,6 +216,9 @@
   <data name="Addresses_View_Index_CreateNew" xml:space="preserve">
     <value>Створити</value>
   </data>
+  <data name="Addresses_View_Index_CreateNewStreet" xml:space="preserve">
+    <value>Створити вулицю</value>
+  </data>
   <data name="Addresses_View_Index_Details" xml:space="preserve">
     <value>Деталі</value>
   </data>

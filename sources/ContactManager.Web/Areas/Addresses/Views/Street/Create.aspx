@@ -1,11 +1,7 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Street>" %>
+<%@ Page Title="" Language="C#"  Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Street>" %>
 <%@ Import Namespace="ContactManager.Web.Helpers"%>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
-
     <% using (Html.BeginForm()) {%>
-
         <fieldset>
             <legend><%= Html.Resource("Addresses_Resources, Addresses_Street_Create_CreateStreet")%></legend>
 <%--            <p>
@@ -30,12 +26,4 @@
 
     <% } %>
 
-    <div>
-        <%=Html.ActionLink(Html.Resource("Addresses_Resources, Addresses_Street_Create_BackToList"), "Index") %>
-    </div>
-
-</asp:Content>
-
-<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
 

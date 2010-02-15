@@ -46,6 +46,22 @@ namespace ContactManager.Addresses.Controllers
             return View(address);
         }
 
+        public ActionResult EditForAddress(int id)
+        {
+            var address = _addressService.GetAddress(id);
+            FillViewData(address);
+            return View(address);
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult EditForAddress(Address address)
+        {
+            if (_addressService.EditAddress(address))
+                return RedirectToAction("Index");
+            FillViewData(address);
+            return View(address);
+        }
+
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Edit(Address address)
         {
