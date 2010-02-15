@@ -1,55 +1,40 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ContactManager.Models.Address>>" %>
-<%@ Import Namespace="ContactManager.Web.Helpers"%>
 
+<%@ Import Namespace="ContactManager.Web.Helpers" %>
+<%@ Import Namespace="MvcContrib" %>
+<%@ Import Namespace="MvcContrib.UI.Grid" %>
+<%@ Import Namespace="MvcContrib.UI.Grid.ActionSyntax" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <table class="data-table" cellpadding="0" cellspacing="0">
-        <tr>
-            <th></th>
-            <th>
-                <%= Html.Resource("Addresses_Resources, Addresses_View_Index_City")%>
-            </th>
-            <th>
-                <%= Html.Resource("Addresses_Resources, Addresses_View_Index_Building")%>
-            </th>
-            <th>
-                <%= Html.Resource("Addresses_Resources, Addresses_View_Index_Details")%>
-            </th>
-            <th>
-                <%= Html.Resource("Addresses_Resources, Addresses_View_Index_Room")%>
-            </th>
-        </tr>
+    <div id="container">
+        <% Html.Grid(Model)
+           .Columns(column =>
+           {
+               column.For(c => c.City + Html.JSIconLink("Edit", "ShowDialog", Url.Content("~/Addresses/Address/EditForAddress/") + c.AddressId, "ui-icon-wrench")).DoNotEncode()
+                   .Named(Html.Resource("Addresses_Resources, Addresses_View_Index_City"));
+               column.For(c => c.Building).Named(Html.Resource("Addresses_Resources, Addresses_View_Index_Building"));
+               column.For(c => c.Details).Named(Html.Resource("Addresses_Resources, Addresses_View_Index_Details"));
+               column.For(c => c.Room).Named(Html.Resource("Addresses_Resources, Addresses_View_Index_Room"));
 
-    <% foreach (var item in Model) { %>
-    
-        <tr>
-            <td>
-                <%= Html.ActionLink(Html.Resource("Addresses_Resources, Addresses_View_Index_Edit"), "Edit", new { id = item.AddressId })%> |
-                <%= Html.ActionLink(Html.Resource("Addresses_Resources, Addresses_View_Index_Details"), "Details", new { id = item.AddressId })%>
-            </td>
-            <td>
-                <%= Html.Encode(item.City) %>
-            </td>
-            <td>
-                <%= Html.Encode(item.Building) %>
-            </td>
-            <td>
-                <%= Html.Encode(item.Details) %>
-            </td>
-            <td>
-                <%= Html.Encode(item.Room) %>
-            </td>
-        </tr>
-    
-    <% } %>
-
-    </table>
-
+           }).Attributes(id => "grid").Render();
+        %>
+    </div>
     <p>
-        <%= Html.ActionLink(Html.Resource("Addresses_Resources, Addresses_View_Index_CreateNew"), "Create")%>
+        <%= Html.JSLink(Html.Resource("Addresses_Resources, Addresses_View_Index_CreateNewStreet"), "ShowDialog", Url.Content("~/Addresses/Street/Create/"))%>
     </p>
-
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
 
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function() {
+            if ('<%=Model.Count() %>' > 0) {
+                jQuery('#grid').dataTable({
+                    "iDisplayLength": 10,
+                    "aaSorting": [[1, "asc"]],
+                    "aoColumns": [null, null, null, null]
+                });
+            }
+            $("#grid thead").addClass("ui-widget-header");
+        });
+    </script>
+
+</asp:Content>

@@ -430,6 +430,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Accounts\Views\Shared\TransactionsFilterUserControl.ascx" />
+    <Content Include="Areas\Addresses\Views\Address\EditForAddress.aspx" />
     <Content Include="Areas\Addresses\Views\Street\Create.aspx" />
     <Content Include="Areas\Addresses\Views\Street\Edit.aspx" />
     <Content Include="Areas\Addresses\Views\Street\Index.aspx" />
@@ -552,7 +553,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties BuildVersion_StartDate="2010/2/3" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_UpdateAssemblyVersion="True" />
+      <UserProperties BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_StartDate="2010/2/3" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

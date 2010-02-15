@@ -72,7 +72,7 @@
                 <%= Html.ValidationMessageFor(model => model.Disabled) %>
             </p>--%>
             <p>
-                <input type="submit" value=<%= Html.Resource("PPP_Resources, PPP_View_Profile_Edit_Save") %>/>
+                <input type="submit" value="<%= Html.Resource("PPP_Resources, PPP_View_Profile_Edit_Save") %>" />
             </p>
         </fieldset>
 

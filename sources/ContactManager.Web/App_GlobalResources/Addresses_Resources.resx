@@ -216,6 +216,9 @@
   <data name="Addresses_View_Index_CreateNew" xml:space="preserve">
     <value>Create New</value>
   </data>
+  <data name="Addresses_View_Index_CreateNewStreet" xml:space="preserve">
+    <value>Create New Street</value>
+  </data>
   <data name="Addresses_View_Index_Details" xml:space="preserve">
     <value>Details</value>
   </data>
