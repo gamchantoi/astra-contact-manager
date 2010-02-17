@@ -37,9 +37,15 @@ namespace ContactManager.Addresses.Services
 
         public SelectList ListStreets(int? selectedId)
         {
+            var streets = ListStreets();
+            streets.Add(new Street
+                            {
+                                StreetId = 0,
+                                Name = "Add new"
+                            });
             if (selectedId.HasValue)
-                return new SelectList(ListStreets(), "StreetId", "Name", selectedId.Value);
-            return new SelectList(ListStreets(), "StreetId", "Name");
+                return new SelectList(streets, "StreetId", "Name", selectedId.Value);
+            return new SelectList(streets, "StreetId", "Name");
         }
 
         public Street GetStreet(int id)

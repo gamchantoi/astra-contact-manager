@@ -2,7 +2,7 @@
 
 <%@ Import Namespace="ContactManager.Web.Helpers" %>
 <% using (Html.BeginForm("Create", "Address"))
-       {%>
+   {%>
 <%= Html.Hidden("UserId", ViewData["UserId"])%>
 <fieldset class="fields">
     <legend>
@@ -19,10 +19,8 @@
         <%= Html.DropDownList("Street.StreetId", (SelectList)ViewData["Streets"])%>
         <%= Html.ValidationMessage("Street.StreetId", "*")%>
         <%= Html.ActionLink(Html.Resource("Addresses_Resources, Addresses_View_Create_AddNew"), "Create", "Street")%>
-        <%-- --%>
         <%= Html.JSLink("Create", "ShowDialog", Url.Content("~/Addresses/Street/Create/"))%>
     </p>
-    <p>
         <label for="Building">
             <%= Html.Resource("Addresses_Resources, Addresses_View_Create_Building")%></label>
         <%= Html.TextBox("Building") %>

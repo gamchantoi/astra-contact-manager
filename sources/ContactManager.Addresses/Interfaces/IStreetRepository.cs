@@ -9,6 +9,7 @@ namespace ContactManager.Addresses.Interfaces
     interface IStreetRepository
     {
         Street GetStreet(int id);
+        Street GetStreet(string name);
         Street EditStreet(Street street);
         Street CreateStreet(Street street);
         List<Street> ListStreets();

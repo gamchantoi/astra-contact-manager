@@ -1,9 +1,5 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Mvc.Ajax;
 using ContactManager.Addresses.Interfaces;
 using ContactManager.Addresses.Services;
 using ContactManager.Models;
@@ -39,12 +35,22 @@ namespace ContactManager.Addresses.Controllers
             return View();
         }
 
+        public ActionResult ListStreets()
+        {
+            List<Street> list = _streetService.ListStreets();
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
 
         [HttpPost]
         public ActionResult Create(Street street)
         {
+            var item = new object { };
+
             if (_streetService.CreateStreet(street))
-                return RedirectToAction("Index", "Address");
+            {
+                item = new { value = street.StreetId, name = street.Name };
+                return Json(item);
+            }
             return View(street);
         }
 
