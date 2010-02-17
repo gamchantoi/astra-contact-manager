@@ -63,5 +63,10 @@ namespace ContactManager.Addresses.Services
             }
             
         }
+
+        public Street GetStreet(string name)
+        {
+            return _streetRepository.GetStreet(name);
+        }
     }
 }

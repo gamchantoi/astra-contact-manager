@@ -33,5 +33,10 @@ namespace ContactManager.Addresses.Models
             return street;
         }
 
+        public Street GetStreet(string name)
+        {
+            var street = (from m in ObjectContext.Streets where name == m.Name select m).FirstOrDefault();
+            return street;
+        }
     }
 }

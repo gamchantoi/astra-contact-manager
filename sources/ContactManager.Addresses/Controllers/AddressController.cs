@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.Routing;
 using ContactManager.Addresses.Services;
@@ -74,10 +75,9 @@ namespace ContactManager.Addresses.Controllers
         private void FillViewData(Address address)
         {
             if (address != null)
-            {
                 ViewData["Streets"] = _addressService.ListStreets(address.Street.StreetId);
-            }
-            ViewData["Streets"] = _addressService.ListStreets(null);
+            else
+                ViewData["Streets"] = _addressService.ListStreets(null);
         }
     }
 }

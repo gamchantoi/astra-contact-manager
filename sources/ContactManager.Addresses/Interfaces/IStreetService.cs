@@ -11,6 +11,7 @@ namespace ContactManager.Addresses.Interfaces
         List<Street> ListStreets();
         bool CreateStreet(Street street);
         Street GetStreet(int id);
+        Street GetStreet(string name);
         bool EditStreet(Street street);
     }
 }
