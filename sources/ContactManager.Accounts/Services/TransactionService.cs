@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Web.Mvc;
 using ContactManager.Accounts.Interfaces;
 using ContactManager.Accounts.Models;
@@ -77,20 +79,29 @@ namespace ContactManager.Accounts.Services
 
         public SelectList GetTransactionMonths()
         {
-            var list = _repository.GetTransactionMonths();
-            return new SelectList(list, null);
+            var selectList = new List<KeyValuePair<string, string>>();
+
+            foreach (var item in _repository.GetTransactionMonths())
+            {
+                selectList.Add(new KeyValuePair<string, string>(
+                    item.ToString(),
+                    CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(int.Parse(item.ToString()))
+                    ));
+            }
+            return new SelectList(selectList, "key", "value", DateTime.Now.Month.ToString());
         }
 
         public Filter GetFilter()
         {
-            var filter = new Filter();
-            filter.YearsList = GetTransactionYears();
-            //--------------------/
-            filter.MonthsList = GetTransactionMonths();
-            filter.PaymentMethodsList = PaymentMethodService.SelectListPaymentMethods(0);
+            var filter = new Filter
+                             {
+                                 YearsList = GetTransactionYears(),
+                                 MonthsList = GetTransactionMonths(),
+                                 PaymentMethodsList = PaymentMethodService.SelectListPaymentMethods(0)
+                             };
             return filter;
         }
-        
+
         public List<Transaction> ListTransactions(Filter filter)
         {
 

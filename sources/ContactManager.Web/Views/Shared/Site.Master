@@ -71,8 +71,6 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
             <p id="footer">
                 &copy;2009 Astra Contact Manager</p>
-            <%--<div id="bottom-shadow">
-            </div>--%>
         </div>
     </div>
 </body>

@@ -71,7 +71,7 @@ ul#leftColumn li.selected a:link, #leftColumn li.selected a:visited { background
 #divContactList { float: left; padding: 2%; background: #f1f7ed url(Images/bg-inner-corners.png) no-repeat; min-height: 300px; _height: 300px; width: 78%; position: relative; }
 .divContactList-bottom { background: #e8eef4 url(Images/bg-inner-corners.png) no-repeat bottom right; position: absolute; bottom: 0; left: 0; height: 6px; width: 730px; }
 /* data table */
-table.data-table { width: 100%; border: 5px solid #f9fbfc; border-top: none; font-size: .9em; }
+table.data-table { width: 100%;  }
 table.data-table td, table.data-table th { padding: 6px 10px; border-top: 2px solid #eff3f7; }
 table.data-table th { text-align: left; }
 table.data-table thead th { background: #d7e6ec; border-top: 5px solid #f9fbfc; color: #000; }
@@ -96,8 +96,10 @@ table.data-table th.actions { font-weight: normal; color: #4d8aa2; text-align: c
 fieldset { padding: 0 20px 20px 20px; border: 1px solid #e3e3e3; min-height : 150px; }
 fieldset fieldset { float: left; min-width: 350px; }
 
+fieldset label { width: 130px; }
+
 legend { font-size: 1.6em; padding: 0 10px 20px 10px; }
-label { display: block; float: left; width: 130px; text-align: right; margin: 0 10px 0 0; }
+label { display: block; float: left; text-align: right; margin: 0 10px 0 0; }
 p.submit, p.checkbox { padding-left: 130px; }
 p.checkbox label { display: inline; float: none; }
 /*#logo { float: left; width: 100px; height: 100px; overflow: hidden; }*/
