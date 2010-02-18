@@ -13,18 +13,24 @@
         <%= Html.TextBox("City") %>
         <%= Html.ValidationMessage("City", "*") %>
     </p>
-    <p>
+    <%--    <p>
         <label for="Street.StreetId">
             <%= Html.Resource("Addresses_Resources, Addresses_View_Create_Street")%></label>
         <%= Html.DropDownList("Street.StreetId", (SelectList)ViewData["Streets"])%>
         <%= Html.ValidationMessage("Street.StreetId", "*")%>
         <%= Html.ActionLink(Html.Resource("Addresses_Resources, Addresses_View_Create_AddNew"), "Create", "Street")%>
         <%= Html.JSLink("Create", "ShowDialog", Url.Content("~/Addresses/Street/Create/"))%>
+    </p>--%>
+    <p>
+        <label for="Street.StreetId">
+            <%= Html.Resource("Addresses_Resources, Addresses_View_Edit_Street")%></label>
+        <%= Html.DropDownList("Street.StreetId", (SelectList)ViewData["Streets"], new { onchange = "ShowStreetDialog(this , '" + Url.Content("~/Addresses/Street/Create") + "'); " } )%>
+        <%= Html.ValidationMessage("Street.StreetId", "*")%>
     </p>
-        <label for="Building">
-            <%= Html.Resource("Addresses_Resources, Addresses_View_Create_Building")%></label>
-        <%= Html.TextBox("Building") %>
-        <%= Html.ValidationMessage("Building", "*") %>
+    <label for="Building">
+        <%= Html.Resource("Addresses_Resources, Addresses_View_Create_Building")%></label>
+    <%= Html.TextBox("Building") %>
+    <%= Html.ValidationMessage("Building", "*") %>
     </p>
     <p>
         <label for="Room">
