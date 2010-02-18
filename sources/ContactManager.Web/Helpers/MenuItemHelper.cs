@@ -44,5 +44,24 @@ namespace ContactManager.Web.Helpers
             }
             return String.Empty;
         }
+
+        public static string MenuItem(this HtmlHelper helper, MenuItemContainer item)
+        {
+            return MenuItem(helper, item.Text, item.Action, item.Controller, item.Area);
+        }
+
+        public static string MenuItems(this HtmlHelper helper, string linkText, string actionName, string controllerName, string area)
+        {
+            var item = new MenuItemContainer {Text = ""};
+            return String.Empty;
+        }
+    }
+
+    public class MenuItemContainer
+    {
+        public string Text { get; set; }
+        public string Action { get; set; }
+        public string Controller { get; set; }
+        public string Area { get; set; }
     }
 }

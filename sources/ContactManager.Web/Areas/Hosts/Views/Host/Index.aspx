@@ -20,9 +20,6 @@
                     <%= Html.Resource("Hosts_Resources, Hosts_View_Index_UserName")%>
                 </th>
                 <th>
-                    <%= Html.Resource("Hosts_Resources, Hosts_View_Index_UserPassword")%>
-                </th>
-                <th>
                     <%= Html.Resource("Hosts_Resources, Hosts_View_Index_LastUpdatedDate")%>
                 </th>
             </tr>
@@ -51,9 +48,6 @@
                 </td>
                 <td>
                     <%= Html.Encode(item.UserName) %>
-                </td>
-                <td>
-                    <%= Html.Encode(item.UserPassword) %>
                 </td>
                 <td>
                     <%= Html.Encode(String.Format("{0:g}", item.LastUpdatedDate)) %>
