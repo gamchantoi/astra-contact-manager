@@ -35,13 +35,15 @@
                column.For(c => c.Role).Named(Html.Resource("Users_Resources, Users_User_Index_Role"));
                column.For(c => c.FullName).Named(Html.Resource("Users_Resources, Users_User_Index_FullName"));
                column.For(c => c.ProfileName).Named(Html.Resource("Users_Resources, Users_User_Index_ProfileName"));
-               column.For(c => Html.ActionLink(Html.Resource("Users_Resources, Users_User_Index_View"), "ClientServices", "Service", new { area = "Services", id = c.UserId }, null)).DoNotEncode()
+               column.For(c => Html.JSLink(Html.Resource("Users_Resources, Users_User_Index_View"), "ShowDialog", Url.Content("~/Services/Service/ClientServices/" + c.UserId))).DoNotEncode()
                    .Named(Html.Resource("Users_Resources, Users_User_Index_Services"));
                column.For(c => c.Balance.ToString("C")).Named(string.Format("{0} ({1})", Html.Resource("Users_Resources, Users_User_Index_Balance"), Html.Encode(Model.TotalBalance.ToString("C"))));
                column.For(c => c.StatusDisplayName).Named(Html.Resource("Users_Resources, Users_User_Index_Status"));
 
            }).Attributes(id => "grid").Render();
         %>
+        <%= Html.JSLink(Html.Resource("Users_Resources, Users_User_Index_View"), "ShowDialog",
+                           Url.Content("~/Services/Service/ClientServices/"))%>
     </div>
     <div>
         <p>

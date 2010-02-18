@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Text;
 using System.Web.Compilation;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
@@ -50,6 +51,23 @@ namespace ContactManager.Web.Helpers
         {
             var builder = new TagBuilder("a");
             builder.Attributes.Add("onclick", string.Format("{0}('{1}');", function, args));
+            builder.Attributes.Add("href", "#");
+            builder.SetInnerText(text);
+            return builder.ToString();
+        }
+
+        public static string JSLink(this HtmlHelper html, string text, string function, string[] args)
+        {
+            var builder = new TagBuilder("a");
+            var str = new StringBuilder();
+            foreach (var s in args)
+            {
+                if (str.Length > 0)
+                    str.Append(",");
+                str.Append(string.Format("'{0}'", s));
+            }
+
+            builder.Attributes.Add("onclick", string.Format("{0}('{1}');", function, str));
             builder.Attributes.Add("href", "#");
             builder.SetInnerText(text);
             return builder.ToString();

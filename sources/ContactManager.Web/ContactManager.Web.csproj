@@ -175,7 +175,6 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Scripts\astra-password-generator.js" />
-    <Content Include="Scripts\StyleSetter.js" />
     <Content Include="Areas\Addresses\Views\Address\Create.aspx" />
     <Content Include="Areas\Addresses\Views\Address\Index.aspx" />
     <Content Include="Areas\PPP\Views\Pool\Create.aspx" />
@@ -197,10 +196,6 @@
     <Content Include="Areas\Users\Views\User\Index.aspx" />
     <Content Include="Areas\Users\Views\User\Load.aspx" />
     <Content Include="Web.config" />
-    <Content Include="Scripts\jquery-1.3.2.js" />
-    <Content Include="Scripts\jquery-1.3.2.min.js" />
-    <Content Include="Scripts\jquery-1.3.2-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.3.2.min-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
@@ -459,6 +454,7 @@
     <Content Include="Scripts\jdMenu\jquery.jdMenu.js" />
     <Content Include="Scripts\jdMenu\jquery.jdMenu.packed.js" />
     <Content Include="Scripts\jdMenu\jquery.positionBy.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.7.2\jquery-ui-1.7.2.custom.min.js" />
     <Content Include="Scripts\jquery-ui-1.7.2\themes\overcast\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Scripts\jquery-ui-1.7.2\themes\overcast\images\ui-bg_flat_0_eeeeee_40x100.png" />

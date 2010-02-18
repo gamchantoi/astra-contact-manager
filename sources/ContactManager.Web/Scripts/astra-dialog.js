@@ -25,7 +25,7 @@ function ShowURLDialog(url, element, height, width) {
         data: {},
         success: function(html) {
             setTimeout(function() {
-                ShowPopup(element, html, 350, 500);
+                ShowPopup(element, html, height, width);
             }, 500);
         },
 
@@ -64,7 +64,7 @@ function ShowPopup(elementId, html, height, width) {
 
 function ShowStreetDialog(streets, url) {
     if (streets.value == 0)
-        ShowURLDialog(url, "dialog_2", 450, 600);
+        ShowURLDialog(url, "dialog_2", 300, 400);
 }
 
 function SubmitStreets(url, name, tag) {
@@ -73,12 +73,12 @@ function SubmitStreets(url, name, tag) {
         url: url,
         data: { name: name.val(), tag: tag.val() },
         success: function(data) {
-            //        setTimeout(function() {
+            ///setTimeout(function() {
 
-            $("#dialog_2").dialog("close");
-            populateDropdown($("#Street_StreetId"), data);
+                $("#dialog_2").dialog("close");
+                populateDropdown($("#Street_StreetId"), data);
 
-            //            }, 500);
+            //}, 500);
         },
 
         error: function(request, textStatus, errorThrown) {
@@ -89,12 +89,5 @@ function SubmitStreets(url, name, tag) {
 }
 
 function populateDropdown(select, data) {
-    //select.html(''); // Clear dropDown
-    ////var option = $.JSON.encode(data);
-    ////alert('json encoded object:' + option);
-    ////$("<option/>").val(option.SelectId).text(option.Name).appendTo(select);
     select.append($('<option></option>').val(data.value).html(data.name).attr('selected', 'yes'));
-    //        $.each(data, function(id, option) {
-    //            select.append($('<option></option>').val(option.value).html(option.name));
-    //        });
 }
