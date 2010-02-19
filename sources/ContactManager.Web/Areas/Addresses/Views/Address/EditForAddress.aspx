@@ -15,7 +15,7 @@
     <p>
         <label for="Street.StreetId">
             <%= Html.Resource("Addresses_Resources, Addresses_View_Edit_Street")%></label>
-        <%= Html.DropDownList("Street.StreetId", (SelectList)ViewData["Streets"], new { onchange = "ShowStreetDialog(this , '" + Url.Content("~/Addresses/Street/Create") + "'); " } )%>
+        <%= Html.DropDownList("Street.StreetId", (SelectList)ViewData["Streets"], new { onchange = "ShowStreetDialog(this.value , '" + Url.Content("~/Addresses/Street/Create") + "'); " })%>
         <%= Html.ValidationMessage("Street.StreetId", "*")%>
     </p>
     <p>
