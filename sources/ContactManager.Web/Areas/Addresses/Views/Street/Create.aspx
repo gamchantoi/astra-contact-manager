@@ -22,7 +22,7 @@
         <%= Html.ValidationMessageFor(model => model.Tag) %>
     </p>
     <p>
-        <input onclick="SubmitStreets('<%= Url.Content("~/Addresses/Street/Create")%>');"
+        <input onclick="SubmitStreet('<%= Url.Content("~/Addresses/Street/Create")%>');"
             type="button" value="<%= Html.Resource("Addresses_Resources, Addresses_Street_Create_Create")%>" />
     </p>
 </fieldset>
