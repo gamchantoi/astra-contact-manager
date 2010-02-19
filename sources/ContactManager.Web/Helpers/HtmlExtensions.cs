@@ -67,7 +67,7 @@ namespace ContactManager.Web.Helpers
                 str.Append(string.Format("'{0}'", s));
             }
 
-            builder.Attributes.Add("onclick", string.Format("{0}('{1}');", function, str));
+            builder.Attributes.Add("onclick", string.Format("{0}({1});", function, str));
             builder.Attributes.Add("href", "#");
             builder.SetInnerText(text);
             return builder.ToString();

@@ -19,11 +19,13 @@ namespace ContactManager.Addresses.Controllers
             _addressService = new AddressService(new ModelStateWrapper(ModelState));
         }
 
+        [Authorize(Roles = "admin")]
         public ActionResult Index()
         {
             return View(_addressService.ListAddresses());
         }
 
+        [Authorize]
         public ActionResult Create(Guid id)
         {
             ViewData["UserId"] = id;

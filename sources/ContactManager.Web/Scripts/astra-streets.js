@@ -1,20 +1,25 @@
-﻿function ShowStreetDialog(streets, url) {
-    if (streets.value == 0)
+﻿function ShowStreetDialog(value, url) {
+    if (value == 0)
         ShowURLDialog(url, "dialog_2", 300, 400);
 }
 
-function SubmitStreets(url, name, tag) {
+function SubmitStreets(url) {
+    var name = $("#Name").val();
+    var tag = $('#Tag').val();
     jQuery.ajax({
         type: "POST",
         url: url,
-        data: { name: name.val(), tag: tag.val() },
+        data: { name: name, tag: tag },
         success: function(data) {
-            ///setTimeout(function() {
+            setTimeout(function() {
 
             $("#dialog_2").dialog("close");
-            populateDropdown($("#Street_StreetId"), data);
-
-            //}, 500);
+            $("#dialog_2").dialog("destroy");
+            
+            if ($("#Street_StreetId").length > 0 )
+                populateDropdown($("#Street_StreetId"), data);
+            
+            }, 500);
         },
 
         error: function(request, textStatus, errorThrown) {
