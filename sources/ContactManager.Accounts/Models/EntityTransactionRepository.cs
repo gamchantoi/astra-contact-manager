@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Objects;
 using System.Linq;
 using ContactManager.Accounts.Interfaces;
 using ContactManager.Accounts.ViewModels;
 using ContactManager.Models;
 using ContactManager.Models.ViewModels;
-using System.Web.Mvc;
 
 namespace ContactManager.Accounts.Models
 {
