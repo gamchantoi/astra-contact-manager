@@ -36,7 +36,7 @@ function ShowURLDialog(url, element, height, width) {
 }
 
 function ShowPopup(elementId, html, height, width) {
-    var popup = jQuery(elementId).dialog();
+    var popup = jQuery("#" + elementId).dialog();
     if (popup.length <= 0) {
         popup = jQuery("<div id='" + elementId + "' />");
         popup.dialog({ autoOpen: false });
