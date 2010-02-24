@@ -71,7 +71,7 @@ ul#leftColumn li.selected a:link, #leftColumn li.selected a:visited { background
 #divContactList { float: left; padding: 2%; background: #f1f7ed url(Images/bg-inner-corners.png) no-repeat; min-height: 300px; _height: 300px; width: 78%; position: relative; }
 .divContactList-bottom { background: #e8eef4 url(Images/bg-inner-corners.png) no-repeat bottom right; position: absolute; bottom: 0; left: 0; height: 6px; width: 730px; }
 /* data table */
-table.data-table { width: 100%;  }
+table.data-table { width: 100%; }
 table.data-table td, table.data-table th { padding: 6px 10px; border-top: 2px solid #eff3f7; }
 table.data-table th { text-align: left; }
 table.data-table thead th { background: #d7e6ec; border-top: 5px solid #f9fbfc; color: #000; }
@@ -82,7 +82,7 @@ table.data-table tr.Disabled { width: 100%; border: 5px solid #f9fbfc; border-to
 table.data-table tr.admin { font-style: italic; font-weight: bold; }
 table.data-table tr.client { }
 
-table.container td { width: 50%; vertical-align:top; }
+table.container td { width: 50%; vertical-align: top; }
 table.container { width: 100%; }
 table.grid tr.odd { background: white; }
 
@@ -93,7 +93,7 @@ table.data-table th.actions { font-weight: normal; color: #4d8aa2; text-align: c
 
 /* FORMS  
 ----------------------------------------------------------*/
-fieldset { padding: 0 20px 20px 20px; border: 1px solid #e3e3e3; min-height : 150px; }
+fieldset { padding: 0 20px 20px 20px; border: 1px solid #e3e3e3; min-height: 150px; }
 fieldset fieldset { float: left; min-width: 350px; }
 
 fieldset label { width: 130px; }
@@ -117,3 +117,5 @@ table td { border: 1px solid #E3E3E3; padding: 5px; }
 .ui-message span { float: left; margin-right: .3em; }
 .ui-message .container { float: left; width: 910px; padding-left: 10px; }
 .ui-message div { overflow: hidden; }
+
+.ui-loading { background: url("images/spinner.gif") no-repeat scroll center center transparent; bottom: 50%; height: 30px; left: 50%; position: absolute; right: 50%; top: 50%; width: 30px; }

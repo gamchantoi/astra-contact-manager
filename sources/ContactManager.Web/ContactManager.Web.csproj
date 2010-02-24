@@ -394,7 +394,7 @@
     <Content Include="Scripts\jquery-ui-1.7.2\themes\base\images\ui-icons_454545_256x240.png" />
     <Content Include="Scripts\jquery-ui-1.7.2\themes\base\images\ui-icons_888888_256x240.png" />
     <Content Include="Scripts\jquery-ui-1.7.2\themes\base\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\ui.accordion.css" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\images\ui.accordion.css" />
     <Content Include="Scripts\jquery-ui-1.7.2\themes\base\ui.all.css" />
     <Content Include="Scripts\jquery-ui-1.7.2\themes\base\ui.base.css" />
     <Content Include="Scripts\jquery-ui-1.7.2\themes\base\ui.core.css" />
@@ -440,6 +440,7 @@
     <Content Include="Content\Images\gradient-alt.png" />
     <Content Include="Content\Images\gradient-vertical.png" />
     <Content Include="Content\Images\gradient.png" />
+    <Content Include="Content\Images\spinner.gif" />
     <Content Include="Content\jdMenu.css" />
     <Content Include="Content\Site.css" />
     <Content Include="media\images\back_disabled.png" />
@@ -449,6 +450,7 @@
     <Content Include="media\images\sort_asc.png" />
     <Content Include="media\images\sort_both.png" />
     <Content Include="media\images\sort_desc.png" />
+    <Content Include="Scripts\astra-hosts.js" />
     <Content Include="Scripts\astra-streets.js" />
     <Content Include="Scripts\jdMenu\jquery.bgiframe.js" />
     <Content Include="Scripts\jdMenu\jquery.dimensions.js" />
