@@ -1,9 +1,5 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Host>" %>
+<%@ Page Title="" Language="C#"  Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Host>" %>
 <%@ Import Namespace="ContactManager.Web.Helpers"%>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <%= Html.ValidationSummary( Html.Resource("Hosts_Resources, Hosts_View_Create_ValidationSummary")) %>
     
@@ -27,15 +23,10 @@
                 <%= Html.ValidationMessage("UserPassword", "*") %>
             </p>
             <p>
-                <input type="submit" value=<%= Html.Resource("Hosts_Resources, Hosts_View_Create_Create")%> />
+                <%--<input type="submit" value=<%= Html.Resource("Hosts_Resources, Hosts_View_Create_Create")%> />--%>
+                 <input onclick="SubmitHost('<%= Url.Content("~/Hosts/Host/Create")%>');"
+            type="button" value="<%= Html.Resource("Hosts_Resources, Hosts_View_Create_Create")%>" />
             </p>
         </fieldset>
 
     <% } %>
-
-    <div>
-        <%=Html.ActionLink(Html.Resource("Hosts_Resources, Hosts_View_Create_BackToList"), "Index") %>
-    </div>
-
-</asp:Content>
-

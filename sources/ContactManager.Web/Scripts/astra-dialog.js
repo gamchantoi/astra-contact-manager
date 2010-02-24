@@ -1,10 +1,12 @@
 ﻿function ShowDialog(url) {
+    ShowLoading()
     jQuery.ajax({
         type: "GET",
         url: url,
         data: {},
         success: function(html) {
             setTimeout(function() {
+                HideLoading();
                 ShowPopup("dialog", html, 450, 600);
             }, 500);
         },
@@ -16,6 +18,7 @@
 }
 
 function ShowURLDialog(url, element, height, width) {
+    ShowLoading()
     if (element.length <= 0)
         element = "dialog"
 
@@ -25,6 +28,7 @@ function ShowURLDialog(url, element, height, width) {
         data: {},
         success: function(html) {
             setTimeout(function() {
+                HideLoading();
                 ShowPopup(element, html, height, width);
             }, 500);
         },
@@ -58,6 +62,26 @@ function ShowPopup(elementId, html, height, width) {
                 function() { $(this).dialog("close"); }
         });
 
-
     popup.dialog('open');
+}
+
+function ShowLoading() {
+    var load = GetElement("LoadingDialog");
+    load.appendTo(document.body);
+    $("#LoadingDialog").show();
+}
+
+function HideLoading() {
+    var load = GetElement("LoadingDialog");
+    $("#LoadingDialog").hide();
+}
+
+function GetElement(name) {
+    var load = $("#" + name);
+    if (load.length <= 0) {
+        load = $('<div id="' + name + '"><div class=\'ui-loading\'></div></div>').addClass('ui-widget-overlay ');
+        
+    }
+    
+    return load;
 }

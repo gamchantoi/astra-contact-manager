@@ -8,11 +8,22 @@
 %>
 <% var ctx = new CurrentContext();%>
 <% var host = ctx.GetCurrentHost();%>
+
+<% if (host == null)
+   {%>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        ShowHostsDialog(' <%= Url.Content("~/Hosts/Host/Index")%> ');
+    });
+</script>
+
+<%} %>
 <%
     if (!Page.User.IsInRole(ROLES.client.ToString()))
-    {  %>    
+    {  %>
 <%= Html.Resource("Web_Resources, Site_LogOnUserControl_ActiveServer")%>
-<%= Html.ActionLink(host != null ? host.Address : Html.Resource("Web_Resources, Site_LogOnUserControl_NoServerSelected"), "Index", "Host", new { area = "Hosts" }, null)%>
+<%= Html.JSLink(host != null ? host.Address : Html.Resource("Web_Resources, Site_LogOnUserControl_NoServerSelected"), "ShowHostsDialog", Url.Content("~/Hosts/Host/Index"))%>
 <%} %>
 <%= Html.Resource("Web_Resources, Site_LogOnUserControl_Welcome") %>
 <b>

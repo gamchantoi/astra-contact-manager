@@ -1,10 +1,7 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Host>" %>
+<%@ Page Title="" Language="C#" 
+Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Host>" %>
 <%@ Import Namespace="ContactManager.Web.Helpers"%>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <%= Html.ValidationSummary( Html.Resource("Hosts_Resources, Hosts_View_Edit_ValidationSummary")) %>
 
     <% using (Html.BeginForm()) {%>
@@ -37,6 +34,3 @@
     <div>
         <%= Html.ActionLink(Html.Resource("Hosts_Resources, Hosts_View_Edit_BackToList"), "Index")%>
     </div>
-
-</asp:Content>
-

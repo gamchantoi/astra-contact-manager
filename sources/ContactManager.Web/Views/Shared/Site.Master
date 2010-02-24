@@ -25,6 +25,8 @@
 
     <script src="<%= Url.Content("~/Scripts/astra-dialog.js")%>" type="text/javascript"></script>
 
+    <script src="<%= Url.Content("~/Scripts/astra-hosts.js")%>" type="text/javascript"></script>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="<%= Url.Content("~/Content/Site.css")%>" rel="stylesheet" type="text/css" />
