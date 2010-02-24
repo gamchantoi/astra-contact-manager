@@ -394,7 +394,6 @@
     <Content Include="Scripts\jquery-ui-1.7.2\themes\base\images\ui-icons_454545_256x240.png" />
     <Content Include="Scripts\jquery-ui-1.7.2\themes\base\images\ui-icons_888888_256x240.png" />
     <Content Include="Scripts\jquery-ui-1.7.2\themes\base\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\images\ui.accordion.css" />
     <Content Include="Scripts\jquery-ui-1.7.2\themes\base\ui.all.css" />
     <Content Include="Scripts\jquery-ui-1.7.2\themes\base\ui.base.css" />
     <Content Include="Scripts\jquery-ui-1.7.2\themes\base\ui.core.css" />
@@ -459,6 +458,7 @@
     <Content Include="Scripts\jdMenu\jquery.positionBy.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.7.2\jquery-ui-1.7.2.custom.min.js" />
+    <Content Include="Scripts\jquery-ui-1.7.2\themes\base\ui.accordion.css" />
     <Content Include="Scripts\jquery-ui-1.7.2\themes\overcast\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Scripts\jquery-ui-1.7.2\themes\overcast\images\ui-bg_flat_0_eeeeee_40x100.png" />
     <Content Include="Scripts\jquery-ui-1.7.2\themes\overcast\images\ui-bg_flat_55_c0402a_40x100.png" />
@@ -552,7 +552,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties BuildVersion_StartDate="2010/2/3" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_UpdateAssemblyVersion="True" />
+      <UserProperties BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_StartDate="2010/2/3" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
