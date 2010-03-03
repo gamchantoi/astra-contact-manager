@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using System.Web.Mvc;
 using ContactManager.Addresses.Interfaces;
 using ContactManager.Addresses.Services;
@@ -37,18 +40,16 @@ namespace ContactManager.Addresses.Controllers
 
         public ActionResult ListStreets()
         {
-            List<Street> list = _streetService.ListStreets();
+            var list = _streetService.ListStreets();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
         public ActionResult Create(Street street)
         {
-            var item = new object { };
-
             if (_streetService.CreateStreet(street))
             {
-                item = new { value = street.StreetId, name = street.Name };
+                object item = new { value = street.StreetId, name = street.Name };
                 return Json(item);
             }
             return View(street);
@@ -65,9 +66,59 @@ namespace ContactManager.Addresses.Controllers
         public ActionResult Edit(Street street)
         {
             if (_streetService.EditStreet(street))
-                return RedirectToAction("Index");
+            {
+                var streets = _streetService.ListStreets();
+                var resultView = View("Index", streets);
+                StringResult sr = new StringResult();
+                sr.ViewName = resultView.ViewName;
+                sr.MasterName = resultView.MasterName;
+                sr.ViewData = new ViewDataDictionary(streets);
+                sr.TempData = resultView.TempData;
+                // let them eat cake
+                sr.ExecuteResult(this.ControllerContext);
+
+                Session["DialogData"] = sr.Html.Replace("\"", "'");
+                return RedirectToAction("Index", "Address");
+            }
             return View(street);
             
+        }
+    }
+
+    public class StringResult : ViewResult
+    {
+        public string Html { get; set; }
+        public override void ExecuteResult(ControllerContext context)
+        {
+            if (context == null)
+            {
+                throw new ArgumentNullException("context");
+            }
+            if (string.IsNullOrEmpty(this.ViewName))
+            {
+                this.ViewName =
+                     context.RouteData.GetRequiredString("action");
+            }
+            ViewEngineResult result = null;
+            if (this.View == null)
+            {
+                result = this.FindView(context);
+                this.View = result.View;
+            }
+            ViewContext viewContext = new ViewContext(
+                    context, this.View, this.ViewData, this.TempData);
+            using (var stream = new MemoryStream())
+            using (var writer = new StreamWriter(stream))
+            {
+                // used to write to context.HttpContext.Response.Output
+                this.View.Render(viewContext, writer);
+                writer.Flush();
+                Html = Encoding.UTF8.GetString(stream.ToArray());
+            }
+            if (result != null)
+            {
+                result.ViewEngine.ReleaseView(context, this.View);
+            }
         }
     }
 }

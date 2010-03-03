@@ -12,7 +12,7 @@
                     "aoColumns": [null, null]
                 });
             }
-            $("#grid thead").addClass("ui-widget-header");
+            $("#grid_Streets thead").addClass("ui-widget-header");
         });
     </script>
     
@@ -20,7 +20,7 @@
         <% Html.Grid(Model)
            .Columns(column =>
            {
-               column.For(c => c.Name + Html.JSIconLink("Edit", "ShowDialog", Url.Content("~/Addresses/Street/Edit/") + c.Name, "ui-icon-wrench")).DoNotEncode()
+               column.For(c => c.Name + Html.JSIconLink("Edit", "ShowStreetDialog2", Url.Content("~/Addresses/Street/Edit/") + c.StreetId, "ui-icon-wrench")).DoNotEncode()
                    .Named(Html.Resource("Addresses_Resources, Addresses_Street_Index_Name"));
                column.For(c => c.Tag).Named(Html.Resource("Addresses_Resources, Addresses_Street_Index_Tag"));
            }).Attributes(id => "grid_Streets").Render();

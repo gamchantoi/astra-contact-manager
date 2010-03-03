@@ -88,4 +88,4 @@ tfoot input.search_init { color: #999; }
 .odd_selected { background-color: #B0BED9; }
 .even_selected { background-color: #9FAFD1; }
 
-.grid { width: 100%; }
+.grid { width: 100% !important; }

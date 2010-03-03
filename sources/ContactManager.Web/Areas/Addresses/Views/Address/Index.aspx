@@ -15,13 +15,13 @@
                column.For(c => c.Details).Named(Html.Resource("Addresses_Resources, Addresses_View_Index_Details"));
                column.For(c => c.Room).Named(Html.Resource("Addresses_Resources, Addresses_View_Index_Room"));
 
-           }).Attributes(id => "grid").Render();
+           }).Attributes(id => "grid_address").Render();
         %>
     </div>
     <p>
         <%= Html.JSLink(Html.Resource("Addresses_Resources, Addresses_View_Index_CreateNewStreet"), "ShowStreetDialog", new[]{"0", Url.Content("~/Addresses/Street/Create")})%>
             |
-        <%= Html.JSLink(Html.Resource("Addresses_Resources, Addresses_View_Index_ListStreet"), "ShowDialog", Url.Content("~/Addresses/Street/Index/"))%>
+        <%= Html.JSLink(Html.Resource("Addresses_Resources, Addresses_View_Index_ListStreet"), "ShowStreetsDialog", Url.Content("~/Addresses/Street/Index/"))%>
         </p>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
@@ -31,13 +31,13 @@
     <script language="javascript" type="text/javascript">
         $(document).ready(function() {
             if ('<%=Model.Count() %>' > 0) {
-                jQuery('#grid').dataTable({
+                jQuery('#grid_address').dataTable({
                     "iDisplayLength": 10,
                     "aaSorting": [[1, "asc"]],
                     "aoColumns": [null, null, null, null]
                 });
             }
-            $("#grid thead").addClass("ui-widget-header");
+            $("#grid_address thead").addClass("ui-widget-header");
         });
     </script>
 
