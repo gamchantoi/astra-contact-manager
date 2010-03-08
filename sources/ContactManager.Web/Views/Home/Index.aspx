@@ -31,4 +31,5 @@
     </table>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+<script src="<%= Url.Content("~/Scripts/astra-streets.js")%>" type="text/javascript"></script>
 </asp:Content>

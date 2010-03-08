@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="PPP_View_ActiveConnections_Index_Address" xml:space="preserve">
-    <value>Адрес</value>
+    <value>Адреса</value>
   </data>
   <data name="PPP_View_ActiveConnections_Index_CallerId" xml:space="preserve">
     <value>CallerId</value>
@@ -292,7 +292,7 @@
     <value>Імя</value>
   </data>
   <data name="PPP_View_Profile_Index_Pool" xml:space="preserve">
-    <value>Pool</value>
+    <value>Пул адрес</value>
   </data>
   <data name="PPP_View_Profile_Index_RateLimit" xml:space="preserve">
     <value>Ліміт</value>

@@ -42,7 +42,8 @@ namespace ContactManager.Accounts.Services
 
         public void ProcessClientPayment()
         {
-            _repository.ProcessClientPayment();
+            var ctx = new CurrentContext();
+            _repository.ProcessClientPayment(ctx.CurrentUserId);
         }
 
         public bool CreateTransaction(LoadMoneyViewModel model)

@@ -8,12 +8,13 @@ namespace ContactManager.Accounts.ViewModels
     {
         public IList<Transactions> Transactions { get; set; }
         public Filter Filter { get; set; }
+        public decimal TotalSum { get; set; }
     }
 
     public class Transactions
     {
-        public double Sum { get; set; }
-        public double Balance { get; set; }
+        public decimal Sum { get; set; }
+        public decimal Balance { get; set; }
         public DateTime Date { get; set; }
         public string Comment { get; set; }
 

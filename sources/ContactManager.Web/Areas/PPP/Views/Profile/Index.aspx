@@ -25,15 +25,14 @@
         <% Html.Grid(Model)
            .Columns(column =>
            {
-               column.For(
-                   c =>
-                       Html.JSIconLink("Delete", "window.location", Url.Content("~/PPP/Profile/Delete/") + c.ProfileId, "ui-icon-trash")).DoNotEncode();
-               column.For(c => c.Name + Html.JSIconLink("Edit", "ShowDialog", Url.Content("~/PPP/Profile/Edit/") + c.PoolId, "ui-icon-wrench")).DoNotEncode()
-                   .Named(Html.Resource("PPP_Resources, PPP_View_Pool_Index_Name"));
-               column.For(c => c.LocalAddress).Named(Html.Resource("PPP_Resources, PPP_View_Pool_Index_Addresses"));
-               column.For(c => c.PoolName).Named(Html.Resource("PPP_Resources, PPP_View_Pool_Index_Addresses"));
-               column.For(c => c.RateLimit).Named(Html.Resource("PPP_Resources, PPP_View_Pool_Index_Addresses"));
-               column.For(c => String.Format("{0:F}", c.Cost)).Named(Html.Resource("PPP_Resources, PPP_View_Pool_Index_NextPool"));
+               column.For(c => Html.JSIconLink("Delete", "window.location", Url.Content("~/PPP/Profile/Delete/") + c.ProfileId, "ui-icon-trash"))
+                   .DoNotEncode();
+               column.For(c => c.Name + Html.JSIconLink("Edit", "ShowDialog", Url.Content("~/PPP/Profile/Edit/") + c.ProfileId, "ui-icon-wrench"))
+                   .DoNotEncode().Named(Html.Resource("PPP_Resources, PPP_View_Profile_Index_Name"));
+               column.For(c => c.LocalAddress).Named(Html.Resource("PPP_Resources, PPP_View_Profile_Index_LocalAddress"));
+               column.For(c => c.PoolName).Named(Html.Resource("PPP_Resources, PPP_View_Profile_Index_Pool"));
+               column.For(c => c.RateLimit).Named(Html.Resource("PPP_Resources, PPP_View_Profile_Index_RateLimit"));
+               column.For(c => String.Format("{0:C}", c.Cost)).Named(Html.Resource("PPP_Resources, PPP_View_Profile_Index_Cost"));
 
            }).Attributes(id => "grid").Render();
         %>

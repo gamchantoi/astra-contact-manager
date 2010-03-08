@@ -13,7 +13,7 @@ namespace ContactManager.Accounts.Interfaces
         bool CreateTransaction(Transaction transaction);
         bool DeleteTransactions(Guid userId);
         IQueryable<int> GetTransactionYears();
-        void ProcessClientPayment();
+        void ProcessClientPayment(Guid userId);
 
         List<Transaction> ListTransaction(Filter filter);
 

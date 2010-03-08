@@ -24,7 +24,7 @@ first child of the left and right table columns */
 
 /* PRIMARY LAYOUT ELEMENTS   
 ----------------------------------------------------------*/
-.page { width: 950px; margin-left: auto; margin-right: auto; }
+.page { width: 98%; margin-left: auto; margin-right: auto; }
 #header { position: relative; margin-bottom: 10px; }
 #header h1 { padding: 0 0 0 25px; margin: 0; color: #000; border: none; font-family: Arial, Helvetica, sans-serif; font-size: 1.6em; }
 #title { padding: 4px 0 20px 0; }
@@ -94,7 +94,7 @@ table.data-table th.actions { font-weight: normal; color: #4d8aa2; text-align: c
 /* FORMS  
 ----------------------------------------------------------*/
 fieldset { padding: 0 20px 20px 20px; border: 1px solid #e3e3e3; min-height: 150px; }
-fieldset fieldset { float: left; min-width: 350px; }
+fieldset fieldset { min-width: 350px; }
 
 fieldset label { width: 130px; }
 
@@ -113,9 +113,9 @@ table td { border: 1px solid #E3E3E3; padding: 5px; }
 #details-accordion { min-width: 450px; }
 
 .ui-icon-click { cursor: pointer; display: inline-block !important; margin-left: 5px; vertical-align: text-bottom; }
-.ui-message { overflow: hidden; position: fixed; width: 950px; z-index: 10; }
+.ui-message { overflow: hidden; position: fixed; width: 98%; z-index: 10; }
 .ui-message span { float: left; margin-right: .3em; }
-.ui-message .container { float: left; width: 910px; padding-left: 10px; }
+.ui-message .container { float: left; padding-left: 10px; width:97%;}
 .ui-message div { overflow: hidden; }
 
 .ui-loading { background: url("images/spinner.gif") no-repeat scroll center center transparent; bottom: 50%; height: 30px; left: 50%; position: absolute; right: 50%; top: 50%; width: 30px; }

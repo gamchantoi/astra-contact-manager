@@ -19,8 +19,8 @@ namespace ContactManager.Synchronization.Controllers
 
         public ActionResult Index()
         {
-            ViewData["HostName"] = _context.GetCurrentHost().Address;
-            return View();
+
+            return PrepareIndex();
         }
 
         [Authorize(Roles = "admin")]
@@ -28,7 +28,7 @@ namespace ContactManager.Synchronization.Controllers
         {
             _service.SyncFromHost();
             ViewData["HostName"] = _context.GetCurrentHost().Address;
-            return View("Index");
+            return PrepareIndex();
         }
 
         [Authorize(Roles = "admin")]
@@ -36,7 +36,22 @@ namespace ContactManager.Synchronization.Controllers
         {
             _service.SyncToHost();
             ViewData["HostName"] = _context.GetCurrentHost().Address;
-            return View("Index");
+            return PrepareIndex();
+        }
+
+        private ActionResult PrepareIndex()
+        {
+            var str = string.Empty;
+            if (!ModelState.IsValid)
+            {
+                foreach (var item in ModelState.Values)
+                    foreach (var error in item.Errors)
+                        str += error.ErrorMessage;
+                TempData["Message"] = str;
+            }
+            else
+                TempData["Message"] = "Synchronization success.";
+            return RedirectToAction("Index", "Settings", new { area = ""});
         }
 
     }

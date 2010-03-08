@@ -121,13 +121,13 @@
     <value>Months</value>
   </data>
   <data name="Accounts_Shared_TransactionsFilterUserControl_PaymentMethods" xml:space="preserve">
-    <value>PaymentMethods</value>
+    <value>Payment Method</value>
   </data>
   <data name="Accounts_Shared_TransactionsFilterUserControl_Select" xml:space="preserve">
     <value>Select</value>
   </data>
   <data name="Accounts_Shared_TransactionsFilterUserControl_Years" xml:space="preserve">
-    <value>Years</value>
+    <value>Year</value>
   </data>
   <data name="Accounts_View_Index_Balance" xml:space="preserve">
     <value>Balance</value>

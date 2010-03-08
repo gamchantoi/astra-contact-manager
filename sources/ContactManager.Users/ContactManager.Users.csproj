@@ -190,7 +190,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>52532</DevelopmentServerPort>
+          <DevelopmentServerPort>53954</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/ContactManager</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

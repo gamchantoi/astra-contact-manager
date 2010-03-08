@@ -30,7 +30,3 @@ Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Host>" %>
         </fieldset>
 
     <% } %>
-
-    <div>
-        <%= Html.ActionLink(Html.Resource("Hosts_Resources, Hosts_View_Edit_BackToList"), "Index")%>
-    </div>

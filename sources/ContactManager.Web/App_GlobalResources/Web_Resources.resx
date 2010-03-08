@@ -267,11 +267,17 @@
   <data name="Site_View_Settings_ClearDB" xml:space="preserve">
     <value>Clear Database</value>
   </data>
+  <data name="Site_View_Settings_FinanceSettings" xml:space="preserve">
+    <value>Finance Settings</value>
+  </data>
   <data name="Site_View_Settings_Index_Addreses" xml:space="preserve">
     <value>Edit Addreses</value>
   </data>
   <data name="Site_View_Settings_Index_EditStatuses" xml:space="preserve">
     <value>Edit Statuses</value>
+  </data>
+  <data name="Site_View_Settings_ProcessPayment" xml:space="preserve">
+    <value>Process Payment</value>
   </data>
   <data name="Site_View_Settings_SynchronizationFrom" xml:space="preserve">
     <value>Synchronize from server</value>

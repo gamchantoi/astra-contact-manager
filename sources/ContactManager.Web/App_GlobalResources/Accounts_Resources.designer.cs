@@ -70,7 +70,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PaymentMethods.
+        ///   Looks up a localized string similar to Payment Method.
         /// </summary>
         internal static string Accounts_Shared_TransactionsFilterUserControl_PaymentMethods {
             get {
@@ -88,7 +88,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Years.
+        ///   Looks up a localized string similar to Year.
         /// </summary>
         internal static string Accounts_Shared_TransactionsFilterUserControl_Years {
             get {

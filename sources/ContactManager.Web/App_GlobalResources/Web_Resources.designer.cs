@@ -511,6 +511,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Finance Settings.
+        /// </summary>
+        internal static string Site_View_Settings_FinanceSettings {
+            get {
+                return ResourceManager.GetString("Site_View_Settings_FinanceSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Addreses.
         /// </summary>
         internal static string Site_View_Settings_Index_Addreses {
@@ -525,6 +534,15 @@ namespace Resources {
         internal static string Site_View_Settings_Index_EditStatuses {
             get {
                 return ResourceManager.GetString("Site_View_Settings_Index_EditStatuses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Process Payment.
+        /// </summary>
+        internal static string Site_View_Settings_ProcessPayment {
+            get {
+                return ResourceManager.GetString("Site_View_Settings_ProcessPayment", resourceCulture);
             }
         }
         

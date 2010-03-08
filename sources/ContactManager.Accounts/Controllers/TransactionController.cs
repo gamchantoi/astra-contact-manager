@@ -1,4 +1,4 @@
-using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using AutoMapper;
@@ -34,6 +34,9 @@ namespace ContactManager.Accounts.Controllers
             var viewModelList = new TransactionViewModel();
             viewModelList.Transactions = Mapper.Map<IList<Transaction>, IList<Transactions>>(list);
             viewModelList.Filter = _service.GetFilter();
+            viewModelList.TotalSum = viewModelList.Transactions.Sum(t => t.Sum);
+
+
             return View(viewModelList);
         }
 
@@ -57,7 +60,7 @@ namespace ContactManager.Accounts.Controllers
         }
 
         [Authorize(Roles = "admin")]
-        public ActionResult ProcessClientPayment()
+        public ActionResult ProcessPayment()
         {
             _service.ProcessClientPayment();
             return RedirectToAction("Index");

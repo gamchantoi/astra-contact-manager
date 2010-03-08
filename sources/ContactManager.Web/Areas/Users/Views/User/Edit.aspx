@@ -22,7 +22,7 @@
         <legend>
             <%= Html.Resource("Users_Resources, Users_User_Edit_EditUser")%>
             <%=Html.Encode(Model.UserName)%></legend>
-        <table>
+        <table class="container">
             <tr>
                 <td>
                     <% using (Html.BeginForm())

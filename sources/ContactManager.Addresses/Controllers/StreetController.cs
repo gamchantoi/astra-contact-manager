@@ -69,13 +69,15 @@ namespace ContactManager.Addresses.Controllers
             {
                 var streets = _streetService.ListStreets();
                 var resultView = View("Index", streets);
-                StringResult sr = new StringResult();
-                sr.ViewName = resultView.ViewName;
-                sr.MasterName = resultView.MasterName;
-                sr.ViewData = new ViewDataDictionary(streets);
-                sr.TempData = resultView.TempData;
+                var sr = new StringResult
+                             {
+                                 ViewName = resultView.ViewName,
+                                 MasterName = resultView.MasterName,
+                                 ViewData = new ViewDataDictionary(streets),
+                                 TempData = resultView.TempData
+                             };
                 // let them eat cake
-                sr.ExecuteResult(this.ControllerContext);
+                sr.ExecuteResult(ControllerContext);
 
                 Session["DialogData"] = sr.Html.Replace("\"", "'");
                 return RedirectToAction("Index", "Address");
@@ -94,30 +96,29 @@ namespace ContactManager.Addresses.Controllers
             {
                 throw new ArgumentNullException("context");
             }
-            if (string.IsNullOrEmpty(this.ViewName))
+            if (string.IsNullOrEmpty(ViewName))
             {
-                this.ViewName =
+                ViewName =
                      context.RouteData.GetRequiredString("action");
             }
             ViewEngineResult result = null;
-            if (this.View == null)
+            if (View == null)
             {
-                result = this.FindView(context);
-                this.View = result.View;
+                result = FindView(context);
+                View = result.View;
             }
-            ViewContext viewContext = new ViewContext(
-                    context, this.View, this.ViewData, this.TempData);
+            var viewContext = new ViewContext(context, View, ViewData, TempData, null);
             using (var stream = new MemoryStream())
             using (var writer = new StreamWriter(stream))
             {
                 // used to write to context.HttpContext.Response.Output
-                this.View.Render(viewContext, writer);
+                View.Render(viewContext, writer);
                 writer.Flush();
                 Html = Encoding.UTF8.GetString(stream.ToArray());
             }
             if (result != null)
             {
-                result.ViewEngine.ReleaseView(context, this.View);
+                result.ViewEngine.ReleaseView(context, View);
             }
         }
     }
