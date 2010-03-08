@@ -24,7 +24,7 @@ namespace ContactManager.Web.Controllers
             var model = new SettingsViewModel
                             {
                                 BuildVersion = AssemblyVersion.Version,
-                                ServerName = ctx.GetCurrentHost().Address
+                                ServerName = ctx.GetCurrentHost() != null ? ctx.GetCurrentHost().Address : ""
                             };
             return View(model);
         }

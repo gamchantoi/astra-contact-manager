@@ -267,11 +267,17 @@
   <data name="Site_View_Settings_ClearDB" xml:space="preserve">
     <value>Очистка Бази даних</value>
   </data>
+  <data name="Site_View_Settings_FinanceSettings" xml:space="preserve">
+    <value>Фінансові налаштування</value>
+  </data>
   <data name="Site_View_Settings_Index_Addreses" xml:space="preserve">
     <value>Редагувати адреси</value>
   </data>
   <data name="Site_View_Settings_Index_EditStatuses" xml:space="preserve">
-    <value>Редагувати статусів</value>
+    <value>Редагувати статуси</value>
+  </data>
+  <data name="Site_View_Settings_ProcessPayment" xml:space="preserve">
+    <value>Зняття абон. плати</value>
   </data>
   <data name="Site_View_Settings_SynchronizationFrom" xml:space="preserve">
     <value>Синхронізувати з сервера</value>

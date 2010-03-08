@@ -36,7 +36,34 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2" style="text-align:right">
+            <td>
+                <fieldset class="fields">
+                    <legend>
+                        <%= Html.Resource("Web_Resources, Site_View_Settings_FinanceSettings")%></legend>
+                    <p>
+                        <%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_ProcessPayment"), "ProcessPayment", "Transaction", new { area = "Accounts" }, null)%>
+                    </p>
+                    <p>
+                        <%= Html.ActionLink(Html.Resource("Accounts_Resources, Accounts_View_Index_PaymentsMethods"), "Index", "PaymentMethod", new { area = "Accounts" }, null)%>
+                    </p>
+                </fieldset>
+            </td>
+            <td>
+                <%--                <fieldset class="fields">
+                    <legend>
+                        <%= Html.Resource("Web_Resources, Site_View_Settings_SynchronizationWith")%>
+                        <%= Html.Encode(Model.ServerName)%></legend>
+                    <p>
+                        <%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_SynchronizationTo"), "SyncToHost", "Sync", new { area = "Synchronizations" }, null)%>
+                    </p>
+                    <p>
+                        <%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_SynchronizationFrom"), "SyncFromHost", "Sync", new { area = "Synchronizations" }, null)%>
+                    </p>
+                </fieldset>--%>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: right">
                 <%=Html.Encode("Build v.") %>
                 <%=Model.BuildVersion %>
             </td>

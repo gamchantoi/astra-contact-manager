@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using ContactManager.Accounts.Interfaces;
 using ContactManager.Accounts.ViewModels;
 using ContactManager.Models;
 using ContactManager.Models.ViewModels;
+using Microsoft.Data.Extensions;
+using System.Data.SqlClient;
 
 namespace ContactManager.Accounts.Models
 {
@@ -65,64 +68,17 @@ namespace ContactManager.Accounts.Models
             return true;
         }
 
-        public void ProcessClientPayment()
+        public void ProcessClientPayment(Guid userId)
         {
-            //foreach(var secrets in _entities.PPPSecretSet.ToList())
-            //{
-            //    secrets.mkt_PPPProfilesReference.Load();
-            //    secrets.astra_ClientsReference.Load();
+            var param = new[] { new SqlParameter("@UserId", userId), };
 
-            //    var client = secrets.astra_ClientsReference.Value;
-            //    var profile = secrets.mkt_PPPProfilesReference.Value;
+            var command = ObjectContext.CreateStoreCommand("astra_ProcessPayments", CommandType.StoredProcedure, param);
+            using (command.Connection.CreateConnectionScope())
+                command.ExecuteScalar();
 
-            //    if (profile == null || 
-            //        client == null || 
-            //        !profile.Cost.HasValue ||
-            //        client.Status != 1 ||
-            //        secrets.Status != 1) continue;
-
-            //    client.Balance = client.Balance - profile.Cost.Value;
-            //    _entities.SaveChanges();
-
-            //    var method = _entities.AccountTransactionMethodSet.Where(m => m.Name == "Profile").FirstOrDefault() ??
-            //                 CreateSystemTransactionMethod("Profile", "Profile fee");
-            //    var transaction = new AccountTransaction 
-            //                          { 
-            //                              ClientId = client.UserId,
-            //                              Balance = client.Balance,
-            //                              Sum = - profile.Cost.Value,
-            //                              MethodId = method.MethodId,
-            //                              mkt_PPPProfiles = profile
-            //                          };
-            //    CreateTransaction(transaction);
-
-            //    client.astra_ClientsServicesActivities.Load();
-            //    foreach (var item in client.astra_ClientsServicesActivities.Where(a => a.Active))
-            //    {
-            //        item.astra_ServicesReference.Load();
-            //        var service = item.astra_ServicesReference.Value;
-            //        if (!service.IsRegular) continue;
-
-            //        client.Balance = client.Balance - service.Cost;
-            //        _entities.SaveChanges();
-
-            //        method = _entities.AccountTransactionMethodSet.Where(m => m.Name == "Service").FirstOrDefault() ??
-            //                 CreateSystemTransactionMethod("Service", "Service fee");
-            //        transaction = new AccountTransaction
-            //                          {
-            //                              ClientId = client.UserId,
-            //                              Balance = client.Balance,
-            //                              Sum = -service.Cost,
-            //                              MethodId = method.MethodId,
-            //                              astra_Services = service
-            //                          };
-            //        CreateTransaction(transaction);
-            //    }
-
-            //    if (client.Balance < client.Credit)
-            //        secrets.Status = 0;
-            //    _entities.SaveChanges();
-            //}
+            command = ObjectContext.CreateStoreCommand("astra_Clients_Calculate_Statuses", CommandType.StoredProcedure);
+            using (command.Connection.CreateConnectionScope())
+                command.ExecuteScalar();
         }
 
         public IQueryable<int> GetTransactionYears()

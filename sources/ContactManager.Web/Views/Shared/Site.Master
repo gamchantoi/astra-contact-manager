@@ -36,7 +36,7 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-        var dialogData = '<%=Session["DialogData"] %>';
+        //var dialogData = '<%=Session["DialogData"] %>';
 
             //alert(dialogData);
         });
@@ -45,7 +45,7 @@
 </head>
 <body>
     <div class="page">
-        <%= Html.Message(TempData["Message"] != null ? TempData["Message"].ToString() : "", "ui-message")%>
+        <%= Html.Message(TempData["Message"], "ui-message")%>
         <div id="header" class="ui-widget-content ui-corner-bottom">
             <div id="title">
                 <h1>
@@ -80,7 +80,7 @@
         <div id="main" class="ui-widget-content ui-corner-bottom">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
             <p id="footer">
-                &copy;2009 Astra Contact Manager</p>
+                &copy;2010 Astra Contact Manager</p>
         </div>
     </div>
 </body>

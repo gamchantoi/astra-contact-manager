@@ -1,0 +1,17 @@
+{
+	"sProcessing":   "Завантаження...",
+	"sLengthMenu":   "Показувати _MENU_ записів",
+	"sZeroRecords":  "Не знайдено співпадінь",
+	"sInfo":         "Список з _START_ по _END_ із _TOTAL_ записів",
+	"sInfoEmpty":    "Показую 0 to 0 of 0 entries",
+	"sInfoFiltered": "(filtered from _MAX_ total entries)",
+	"sInfoPostFix":  "",
+	"sSearch":       "Пошук:",
+	"sUrl":          "",
+	"oPaginate": {
+		"sFirst":    "Перший",
+		"sPrevious": "Назад",
+		"sNext":     "Далі",
+		"sLast":     "Останній"
+	}
+}

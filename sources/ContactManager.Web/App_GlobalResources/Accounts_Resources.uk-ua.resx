@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Accounts_Shared_TransactionsFilterUserControl_Months" xml:space="preserve">
-    <value>Місяці</value>
+    <value>Місяць</value>
   </data>
   <data name="Accounts_Shared_TransactionsFilterUserControl_PaymentMethods" xml:space="preserve">
-    <value>Методи оплат</value>
+    <value>Метод оплати</value>
   </data>
   <data name="Accounts_Shared_TransactionsFilterUserControl_Select" xml:space="preserve">
-    <value>Вибірка</value>
+    <value>Застосувати</value>
   </data>
   <data name="Accounts_Shared_TransactionsFilterUserControl_Years" xml:space="preserve">
-    <value>Роки</value>
+    <value>Рік</value>
   </data>
   <data name="Accounts_View_Index_Balance" xml:space="preserve">
     <value>Баланс</value>
@@ -136,7 +136,7 @@
     <value>Імя клієнта</value>
   </data>
   <data name="Accounts_View_Index_Comment" xml:space="preserve">
-    <value>Коментарі</value>
+    <value>Коментар</value>
   </data>
   <data name="Accounts_View_Index_CreateNew" xml:space="preserve">
     <value>Створити</value>
@@ -154,7 +154,7 @@
     <value>Імя транзакції</value>
   </data>
   <data name="Accounts_View_Index_UserName" xml:space="preserve">
-    <value>Імя користувача</value>
+    <value>Виконавець</value>
   </data>
   <data name="Accounts_View_PaymentsMethods_Create_BackToList" xml:space="preserve">
     <value>Назад до списку</value>

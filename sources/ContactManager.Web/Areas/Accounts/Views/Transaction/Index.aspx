@@ -8,7 +8,7 @@
 
     <script language="javascript" type="text/javascript">
         $(document).ready(function() {
-            if(<%=Model.Transactions.Count() %> > 0)
+            if('<%=Model.Transactions.Count() %>' > 0)
             {
                 $('#grid').dataTable({
                     "iDisplayLength": 10,
@@ -28,17 +28,13 @@
            .Columns(column =>
            {
                column.For(t => t.ClientUserName).Named(Html.Resource("Accounts_Resources, Accounts_View_Index_ClientName"));
-               column.For(t => t.Sum).Named(Html.Resource("Accounts_Resources, Accounts_View_Index_Sum"));
-               column.For(t => t.Balance).Named(Html.Resource("Accounts_Resources, Accounts_View_Index_Balance"));
-               column.For(t => t.Comment).Named(Html.Resource("Accounts_Resources, Accounts_View_Index_Comment"));
+               column.For(t => t.Sum.ToString("C")).Named(string.Format("{0} ({1})", Html.Resource("Accounts_Resources, Accounts_View_Index_Sum"), Model.TotalSum.ToString("C")));
+               column.For(t => t.Balance.ToString("C")).Named(Html.Resource("Accounts_Resources, Accounts_View_Index_Balance"));
                column.For(t => t.UserUserName).Named(Html.Resource("Accounts_Resources, Accounts_View_Index_UserName"));
                column.For(t => t.TransactionName).Named(Html.Resource("Accounts_Resources, Accounts_View_Index_TransactionName"));
+               column.For(t => t.Comment).Named(Html.Resource("Accounts_Resources, Accounts_View_Index_Comment"));
                column.For(t => t.Date).Named(Html.Resource("Accounts_Resources, Accounts_View_Index_Date"));
-
            }).Attributes(id => "grid").Render();
         %>
     </div>
-    <p>
-        <%= Html.ActionLink(Html.Resource("Accounts_Resources, Accounts_View_Index_PaymentsMethods"), "Index", "PaymentMethod")%>
-    </p>
 </asp:Content>
