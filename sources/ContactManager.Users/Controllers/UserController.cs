@@ -75,6 +75,7 @@ namespace ContactManager.Users.Controllers
             client.LoadAddressReferences();
             //TempData["Message"] = id;
             return View(FillViewData(client));
+
         }
 
         [Authorize(Roles = "admin")]
@@ -144,7 +145,9 @@ namespace ContactManager.Users.Controllers
                 viewModel = _facade.ClientService.GetViewModel(client);
                 viewModel.Roles = userHelper.GetRoles(client.Role);
                 viewModel.Profiles = pppHelper.GetProfiles(client.ProfileId);
-                viewModel.Statuses = _statusService.ListStatuses(2);
+                //viewModel.Statuses = _statusService.ListStatuses(client.Status.StatusId);// 2---------------
+                viewModel.Statuses = _statusService.ListStatuses(client.Status.StatusId);
+                viewModel.StatusId = client.Status.StatusId;
             }
             return viewModel;
         }

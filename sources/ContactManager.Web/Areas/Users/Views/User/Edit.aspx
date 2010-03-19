@@ -89,6 +89,9 @@
                     <p>
                         <input name="button" type="submit" value="<%= Html.Resource("Users_Resources, Users_User_Edit_Save")%>" />
                     </p>
+                    <%--<p>
+                        <%= Html.ActionLink("UserTransactions", "UserTransactions", "Transaction", new { area = "Accounts" }, new{userId = Model.UserId.ToString()})%>
+                    </p>--%>
                     <% } %>
                 </td>
                 <td>

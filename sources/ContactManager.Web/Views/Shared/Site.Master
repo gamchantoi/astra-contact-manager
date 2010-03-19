@@ -18,7 +18,8 @@
 
     <script src="<%= Url.Content("~/Scripts/jdMenu/jquery.jdMenu.js")%>" type="text/javascript"></script>
 
-    <script src="<%= Url.Content("~/Scripts/jquery-ui-1.7.2/jquery-ui-1.7.2.custom.min.js")%>" type="text/javascript"></script>
+    <script src="<%= Url.Content("~/Scripts/jquery-ui-1.7.2/jquery-ui-1.7.2.custom.min.js")%>"
+        type="text/javascript"></script>
 
     <script src="<%= Url.Content("~/media/js/jquery.dataTables.js")%>" type="text/javascript"></script>
 
@@ -26,17 +27,19 @@
 
     <script src="<%= Url.Content("~/Scripts/astra-hosts.js")%>" type="text/javascript"></script>
 
+    <script src="<%= Url.Content("~/Scripts/astra-statuses.js")%>" type="text/javascript"></script>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="<%= Url.Content("~/Content/Site.css")%>" rel="stylesheet" type="text/css" />
     <link href="<%= Url.Content("~/Content/jdMenu.css")%>" rel="stylesheet" type="text/css" />
     <link href="<%= Url.Content("~/media/css/Grid.css")%>" rel="stylesheet" type="text/css" />
-    <link href="<%= Url.Content("~/Scripts/jquery-ui-1.7.2/themes/ui-lightness/jquery-ui-1.7.2.custom.css")%>" rel="stylesheet"
-        type="text/css" />
+    <link href="<%= Url.Content("~/Scripts/jquery-ui-1.7.2/themes/ui-lightness/jquery-ui-1.7.2.custom.css")%>"
+        rel="stylesheet" type="text/css" />
 
     <script type="text/javascript">
         $(document).ready(function() {
-        //var dialogData = '<%=Session["DialogData"] %>';
+            var dialogData = '<%=Session["DialogData"] %>';
 
             //alert(dialogData);
         });
@@ -45,7 +48,7 @@
 </head>
 <body>
     <div class="page">
-        <%= Html.Message(TempData["Message"], "ui-message")%>
+        <%= Html.Message(TempData["Message"] != null ? TempData["Message"].ToString() : "", "ui-message")%>
         <div id="header" class="ui-widget-content ui-corner-bottom">
             <div id="title">
                 <h1>

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -40,6 +41,25 @@ namespace ContactManager.Accounts.Controllers
             return View(viewModelList);
         }
 
+        public ActionResult ClientTransactions(string _user)
+        {
+            var _userHelper = new UserHelper();
+            var isAdmin = _userHelper.IsUserInRole("admin");
+            ViewData["IsAdmin"] = isAdmin;
+
+            //TODO filter dy UserName
+
+            var list = isAdmin ? _service.ListTransactions()
+                : _service.ListTransactions(_userHelper.CurrentUserId);
+
+            Mapper.CreateMap<Transaction, Transactions>();
+            var viewModelList = new TransactionViewModel();
+            viewModelList.Transactions = Mapper.Map<IList<Transaction>, IList<Transactions>>(list);
+            viewModelList.Filter = _service.GetFilter();
+            viewModelList.TotalSum = viewModelList.Transactions.Sum(t => t.Sum);
+
+            return View(viewModelList);
+        }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult FiltredList(Filter filter)

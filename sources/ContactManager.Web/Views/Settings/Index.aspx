@@ -14,7 +14,8 @@
                         <%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_ClearDB"), "ClearDB")%>
                     </p>
                     <p>
-                        <%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_Index_EditStatuses"), "Index", "Status", new {@area="Users"}, null)%>
+                        <%--<%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_Index_EditStatuses"), "Index", "Status", new {@area="Users"}, null)%>--%>
+                        <%= Html.JSLink(Html.Resource("Web_Resources, Site_View_Settings_Index_EditStatuses"), "ShowStatusesDialog", Url.Content("~/Users/Status/Index/"))%>
                     </p>
                     <p>
                         <%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_Index_Addreses"), "Index", "Address", new { area = "Addresses" }, null)%>

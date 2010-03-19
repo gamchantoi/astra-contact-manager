@@ -1,6 +1,6 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Status>" %>
+<%@ Page Title="" Language="C#" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Status>" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
     <%= Html.ValidationSummary("Edit was unsuccessful. Please correct the errors and try again.") %>
 
     <% using (Html.BeginForm()) {%>
@@ -18,13 +18,4 @@
         </fieldset>
 
     <% } %>
-
-    <div>
-        <%=Html.ActionLink("Back to List", "Index") %>
-    </div>
-
-</asp:Content>
-
-<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
 
