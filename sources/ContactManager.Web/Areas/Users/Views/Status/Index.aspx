@@ -1,6 +1,6 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ContactManager.Models.Status>>" %>
+<%@ Page Title="" Language="C#"  Inherits="System.Web.Mvc.ViewPage<IEnumerable<ContactManager.Models.Status>>" %>
+<%@ Import Namespace="ContactManager.Web.Helpers"%>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <table class="data-table" cellpadding="0" cellspacing="0">
         <tr>
             <th>
@@ -12,15 +12,12 @@
     
         <tr>
             <td>
-                <%= Html.ActionLink(item.DisplayName, "Edit", new { id = item.StatusId })%>
+                <%= Html.JSLink(item.DisplayName, "ShowStatusDialog", Url.Content("~/Users/Status/Edit/")+item.StatusId)%>
+                <%--<%= Html.ActionLink(item.DisplayName, "Edit", new { id = item.StatusId })%>--%>
             </td>
         </tr>
     
     <% } %>
 
     </table>
-</asp:Content>
-
-<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
 

@@ -25,16 +25,15 @@
         <% foreach (var item in Model)
            { %>
         <tr>
-            <td>         
+            <td>
                 <% if (HttpContext.Current.Profile.GetPropertyValue("HostId").Equals(item.HostId))
                    {%>
-                   <%=Html.JSIconLink("", "", "", "ui-icon-check") %>
-                <%--<%= Html.Resource("Hosts_Resources, Hosts_View_Index_Selected")%>--%>
+                <%=Html.JSIconLink("", "", "", "ui-icon-check") %>
                 <% }
                    else
                    {%>
-                   <%= Html.JSIconLink("Edit", "window.location", Url.Content("~/Hosts/Host/Select/") + item.HostId, "ui-icon-minus")%>
-               <%-- <%= Html.ActionLink(Html.Resource("Hosts_Resources, Hosts_View_Index_Select"), "Select", new { id = item.HostId })%>--%>
+                <%= Html.JSIconLink("Edit", "ChangeHost", Url.Content("~/Hosts/Host/Select/") + item.HostId, "ui-icon-minus")%>
+                <%--<%= Html.JSIconLink("Edit", "window.location", Url.Content("~/Hosts/Host/Select/") + item.HostId, "ui-icon-minus")%>--%>
                 <%} %>
             </td>
             <td>
@@ -42,9 +41,8 @@
                     <%= Html.Resource("Hosts_Resources, Hosts_View_Index_Delete")%></a>
             </td>
             <td>
-            <%= Html.JSLink(item.Address, "ShowHostDialog", Url.Content("~/Hosts/Host/Edit/" + item.HostId))%>
-                   
-<%--                <a href='<%= Url.Action("Edit", new {id=item.HostId}) %>'>
+                <%= Html.JSLink(item.Address, "ShowHostDialog", Url.Content("~/Hosts/Host/Edit/" + item.HostId))%>
+                <%--                <a href='<%= Url.Action("Edit", new {id=item.HostId}) %>'>
                     <%= Html.Encode(item.Address) %></a>--%>
             </td>
             <td>

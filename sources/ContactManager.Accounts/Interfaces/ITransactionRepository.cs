@@ -18,5 +18,6 @@ namespace ContactManager.Accounts.Interfaces
         List<Transaction> ListTransaction(Filter filter);
 
         IQueryable<int> GetTransactionMonths();
+
     }
 }

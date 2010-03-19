@@ -38,5 +38,6 @@ namespace ContactManager.Users.Controllers
                 return View(status);
             }
         }
+
     }
 }

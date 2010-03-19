@@ -106,18 +106,24 @@ namespace ContactManager.Accounts.Models
 
         public List<Transaction> ListTransaction(Filter filter)
         {
-            //var filterYear = filter.Years.SelectedValue
 
             var list = ObjectContext.Transactions.Where(y => y.Date.Year == filter.Years).ToList();
             list = list.Where(m => m.Date.Month == filter.Months).ToList();
+            var filtredlist = new List<Transaction>();
             foreach (var item in list)
             {
                 item.ClientReference.Load();
                 item.Client = item.ClientReference.Value;
                 item.UserReference.Load();
                 item.User = item.UserReference.Value;
+                item.PaymentMethodReference.Load();
+                item.PaymentMethod = item.PaymentMethodReference.Value;
+                if (item.PaymentMethod != null) 
+                    if(item.PaymentMethod.MethodId.ToString() == filter.PaymentMethods.ToString())
+                    filtredlist.Add(item);
             }
-            return list;
+            return filtredlist;
         }
+
     }
 }

@@ -451,6 +451,7 @@
     <Content Include="media\images\sort_desc.png" />
     <Content Include="media\language\uk_UA.txt" />
     <Content Include="Scripts\astra-hosts.js" />
+    <Content Include="Scripts\astra-statuses.js" />
     <Content Include="Scripts\astra-streets.js" />
     <Content Include="Scripts\jdMenu\jquery.bgiframe.js" />
     <Content Include="Scripts\jdMenu\jquery.dimensions.js" />
@@ -553,7 +554,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties BuildVersion_StartDate="2010/2/3" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_UpdateAssemblyVersion="True" />
+      <UserProperties BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_StartDate="2010/2/3" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
