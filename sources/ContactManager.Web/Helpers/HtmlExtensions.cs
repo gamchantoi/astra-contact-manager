@@ -4,6 +4,8 @@ using System.Text;
 using System.Web.Compilation;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
 using ContactManager.Models;
 using ContactManager.Models.Enums;
 
@@ -119,6 +121,23 @@ namespace ContactManager.Web.Helpers
             div2.InnerHtml = p.ToString();
             div.InnerHtml = div2.ToString() + close;
             builder.InnerHtml = div.ToString();
+            return builder.ToString();
+        }
+
+        public static string DropDownCheckBox(this HtmlHelper html, string id, SelectList list)
+        {
+            var builder = new TagBuilder("select");
+            builder.Attributes.Add("multiple", "multiple");
+            builder.Attributes.Add("id", id);
+            foreach(var item in list)
+            {
+                var option = new TagBuilder("option");
+                option.Attributes.Add("value", item.Value);
+                option.SetInnerText(item.Text);
+                if(item.Selected)
+                    option.Attributes.Add("selected", "selected");
+                builder.InnerHtml += option.ToString();
+            }
             return builder.ToString();
         }
     }

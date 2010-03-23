@@ -80,7 +80,7 @@
     </ProjectReference>
     <ProjectReference Include="..\ContactManager.Users\ContactManager.Users.csproj">
       <Project>{3714F4A7-571B-47C4-925A-527F67F45637}</Project>
-      <Name>ContactManager.Clients</Name>
+      <Name>ContactManager.Users</Name>
     </ProjectReference>
     <ProjectReference Include="..\ContactManager.Hosts\ContactManager.Hosts.csproj">
       <Project>{9FCC78FF-0A44-4A92-BFDC-D2C758246777}</Project>
