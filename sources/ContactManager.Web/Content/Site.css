@@ -119,3 +119,6 @@ table td { border: 1px solid #E3E3E3; padding: 5px; }
 .ui-message div { overflow: hidden; }
 
 .ui-loading { background: url("images/spinner.gif") no-repeat scroll center center transparent; bottom: 50%; height: 30px; left: 50%; position: absolute; right: 50%; top: 50%; width: 30px; }
+
+.ui-dropdownchecklist-text{float:none; display:inline; margin:0px; }
+.ui-dropdownchecklist-wrapper, .ui-dropdownchecklist-item, .ui-dropdownchecklist-text{cursor:pointer;}

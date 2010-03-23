@@ -98,9 +98,14 @@ namespace ContactManager.Accounts.Services
                              {
                                  YearsList = GetTransactionYears(),
                                  MonthsList = GetTransactionMonths(),
-                                 PaymentMethodsList = PaymentMethodService.SelectListPaymentMethods(0)
+                                 PaymentMethodsList = FillPaymentMethodsList()
                              };
             return filter;
+        }
+
+        private SelectList FillPaymentMethodsList()
+        {
+            return PaymentMethodService.SelectListPaymentMethods(0);
         }
 
         public List<Transaction> ListTransactions(Filter filter)
