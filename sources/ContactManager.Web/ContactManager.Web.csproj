@@ -433,6 +433,8 @@
     <Content Include="Areas\Users\Views\Contract\Create.aspx" />
     <Content Include="Areas\Users\Views\Contract\Edit.aspx" />
     <Content Include="Areas\Users\Views\Contract\Index.aspx" />
+    <Content Include="Content\dropdown.png" />
+    <Content Include="Content\dropdown_hover.png" />
     <Content Include="Content\Images\bg-header.png" />
     <Content Include="Content\Images\bg-main-corner-sprite.png" />
     <Content Include="Content\Images\bg-nav-corner-sprite.png" />
@@ -507,6 +509,8 @@
     <Content Include="Scripts\jquery-ui-1.7.2\themes\vader\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Scripts\jquery-ui-1.7.2\themes\vader\images\ui-icons_f29a00_256x240.png" />
     <Content Include="Scripts\jquery-ui-1.7.2\themes\vader\jquery-ui-1.7.2.custom.css" />
+    <Content Include="Content\ui.dropdownchecklist.css" />
+    <Content Include="Scripts\ui.dropdownchecklist.js" />
     <Content Include="Views\Settings\Index.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -554,7 +558,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_StartDate="2010/2/3" />
+      <UserProperties BuildVersion_StartDate="2010/2/3" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_UpdateAssemblyVersion="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
