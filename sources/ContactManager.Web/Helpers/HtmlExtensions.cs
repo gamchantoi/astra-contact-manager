@@ -129,6 +129,11 @@ namespace ContactManager.Web.Helpers
             var builder = new TagBuilder("select");
             builder.Attributes.Add("multiple", "multiple");
             builder.Attributes.Add("id", id);
+
+            //var optgroup = new TagBuilder("optgroup");
+            //optgroup.Attributes.Add("label", "Payment method");
+            //builder.InnerHtml += optgroup.ToString();
+
             foreach(var item in list)
             {
                 var option = new TagBuilder("option");

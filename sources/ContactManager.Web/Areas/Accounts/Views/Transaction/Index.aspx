@@ -28,7 +28,13 @@
            .Columns(column =>
            {
                //column.For(t => t.ClientUserName).Named(Html.Resource("Accounts_Resources, Accounts_View_Index_ClientName"));
-               column.For(t => Html.JSLink(t.ClientUserName, "ShowDialog", Url.Content("~/Accounts/Transaction/ClientTransactions/" + t.ClientUserName))).DoNotEncode();
+               column.For(
+                   t =>
+                   t.ClientUserName +
+                   Html.JSIconLink("Index", "window.location",
+                                   Url.Content("~/Accounts/Transaction/ClientTransactions/") + t.ClientUserId,
+                                   "ui-icon-document")).DoNotEncode();
+                  //.Named(Html.Resource("Users_Resources, Users_User_Index_UserName"));
                column.For(t => t.Sum.ToString("C")).Named(string.Format("{0} ({1})", Html.Resource("Accounts_Resources, Accounts_View_Index_Sum"), Model.TotalSum.ToString("C")));
                column.For(t => t.Balance.ToString("C")).Named(Html.Resource("Accounts_Resources, Accounts_View_Index_Balance"));
                column.For(t => t.UserUserName).Named(Html.Resource("Accounts_Resources, Accounts_View_Index_UserName"));

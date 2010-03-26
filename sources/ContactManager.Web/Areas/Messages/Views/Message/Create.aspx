@@ -1,7 +1,7 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Message>" %>
+<%@ Page Title="" Language="C#" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Message>" %>
 <%@ Import Namespace="ContactManager.Web.Helpers"%>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
     <% using (Html.BeginForm())
        {%>
     <fieldset>
@@ -27,9 +27,4 @@
         </p>
     </fieldset>
     <% } %>
-    <div>
-        <% = Html.ActionLink(Html.Resource("Messages_Resources, Messages_View_Create_BackToList"), "Index") %>
-    </div>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
+

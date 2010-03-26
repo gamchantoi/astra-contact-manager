@@ -5,8 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using ContactManager.Messages.Models;
+using ContactManager.Messages.ViewModels;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
+using AutoMapper;
 
 namespace ContactManager.Messages.Controllers
 {
@@ -22,7 +24,16 @@ namespace ContactManager.Messages.Controllers
 
         public ActionResult Index()
         {
-            return View(_messageService.ListMessages());
+            var list = _messageService.ListMessages();
+            Mapper.CreateMap<Message, Messagess>();
+            var viewModelList = new MessageViewModel();
+            viewModelList.Messagess = Mapper.Map<IList<Message>, IList<Messagess>>(list);
+            //viewModelList.Filter = _service.GetFilter();
+            //viewModelList.TotalSum = viewModelList.Transactions.Sum(t => t.Sum);
+
+
+            return View(viewModelList);
+            //return View(_messageService.ListMessages());
         }
         
         public ActionResult Details(int id)
