@@ -36,6 +36,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\bin\MvcContrib\MvcContrib.dll</HintPath>
     </Reference>
+    <Reference Include="MvcSiteMap.Core, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\MvcSiteMap.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.ComponentModel.DataAnnotations">
@@ -514,6 +518,11 @@
     <Content Include="Views\Settings\Index.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\house.png" />
+    <Content Include="Scripts\astra-messages.js" />
+    <Content Include="Web.SiteMap" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Users\Views\Shared\" />
   </ItemGroup>
@@ -558,7 +567,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties BuildVersion_StartDate="2010/2/3" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_UpdateAssemblyVersion="True" />
+      <UserProperties BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_StartDate="2010/2/3" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

@@ -13,7 +13,7 @@ using ContactManager.Models.Validation;
 namespace ContactManager.Accounts.Controllers
 {
     public class TransactionController : Controller
-    {        
+    {
         private readonly ITransactionService _service;
 
         public TransactionController()
@@ -28,27 +28,6 @@ namespace ContactManager.Accounts.Controllers
             var isAdmin = _userHelper.IsUserInRole("admin");
             ViewData["IsAdmin"] = isAdmin;
 
-            var list = isAdmin ? _service.ListTransactions() 
-                : _service.ListTransactions(_userHelper.CurrentUserId);
-
-            Mapper.CreateMap<Transaction, Transactions>();
-            var viewModelList = new TransactionViewModel();
-            viewModelList.Transactions = Mapper.Map<IList<Transaction>, IList<Transactions>>(list);
-            viewModelList.Filter = _service.GetFilter();
-            viewModelList.TotalSum = viewModelList.Transactions.Sum(t => t.Sum);
-
-
-            return View(viewModelList);
-        }
-
-        public ActionResult ClientTransactions(string _user)
-        {
-            var _userHelper = new UserHelper();
-            var isAdmin = _userHelper.IsUserInRole("admin");
-            ViewData["IsAdmin"] = isAdmin;
-
-            //TODO filter dy UserName
-
             var list = isAdmin ? _service.ListTransactions()
                 : _service.ListTransactions(_userHelper.CurrentUserId);
 
@@ -58,17 +37,33 @@ namespace ContactManager.Accounts.Controllers
             viewModelList.Filter = _service.GetFilter();
             viewModelList.TotalSum = viewModelList.Transactions.Sum(t => t.Sum);
 
+
+            return View(viewModelList);
+        }
+
+        [Authorize]
+        public ActionResult ClientTransactions(Guid clientUserId)
+        {
+            var list = _service.ListTransactions(clientUserId);
+
+            Mapper.CreateMap<Transaction, Transactions>();
+            var viewModelList = new TransactionViewModel();
+            viewModelList.Transactions = Mapper.Map<IList<Transaction>, IList<Transactions>>(list);
+            viewModelList.Filter = _service.GetFilter();
+            viewModelList.TotalSum = viewModelList.Transactions.Sum(t => t.Sum);
+
+            //return View("Index", viewModelList);
             return View(viewModelList);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult FiltredList(Filter filter)
+        public ActionResult FiltredList(FormCollection formCollection)
         {
 
             var _userHelper = new UserHelper();
             var isAdmin = _userHelper.IsUserInRole("admin");
             ViewData["IsAdmin"] = isAdmin;
-
+            var filter = new Filter();//------------------
             var list = isAdmin ? _service.ListTransactions(filter)
                 : _service.ListTransactions(_userHelper.CurrentUserId);
 

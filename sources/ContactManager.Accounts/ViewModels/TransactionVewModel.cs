@@ -19,6 +19,7 @@ namespace ContactManager.Accounts.ViewModels
         public string Comment { get; set; }
 
         public string ClientUserName { get; set; }
+        public Guid ClientUserId { get; set; }
         public string UserUserName { get; set; }
         public string TransactionName { get; set; }
 

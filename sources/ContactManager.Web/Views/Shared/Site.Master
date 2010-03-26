@@ -18,7 +18,8 @@
 
     <script src="<%= Url.Content("~/Scripts/jdMenu/jquery.jdMenu.js")%>" type="text/javascript"></script>
 
-    <script src="<%= Url.Content("~/Scripts/jquery-ui-1.7.2/jquery-ui-1.7.2.custom.min.js")%>" type="text/javascript"></script>
+    <script src="<%= Url.Content("~/Scripts/jquery-ui-1.7.2/jquery-ui-1.7.2.custom.min.js")%>"
+        type="text/javascript"></script>
 
     <script src="<%= Url.Content("~/media/js/jquery.dataTables.js")%>" type="text/javascript"></script>
 
@@ -27,9 +28,10 @@
     <script src="<%= Url.Content("~/Scripts/astra-hosts.js")%>" type="text/javascript"></script>
 
     <script src="<%= Url.Content("~/Scripts/astra-statuses.js")%>" type="text/javascript"></script>
+    
+    <script src="<%= Url.Content("~/Scripts/astra-messages.js")%>" type="text/javascript"></script>
 
     <script src="<%= Url.Content("~/Scripts/ui.dropdownchecklist.js")%>" type="text/javascript"></script>
-
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -85,6 +87,8 @@
             <%} %>
         </div>
         <div id="main" class="ui-widget-content ui-corner-bottom">
+                 <div class="ui-widget-content ui-corner-bottom"><asp:SiteMapPath ID="SiteMapPath" runat="server">
+            </asp:SiteMapPath></div>   
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
             <p id="footer">
                 &copy;2010 Astra Contact Manager</p>

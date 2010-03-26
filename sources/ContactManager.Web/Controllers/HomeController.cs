@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Web;
+using System.Web.Mvc;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.PPP.Intefaces;
@@ -51,6 +52,12 @@ namespace ContactManager.Web.Controllers
             var helper = new UserHelper();
             helper.CleanDatabase();
             return View("Index", _facade.GetContact(_ctx.CurrentUserId));
+        }
+
+
+        public ActionResult Sitemap()
+        {
+            return View(SiteMap.RootNode);
         }
     }
 }

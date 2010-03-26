@@ -105,7 +105,7 @@ namespace ContactManager.Addresses.Controllers
                 result = this.FindView(context);
                 this.View = result.View;
             }
-            var viewContext = new ViewContext(context, View, ViewData, TempData, null);
+            var viewContext = new ViewContext(context, View, ViewData, TempData);
             using (var stream = new MemoryStream())
             using (var writer = new StreamWriter(stream))
             {
