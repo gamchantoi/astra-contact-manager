@@ -1,27 +1,35 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Users.ViewModels.ClientViewModel>" %>
-<%@ Import Namespace="ContactManager.Web.Helpers"%>
 
+<%@ Import Namespace="ContactManager.Web.Helpers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <script language="javascript" type="text/javascript" src="<%= Url.Content("~/Scripts/astra-password-generator.js")%>"></script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+    <script>
+        $(document).ready(function() {
+            $("#createForm").validate();
+        });
+    </script>
+
     <%= Html.ValidationSummary(Html.Resource("Users_Resources, Users_User_Create_ValidationSummary"), new { @class = "ui-state-error ui-corner-all" }) %>
-    <% using (Html.BeginForm())
+    <% using (Html.BeginForm("Create", "User", FormMethod.Post, new { id = "createForm" }))
        {%>
     <fieldset class="fields">
-        <legend><%= Html.Resource("Users_Resources, Users_User_Create_CreateNewUser")%></legend>
+        <legend>
+            <%= Html.Resource("Users_Resources, Users_User_Create_CreateNewUser")%></legend>
         <p>
             <label for="UserName">
                 <%= Html.Resource("Users_Resources, Users_User_Create_UserName")%>:</label>
-            <%= Html.TextBox("UserName") %>
+            <%= Html.TextBox("UserName", new { @class = "required" })%>
             <%= Html.ValidationMessage("UserName", "*") %>
         </p>
         <p>
             <label for="Password">
                 <%= Html.Resource("Users_Resources, Users_User_Create_Password")%>:</label>
-            <%= Html.TextBox("Password") %>
+            <%= Html.TextBox("Password", new { @class = "required" })%>
             <%= Html.ValidationMessage("Password", "*") %>
             <%= Html.JSLink(Html.Resource("Users_Resources, Users_User_Create_Generate"), "generatePassword", "#Password")%>
         </p>
@@ -46,7 +54,7 @@
         <p>
             <label for="Email">
                 <%= Html.Resource("Users_Resources, Users_User_Create_Email")%>:</label>
-            <%= Html.TextBox("Email") %>
+            <%= Html.TextBox("Email", new { @class = "required" })%>
             <%= Html.ValidationMessage("Email", "*") %>
         </p>
         <p>
@@ -56,7 +64,7 @@
             <%= Html.ValidationMessage("StatusId", "*")%>
         </p>
         <p>
-            <input type="submit" value=<%= Html.Resource("Users_Resources, Users_User_Create_Create")%> />
+            <input type="submit" value='<%= Html.Resource("Users_Resources, Users_User_Create_Create")%>' />
         </p>
     </fieldset>
     <% } %>

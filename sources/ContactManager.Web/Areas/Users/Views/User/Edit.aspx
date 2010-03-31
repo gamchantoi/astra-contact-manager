@@ -17,6 +17,13 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+    <script>
+        $(document).ready(function() {
+            $("#createForm").validate();
+        });
+    </script>
+
     <%= Html.ValidationSummary(Html.Resource("Users_Resources, Users_User_Edit_ValidationSummary"), new { @class = "ui-state-error ui-corner-all" })%>
     <fieldset class="fields">
         <legend>
@@ -25,7 +32,7 @@
         <table class="container">
             <tr>
                 <td>
-                    <% using (Html.BeginForm())
+                    <% using (Html.BeginForm("Edit", "User", FormMethod.Post, new { id = "createForm" }))
                        {%>
                     <%= Html.Hidden("UserId", Model.UserId) %>
                     <%= Html.Hidden("Balance", Model.Balance)%>
@@ -37,13 +44,13 @@
                     <p>
                         <label for="UserName">
                             <%= Html.Resource("Users_Resources, Users_User_Edit_UserName")%>:</label>
-                        <%= Html.TextBox("UserName", Model.UserName)%>
+                        <%= Html.TextBox("UserName", Model.UserName, new { @class = "required" })%>
                         <%= Html.ValidationMessage("UserName", "*")%>
                     </p>
                     <p>
                         <label for="Password">
                             <%= Html.Resource("Users_Resources, Users_User_Edit_Password")%>:</label>
-                        <%= Html.TextBox("Password", Model.Password) %>
+                        <%= Html.TextBox("Password", Model.Password, new { @class = "required" }) %>
                         <%= Html.ValidationMessage("Password", "*") %>
                         <%= Html.JSLink(Html.Resource("Users_Resources, Users_User_Create_Generate"), "generatePassword", "#Password")%>
                     </p>
@@ -65,19 +72,19 @@
                     <p>
                         <label for="Credit">
                             <%= Html.Resource("Users_Resources, Users_User_Edit_Credit")%>:</label>
-                        <%= Html.TextBox("Credit", String.Format("{0:F}", Model.Credit))%>
+                        <%= Html.TextBox("Credit", String.Format("{0:F}", Model.Credit), new { @class = "required" })%>
                         <%= Html.ValidationMessage("Credit", "*")%>
                     </p>
                     <p>
                         <label for="Email">
                             <%= Html.Resource("Users_Resources, Users_User_Edit_Email")%>:</label>
-                        <%= Html.TextBox("Email", Model.Email) %>
+                        <%= Html.TextBox("Email", Model.Email, new { @class = "required" })%>
                         <%= Html.ValidationMessage("Email", "*") %>
                     </p>
                     <p>
                         <label for="Comment">
                             <%= Html.Resource("Users_Resources, Users_User_Edit_Comment")%>:</label>
-                        <%= Html.TextBox("Comment", Model.Comment)%>
+                        <%= Html.TextBox("Comment", Model.Comment, new { @class = "required" })%>
                         <%= Html.ValidationMessage("Comment", "*")%>
                     </p>
                     <p>
