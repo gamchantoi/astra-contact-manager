@@ -2,8 +2,15 @@
 
 <%@ Import Namespace="ContactManager.Web.Helpers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+    <script>
+        $(document).ready(function() {
+            $("#createForm").validate();
+        });
+    </script>
+
     <%= Html.ValidationSummary(Html.Resource("PPP_Resources, PPP_View_Profile_Create_ValidationSummary"))%>
-    <% using (Html.BeginForm())
+    <% using (Html.BeginForm("Create", "Profile", FormMethod.Post, new { id = "createForm" }))
        {%>
     <fieldset class="fields">
         <legend>
@@ -11,19 +18,19 @@
         <p>
             <label for="Name">
                 <%= Html.Resource("PPP_Resources, PPP_View_Profile_Create_Name")%>:</label>
-            <%= Html.TextBox("Name") %>
+            <%= Html.TextBox("Name", new { @class = "required" })%>
             <%= Html.ValidationMessage("Name", "*") %>
         </p>
         <p>
             <label for="DisplayName">
                 <%= Html.Resource("PPP_Resources, PPP_View_Profile_Create_DisplayName")%>:</label>
-            <%= Html.TextBox("DisplayName")%>
+            <%= Html.TextBox("DisplayName", new { @class = "required" })%>
             <%= Html.ValidationMessage("DisplayName", "*")%>
         </p>
         <p>
             <label for="LocalAddress">
                 <%= Html.Resource("PPP_Resources, PPP_View_Profile_Create_LocalAddress")%>:</label>
-            <%= Html.TextBox("LocalAddress") %>
+            <%= Html.TextBox("LocalAddress", new { @class = "required" })%>
             <%= Html.ValidationMessage("LocalAddress", "*") %>
         </p>
         <p>
@@ -35,19 +42,19 @@
         <p>
             <label for="RateLimit">
                 <%= Html.Resource("PPP_Resources, PPP_View_Profile_Create_RateLimit")%>:</label>
-            <%= Html.TextBox("RateLimit") %>
+            <%= Html.TextBox("RateLimit", new { @class = "required" })%>
             <%= Html.ValidationMessage("RateLimit", "*") %>
         </p>
         <p>
             <label for="Cost">
                 <%= Html.Resource("PPP_Resources, PPP_View_Profile_Create_Cost")%>:</label>
-            <%= Html.TextBox("Cost") %>
+            <%= Html.TextBox("Cost", new { @class = "required" })%>
             <%= Html.ValidationMessage("Cost", "*") %>
         </p>
         <p>
             <label for="Comment">
                 <%= Html.Resource("PPP_Resources, PPP_View_Profile_Create_Comment")%>:</label>
-            <%= Html.TextBox("Comment")%>
+            <%= Html.TextBox("Comment", new { @class = "required" })%>
             <%= Html.ValidationMessage("Comment", "*")%>
         </p>
         <p>

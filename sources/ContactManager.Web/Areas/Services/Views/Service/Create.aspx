@@ -1,28 +1,36 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Service>" %>
-<%@ Import Namespace="ContactManager.Web.Helpers"%>
 
+<%@ Import Namespace="ContactManager.Web.Helpers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <%= Html.ValidationSummary(Html.Resource("Services_Resources, Services_View_Create_ValidationSummary"))%>
-    <% using (Html.BeginForm())
+
+    <script>
+        $(document).ready(function() {
+            $("#createForm").validate();
+        });
+    </script>
+
+    <% using (Html.BeginForm("Create", "Service", FormMethod.Post, new { id = "createForm" }))
        {%>
     <fieldset>
-        <legend><%= Html.Resource("Services_Resources, Services_View_Create_CreateNewService")%></legend>
+        <legend>
+            <%= Html.Resource("Services_Resources, Services_View_Create_CreateNewService")%></legend>
         <p>
             <label for="Name">
                 <%= Html.Resource("Services_Resources, Services_View_Create_Name")%>:</label>
-            <%= Html.TextBox("Name") %>
+            <%= Html.TextBox("Name", new { @class = "required" })%>
             <%= Html.ValidationMessage("Name", "*") %>
         </p>
         <p>
             <label for="Comment">
                 <%= Html.Resource("Services_Resources, Services_View_Create_Comment")%>:</label>
-            <%= Html.TextBox("Comment")%>
+            <%= Html.TextBox("Comment", new { @class = "required"})%>
             <%= Html.ValidationMessage("Comment", "*")%>
         </p>
         <p>
             <label for="Cost">
                 <%= Html.Resource("Services_Resources, Services_View_Create_Cost")%>:</label>
-            <%= Html.TextBox("Cost") %>
+            <%= Html.TextBox("Cost", new { @class = "required" })%>
             <%= Html.ValidationMessage("Cost", "*") %>
         </p>
         <p>
@@ -44,7 +52,7 @@
             <%= Html.ValidationMessage("Visible", "*")%>
         </p>
         <p>
-            <input type="submit" value=<%= Html.Resource("Services_Resources, Services_View_Create_Create")%> />
+            <input type="submit" value='<%= Html.Resource("Services_Resources, Services_View_Create_Create")%>' />
         </p>
     </fieldset>
     <% } %>
