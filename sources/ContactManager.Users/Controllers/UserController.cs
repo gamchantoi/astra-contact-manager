@@ -11,6 +11,8 @@ using ContactManager.Users.Interfaces;
 using ContactManager.Users.Services;
 using ContactManager.Users.Helpers;
 using ContactManager.Users.ViewModels;
+using MvcSiteMap.Core;
+using MvcSiteMap.Core.Filters;
 
 namespace ContactManager.Users.Controllers
 {
@@ -33,6 +35,7 @@ namespace ContactManager.Users.Controllers
         }
 
         [Authorize(Roles = "admin")]
+        [SiteMapTitle("category")]
         public ActionResult Index(bool? deleted)
         {
             return deleted.HasValue ? View(PrepareIndex(deleted.Value)) : View(PrepareIndex(false));
@@ -66,6 +69,7 @@ namespace ContactManager.Users.Controllers
         }
 
         [Authorize(Roles = "admin")]
+        [MvcSiteMapNode(ParentKey = "ProductsListCategory", Title = "Edit User", IsDynamic = true, DynamicParameters = "id", Visibility = MvcSiteMapNodeVisibility.InSiteMapPathOnly)]
         public ActionResult Edit(Guid id)
         {
             var client = _facade.GetContact(id);

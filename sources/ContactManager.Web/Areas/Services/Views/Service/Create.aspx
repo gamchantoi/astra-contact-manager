@@ -18,19 +18,19 @@
         <p>
             <label for="Name">
                 <%= Html.Resource("Services_Resources, Services_View_Create_Name")%>:</label>
-            <%= Html.TextBox("Name", new { @class = "required" })%>
+            <%= Html.TextBox("Name", "", new { @class = "required" })%>
             <%= Html.ValidationMessage("Name", "*") %>
         </p>
         <p>
             <label for="Comment">
                 <%= Html.Resource("Services_Resources, Services_View_Create_Comment")%>:</label>
-            <%= Html.TextBox("Comment", new { @class = "required"})%>
+            <%= Html.TextBox("Comment", "", new { @class = "required" })%>
             <%= Html.ValidationMessage("Comment", "*")%>
         </p>
         <p>
             <label for="Cost">
                 <%= Html.Resource("Services_Resources, Services_View_Create_Cost")%>:</label>
-            <%= Html.TextBox("Cost", new { @class = "required" })%>
+            <%= Html.TextBox("Cost", "", new { @class = "required" })%>
             <%= Html.ValidationMessage("Cost", "*") %>
         </p>
         <p>
