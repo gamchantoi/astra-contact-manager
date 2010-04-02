@@ -18,19 +18,19 @@
         <p>
             <label for="Name">
                 <%= Html.Resource("PPP_Resources, PPP_View_Profile_Create_Name")%>:</label>
-            <%= Html.TextBox("Name", new { @class = "required" })%>
+            <%= Html.TextBox("Name", "", new { @class = "required" })%>
             <%= Html.ValidationMessage("Name", "*") %>
         </p>
         <p>
             <label for="DisplayName">
                 <%= Html.Resource("PPP_Resources, PPP_View_Profile_Create_DisplayName")%>:</label>
-            <%= Html.TextBox("DisplayName", new { @class = "required" })%>
+            <%= Html.TextBox("DisplayName", "", new { @class = "required" })%>
             <%= Html.ValidationMessage("DisplayName", "*")%>
         </p>
         <p>
             <label for="LocalAddress">
                 <%= Html.Resource("PPP_Resources, PPP_View_Profile_Create_LocalAddress")%>:</label>
-            <%= Html.TextBox("LocalAddress", new { @class = "required" })%>
+            <%= Html.TextBox("LocalAddress", "", new { @class = "required" })%>
             <%= Html.ValidationMessage("LocalAddress", "*") %>
         </p>
         <p>
@@ -42,19 +42,19 @@
         <p>
             <label for="RateLimit">
                 <%= Html.Resource("PPP_Resources, PPP_View_Profile_Create_RateLimit")%>:</label>
-            <%= Html.TextBox("RateLimit", new { @class = "required" })%>
+            <%= Html.TextBox("RateLimit", "", new { @class = "required" })%>
             <%= Html.ValidationMessage("RateLimit", "*") %>
         </p>
         <p>
             <label for="Cost">
                 <%= Html.Resource("PPP_Resources, PPP_View_Profile_Create_Cost")%>:</label>
-            <%= Html.TextBox("Cost", new { @class = "required" })%>
+            <%= Html.TextBox("Cost", "", new { @class = "required" })%>
             <%= Html.ValidationMessage("Cost", "*") %>
         </p>
         <p>
             <label for="Comment">
                 <%= Html.Resource("PPP_Resources, PPP_View_Profile_Create_Comment")%>:</label>
-            <%= Html.TextBox("Comment", new { @class = "required" })%>
+            <%= Html.TextBox("Comment", "", new { @class = "required" })%>
             <%= Html.ValidationMessage("Comment", "*")%>
         </p>
         <p>

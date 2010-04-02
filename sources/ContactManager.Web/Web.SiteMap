@@ -7,7 +7,7 @@
             <mvcSiteMapNode title="PaymentMethod"  controller="Accounts/PaymentMethod" action="Index"/>
         </mvcSiteMapNode>
         <mvcSiteMapNode title="Messages"  controller="Messages" action="Index">
-        <mvcSiteMapNode title="Messages Type"  controller="Messages/MessageType" action="Index"/>
+            <mvcSiteMapNode title="Messages Type"  controller="Messages/MessageType" action="Index"/>
         </mvcSiteMapNode>
 
         <mvcSiteMapNode title="Services"  controller="Services" action="Index">
@@ -19,25 +19,17 @@
             <mvcSiteMapNode title="Active Connections"  controller="PPP/ActiveConnections" action="Index"/>
         </mvcSiteMapNode>
         <mvcSiteMapNode title="Accounts"  controller="Accounts" action="Index"/>
-        <mvcSiteMapNode title="Users"  controller="Users" action="Index">
+        <!--<mvcSiteMapNode title="Users"  controller="Users" action="Index">
             <mvcSiteMapNode title="Create User"  controller="Users/User" action="Create"/>
             <mvcSiteMapNode title="Edit User"  controller="Users/User" action="Edit"/>
-        </mvcSiteMapNode>
-
-
-        <!--<mvcSiteMapNode title="About Us" controller="Home" action="About" />
-
-        <mvcSiteMapNode title="Products" controller="Products">
-            <mvcSiteMapNode title="Will be replaced in controller"
-                            controller="Products" action="List"
-                            isDynamic="true" dynamicParameters="id"
-                            key="ProductsListCategory"/>
-        </mvcSiteMapNode>
-        <mvcSiteMapNode title="Account" controller="Account">
-            <mvcSiteMapNode title="Login" controller="Account" action="LogOn" />
-            <mvcSiteMapNode title="Account Creation" controller="Account" action="Register" />
-            <mvcSiteMapNode title="Change Password" controller="Account" action="ChangePassword" />
-            <mvcSiteMapNode title="Logout" controller="Account" action="LogOff" />
         </mvcSiteMapNode>-->
+
+        <!--<mvcSiteMapNode title="Users"  controller="Users">-->
+            <mvcSiteMapNode title="Users"  controller="Users" action="Index"
+                            isDynamic="true" dynamicParameters="id"
+                            visibility="InSiteMapPathOnly"/>
+            key="ProductsListCategory"
+
+        <!--</mvcSiteMapNode>-->
     </mvcSiteMapNode>
 </siteMap>

@@ -18,13 +18,13 @@
         <p>
             <label for="Name">
                 <%= Html.Resource("PPP_Resources, PPP_View_Pool_Create_Name")%></label>
-            <%= Html.TextBox("Name", new { @class = "required" })%>
+            <%= Html.TextBox("Name","", new { @class = "required" })%>
             <%= Html.ValidationMessage("Name", "*") %>
         </p>
         <p>
             <label for="Addresses">
                 <%= Html.Resource("PPP_Resources, PPP_View_Pool_Create_Addresses")%></label>
-            <%= Html.TextBox("Addresses", new { @class = "required" })%>
+            <%= Html.TextBox("Addresses", "", new { @class = "required" })%>
             <%= Html.ValidationMessage("Addresses", "*") %>
         </p>
         <p>
