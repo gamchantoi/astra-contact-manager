@@ -6,6 +6,7 @@ using ContactManager.Models.Enums;
 using ContactManager.Models.Validation;
 using ContactManager.Models.ViewModels;
 using ContactManager.PPP.Intefaces;
+using ContactManager.PPP.Services;
 using ContactManager.PPP.SSH;
 using ContactManager.Users.Interfaces;
 using ContactManager.Users.Services;
@@ -24,6 +25,7 @@ namespace ContactManager.Users.Controllers
         private readonly ISshSecretService _sshSecretService;
         private readonly CurrentContext _ctx;
         private readonly IStatusService _statusService;
+        private readonly IProfileService _profileService;
 
         public UserController()
         {
@@ -32,6 +34,7 @@ namespace ContactManager.Users.Controllers
             _facade = new UserFacade(validationDictionary);
             _sshSecretService = new SshSecretService(validationDictionary, true);
             _statusService = new StatusService(validationDictionary);
+            _profileService = new ProfileService(validationDictionary);
         }
 
         [Authorize(Roles = "admin")]
@@ -133,14 +136,13 @@ namespace ContactManager.Users.Controllers
             ClientViewModel viewModel;
 
             var userHelper = new DropDownHelper();
-            var pppHelper = new PPP.Helpers.DropDownHelper();
 
             if (client == null)
             {
                 viewModel = new ClientViewModel
                                 {
                                     Roles = userHelper.GetRoles(ROLES.client.ToString()),
-                                    Profiles = pppHelper.GetProfiles(null),
+                                    Profiles = _profileService.SelectListProfiles(null),
                                     Statuses = _statusService.ListStatuses(null)
                                 };
             }
@@ -148,7 +150,7 @@ namespace ContactManager.Users.Controllers
             {
                 viewModel = _facade.ClientService.GetViewModel(client);
                 viewModel.Roles = userHelper.GetRoles(client.Role);
-                viewModel.Profiles = pppHelper.GetProfiles(client.ProfileId);
+                viewModel.Profiles = _profileService.SelectListProfiles(client.ProfileId);
                 //viewModel.Statuses = _statusService.ListStatuses(client.Status.StatusId);// 2---------------
                 viewModel.Statuses = _statusService.ListStatuses(client.Status.StatusId);
                 viewModel.StatusId = client.Status.StatusId;

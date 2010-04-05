@@ -95,6 +95,10 @@
       <Project>{CA6EDC25-507E-48C5-AC9F-F99BB32E171A}</Project>
       <Name>ContactManager.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ContactManager.PPP\ContactManager.PPP.csproj">
+      <Project>{EACF1926-D96A-445B-BD6F-271EACE6F02E}</Project>
+      <Name>ContactManager.PPP</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,7 +1,6 @@
 using System.Web.Mvc;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
-using ContactManager.PPP.Helpers;
 using ContactManager.PPP.Intefaces;
 using ContactManager.PPP.Services;
 using ContactManager.PPP.SSH;

@@ -31,7 +31,7 @@ first child of the left and right table columns */
 #logindisplay { font-size: 1.1em; display: block; text-align: right; color: #ccc; position: absolute; top: 13px; right: 25px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; }
 #menucontainer { }
 /*#main { padding: 30px 30px 15px 30px; background: #fff url(Images/bg-main-corner-sprite.png) no-repeat; margin-bottom: 30px; _height: 1px; clear: both; position: relative; width: 890px; }*/
-#main { padding: 30px 30px 15px 30px; margin-bottom: 30px; _height: 1px; clear: both; position: relative; }
+#main { padding: 15px 30px; margin-bottom: 30px; _height: 1px; clear: both; position: relative; }
 #footer { clear: both; color: #999; padding: 30px 0 0 0; text-align: center; }
 #bottom-shadow { position: absolute; bottom: 0; left: 0; font-size: .9em; background: #FFF url(Images/bg-main-corner-sprite.png) no-repeat -950px bottom; width: 950px; clear: both; height: 15px; }
 input[type="button"], input[type="submit"], input[type="checkbox"] { cursor: pointer; }
@@ -106,9 +106,9 @@ p.checkbox label { display: inline; float: none; }
 
 /* TABLES 
 ----------------------------------------------------------*/
-table { border: 1px solid #E3E3E3; border-collapse: collapse; }
-table th { border: 1px solid #E3E3E3; padding: 6px 5px; text-align: left; }
-table td { border: 1px solid #E3E3E3; padding: 5px; }
+table { /*border: 1px solid #E3E3E3;*/ border-collapse: collapse; }
+table th { /*border: 1px solid #E3E3E3;*/ padding: 6px 5px; text-align: left; }
+table td { /*border: 1px solid #E3E3E3;*/ padding: 5px; }
 
 #details-accordion { min-width: 450px; }
 

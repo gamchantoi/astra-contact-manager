@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using ContactManager.Models;
 
 namespace ContactManager.PPP.Intefaces
@@ -11,5 +12,6 @@ namespace ContactManager.PPP.Intefaces
         bool EditProfile(Profile profile);
         Profile GetProfile(int id);        
         List<Profile> ListProfiles();
+        SelectList SelectListProfiles(int? selectedValue);
     }
 }
