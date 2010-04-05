@@ -9,6 +9,8 @@ using ContactManager.Accounts.ViewModels;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
 using ContactManager.Models.ViewModels;
+using ContactManager.PPP.Intefaces;
+using ContactManager.PPP.Services;
 
 namespace ContactManager.Accounts.Services
 {
@@ -16,6 +18,8 @@ namespace ContactManager.Accounts.Services
     {
         private readonly IValidationDictionary _validationDictionary;
         private readonly ITransactionRepository _repository;
+        private readonly IProfileService _profileService;
+        //private readonly IServiceService _serviceService;
 
         #region Constructors
         public TransactionService(IValidationDictionary validationDictionary)
@@ -23,6 +27,7 @@ namespace ContactManager.Accounts.Services
             _validationDictionary = validationDictionary;
             _repository = new EntityTransactionRepository();
             PaymentMethodService = new PaymentMethodService(validationDictionary);
+            _profileService = new ProfileService(validationDictionary);
         }
         #endregion
 
@@ -105,6 +110,28 @@ namespace ContactManager.Accounts.Services
 
         private SelectList FillPaymentMethodsList()
         {
+            var methods = PaymentMethodService.SelectListPaymentMethods(0);
+            var profiles = _profileService.SelectListProfiles(0);
+
+            var selectList = new List<KeyValuePair<string, string>>();
+
+            foreach (var item in methods)
+            {
+                selectList.Add(new KeyValuePair<string, string>(
+                    "method." + item,
+                    item.Text
+                    ));
+            }
+
+            foreach (var item in profiles)
+            {
+                selectList.Add(new KeyValuePair<string, string>(
+                    "profile." + item,
+                    item.Text
+                    ));
+            }
+            return new SelectList(selectList, "key", "value", DateTime.Now.Month.ToString());
+
             return PaymentMethodService.SelectListPaymentMethods(0);
         }
 

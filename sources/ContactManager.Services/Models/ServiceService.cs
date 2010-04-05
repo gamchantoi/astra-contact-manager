@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.Mvc;
 using ContactManager.Models;
 using ContactManager.Models.Enums;
 using ContactManager.Models.Validation;
@@ -116,6 +117,17 @@ namespace ContactManager.Services.Models
         public List<ClientInServices> ListActivities()
         {
             return _repository.ListActivities();
+        }
+
+        public SelectList SelectListPaymentMethods(int? selectedId)
+        {
+            var list = ListServices(STATUSES.Active);
+            if (selectedId.HasValue)
+                return new SelectList(list, "ServiceId", "Name", selectedId.Value);
+
+            var paymentMethod = new Service { ServiceId = 0, Name = "Please select", Visible = true };
+            list.Add(paymentMethod);
+            return new SelectList(list, "ServiceId", "Name");
         }
 
         #endregion

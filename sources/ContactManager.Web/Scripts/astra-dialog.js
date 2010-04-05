@@ -1,4 +1,6 @@
-﻿function ShowDialog(url) {
+﻿/// <reference path="jquery-ui-1.7.2/ui/ui.dialog.js" />
+
+function ShowDialog(url) {
     ShowLoading()
     jQuery.ajax({
         type: "GET",

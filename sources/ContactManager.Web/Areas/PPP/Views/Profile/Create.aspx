@@ -3,7 +3,7 @@
 <%@ Import Namespace="ContactManager.Web.Helpers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <script>
+    <script type="text/javascript">
         $(document).ready(function() {
             $("#createForm").validate();
         });
@@ -18,7 +18,7 @@
         <p>
             <label for="Name">
                 <%= Html.Resource("PPP_Resources, PPP_View_Profile_Create_Name")%>:</label>
-            <%= Html.TextBox("Name", "", new { @class = "required" })%>
+            <%= Html.TextBox("Name","", new { @class = "required" })%>
             <%= Html.ValidationMessage("Name", "*") %>
         </p>
         <p>

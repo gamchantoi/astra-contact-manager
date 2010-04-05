@@ -68,7 +68,6 @@
     <Compile Include="Controllers\PoolController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\SecretController.cs" />
-    <Compile Include="Helpers\DropDownHelper.cs" />
     <Compile Include="Intefaces\IActiveConnections.cs" />
     <Compile Include="Intefaces\IActiveConnectionsRepository.cs" />
     <Compile Include="Intefaces\IActiveConnectionsService.cs" />

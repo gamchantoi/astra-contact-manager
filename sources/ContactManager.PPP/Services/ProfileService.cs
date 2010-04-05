@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.Mvc;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
 using System.Text.RegularExpressions;
@@ -135,6 +136,13 @@ namespace ContactManager.PPP.Services
         public List<Profile> ListProfiles()
         {
             return _repository.ListProfiles();
+        }
+
+        public SelectList SelectListProfiles(int? selectedValue)
+        {
+            if (selectedValue.HasValue)
+                return new SelectList(ListProfiles(), "ProfileId", "DisplayName", selectedValue);
+            return new SelectList(ListProfiles(), "ProfileId", "DisplayName");
         }
 
         #endregion
