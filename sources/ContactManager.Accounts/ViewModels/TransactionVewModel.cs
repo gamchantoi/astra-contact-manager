@@ -34,6 +34,6 @@ namespace ContactManager.Accounts.ViewModels
 
         public int Years { get; set; }
         public int Months { get; set; }
-        public int PaymentMethods { get; set; }
+        public string PaymentMethods { get; set; }
     }
 }

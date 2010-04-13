@@ -118,7 +118,7 @@ namespace ContactManager.Accounts.Services
             foreach (var item in methods)
             {
                 selectList.Add(new KeyValuePair<string, string>(
-                    "method." + item,
+                    "method." + item.Value,
                     item.Text
                     ));
             }
@@ -126,16 +126,14 @@ namespace ContactManager.Accounts.Services
             foreach (var item in profiles)
             {
                 selectList.Add(new KeyValuePair<string, string>(
-                    "profile." + item,
+                    "profile." + item.Value,
                     item.Text
                     ));
             }
             return new SelectList(selectList, "key", "value", DateTime.Now.Month.ToString());
-
-            return PaymentMethodService.SelectListPaymentMethods(0);
         }
 
-        public List<Transaction> ListTransactions(Filter filter)
+        public List<Transactions> ListTransactions(Filter filter)
         {
 
             return _repository.ListTransaction(filter);

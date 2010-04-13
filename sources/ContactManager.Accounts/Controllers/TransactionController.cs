@@ -8,6 +8,7 @@ using ContactManager.Accounts.Interfaces;
 using ContactManager.Accounts.Services;
 using ContactManager.Accounts.ViewModels;
 using ContactManager.Models;
+using ContactManager.Models.Enums;
 using ContactManager.Models.Validation;
 
 namespace ContactManager.Accounts.Controllers
@@ -28,8 +29,8 @@ namespace ContactManager.Accounts.Controllers
             var isAdmin = _userHelper.IsUserInRole("admin");
             ViewData["IsAdmin"] = isAdmin;
 
-            var list = isAdmin ? _service.ListTransactions()
-                : _service.ListTransactions(_userHelper.CurrentUserId);
+            var list = isAdmin  ? _service.ListTransactions()
+                                : _service.ListTransactions(_userHelper.CurrentUserId);
 
             Mapper.CreateMap<Transaction, Transactions>();
             var viewModelList = new TransactionViewModel();
@@ -59,19 +60,33 @@ namespace ContactManager.Accounts.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult FiltredList(FormCollection formCollection)
         {
-
+            var filter = BuildFilter(formCollection);
+            
             var _userHelper = new UserHelper();
-            var isAdmin = _userHelper.IsUserInRole("admin");
+            var isAdmin = _userHelper.IsUserInRole(ROLES.admin.ToString());
             ViewData["IsAdmin"] = isAdmin;
-            var filter = new Filter();//------------------
-            var list = isAdmin ? _service.ListTransactions(filter)
-                : _service.ListTransactions(_userHelper.CurrentUserId);
 
-            Mapper.CreateMap<Transaction, Transactions>();
+            //------------------
+            //var list = isAdmin  ? _service.ListTransactions(filter)
+                                //: _service.ListTransactions(_userHelper.CurrentUserId);
+
+            //Mapper.CreateMap<Transaction, Transactions>();
             var viewModelList = new TransactionViewModel();
-            viewModelList.Transactions = Mapper.Map<IList<Transaction>, IList<Transactions>>(list);
+            //viewModelList.Transactions = Mapper.Map<IList<Transaction>, IList<Transactions>>(list);
+            viewModelList.Transactions = _service.ListTransactions(filter);
             viewModelList.Filter = _service.GetFilter();
+            
             return View("Index", viewModelList);
+        }
+
+        private static Filter BuildFilter(FormCollection formCollection)
+        {
+            return new Filter
+                             {
+                                 Years = int.Parse(formCollection.GetValue("Years").AttemptedValue),
+                                 Months = int.Parse(formCollection.GetValue("Months").AttemptedValue),
+                                 PaymentMethods = formCollection.GetValue("PaymentMethods").AttemptedValue
+                             };
         }
 
         [Authorize(Roles = "admin")]

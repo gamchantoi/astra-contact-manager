@@ -16,6 +16,6 @@ namespace ContactManager.Accounts.Interfaces
         Filter GetFilter();
         bool CreateTransaction(LoadMoneyViewModel model);
 
-        List<Transaction>  ListTransactions(Filter filter);
+        List<Transactions>  ListTransactions(Filter filter);
     }
 }
