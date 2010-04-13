@@ -17,7 +17,7 @@
     <p>
         <label for="City">
             <%= Html.Resource("Addresses_Resources, Addresses_View_Create_City")%></label>
-        <%= Html.TextBox("City", new { @class = "required" })%>
+        <%= Html.TextBox("City", "", new { @class = "required" })%>
         <%= Html.ValidationMessage("City", "*") %>
     </p>
     <%--    <p>
@@ -36,19 +36,19 @@
     </p>
     <label for="Building">
         <%= Html.Resource("Addresses_Resources, Addresses_View_Create_Building")%></label>
-    <%= Html.TextBox("Building", new { @class = "required" })%>
+    <%= Html.TextBox("Building","", new { @class = "required" })%>
     <%= Html.ValidationMessage("Building", "*") %>
     </p>
     <p>
         <label for="Room">
             <%= Html.Resource("Addresses_Resources, Addresses_View_Create_Room")%></label>
-        <%= Html.TextBox("Room", new { @class = "required" })%>
+        <%= Html.TextBox("Room", "", new { @class = "required" })%>
         <%= Html.ValidationMessage("Room", "*") %>
     </p>
     <p>
         <label for="Details">
             <%= Html.Resource("Addresses_Resources, Addresses_View_Create_Details")%></label>
-        <%= Html.TextBox("Details", new { @class = "required" })%>
+        <%= Html.TextBox("Details", "", new { @class = "required" })%>
         <%= Html.ValidationMessage("Details", "*") %>
     </p>
     <p>
