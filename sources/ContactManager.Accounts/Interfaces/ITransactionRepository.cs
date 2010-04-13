@@ -15,7 +15,7 @@ namespace ContactManager.Accounts.Interfaces
         IQueryable<int> GetTransactionYears();
         void ProcessClientPayment(Guid userId);
 
-        List<Transaction> ListTransaction(Filter filter);
+        List<Transactions> ListTransaction(Filter filter);
 
         IQueryable<int> GetTransactionMonths();
     }

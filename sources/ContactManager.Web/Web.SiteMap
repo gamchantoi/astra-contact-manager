@@ -6,6 +6,7 @@
             <mvcSiteMapNode title="Addresses"  controller="Addresses" action="Index"/>
             <mvcSiteMapNode title="PaymentMethod"  controller="Accounts/PaymentMethod" action="Index"/>
         </mvcSiteMapNode>
+        
         <mvcSiteMapNode title="Messages"  controller="Messages" action="Index">
             <mvcSiteMapNode title="Messages Type"  controller="Messages/MessageType" action="Index"/>
         </mvcSiteMapNode>
@@ -13,11 +14,13 @@
         <mvcSiteMapNode title="Services"  controller="Services" action="Index">
             <mvcSiteMapNode title="Service Activities"  controller="Services/Service/Activities" action="Index"/>
         </mvcSiteMapNode>
+        
         <mvcSiteMapNode title="Server"  controller="PPP">
             <mvcSiteMapNode title="Pool"  controller="PPP/Pool" action="Index"/>
             <mvcSiteMapNode title="Profiles"  controller="PPP/Profiles" action="Index"/>
             <mvcSiteMapNode title="Active Connections"  controller="PPP/ActiveConnections" action="Index"/>
         </mvcSiteMapNode>
+        
         <mvcSiteMapNode title="Accounts"  controller="Accounts" action="Index"/>
         <!--<mvcSiteMapNode title="Users"  controller="Users" action="Index">
             <mvcSiteMapNode title="Create User"  controller="Users/User" action="Create"/>
@@ -25,11 +28,9 @@
         </mvcSiteMapNode>-->
 
         <!--<mvcSiteMapNode title="Users"  controller="Users">-->
-            <mvcSiteMapNode title="Users"  controller="Users" action="Index"
-                            isDynamic="true" dynamicParameters="id"
-                            visibility="InSiteMapPathOnly"/>
-            key="ProductsListCategory"
-
+        <mvcSiteMapNode title="Users"  controller="Users" action="Index"
+                        isDynamic="true" dynamicParameters="id"
+                        visibility="InSiteMapPathOnly"/>
         <!--</mvcSiteMapNode>-->
     </mvcSiteMapNode>
 </siteMap>

@@ -1,11 +1,9 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using System.Web.Compilation;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
 using ContactManager.Models;
 using ContactManager.Models.Enums;
 
@@ -136,7 +134,7 @@ namespace ContactManager.Web.Helpers
             return builder.ToString();
         }
 
-        private static void BuildOptions(TagBuilder builder, SelectList list)
+        private static void BuildOptions(TagBuilder builder, IEnumerable<SelectListItem> list)
         {
             var _currentGrop = string.Empty;
 
