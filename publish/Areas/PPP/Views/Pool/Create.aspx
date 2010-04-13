@@ -2,8 +2,15 @@
 
 <%@ Import Namespace="ContactManager.Web.Helpers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+    <script>
+        $(document).ready(function() {
+            $("#createForm").validate();
+        });
+    </script>
+
     <%= Html.ValidationSummary(Html.Resource("PPP_Resources, PPP_View_Pool_Create_ValidationSummary"))%>
-    <% using (Html.BeginForm())
+    <% using (Html.BeginForm("Create", "Pool", FormMethod.Post, new { id = "createForm" }))
        {%>
     <fieldset class="fields">
         <legend>
@@ -11,13 +18,13 @@
         <p>
             <label for="Name">
                 <%= Html.Resource("PPP_Resources, PPP_View_Pool_Create_Name")%></label>
-            <%= Html.TextBox("Name") %>
+            <%= Html.TextBox("Name","", new { @class = "required" })%>
             <%= Html.ValidationMessage("Name", "*") %>
         </p>
         <p>
             <label for="Addresses">
                 <%= Html.Resource("PPP_Resources, PPP_View_Pool_Create_Addresses")%></label>
-            <%= Html.TextBox("Addresses") %>
+            <%= Html.TextBox("Addresses", "", new { @class = "required" })%>
             <%= Html.ValidationMessage("Addresses", "*") %>
         </p>
         <p>

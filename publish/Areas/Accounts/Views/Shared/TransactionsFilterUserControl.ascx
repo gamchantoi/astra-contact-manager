@@ -4,6 +4,13 @@
 <% using (Html.BeginForm("FiltredList", "Transaction", new { @area = "Accounts" }))
    {%>
 <div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+        $("#PaymentMethods").dropdownchecklist();
+        });
+    </script>
+
     <table class="data-table">
         <tbody>
             <tr>
@@ -17,7 +24,8 @@
                 </td>
                 <td>
                     <%= Html.Label(Html.Resource("Accounts_Resources, Accounts_Shared_TransactionsFilterUserControl_PaymentMethods"))%>
-                    <%= Html.DropDownList("PaymentMethods", Model.Filter.PaymentMethodsList) %>
+                    <%--<%= Html.DropDownList("PaymentMethods", Model.Filter.PaymentMethodsList) %>--%>
+                    <%= Html.DropDownCheckBox("PaymentMethods",Model.Filter.PaymentMethodsList) %>
                 </td>
                 <td>
                     <input type="submit" value="<%= Html.Resource("Accounts_Resources, Accounts_Shared_TransactionsFilterUserControl_Select")%>" />

@@ -1,15 +1,22 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Status>" %>
+<%@ Page Title="" Language="C#" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Status>" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <script>
+        $(document).ready(function() {
+            $("#createForm").validate();
+        });
+    </script>
+    
+    
     <%= Html.ValidationSummary("Edit was unsuccessful. Please correct the errors and try again.") %>
 
-    <% using (Html.BeginForm()) {%>
+    <% using (Html.BeginForm("Edit", "Status", FormMethod.Post, new { id = "createForm" }))
+       {%>
     <%= Html.Hidden("StatusId", Model.StatusId) %>
         <fieldset>
             <legend>Edit status: <%= Html.Encode(Model.Name) %></legend>
             <p>
                 <label for="DisplayName">Name:</label>
-                <%= Html.TextBox("DisplayName", Model.DisplayName)%>
+                <%= Html.TextBox("DisplayName", Model.DisplayName, new { @class = "required" })%>
                 <%= Html.ValidationMessage("DisplayName", "*")%>
             </p>
             <p>
@@ -18,13 +25,4 @@
         </fieldset>
 
     <% } %>
-
-    <div>
-        <%=Html.ActionLink("Back to List", "Index") %>
-    </div>
-
-</asp:Content>
-
-<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
 

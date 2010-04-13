@@ -26,6 +26,20 @@
 
     <script src="<%= Url.Content("~/Scripts/astra-hosts.js")%>" type="text/javascript"></script>
 
+    <script src="<%= Url.Content("~/Scripts/astra-statuses.js")%>" type="text/javascript"></script>
+
+    <script src="<%= Url.Content("~/Scripts/astra-messages.js")%>" type="text/javascript"></script>
+
+    <script src="<%= Url.Content("~/Scripts/ui.dropdownchecklist.js")%>" type="text/javascript"></script>
+
+    <script src="<%= Url.Content("~/Scripts/Validation/jquery.validate.js")%>" type="text/javascript"></script>
+
+    <script src="<%= Url.Content("~/Scripts/Validation/jquery.validate.min.js")%>" type="text/javascript"></script>
+
+    <script src="<%= Url.Content("~/Scripts/Validation/jquery.validate.pack.js")%>" type="text/javascript"></script>
+
+    <script src="<%= Url.Content("~/Scripts/Validation/additional-methods.js")%>" type="text/javascript"></script>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="<%= Url.Content("~/Content/Site.css")%>" rel="stylesheet" type="text/css" />
@@ -33,14 +47,16 @@
     <link href="<%= Url.Content("~/media/css/Grid.css")%>" rel="stylesheet" type="text/css" />
     <link href="<%= Url.Content("~/Scripts/jquery-ui-1.7.2/themes/ui-lightness/jquery-ui-1.7.2.custom.css")%>" rel="stylesheet"
         type="text/css" />
+    <link href="<%= Url.Content("~/Content/ui.dropdownchecklist.css")%>" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript">
         $(document).ready(function() {
-        //var dialogData = '<%=Session["DialogData"] %>';
+            //var dialogData = '<%=Session["DialogData"] %>';
 
             //alert(dialogData);
         });
     </script>
+
 
 </head>
 <body>
@@ -78,6 +94,10 @@
             <%} %>
         </div>
         <div id="main" class="ui-widget-content ui-corner-bottom">
+            <div class="">
+                <asp:SiteMapPath ID="SiteMapPath" runat="server">
+                </asp:SiteMapPath>
+            </div>
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
             <p id="footer">
                 &copy;2010 Astra Contact Manager</p>

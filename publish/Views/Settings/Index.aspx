@@ -4,7 +4,7 @@
 <%@ Import Namespace="ContactManager.Web.Helpers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <%= Html.ValidationSummary("Error")%>
-    <table style="width: 100%">
+    <table class="container">
         <tr>
             <td>
                 <fieldset class="fields">
@@ -14,7 +14,8 @@
                         <%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_ClearDB"), "ClearDB")%>
                     </p>
                     <p>
-                        <%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_Index_EditStatuses"), "Index", "Status", new {@area="Users"}, null)%>
+                        <%--<%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_Index_EditStatuses"), "Index", "Status", new {@area="Users"}, null)%>--%>
+                        <%= Html.JSLink(Html.Resource("Web_Resources, Site_View_Settings_Index_EditStatuses"), "ShowStatusesDialog", Url.Content("~/Users/Status/Index/"))%>
                     </p>
                     <p>
                         <%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_Index_Addreses"), "Index", "Address", new { area = "Addresses" }, null)%>
@@ -36,7 +37,34 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2" style="text-align:right">
+            <td>
+                <fieldset class="fields">
+                    <legend>
+                        <%= Html.Resource("Web_Resources, Site_View_Settings_FinanceSettings")%></legend>
+                    <p>
+                        <%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_ProcessPayment"), "ProcessPayment", "Transaction", new { area = "Accounts" }, null)%>
+                    </p>
+                    <p>
+                        <%= Html.ActionLink(Html.Resource("Accounts_Resources, Accounts_View_Index_PaymentsMethods"), "Index", "PaymentMethod", new { area = "Accounts" }, null)%>
+                    </p>
+                </fieldset>
+            </td>
+            <td>
+                <%--                <fieldset class="fields">
+                    <legend>
+                        <%= Html.Resource("Web_Resources, Site_View_Settings_SynchronizationWith")%>
+                        <%= Html.Encode(Model.ServerName)%></legend>
+                    <p>
+                        <%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_SynchronizationTo"), "SyncToHost", "Sync", new { area = "Synchronizations" }, null)%>
+                    </p>
+                    <p>
+                        <%= Html.ActionLink(Html.Resource("Web_Resources, Site_View_Settings_SynchronizationFrom"), "SyncFromHost", "Sync", new { area = "Synchronizations" }, null)%>
+                    </p>
+                </fieldset>--%>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: right">
                 <%=Html.Encode("Build v.") %>
                 <%=Model.BuildVersion %>
             </td>

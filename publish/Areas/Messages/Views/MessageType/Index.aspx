@@ -1,6 +1,6 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ContactManager.Models.MessageType>>" %>
-<%@ Import Namespace="ContactManager.Web.Helpers"%>
 
+<%@ Import Namespace="ContactManager.Web.Helpers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <table class="data-table" cellpadding="0" cellspacing="0">
         <tr>
@@ -23,7 +23,8 @@
         <% } %>
     </table>
     <p>
-        <%= Html.ActionLink(Html.Resource("Messages_Resources, Messages_View_MessageType_Index_CreateNew"), "Create") %>
+        <%= Html.JSLink(Html.Resource("Messages_Resources, Messages_View_MessageType_Index_CreateNew"), "ShowMessageTypeDialog", Url.Content("~/Messages/MessageType/Create"))%>
+        <%--<%= Html.ActionLink(Html.Resource("Messages_Resources, Messages_View_MessageType_Index_CreateNew"), "Create") %>--%>
     </p>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
