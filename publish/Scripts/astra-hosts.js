@@ -28,3 +28,22 @@ function SubmitHost(url) {
         }
     });
 };
+
+function ChangeHost(url) {
+
+    jQuery.ajax({
+    type: "POST",
+        url: url,
+        data: {},
+        success: function(data) {
+            setTimeout(function() {
+                $("#dialog_hosts").dialog("close");
+                ShowHostsDialog("/ContactManager/Hosts/Host/Index");
+            }, 500);
+        },
+
+        error: function(request, textStatus, errorThrown) {
+            alert(request.statusText);
+        }
+    });
+};
