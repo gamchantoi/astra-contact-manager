@@ -67,17 +67,17 @@ namespace ContactManager.Addresses.Controllers
         {
             if (_streetService.EditStreet(street))
             {
-                var streets = _streetService.ListStreets();
-                var resultView = View("Index", streets);
-                StringResult sr = new StringResult();
-                sr.ViewName = resultView.ViewName;
-                sr.MasterName = resultView.MasterName;
-                sr.ViewData = new ViewDataDictionary(streets);
-                sr.TempData = resultView.TempData;
-                // let them eat cake
-                sr.ExecuteResult(this.ControllerContext);
+                //var streets = _streetService.ListStreets();
+                //var resultView = View("Index", streets);
+                //StringResult sr = new StringResult();
+                //sr.ViewName = resultView.ViewName;
+                //sr.MasterName = resultView.MasterName;
+                //sr.ViewData = new ViewDataDictionary(streets);
+                //sr.TempData = resultView.TempData;
+                //// let them eat cake
+                //sr.ExecuteResult(this.ControllerContext);
 
-                Session["DialogData"] = sr.Html.Replace("\"", "'");
+                //Session["DialogData"] = sr.Html.Replace("\"", "'");
                 return RedirectToAction("Index", "Address");
             }
             return View(street);

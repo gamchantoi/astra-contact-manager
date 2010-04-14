@@ -37,7 +37,7 @@
     </div>
     <div>
     <p>
-        <%= Html.ActionLink(Html.Resource("PPP_Resources, PPP_View_Pool_Index_CreateNew"), "Create") %>
+        <%= Html.JSLink(Html.Resource("PPP_Resources, PPP_View_Pool_Index_CreateNew"), "ShowPoolDialog",  Url.Content("~/PPP/Pool/Create") )%>
         |
         <%= Html.ActionLink(Html.Resource("PPP_Resources, PPP_View_Pool_Index_DeleteAll"), "DeleteAll")%>
     </p>

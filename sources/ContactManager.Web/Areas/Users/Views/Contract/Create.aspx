@@ -1,11 +1,19 @@
 <%@ Page Title="" Language="C#" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Contract>" %>
-<%@ Import Namespace="ContactManager.Web.Helpers"%>
+
+<%@ Import Namespace="ContactManager.Web.Helpers" %>
+
+<script type="text/javascript">
+	$(function() {
+		$("#datepicker").datepicker();
+	});
+</script>
 
 <% using (Html.BeginForm())
    {%>
 <%= Html.Hidden("UserId", ViewData["UserId"])%>
 <fieldset>
-    <legend><a><%= Html.Resource("Users_Resources, Users_Shared_ContractUserControl_Create")%></a></legend>
+    <legend><a>
+        <%= Html.Resource("Users_Resources, Users_Shared_ContractUserControl_Create")%></a></legend>
     <p>
         <%= Html.Label(Html.Resource("Users_Resources, Users_Shared_ContractUserControl_ContractNumber"))%>
         <%= Html.TextBoxFor(model => model.ContractNumber) %>
@@ -18,7 +26,7 @@
     </p>
     <p>
         <%= Html.Label(Html.Resource("Users_Resources, Users_Shared_ContractUserControl_CreateDate"))%>
-        <%= Html.TextBoxFor(model => model.CreateDate) %>
+        <%= Html.TextBoxFor(model => model.CreateDate, new { @id = "datepicker" })%>
         <%= Html.ValidationMessageFor(model => model.CreateDate) %>
     </p>
     <p>

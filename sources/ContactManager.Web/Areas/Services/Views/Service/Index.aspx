@@ -49,7 +49,8 @@
         </tbody>
     </table>
     <p>
-        <%= Html.ActionLink(Html.Resource("Services_Resources, Services_View_Index_CreateNew"), "Create") %>&nbsp;|&nbsp;
+        <%= Html.JSLink(Html.Resource("Services_Resources, Services_View_Index_CreateNew"), "ShowServicesDialog", Url.Content("~/Services/Service/Create"))%>
+        <%--<%= Html.ActionLink(Html.Resource("Services_Resources, Services_View_Index_CreateNew"), "Create") %>--%>&nbsp;|&nbsp;
         <%= Html.ActionLink(Html.Resource("Services_Resources, Services_View_Index_ServiceActivity"), "Activities")%>
     </p>
 </asp:Content>

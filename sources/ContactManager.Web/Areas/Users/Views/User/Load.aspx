@@ -1,8 +1,15 @@
 <%@ Page Title="" Language="C#" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.ViewModels.LoadMoneyViewModel>" %>
 
 <%@ Import Namespace="ContactManager.Web.Helpers" %>
+
+<script>
+        $(document).ready(function() {
+            $("#createForm").validate();
+        });
+</script>
+
 <%= Html.ValidationSummary(Html.Resource("Users_Resources, Users_User_Load_ValidationSummary"))%>
-<% using (Html.BeginForm())
+<% using (Html.BeginForm("Load", "User", FormMethod.Post, new { id = "createForm" }))
    {%>
 <%= Html.HiddenFor(model => model.ClientId) %>
 <fieldset>
@@ -15,7 +22,7 @@
     </p>
     <p>
         <%= Html.Label(Html.Resource("Users_Resources, Users_User_Load_Sum")) %>
-        <%= Html.TextBox("Sum", "")%>
+        <%= Html.TextBox("Sum", "", new { @class = "required" })%>
         <%= Html.ValidationMessageFor(model => model.Sum)%>
     </p>
     <p>
@@ -25,7 +32,7 @@
     </p>
     <p>
         <%= Html.Label( Html.Resource("Users_Resources, Users_User_Load_Comment")) %>
-        <%= Html.TextBoxFor(model => model.Comment) %>
+        <%= Html.TextBoxFor(model => model.Comment)%>
         <%= Html.ValidationMessageFor(model => model.Comment) %>
     </p>
     <p>

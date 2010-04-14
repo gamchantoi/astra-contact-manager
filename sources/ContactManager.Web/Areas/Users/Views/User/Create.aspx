@@ -57,7 +57,7 @@
         <p>
             <label for="Email">
                 <%= Html.Resource("Users_Resources, Users_User_Create_Email")%>:</label>
-            <%= Html.TextBox("Email", "",new { @class = "required" })%>
+            <%= Html.TextBox("Email")%>
             <%= Html.ValidationMessage("Email", "*") %>
         </p>
         <p>

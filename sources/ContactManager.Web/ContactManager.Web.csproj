@@ -520,6 +520,8 @@
   <ItemGroup>
     <Content Include="Content\Images\house.png" />
     <Content Include="Scripts\astra-messages.js" />
+    <Content Include="Scripts\astra-ppp.js" />
+    <Content Include="Scripts\astra-services.js" />
     <Content Include="Scripts\Validation\additional-methods.js" />
     <Content Include="Scripts\Validation\jquery.validate.js" />
     <Content Include="Scripts\Validation\jquery.validate.min.js" />
@@ -573,7 +575,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties BuildVersion_StartDate="2010/2/3" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_UpdateAssemblyVersion="True" />
+      <UserProperties BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_StartDate="2010/2/3" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
