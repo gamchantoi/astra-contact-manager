@@ -38,7 +38,8 @@
         %>
     </div>
     <p>
-        <%= Html.ActionLink(Html.Resource("PPP_Resources, PPP_View_Profile_Index_CreateNew"), "Create") %>
+        <%= Html.JSLink(Html.Resource("PPP_Resources, PPP_View_Profile_Index_CreateNew"), "ShowProfileDialog", Url.Content("~/PPP/Profile/Create"))%>
+        <%--<%= Html.ActionLink(Html.Resource("PPP_Resources, PPP_View_Profile_Index_CreateNew"), "Create") %>--%>
         <%--|
         <%= Html.ActionLink(Html.Resource("PPP_Resources, PPP_View_Profile_Index_DeleteProfiles"), "DeleteUnused")%>--%>
     </p>

@@ -1,9 +1,8 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Pool>" %>
+<%@ Page Title="" Language="C#" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Pool>" %>
 
 <%@ Import Namespace="ContactManager.Web.Helpers" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <script>
+    <script language="javascript" type="text/javascript">
         $(document).ready(function() {
             $("#createForm").validate();
         });
@@ -18,7 +17,7 @@
         <p>
             <label for="Name">
                 <%= Html.Resource("PPP_Resources, PPP_View_Pool_Create_Name")%></label>
-            <%= Html.TextBox("Name","", new { @class = "required" })%>
+            <%= Html.TextBox("Name", "", new { @class = "required" })%>
             <%= Html.ValidationMessage("Name", "*") %>
         </p>
         <p>
@@ -38,9 +37,3 @@
         </p>
     </fieldset>
     <% } %>
-    <div>
-        <%=Html.ActionLink(Html.Resource("PPP_Resources, PPP_View_Pool_Create_BackToList"), "Index")%>
-    </div>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-</asp:Content>

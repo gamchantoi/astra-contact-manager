@@ -72,19 +72,19 @@
                     <p>
                         <label for="Credit">
                             <%= Html.Resource("Users_Resources, Users_User_Edit_Credit")%>:</label>
-                        <%= Html.TextBox("Credit", String.Format("{0:F}", Model.Credit), new { @class = "required" })%>
+                        <%= Html.TextBox("Credit", String.Format("{0:F}", Model.Credit))%>
                         <%= Html.ValidationMessage("Credit", "*")%>
                     </p>
                     <p>
                         <label for="Email">
                             <%= Html.Resource("Users_Resources, Users_User_Edit_Email")%>:</label>
-                        <%= Html.TextBox("Email", Model.Email, new { @class = "required" })%>
+                        <%= Html.TextBox("Email", Model.Email)%>
                         <%= Html.ValidationMessage("Email", "*") %>
                     </p>
                     <p>
                         <label for="Comment">
                             <%= Html.Resource("Users_Resources, Users_User_Edit_Comment")%>:</label>
-                        <%= Html.TextBox("Comment", Model.Comment, new { @class = "required" })%>
+                        <%= Html.TextBox("Comment", Model.Comment)%>
                         <%= Html.ValidationMessage("Comment", "*")%>
                     </p>
                     <p>

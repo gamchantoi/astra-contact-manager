@@ -1,7 +1,7 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Service>" %>
+<%@ Page Title="" Language="C#"  Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.Service>" %>
 
 <%@ Import Namespace="ContactManager.Web.Helpers" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
     <%= Html.ValidationSummary(Html.Resource("Services_Resources, Services_View_Create_ValidationSummary"))%>
 
     <script>
@@ -56,9 +56,3 @@
         </p>
     </fieldset>
     <% } %>
-    <div>
-        <%=Html.ActionLink(Html.Resource("Services_Resources, Services_View_Create_BackToList"), "Index") %>
-    </div>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-</asp:Content>

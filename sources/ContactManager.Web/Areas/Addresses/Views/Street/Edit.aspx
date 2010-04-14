@@ -2,7 +2,7 @@
 
 <%@ Import Namespace="ContactManager.Web.Helpers" %>
 
-<script>
+<script language="javascript" type="text/javascript">
     $(document).ready(function() {
         $("#createForm").validate();
     });

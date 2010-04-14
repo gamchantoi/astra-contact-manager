@@ -42,8 +42,8 @@
 
            }).Attributes(id => "grid").Render();
         %>
-        <%= Html.JSLink(Html.Resource("Users_Resources, Users_User_Index_View"), "ShowDialog",
-                           Url.Content("~/Services/Service/ClientServices/"))%>
+        <%--<%= Html.JSLink(Html.Resource("Users_Resources, Users_User_Index_View"), "ShowDialog",
+                           Url.Content("~/Services/Service/ClientServices/"))%>--%>
     </div>
     <div>
         <p>

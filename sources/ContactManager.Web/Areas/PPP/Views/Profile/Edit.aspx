@@ -43,7 +43,7 @@
     <p>
         <label for="RateLimit">
             <%= Html.Resource("PPP_Resources, PPP_View_Profile_Edit_RateLimit")%>:</label>
-        <%= Html.TextBox("RateLimit", Model.RateLimit, new { @class = "required" })%>
+        <%= Html.TextBox("RateLimit", Model.RateLimit)%>
         <%= Html.ValidationMessage("RateLimit", "*") %>
     </p>
     <p>
@@ -55,7 +55,7 @@
     <p>
         <label for="Comment">
             <%= Html.Resource("PPP_Resources, PPP_View_Profile_Edit_Comment")%>:</label>
-        <%= Html.TextBox("Comment", Model.Comment, new { @class = "required" })%>
+        <%= Html.TextBox("Comment", Model.Comment)%>
         <%= Html.ValidationMessage("Comment", "*")%>
     </p>
     <p>
