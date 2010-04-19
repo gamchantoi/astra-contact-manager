@@ -43,9 +43,9 @@ namespace ContactManager.Accounts.Controllers
         }
 
         [Authorize]
-        public ActionResult ClientTransactions(Guid clientUserId)
+        public ActionResult ClientTransactions(Guid id)
         {
-            var list = _service.ListTransactions(clientUserId);
+            var list = _service.ListTransactions(id);
 
             Mapper.CreateMap<Transaction, Transactions>();
             var viewModelList = new TransactionViewModel();
