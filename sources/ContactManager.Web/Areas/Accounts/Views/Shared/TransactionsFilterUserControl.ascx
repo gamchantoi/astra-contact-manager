@@ -7,7 +7,7 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-        $("#PaymentMethods").dropdownchecklist();
+            $("#PaymentMethods").dropdownchecklist();
         });
     </script>
 
@@ -25,7 +25,8 @@
                 <td>
                     <%= Html.Label(Html.Resource("Accounts_Resources, Accounts_Shared_TransactionsFilterUserControl_PaymentMethods"))%>
                     <%--<%= Html.DropDownList("PaymentMethods", Model.Filter.PaymentMethodsList) %>--%>
-                    <%= Html.DropDownCheckBox("PaymentMethods",Model.Filter.PaymentMethodsList) %>
+                    <%--<%= Html.DropDownCheckBox("PaymentMethods",Model.Filter.PaymentMethodsList) %>--%>
+                    <%Html.RenderPartial("DropDownCheckBoxUserControl", Model.Filter.PaymentMethodsList); %>
                 </td>
                 <td>
                     <input type="submit" value="<%= Html.Resource("Accounts_Resources, Accounts_Shared_TransactionsFilterUserControl_Select")%>" />

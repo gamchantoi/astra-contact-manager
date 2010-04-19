@@ -30,7 +30,7 @@ namespace ContactManager.Accounts.ViewModels
     {
         public SelectList YearsList { get; set; }
         public SelectList MonthsList  { get; set; }
-        public SelectList PaymentMethodsList { get; set; }
+        public Dictionary<string, SelectList> PaymentMethodsList { get; set; }
 
         public int Years { get; set; }
         public int Months { get; set; }

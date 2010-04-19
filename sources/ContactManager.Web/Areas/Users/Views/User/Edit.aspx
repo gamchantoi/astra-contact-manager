@@ -12,18 +12,12 @@
     <script type="text/javascript">
         $(function() {
             $("#details-accordion").accordion({ header: "h3" });
+            $("#createForm").validate();
         });
     </script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <script>
-        $(document).ready(function() {
-            $("#createForm").validate();
-        });
-    </script>
-
     <%= Html.ValidationSummary(Html.Resource("Users_Resources, Users_User_Edit_ValidationSummary"), new { @class = "ui-state-error ui-corner-all" })%>
     <fieldset class="fields">
         <legend>

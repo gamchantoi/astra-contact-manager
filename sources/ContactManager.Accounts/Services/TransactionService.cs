@@ -108,29 +108,43 @@ namespace ContactManager.Accounts.Services
             return filter;
         }
 
-        private SelectList FillPaymentMethodsList()
+        private Dictionary<string, SelectList> FillPaymentMethodsList()
         {
             var methods = PaymentMethodService.SelectListPaymentMethods(0);
             var profiles = _profileService.SelectListProfiles(0);
 
-            var selectList = new List<KeyValuePair<string, string>>();
+            var retVal = new Dictionary<string, SelectList>();
 
-            foreach (var item in methods)
+            foreach(var item in methods)
             {
-                selectList.Add(new KeyValuePair<string, string>(
-                    "method." + item.Value,
-                    item.Text
-                    ));
+                item.Selected = true;
             }
 
-            foreach (var item in profiles)
-            {
-                selectList.Add(new KeyValuePair<string, string>(
-                    "profile." + item.Value,
-                    item.Text
-                    ));
-            }
-            return new SelectList(selectList, "key", "value", DateTime.Now.Month.ToString());
+            retVal.Add("Methods", methods);
+            retVal.Add("Profiles", profiles);
+
+            var selectList = new List<SelectListItem>();
+
+            //foreach (var item in methods)
+            //{
+            //    selectList.Add(new SelectListItem{
+            //        Value = "method." + item.Value,
+            //        Text = item.Text,
+            //        Selected = true
+            //        });
+            //}
+
+
+            //foreach (var item in profiles)
+            //{
+            //    selectList.Add(new SelectListItem{
+            //        Value = "profile." + item.Value,
+            //        Text = item.Text,
+            //        Selected = true
+            //    });
+            //}
+            //return new SelectList(selectList, "key", "value", DateTime.Now.Month.ToString());
+            return retVal;
         }
 
         public List<Transactions> ListTransactions(Filter filter)
