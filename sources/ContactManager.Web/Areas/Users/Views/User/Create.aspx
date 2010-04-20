@@ -12,14 +12,10 @@
     <script language="javascript" type="text/javascript" src="<%= Url.Content("~/Scripts/astra-password-generator.js")%>"></script>
 
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
     <%= Html.ValidationSummary(Html.Resource("Users_Resources, Users_User_Create_ValidationSummary"), new { @class = "ui-state-error ui-corner-all" }) %>
-    
     <% using (Html.BeginForm("Create", "User", FormMethod.Post, new { id = "createForm" }))
        {%>
-    <%--<fieldset class="fields">--%>
     <fieldset>
         <legend>
             <%= Html.Resource("Users_Resources, Users_User_Create_CreateNewUser")%></legend>
