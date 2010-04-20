@@ -87,3 +87,22 @@ function GetElement(name) {
     
     return load;
 }
+
+function ShowBigDialog(url) {
+    ShowLoading()
+    jQuery.ajax({
+        type: "GET",
+        url: url,
+        data: {},
+        success: function(html) {
+            setTimeout(function() {
+                HideLoading();
+                ShowPopup("dialog", html, 600, 800);
+            }, 500);
+        },
+
+        error: function(request, textStatus, errorThrown) {
+            ShowMessage("AJAX error: " + request.statusText);
+        }
+    });
+}

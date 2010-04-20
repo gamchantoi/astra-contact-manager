@@ -67,6 +67,8 @@ namespace ContactManager.Addresses.Controllers
         {
             if (_streetService.EditStreet(street))
             {
+                //todo: analize section
+
                 //var streets = _streetService.ListStreets();
                 //var resultView = View("Index", streets);
                 //StringResult sr = new StringResult();
@@ -76,8 +78,8 @@ namespace ContactManager.Addresses.Controllers
                 //sr.TempData = resultView.TempData;
                 //// let them eat cake
                 //sr.ExecuteResult(this.ControllerContext);
-
                 //Session["DialogData"] = sr.Html.Replace("\"", "'");
+
                 return RedirectToAction("Index", "Address");
             }
             return View(street);
@@ -105,7 +107,7 @@ namespace ContactManager.Addresses.Controllers
                 result = this.FindView(context);
                 this.View = result.View;
             }
-            var viewContext = new ViewContext(context, View, ViewData, TempData, null);
+            var viewContext = new ViewContext(context, View, ViewData, TempData);
             using (var stream = new MemoryStream())
             using (var writer = new StreamWriter(stream))
             {

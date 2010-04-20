@@ -518,6 +518,7 @@
     <Content Include="Views\Settings\Index.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Accounts\Views\Transaction\ClientTransactions.aspx" />
     <Content Include="Content\Images\house.png" />
     <Content Include="Scripts\astra-messages.js" />
     <Content Include="Scripts\astra-ppp.js" />
@@ -576,7 +577,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties BuildVersion_StartDate="2010/2/3" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_UpdateAssemblyVersion="True" />
+      <UserProperties BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_StartDate="2010/2/3" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
