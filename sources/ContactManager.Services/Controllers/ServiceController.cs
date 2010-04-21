@@ -14,6 +14,7 @@ namespace ContactManager.Services.Controllers
         private readonly IServiceService _service;
         private readonly IClientInServicesService _clientInServicesService;
         private CurrentContext _ctx;
+        private readonly ICustomResourcesService _customResorces;
 
         public ServiceController()
         {
@@ -21,6 +22,7 @@ namespace ContactManager.Services.Controllers
             _service = new ServiceService(validationDictionary);
             _clientInServicesService = new ClientInServicesService(validationDictionary);
             _ctx = new CurrentContext();
+            _customResorces = new CustomResourcesService(validationDictionary);
         }
 
         [Authorize(Roles = "admin")]
@@ -81,6 +83,19 @@ namespace ContactManager.Services.Controllers
                 return RedirectToAction("Edit", "User", new { id, area = "Users" });
                 //return RedirectToAction("Index", "User", new {Area="Users"});
             return View(collection);
+        }
+
+        [Authorize(Roles = "admin")]
+        public ActionResult EditContract()
+        {
+            return View(_customResorces.GetResource("Contract_View"));
+        }
+
+        [Authorize(Roles = "admin")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult EditContract(FormCollection collection)
+        {
+            return View(_customResorces.GetResource("Contract_View"));
         }
     }
 }

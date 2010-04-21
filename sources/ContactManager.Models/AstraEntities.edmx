@@ -17,6 +17,7 @@
           <EntitySet Name="astra_ClientsDetails" EntityType="AstraModel.Store.astra_ClientsDetails" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="astra_ClientsInServices" EntityType="AstraModel.Store.astra_ClientsInServices" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="astra_Contracts" EntityType="AstraModel.Store.astra_Contracts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="astra_CustomResources" EntityType="AstraModel.Store.astra_CustomResources" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="astra_Hosts" EntityType="AstraModel.Store.astra_Hosts" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="astra_Messages" EntityType="AstraModel.Store.astra_Messages" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="astra_MessagesType" EntityType="AstraModel.Store.astra_MessagesType" store:Type="Tables" Schema="dbo" />
@@ -249,6 +250,14 @@
           <Property Name="Comment" Type="nvarchar" MaxLength="50" />
           <Property Name="CreateDate" Type="datetime" />
           <Property Name="ExpiredDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="astra_CustomResources">
+          <Key>
+            <PropertyRef Name="Key" />
+          </Key>
+          <Property Name="Key" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="astra_Hosts">
           <Key>
@@ -812,7 +821,8 @@
           <FunctionImport Name="SP_ChangeUsername" ReturnType="Collection(Int16)">
             <Parameter Name="ApplicationName" Mode="In" Type="String" />
             <Parameter Name="OldUserName" Mode="In" Type="String" />
-            <Parameter Name="NewUserName" Mode="In" Type="String" /></FunctionImport></EntityContainer>
+            <Parameter Name="NewUserName" Mode="In" Type="String" /></FunctionImport>
+          <EntitySet Name="CustomResourceSet" EntityType="AstraModel.CustomResource" /></EntityContainer>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="UserId" />
@@ -1115,7 +1125,13 @@
           <End Type="AstraModel.Message" Role="astra_Messages" Multiplicity="*" /></Association>
         <Association Name="FK_astra_Messages_astra_MessagesType">
           <End Type="AstraModel.MessageType" Role="astra_MessagesType" Multiplicity="1" />
-          <End Type="AstraModel.Message" Role="astra_Messages" Multiplicity="*" /></Association></Schema>
+          <End Type="AstraModel.Message" Role="astra_Messages" Multiplicity="*" /></Association>
+        <EntityType Name="CustomResource">
+          <Key>
+            <PropertyRef Name="Key" /></Key>
+          <Property Name="Key" Type="String" Nullable="false" />
+          <Property Name="Value" Type="String" Nullable="false" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" /></EntityType></Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1463,7 +1479,12 @@
               <ScalarProperty Name="MessageId" ColumnName="MessageId" /></EndProperty>
             <EndProperty Name="astra_MessagesType">
               <ScalarProperty Name="TypeId" ColumnName="TypeId" /></EndProperty></AssociationSetMapping>
-          </EntityContainerMapping>
+          <EntitySetMapping Name="CustomResourceSet">
+            <EntityTypeMapping TypeName="IsTypeOf(AstraModel.CustomResource)">
+              <MappingFragment StoreEntitySet="astra_CustomResources">
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Key" ColumnName="Key" /></MappingFragment></EntityTypeMapping></EntitySetMapping></EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -1494,16 +1515,16 @@
         <EntityTypeShape EntityType="AstraModel.Profile" Width="1.5" PointX="8.125" PointY="3.875" Height="2.9417936197916674" IsExpanded="true" />
         <EntityTypeShape EntityType="AstraModel.PPPSecret" Width="1.5" PointX="5.75" PointY="3.875" Height="4.2879036458333335" IsExpanded="true" />
         <AssociationConnector Association="AstraModel.FK_astra_Clients_aspnet_Users" ManuallyRouted="false">
-          <ConnectorPoint PointX="3.875" PointY="10.25" />
-          <ConnectorPoint PointX="3.875" PointY="6.9609993489583326" />
+          <ConnectorPoint PointX="3.64062625" PointY="10.25" />
+          <ConnectorPoint PointX="3.64062625" PointY="6.9609993489583326" />
           </AssociationConnector>
         <AssociationConnector Association="AstraModel.FK_astra_Services_aspnet_Users" ManuallyRouted="false">
           <ConnectorPoint PointX="3.125" PointY="12.471023763020833" />
           <ConnectorPoint PointX="2.25" PointY="12.471023763020833" />
           </AssociationConnector>
         <AssociationConnector Association="AstraModel.FK_astra_Clients_astra_Addresses" ManuallyRouted="false">
-          <ConnectorPoint PointX="5.75" PointY="2.9192909016927082" />
-          <ConnectorPoint PointX="4.71875" PointY="2.9192909016927082" />
+          <ConnectorPoint PointX="5.75" PointY="2.6801864949544276" />
+          <ConnectorPoint PointX="4.71875" PointY="2.6801864949544276" />
           <ConnectorPoint PointX="4.71875" PointY="3.25" />
           </AssociationConnector>
         <AssociationConnector Association="AstraModel.FK_astra_Clients_astra_ClientsDetails" ManuallyRouted="false">
@@ -1515,8 +1536,8 @@
           <ConnectorPoint PointX="3" PointY="4.3362939453125" />
           </AssociationConnector>
         <AssociationConnector Association="AstraModel.FK_astra_Clients_astra_Hosts" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="2.7598879638671878" />
-          <ConnectorPoint PointX="3.03125" PointY="2.7598879638671878" />
+          <ConnectorPoint PointX="2.25" PointY="2.8013871927897136" />
+          <ConnectorPoint PointX="3.03125" PointY="2.8013871927897136" />
           <ConnectorPoint PointX="3.03125" PointY="3.25" />
           </AssociationConnector>
         <AssociationConnector Association="AstraModel.FK_mkt_PPPSecrets_astra_Clients" ManuallyRouted="false">
@@ -1533,8 +1554,11 @@
           </AssociationConnector>
         <AssociationConnector Association="AstraModel.astra_ServicesInSystemServices" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="14.384348958333336" />
-          <ConnectorPoint PointX="3.125" PointY="14.384348958333336" />
-          </AssociationConnector>
+          <ConnectorPoint PointX="2.4479166666666665" PointY="14.384348958333336" />
+          <ConnectorPoint PointX="2.6145833333333335" PointY="14.384348958333336" />
+          <ConnectorPoint PointX="2.6666666666666665" PointY="14.384348958333334" />
+          <ConnectorPoint PointX="2.9583333333333335" PointY="14.384348958333336" />
+          <ConnectorPoint PointX="3.125" PointY="14.384348958333336" /></AssociationConnector>
         <EntityTypeShape EntityType="AstraModel.PaymentMethod" Width="1.5" PointX="8.25" PointY="12.125" Height="1.9802864583333326" />
         <EntityTypeShape EntityType="AstraModel.Transaction" Width="1.5" PointX="5.75" PointY="9.125" Height="2.9417936197916665" />
         <EntityTypeShape EntityType="AstraModel.ClientInServices" Width="1.5" PointX="0.75" PointY="9" Height="1.9802864583333317" />
@@ -1546,8 +1570,8 @@
           </AssociationConnector>
         <AssociationConnector Association="AstraModel.FK_acc_Transactions_astra_Clients" >
           <ConnectorPoint PointX="4.71875" PointY="6.9609993489583326" />
-          <ConnectorPoint PointX="4.71875" PointY="9.890625" />
-          <ConnectorPoint PointX="5.75" PointY="9.890625" />
+          <ConnectorPoint PointX="4.71875" PointY="9.81640625" />
+          <ConnectorPoint PointX="5.75" PointY="9.81640625" />
           </AssociationConnector>
         <AssociationConnector Association="AstraModel.FK_astra_ClientsServicesActivities_aspnet_Users1" >
           <ConnectorPoint PointX="3.125" PointY="10.615143229166666" />
@@ -1563,8 +1587,8 @@
           </AssociationConnector>
         <AssociationConnector Association="AstraModel.FK_astra_ClientsServicesActivities_astra_Clients1" >
           <ConnectorPoint PointX="3.03125" PointY="6.9609993489583326" />
-          <ConnectorPoint PointX="3.03125" PointY="9.4453125" />
-          <ConnectorPoint PointX="2.25" PointY="9.4453125" /></AssociationConnector>
+          <ConnectorPoint PointX="3.03125" PointY="9.408203125" />
+          <ConnectorPoint PointX="2.25" PointY="9.408203125" /></AssociationConnector>
         <AssociationConnector Association="AstraModel.FK_astra_ClientsServicesActivities_astra_Services1" >
           <ConnectorPoint PointX="1.5" PointY="11.5" />
           <ConnectorPoint PointX="1.5" PointY="10.980286458333332" />
@@ -1572,6 +1596,8 @@
         <AssociationConnector Association="AstraModel.acc_PaymentsInTransactions" >
           <ConnectorPoint PointX="6.77343875" PointY="12.066793619791667" />
           <ConnectorPoint PointX="6.77343875" PointY="13.115143229166666" />
+          <ConnectorPoint PointX="7.385416666666667" PointY="13.115143229166666" />
+          <ConnectorPoint PointX="7.552083333333333" PointY="13.115143229166666" />
           <ConnectorPoint PointX="8.25" PointY="13.115143229166666" /></AssociationConnector>
         <AssociationConnector Association="AstraModel.acc_ProfilesInTransactions" >
           <ConnectorPoint PointX="6.5" PointY="9.125" />
@@ -1581,20 +1607,24 @@
         <AssociationConnector Association="AstraModel.acc_ServicesInTransactions" >
           <ConnectorPoint PointX="6.230466875" PointY="12.066793619791667" />
           <ConnectorPoint PointX="6.230466875" PointY="13.567047526041666" />
-          <ConnectorPoint PointX="2.25" PointY="13.567047526041666" />
-          </AssociationConnector>
+          <ConnectorPoint PointX="2.9583333333333335" PointY="13.567047526041664" />
+          <ConnectorPoint PointX="2.6666666666666665" PointY="13.567047526041666" />
+          <ConnectorPoint PointX="2.6145833333333335" PointY="13.567047526041666" />
+          <ConnectorPoint PointX="2.4479166666666665" PointY="13.567047526041666" />
+          <ConnectorPoint PointX="2.25" PointY="13.567047526041666" /></AssociationConnector>
         <EntityTypeShape EntityType="AstraModel.Message" Width="1.5" PointX="10.5" PointY="7.125" Height="2.5571907552083326" />
         <EntityTypeShape EntityType="AstraModel.MessageType" Width="1.5" PointX="10.5" PointY="10.25" Height="1.5956835937500014" />
         <AssociationConnector Association="AstraModel.FK_astra_Messages_aspnet_Users" >
-          <ConnectorPoint PointX="4.2812525" PointY="10.25" />
-          <ConnectorPoint PointX="4.2812525" PointY="8.4877018229166659" />
-          <ConnectorPoint PointX="4.635416666666667" PointY="8.4877018229166659" />
-          <ConnectorPoint PointX="4.802083333333333" PointY="8.4877018229166659" />
-          <ConnectorPoint PointX="8.2916666666666661" PointY="8.4877018229166659" />
-          <ConnectorPoint PointX="8.4583333333333339" PointY="8.4877018229166659" />
-          <ConnectorPoint PointX="8.8541666666666661" PointY="8.4877018229166659" />
-          <ConnectorPoint PointX="9.0208333333333339" PointY="8.4877018229166659" />
-          <ConnectorPoint PointX="10.5" PointY="8.4877018229166659" /></AssociationConnector>
+          <ConnectorPoint PointX="4.164065625" PointY="10.25" />
+          <ConnectorPoint PointX="4.164065625" PointY="8.5838525390625" />
+          <ConnectorPoint PointX="4.635416666666667" PointY="8.5838525390625" />
+          <ConnectorPoint PointX="4.802083333333333" PointY="8.5838525390625" />
+          <ConnectorPoint PointX="8.2916666666666661" PointY="8.5838525390625" />
+          <ConnectorPoint PointX="8.4583333333333339" PointY="8.5838525390625" />
+          <ConnectorPoint PointX="8.8541666666666661" PointY="8.5838525390625" />
+          <ConnectorPoint PointX="9.0208333333333339" PointY="8.5838525390625" />
+          <ConnectorPoint PointX="10.5" PointY="8.5838525390625" />
+          </AssociationConnector>
         <AssociationConnector Association="AstraModel.FK_astra_Messages_astra_Clients" >
           <ConnectorPoint PointX="4.75" PointY="3.5910953776041667" />
           <ConnectorPoint PointX="11.25" PointY="3.5910953776041667" />
@@ -1602,6 +1632,7 @@
         <AssociationConnector Association="AstraModel.FK_astra_Messages_astra_MessagesType" >
           <ConnectorPoint PointX="11.25" PointY="10.25" />
           <ConnectorPoint PointX="11.25" PointY="9.6821907552083317" />
-          </AssociationConnector></Diagram></edmx:Diagrams>
+          </AssociationConnector>
+        <EntityTypeShape EntityType="AstraModel.CustomResource" Width="1.5" PointX="10.375" PointY="0.75" Height="1.5956835937499998" /></Diagram></edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

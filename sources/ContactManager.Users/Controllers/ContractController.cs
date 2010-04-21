@@ -13,6 +13,7 @@ namespace ContactManager.Users.Controllers
         private readonly IValidationDictionary _validationDictionary;
         private readonly IUserFacade _userFasade;
 
+
         public ContractController()
         {
             _validationDictionary = new ModelStateWrapper(ModelState);
@@ -30,14 +31,14 @@ namespace ContactManager.Users.Controllers
         {
             ViewData["UserId"] = id;
             return View();
-        } 
+        }
 
 
         [HttpPost]
         public ActionResult Create(Contract contract)
         {
             _contractService.CreateContract(contract);
-            return RedirectToAction("Edit", "User", new { id = contract.UserId, area = "Users" }); 
+            return RedirectToAction("Edit", "User", new { id = contract.UserId, area = "Users" });
         }
 
 
@@ -52,7 +53,8 @@ namespace ContactManager.Users.Controllers
         public ActionResult Edit(Contract contract)
         {
             _contractService.EditContract(contract);
-            return RedirectToAction("Edit", "User", new { id = contract.UserId, area = "Users" }); 
+            return RedirectToAction("Edit", "User", new { id = contract.UserId, area = "Users" });
         }
+
     }
 }
