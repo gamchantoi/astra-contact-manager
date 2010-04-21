@@ -34,7 +34,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("AstraModel", "FK_astra_Messages_astra_MessagesType", "astra_MessagesType", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ContactManager.Models.MessageType), "astra_Messages", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ContactManager.Models.Message))]
 
 // Original file name:
-// Generation date: 1/22/2010 2:36:04 PM
+// Generation date: 21.04.2010 10:56:37
 namespace ContactManager.Models
 {
     
@@ -339,6 +339,21 @@ namespace ContactManager.Models
         }
         private global::System.Data.Objects.ObjectQuery<MessageType> _MessageTypes;
         /// <summary>
+        /// There are no comments for CustomResourceSet in the schema.
+        /// </summary>
+        public global::System.Data.Objects.ObjectQuery<CustomResource> CustomResourceSet
+        {
+            get
+            {
+                if ((this._CustomResourceSet == null))
+                {
+                    this._CustomResourceSet = base.CreateQuery<CustomResource>("[CustomResourceSet]");
+                }
+                return this._CustomResourceSet;
+            }
+        }
+        private global::System.Data.Objects.ObjectQuery<CustomResource> _CustomResourceSet;
+        /// <summary>
         /// There are no comments for Users in the schema.
         /// </summary>
         public void AddToUsers(User user)
@@ -463,6 +478,13 @@ namespace ContactManager.Models
         public void AddToMessageTypes(MessageType messageType)
         {
             base.AddObject("MessageTypes", messageType);
+        }
+        /// <summary>
+        /// There are no comments for CustomResourceSet in the schema.
+        /// </summary>
+        public void AddToCustomResourceSet(CustomResource customResource)
+        {
+            base.AddObject("CustomResourceSet", customResource);
         }
     }
     /// <summary>
@@ -4623,5 +4645,100 @@ namespace ContactManager.Models
                 }
             }
         }
+    }
+    /// <summary>
+    /// There are no comments for AstraModel.CustomResource in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Key
+    /// </KeyProperties>
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="AstraModel", Name="CustomResource")]
+    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
+    [global::System.Serializable()]
+    public partial class CustomResource : global::System.Data.Objects.DataClasses.EntityObject
+    {
+        /// <summary>
+        /// Create a new CustomResource object.
+        /// </summary>
+        /// <param name="key">Initial value of Key.</param>
+        /// <param name="value">Initial value of Value.</param>
+        /// <param name="lastActivityDate">Initial value of LastActivityDate.</param>
+        public static CustomResource CreateCustomResource(string key, string value, global::System.DateTime lastActivityDate)
+        {
+            CustomResource customResource = new CustomResource();
+            customResource.Key = key;
+            customResource.Value = value;
+            customResource.LastActivityDate = lastActivityDate;
+            return customResource;
+        }
+        /// <summary>
+        /// There are no comments for Property Key in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Key
+        {
+            get
+            {
+                return this._Key;
+            }
+            set
+            {
+                this.OnKeyChanging(value);
+                this.ReportPropertyChanging("Key");
+                this._Key = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Key");
+                this.OnKeyChanged();
+            }
+        }
+        private string _Key;
+        partial void OnKeyChanging(string value);
+        partial void OnKeyChanged();
+        /// <summary>
+        /// There are no comments for Property Value in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Value
+        {
+            get
+            {
+                return this._Value;
+            }
+            set
+            {
+                this.OnValueChanging(value);
+                this.ReportPropertyChanging("Value");
+                this._Value = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Value");
+                this.OnValueChanged();
+            }
+        }
+        private string _Value;
+        partial void OnValueChanging(string value);
+        partial void OnValueChanged();
+        /// <summary>
+        /// There are no comments for Property LastActivityDate in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.DateTime LastActivityDate
+        {
+            get
+            {
+                return this._LastActivityDate;
+            }
+            set
+            {
+                this.OnLastActivityDateChanging(value);
+                this.ReportPropertyChanging("LastActivityDate");
+                this._LastActivityDate = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("LastActivityDate");
+                this.OnLastActivityDateChanged();
+            }
+        }
+        private global::System.DateTime _LastActivityDate;
+        partial void OnLastActivityDateChanging(global::System.DateTime value);
+        partial void OnLastActivityDateChanged();
     }
 }
