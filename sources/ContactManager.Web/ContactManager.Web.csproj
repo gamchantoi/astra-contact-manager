@@ -160,6 +160,7 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PrintController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -168,8 +169,12 @@
     <Compile Include="Helpers\DropDownHelper.cs" />
     <Compile Include="Helpers\MenuItemHelper.cs" />
     <Compile Include="Helpers\UserHelper.cs" />
+    <Compile Include="Interfaces\ICustomResourcesService.cs" />
+    <Compile Include="Interfaces\IEntityCustomResourcesRepository.cs" />
     <Compile Include="Interfaces\IFormsAuthentication.cs" />
     <Compile Include="Models\AssemblyVersion.cs" />
+    <Compile Include="Models\CustomResourcesService.cs" />
+    <Compile Include="Models\EntityCustomResourcesRepository.cs" />
     <Compile Include="Models\EntitySettingsRepository.cs" />
     <Compile Include="Models\FormsAuthenticationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -519,7 +524,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Accounts\Views\Transaction\ClientTransactions.aspx" />
-    <Content Include="Areas\Services\Views\Service\EditContract.aspx" />
+    <Content Include="Views\Print\EditOrder.aspx" />
+    <Content Include="Views\Print\EditContract.aspx" />
     <Content Include="Content\Images\house.png" />
     <Content Include="media\reditor\css\img\close.png" />
     <Content Include="media\reditor\css\img\drop_down.png" />
@@ -743,7 +749,9 @@
     <Content Include="media\reditor\css\style.css" />
     <Content Include="media\reditor\i18n\i18n.de.js" />
     <Content Include="media\reditor\i18n\i18n.en.js" />
+    <Content Include="media\reditor\jquery.reditor-0.1.js" />
     <Content Include="media\reditor\jquery.reditor-0.1.pack.js" />
+    <Content Include="media\reditor\jquery.reditor.colourpicker-0.1.js" />
     <Content Include="media\reditor\jquery.reditor.colourpicker-0.1.pack.js" />
     <Content Include="Scripts\astra-messages.js" />
     <Content Include="Scripts\astra-ppp.js" />
