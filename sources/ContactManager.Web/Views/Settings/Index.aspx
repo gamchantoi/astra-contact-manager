@@ -48,7 +48,10 @@
                         <%= Html.ActionLink(Html.Resource("Accounts_Resources, Accounts_View_Index_PaymentsMethods"), "Index", "PaymentMethod", new { area = "Accounts" }, null)%>
                     </p>
                     <p>
-                        <%= Html.ActionLink("Edit Contract", "EditContract", "Service", new { area = "Services" }, null)%>
+                        <%= Html.ActionLink("Edit Contract", "EditContract", "Print")%>
+                    </p>
+                    <p>
+                        <%= Html.ActionLink("Edit Order", "EditOrder", "Print")%>
                     </p>
                 </fieldset>
             </td>

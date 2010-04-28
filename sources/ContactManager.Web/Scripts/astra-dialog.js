@@ -106,3 +106,21 @@ function ShowBigDialog(url) {
         }
     });
 }
+
+function SubmitCustomResource(Data) {
+    ShowLoading()
+    var customText = Data;
+    var Key = $("#Key").val();
+    jQuery.ajax({
+        type: "POST",
+        url: "/ContactManager/Print/EditOrder",
+        data: { customText: customText, Key: Key },
+        success: function() {
+           HideLoading()
+        },
+
+        error: function(request, textStatus, errorThrown) {
+            alert(request.statusText);
+        }
+    });
+};

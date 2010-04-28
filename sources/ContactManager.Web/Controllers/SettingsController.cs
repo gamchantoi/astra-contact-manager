@@ -1,6 +1,7 @@
 using System.Web.Mvc;
 using ContactManager.Models;
 using ContactManager.Models.Validation;
+using ContactManager.Web.Interfaces;
 using ContactManager.Web.Models;
 using ContactManager.Web.ViewModels;
 
@@ -10,11 +11,13 @@ namespace ContactManager.Web.Controllers
     {
         private readonly IValidationDictionary validationDictionary;
         private readonly SettingsService _settingsServices;
+       
 
         public SettingsController()
         {
             validationDictionary = new ModelStateWrapper(ModelState);
             _settingsServices = new SettingsService(validationDictionary);
+            
         }
 
         [Authorize(Roles = "admin")]

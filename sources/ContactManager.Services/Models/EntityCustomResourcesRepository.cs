@@ -36,9 +36,10 @@ namespace ContactManager.Services.Models
         public CustomResource EditResource(CustomResource resource)
         {
             var customResource = GetResource(resource.Key);
-            ObjectContext.ApplyPropertyChanges(resource.EntityKey.EntitySetName, customResource);
+            resource.LastActivityDate = DateTime.Now;
+            ObjectContext.ApplyPropertyChanges(customResource.EntityKey.EntitySetName, resource);
             ObjectContext.SaveChanges();
-            return customResource;
+            return resource;
         }
 
         public CustomResource GetResource(string key)
