@@ -5,6 +5,8 @@
         <mvcSiteMapNode title="Settings"  controller="Settings" action="Index">
             <mvcSiteMapNode title="Addresses"  controller="Addresses" action="Index"/>
             <mvcSiteMapNode title="PaymentMethod"  controller="Accounts/PaymentMethod" action="Index"/>
+            <mvcSiteMapNode title="Edit Contract"  controller="Print" action="EditContract"/>
+            <mvcSiteMapNode title="Edit Order"  controller="Print" action="EditOrder"/>
         </mvcSiteMapNode>
         
         <mvcSiteMapNode title="Messages"  controller="Messages" action="Index">

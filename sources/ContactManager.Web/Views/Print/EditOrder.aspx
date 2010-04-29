@@ -1,34 +1,16 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.CustomResource>" %>
-<%@ Import Namespace="ContactManager.Web.Helpers"%>
 
+<%@ Import Namespace="ContactManager.Web.Helpers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <% using (Html.BeginForm())
-       {%>
     <fieldset>
-        <legend>Edit Contarct</legend>
-        <p><%= Html.Hidden("Key") %></p>
+        <legend>Edit Oreder</legend>
         <p>
-            <%= Html.LabelFor(model => model.Value) %>
-            <%= Html.TextBoxFor(model => model.Value) %>
-            <%= Html.ValidationMessageFor(model => model.Value) %>
+            <%= Html.Hidden("Key") %>
         </p>
-        <p>
-            <input type="submit" value="Save" />
-        </p>
+        <div class="reditor" id="reditor">
+            <%= Model.Value%>
+        </div>
     </fieldset>
-    <% } %>
-    <div class="reditor" id="reditor">
-    </div>
-    <div>
-    <p> </p>
-    <p> </p>
-    <p> </p>
-    <p> </p>
-    </div>
-    <p>
-<%--        <input onclick="SubmitCustomResource('<%= Url.Content("~/Web/Settings/EditContract")%>');"
-            type="button" value="<%= "Submit"%>" />--%>
-    </p>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
 
