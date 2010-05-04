@@ -34,8 +34,10 @@ namespace ContactManager.Accounts.Controllers
 
             Mapper.CreateMap<Transaction, Transactions>();
             var viewModelList = new TransactionViewModel();
+
             viewModelList.Transactions = Mapper.Map<IList<Transaction>, IList<Transactions>>(list);
             viewModelList.Filter = _service.GetFilter();
+            viewModelList.Filter.PaymentMethodsList.SetAllSelected();
             viewModelList.TotalSum = viewModelList.Transactions.Sum(t => t.Sum);
 
 
@@ -60,7 +62,7 @@ namespace ContactManager.Accounts.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult FiltredList(FormCollection formCollection)
         {
-            var filter = BuildFilter(formCollection);
+            var filter = new TransactionsFilter(formCollection);
             
             var _userHelper = new UserHelper();
             var isAdmin = _userHelper.IsUserInRole(ROLES.admin.ToString());
@@ -77,16 +79,6 @@ namespace ContactManager.Accounts.Controllers
             viewModelList.Filter = _service.GetFilter();
             
             return View("Index", viewModelList);
-        }
-
-        private static Filter BuildFilter(FormCollection formCollection)
-        {
-            return new Filter
-                             {
-                                 Years = int.Parse(formCollection.GetValue("Years").AttemptedValue),
-                                 Months = int.Parse(formCollection.GetValue("Months").AttemptedValue),
-                                 PaymentMethods = formCollection.GetValue("PaymentMethods").AttemptedValue
-                             };
         }
 
         [Authorize(Roles = "admin")]

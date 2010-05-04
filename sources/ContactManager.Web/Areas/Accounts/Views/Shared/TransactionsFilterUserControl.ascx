@@ -1,13 +1,15 @@
 ﻿<%@ Import Namespace="ContactManager.Web.Helpers" %>
 <%@ Import Namespace="ContactManager.Accounts.Controllers" %>
-<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<ContactManager.Accounts.ViewModels.TransactionViewModel>" %>
+<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<ContactManager.Accounts.TransactionsFilter>" %>
 <% using (Html.BeginForm("FiltredList", "Transaction", new { @area = "Accounts" }))
    {%>
 <div>
 
     <script type="text/javascript">
+        var payment_methods_id = '#' + '<%=Model.PaymentMethodsList.Name %>';
+        
         $(document).ready(function() {
-            $("#PaymentMethods").dropdownchecklist();
+            $(payment_methods_id).dropdownchecklist();
         });
     </script>
 
@@ -16,17 +18,15 @@
             <tr>
                 <td>
                     <%= Html.Label(Html.Resource("Accounts_Resources, Accounts_Shared_TransactionsFilterUserControl_Years") + ":")%>
-                    <%= Html.DropDownList("Years", Model.Filter.YearsList) %>
+                    <%= Html.DropDownList("Years", Model.YearsList) %>
                 </td>
                 <td>
                     <%= Html.Label(Html.Resource("Accounts_Resources, Accounts_Shared_TransactionsFilterUserControl_Months"))%>
-                    <%= Html.DropDownList("Months", Model.Filter.MonthsList) %>
+                    <%= Html.DropDownList("Months", Model.MonthsList) %>
                 </td>
                 <td>
                     <%= Html.Label(Html.Resource("Accounts_Resources, Accounts_Shared_TransactionsFilterUserControl_PaymentMethods"))%>
-                    <%--<%= Html.DropDownList("PaymentMethods", Model.Filter.PaymentMethodsList) %>--%>
-                    <%--<%= Html.DropDownCheckBox("PaymentMethods",Model.Filter.PaymentMethodsList) %>--%>
-                    <%Html.RenderPartial("DropDownCheckBoxUserControl", Model.Filter.PaymentMethodsList); %>
+                    <%Html.RenderPartial("DropDownCheckBoxUserControl", Model.PaymentMethodsList); %>
                 </td>
                 <td>
                     <input type="submit" value="<%= Html.Resource("Accounts_Resources, Accounts_Shared_TransactionsFilterUserControl_Select")%>" />

@@ -85,6 +85,8 @@
     <Compile Include="Services\TransactionService.cs" />
     <Compile Include="Models\EntityTransactionRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TransactionsFilter.cs" />
+    <Compile Include="ViewModels\DropDownViewModel.cs" />
     <Compile Include="ViewModels\TransactionVewModel.cs" />
   </ItemGroup>
   <ItemGroup>

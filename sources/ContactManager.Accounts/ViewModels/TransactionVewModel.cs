@@ -7,7 +7,7 @@ namespace ContactManager.Accounts.ViewModels
     public class TransactionViewModel
     {
         public IList<Transactions> Transactions { get; set; }
-        public Filter Filter { get; set; }
+        public TransactionsFilter Filter { get; set; }
         public decimal TotalSum { get; set; }
     }
 
@@ -25,15 +25,5 @@ namespace ContactManager.Accounts.ViewModels
 
         public SelectList Filter_Years { get; set; }
         public SelectList Filter_Month { get; set; }
-    }
-    public class Filter
-    {
-        public SelectList YearsList { get; set; }
-        public SelectList MonthsList  { get; set; }
-        public Dictionary<string, SelectList> PaymentMethodsList { get; set; }
-
-        public int Years { get; set; }
-        public int Months { get; set; }
-        public string PaymentMethods { get; set; }
     }
 }

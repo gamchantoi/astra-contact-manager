@@ -13,9 +13,9 @@ namespace ContactManager.Accounts.Interfaces
         List<Transaction> ListTransactions(Guid userId);
         PaymentMethodService PaymentMethodService { get; }
         void ProcessClientPayment();
-        Filter GetFilter();
+        TransactionsFilter GetFilter();
         bool CreateTransaction(LoadMoneyViewModel model);
 
-        List<Transactions>  ListTransactions(Filter filter);
+        List<Transactions>  ListTransactions(TransactionsFilter filter);
     }
 }
