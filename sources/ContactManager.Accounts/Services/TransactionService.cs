@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Web.Mvc;
 using ContactManager.Accounts.Interfaces;
 using ContactManager.Accounts.Models;
@@ -97,14 +96,16 @@ namespace ContactManager.Accounts.Services
             return new SelectList(selectList, "key", "value", DateTime.Now.Month.ToString());
         }
 
-        public Filter GetFilter()
+        public TransactionsFilter GetFilter()
         {
-            var filter = new Filter
+            var filter = new TransactionsFilter
                              {
                                  YearsList = GetTransactionYears(),
                                  MonthsList = GetTransactionMonths(),
-                                 PaymentMethodsList = FillPaymentMethodsList()
                              };
+
+            filter.AddPaymentMethods(ViewModels.PaymentMethod.Method, PaymentMethodService.SelectListPaymentMethods(0));
+            filter.AddPaymentMethods(ViewModels.PaymentMethod.Profile, _profileService.SelectListProfiles(0));
             return filter;
         }
 
@@ -147,7 +148,7 @@ namespace ContactManager.Accounts.Services
             return retVal;
         }
 
-        public List<Transactions> ListTransactions(Filter filter)
+        public List<Transactions> ListTransactions(TransactionsFilter filter)
         {
 
             return _repository.ListTransaction(filter);

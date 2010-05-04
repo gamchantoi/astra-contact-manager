@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Text;
 using System.Web.Compilation;
 using System.Web.Mvc;
@@ -121,76 +120,5 @@ namespace ContactManager.Web.Helpers
             builder.InnerHtml = div.ToString();
             return builder.ToString();
         }
-
-        public static string DropDownCheckBox(this HtmlHelper html, string id, SelectList list)
-        {
-            var builder = new TagBuilder("select");
-            builder.Attributes.Add("multiple", "multiple");
-            builder.Attributes.Add("name", id);
-            builder.Attributes.Add("id", id);
-
-            BuildOptions(builder, list);
-
-            return builder.ToString();
-        }
-
-        private static void BuildOptions(TagBuilder builder, IEnumerable<SelectListItem> list)
-        {
-            var _currentGrop = string.Empty;
-
-            foreach (var item in list)
-            {
-                
-                switch (item.Value.Split('.')[0])
-                {
-                    case "profile":
-                        if (!_currentGrop.Equals("profile"))
-                        {
-                            _currentGrop = "profile";
-                            builder.InnerHtml += BuildOptGroup("Profiles");
-                        }
-                        builder.InnerHtml += BuildOption(item.Text, item.Value, item.Selected);
-                        break;
-                    case "service":
-                        if (!_currentGrop.Equals("service"))
-                        {
-                            _currentGrop = "service";
-                            builder.InnerHtml += BuildOptGroup("Services");
-                        }
-                        builder.InnerHtml += BuildOption(item.Text, item.Value, item.Selected);
-                        break;
-                    case "method":
-                        if (!_currentGrop.Equals("method"))
-                        {
-                            _currentGrop = "method";
-                            builder.InnerHtml += BuildOptGroup("Methods");
-                        }
-                        builder.InnerHtml += BuildOption(item.Text, item.Value, item.Selected);
-                        break;
-                    default:
-                        builder.InnerHtml += BuildOption(item.Text, item.Value, item.Selected);
-                        break;
-                }
-                
-            }
-        }
-
-        private static string BuildOption(string text, string value, bool selected)
-        {
-            var option = new TagBuilder("option");
-            option.Attributes.Add("value", value);
-            option.SetInnerText(text);
-            if (selected)
-                option.Attributes.Add("selected", "selected");
-            return option.ToString();
-        }
-
-        private static string BuildOptGroup(string name)
-        {
-            var optgroup = new TagBuilder("optgroup");
-            optgroup.Attributes.Add("label", name);
-            return optgroup.ToString();
-        }
-
     }
 }

@@ -104,7 +104,7 @@ namespace ContactManager.Accounts.Models
         //}
 
         // todo: check this code 
-        public List<Transaction> ListTransaction1(Filter filter)
+        public List<Transaction> ListTransaction1(TransactionsFilter filter)
         {
 
             var list = ObjectContext.Transactions.Where(y => y.Date.Year == filter.Years).ToList();
@@ -126,7 +126,7 @@ namespace ContactManager.Accounts.Models
             return filtredlist;
         }
 
-        public List<Transactions> ListTransaction(Filter filter)
+        public List<Transactions> ListTransaction(TransactionsFilter filter)
         {
             var users = new List<Transactions>();
             var startDate = new DateTime(filter.Years, filter.Months, 1);

@@ -22,7 +22,7 @@
 
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <%Html.RenderPartial("TransactionsFilterUserControl", Model); %>
+    <%Html.RenderPartial("TransactionsFilterUserControl", Model.Filter); %>
     <div id="container">
         <% Html.Grid(Model.Transactions)
            .Columns(column =>
