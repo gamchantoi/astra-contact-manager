@@ -3,6 +3,7 @@
 };
 
 function ShowHostDialog(url) {
+    //$("#dialog_hosts").dialog("close");
     ShowURLDialog(url, "dialog_host", 350, 400);
 };
 
@@ -33,6 +34,25 @@ function ChangeHost(url) {
 
     jQuery.ajax({
     type: "POST",
+        url: url,
+        data: {},
+        success: function(data) {
+            setTimeout(function() {
+                $("#dialog_hosts").dialog("close");
+                ShowHostsDialog("/ContactManager/Hosts/Host/Index");
+            }, 500);
+        },
+
+        error: function(request, textStatus, errorThrown) {
+            alert(request.statusText);
+        }
+    });
+};
+
+function DeleteHost(url) {
+
+    jQuery.ajax({
+        type: "POST",
         url: url,
         data: {},
         success: function(data) {
