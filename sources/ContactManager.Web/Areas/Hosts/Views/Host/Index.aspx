@@ -33,17 +33,13 @@
                    else
                    {%>
                 <%= Html.JSIconLink("Edit", "ChangeHost", Url.Content("~/Hosts/Host/Select/") + item.HostId, "ui-icon-minus")%>
-                <%--<%= Html.JSIconLink("Edit", "window.location", Url.Content("~/Hosts/Host/Select/") + item.HostId, "ui-icon-minus")%>--%>
                 <%} %>
             </td>
             <td>
-                <a href='<%= Url.Action("Delete", new {id=item.HostId}) %>'>
-                    <%= Html.Resource("Hosts_Resources, Hosts_View_Index_Delete")%></a>
+                <%= Html.JSLink(Html.Resource("Hosts_Resources, Hosts_View_Index_Delete"), "DeleteHost", Url.Content("~/Hosts/Host/Delete/" + item.HostId))%>
             </td>
             <td>
                 <%= Html.JSLink(item.Address, "ShowHostDialog", Url.Content("~/Hosts/Host/Edit/" + item.HostId))%>
-                <%--                <a href='<%= Url.Action("Edit", new {id=item.HostId}) %>'>
-                    <%= Html.Encode(item.Address) %></a>--%>
             </td>
             <td>
                 <%= Html.Encode(item.UserName) %>
@@ -56,6 +52,5 @@
     </tbody>
 </table>
 <p>
-    <%--<%= Html.ActionLink(Html.Resource("Hosts_Resources, Hosts_View_Index_Create"), "Create")%>--%>
     <%= Html.JSLink(Html.Resource("Hosts_Resources, Hosts_View_Index_Create"), "ShowHostDialog", Url.Content("~/Hosts/Host/Create"))%>
 </p>
