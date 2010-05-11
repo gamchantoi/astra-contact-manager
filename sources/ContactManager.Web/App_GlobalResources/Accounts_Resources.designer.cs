@@ -142,6 +142,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Contract.
+        /// </summary>
+        internal static string Accounts_View_Index_EditContract {
+            get {
+                return ResourceManager.GetString("Accounts_View_Index_EditContract", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Order.
+        /// </summary>
+        internal static string Accounts_View_Index_EditOrder {
+            get {
+                return ResourceManager.GetString("Accounts_View_Index_EditOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Payments Methods.
         /// </summary>
         internal static string Accounts_View_Index_PaymentsMethods {

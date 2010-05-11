@@ -144,6 +144,12 @@
   <data name="Accounts_View_Index_Date" xml:space="preserve">
     <value>Date</value>
   </data>
+  <data name="Accounts_View_Index_EditContract" xml:space="preserve">
+    <value>Edit Contract</value>
+  </data>
+  <data name="Accounts_View_Index_EditOrder" xml:space="preserve">
+    <value>Edit Order</value>
+  </data>
   <data name="Accounts_View_Index_PaymentsMethods" xml:space="preserve">
     <value>Payments Methods</value>
   </data>

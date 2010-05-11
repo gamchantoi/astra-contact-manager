@@ -113,7 +113,7 @@ function SubmitCustomResource(Data) {
     var Key = $("#Key").val();
     jQuery.ajax({
         type: "POST",
-        url: "/ContactManager/Print/EditOrder",
+        url: "/ContactManager/Print/SaveResource",
         data: { customText: customText, Key: Key },
         success: function() {
            HideLoading()

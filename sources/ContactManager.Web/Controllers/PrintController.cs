@@ -15,7 +15,7 @@ namespace ContactManager.Web.Controllers
     {
         private readonly ICustomResourcesService _customResorces;
         private readonly IValidationDictionary validationDictionary;
-        
+
         public PrintController()
         {
             validationDictionary = new ModelStateWrapper(ModelState);
@@ -36,14 +36,6 @@ namespace ContactManager.Web.Controllers
         }
 
 
-        //[Authorize(Roles = "admin")]
-        //[AcceptVerbs(HttpVerbs.Post)]
-        //public ActionResult EditContract(CustomResource resource)
-        //{
-        //    return View(_customResorces.EditResource(resource));
-        //}
-
-
         [Authorize(Roles = "admin")]
         public ActionResult EditOrder()
         {
@@ -56,21 +48,33 @@ namespace ContactManager.Web.Controllers
             return View(customResource);
         }
 
-        //[Authorize(Roles = "admin")]
-        //[AcceptVerbs(HttpVerbs.Post)]
-        //public ActionResult EditOrder(CustomResource resource)
-        //{
-        //    return View(_customResorces.EditResource(resource));
-        //}
 
         [Authorize(Roles = "admin")]
         [AcceptVerbs(HttpVerbs.Post)]
         [ValidateInput(false)]
-        public ActionResult EditOrder(string customText, string Key)
+        public ActionResult SaveResource(string customText, string Key)
         {
-            var resource = new CustomResource{Key = Key, Value = customText};
-            return View(_customResorces.EditResource(resource));
+            var resource = new CustomResource { Key = Key, Value = customText };
+            return View("EditOrder", _customResorces.EditResource(resource));
         }
 
+
+        [Authorize(Roles = "admin")]
+        public ActionResult PrintOrder(Guid id)
+        {
+            var ctx = new CurrentContext();
+            var user = ctx.GetUser(id);
+            var orderTemplate = _customResorces.GetResource("Order_View");
+            orderTemplate.Value = AppendUserData(user, orderTemplate);
+            return View(orderTemplate);
+        }
+
+        private static string AppendUserData(User user, CustomResource template)
+        {
+            var str = template.Value.Replace("#NAME#", user.UserName);
+            str = str.Replace("#DATA#", DateTime.Now.ToShortDateString());
+            // TODO : добавити додаткові поля ...
+            return str;
+        }
     }
 }

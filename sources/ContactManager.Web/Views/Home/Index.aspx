@@ -2,6 +2,7 @@
 
 <%@ Import Namespace="ContactManager.Web.Helpers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <%=Html.Hidden("UserId", Model.UserId) %>
     <table class="container">
         <tr>
             <td>
@@ -31,5 +32,7 @@
     </table>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-<script src="<%= Url.Content("~/Scripts/astra-streets.js")%>" type="text/javascript"></script>
+
+    <script src="<%= Url.Content("~/Scripts/astra-streets.js")%>" type="text/javascript"></script>
+
 </asp:Content>

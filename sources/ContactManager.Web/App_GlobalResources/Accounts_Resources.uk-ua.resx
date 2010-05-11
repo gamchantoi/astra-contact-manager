@@ -144,6 +144,12 @@
   <data name="Accounts_View_Index_Date" xml:space="preserve">
     <value>Дата</value>
   </data>
+  <data name="Accounts_View_Index_EditContract" xml:space="preserve">
+    <value>Редагування контракту</value>
+  </data>
+  <data name="Accounts_View_Index_EditOrder" xml:space="preserve">
+    <value>Редагування ордеру</value>
+  </data>
   <data name="Accounts_View_Index_PaymentsMethods" xml:space="preserve">
     <value>Методи оплат</value>
   </data>
