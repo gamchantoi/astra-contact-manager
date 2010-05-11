@@ -1,9 +1,10 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContactManager.Models.CustomResource>" %>
-<%@ Import Namespace="ContactManager.Web.Helpers"%>
 
+<%@ Import Namespace="ContactManager.Web.Helpers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <fieldset>
-        <legend>Edit Contarct</legend>
+        <legend>
+            <%= Html.Resource("Accounts_Resources, Accounts_View_Index_EditContract")%></legend>
         <p>
             <%= Html.Hidden("Key") %>
         </p>
@@ -17,7 +18,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#reditor').reditor({
-            basepath: '../media/reditor/',
+                basepath: '../media/reditor/',
                 iconpath: 'css/img/ico/',
                 width: '700px',
                 height: '300px'

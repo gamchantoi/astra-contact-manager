@@ -762,6 +762,7 @@
     <Content Include="Scripts\Validation\jquery.validate.pack.js" />
     <Content Include="Scripts\Validation\localization\messages_ru.js" />
     <Content Include="Scripts\Validation\localization\messages_ua.js" />
+    <Content Include="Views\Print\PrintOrder.aspx" />
     <Content Include="Views\Shared\DropDownCheckBoxUserControl.ascx" />
     <Content Include="Web.SiteMap" />
   </ItemGroup>
@@ -815,7 +816,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_StartDate="2010/2/3" />
+      <UserProperties BuildVersion_StartDate="2010/2/3" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_UpdateAssemblyVersion="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

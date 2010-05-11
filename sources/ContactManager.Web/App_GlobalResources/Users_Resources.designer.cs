@@ -160,6 +160,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Print order.
+        /// </summary>
+        internal static string Users_Shared_ContractUserControl_Print {
+            get {
+                return ResourceManager.GetString("Users_Shared_ContractUserControl_Print", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         internal static string Users_Shared_ContractUserControl_Save {

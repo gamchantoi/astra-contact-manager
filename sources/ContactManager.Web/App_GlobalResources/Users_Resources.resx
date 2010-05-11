@@ -366,4 +366,7 @@
   <data name="Users_Shared_ContractUserControl_Save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="Users_Shared_ContractUserControl_Print" xml:space="preserve">
+    <value>Print order</value>
+  </data>
 </root>

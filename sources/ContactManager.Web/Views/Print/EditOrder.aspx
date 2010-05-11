@@ -3,7 +3,8 @@
 <%@ Import Namespace="ContactManager.Web.Helpers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <fieldset>
-        <legend>Edit Oreder</legend>
+        <legend>
+            <%= Html.Resource("Accounts_Resources, Accounts_View_Index_EditOrder")%></legend>
         <p>
             <%= Html.Hidden("Key") %>
         </p>

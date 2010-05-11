@@ -20,4 +20,5 @@
                         , Html.JSLink(Html.Resource("Users_Resources, Users_User_Edit_Add"), "ShowDialog", Url.Content("~/Users/Contract/Create/") + Model.UserId))%>
     </legend>
     <%} %>
+    <%= Html.ActionLink(Html.Resource("Users_Resources, Users_Shared_ContractUserControl_Print"), "PrintOrder" + "/" + Model.UserId, "Print")%>
 </fieldset>
