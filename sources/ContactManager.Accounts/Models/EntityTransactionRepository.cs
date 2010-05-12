@@ -136,20 +136,23 @@ namespace ContactManager.Accounts.Models
             command.Parameters.Add(new SqlParameter { ParameterName = "@StartDate", Value = startDate, DbType = DbType.DateTime });
             command.Parameters.Add(new SqlParameter { ParameterName = "@EndDate", Value = endDate, DbType = DbType.DateTime });
 
-            if (string.IsNullOrEmpty(GetValuesList(filter.PaymentMethods, "profile")))
-                command.Parameters.Add(new SqlParameter { ParameterName = "@ProfilesIds", Value = DBNull.Value });
-            else
-                command.Parameters.Add(new SqlParameter { ParameterName = "@ProfilesIds", Value = GetValuesList(filter.PaymentMethods, "profile") });
+            command.Parameters.Add(new SqlParameter
+                                       {
+                                           ParameterName = "@ProfilesIds",
+                                           Value = GetValue(filter.GetPymentMethodsValues(ViewModels.PaymentMethod.Profile))
+                                       });
 
-            if (string.IsNullOrEmpty(GetValuesList(filter.PaymentMethods, "method")))
-                command.Parameters.Add(new SqlParameter { ParameterName = "@MethodsIds", Value = DBNull.Value });
-            else
-                command.Parameters.Add(new SqlParameter { ParameterName = "@MethodsIds", Value = GetValuesList(filter.PaymentMethods, "method") });
+            command.Parameters.Add(new SqlParameter
+                                       {
+                                           ParameterName = "@MethodsIds",
+                                           Value = GetValue(filter.GetPymentMethodsValues(ViewModels.PaymentMethod.Method))
+                                       });
 
-            if (string.IsNullOrEmpty(GetValuesList(filter.PaymentMethods, "service")))
-                command.Parameters.Add(new SqlParameter { ParameterName = "@ServicesIds", Value = DBNull.Value });
-            else
-                command.Parameters.Add(new SqlParameter { ParameterName = "@ServicesIds", Value = GetValuesList(filter.PaymentMethods, "service") });
+            command.Parameters.Add(new SqlParameter
+                                       {
+                                           ParameterName = "@ServicesIds",
+                                           Value = GetValue(filter.GetPymentMethodsValues(ViewModels.PaymentMethod.Service))
+                                       });
 
             using (command.Connection.CreateConnectionScope())
             using (var dataReader = command.ExecuteReader())
@@ -178,6 +181,13 @@ namespace ContactManager.Accounts.Models
             }
 
             return users;
+        }
+
+        private static object GetValue(string s)
+        {
+            if (string.IsNullOrEmpty(s))
+                return DBNull.Value;
+            return s;
         }
 
         private static string GetValuesList(string str, string key)

@@ -36,12 +36,19 @@ namespace ContactManager.Accounts
 
         public TransactionsFilter(FormCollection formCollection)
         {
-            Years = int.Parse(formCollection.GetValue("Years").AttemptedValue);
-            Months = int.Parse(formCollection.GetValue("Months").AttemptedValue);
+            Years = int.Parse(GetValue(formCollection.GetValue("Years")));
+            Months = int.Parse(GetValue(formCollection.GetValue("Months")));
 
-            PaymentMethods = formCollection.GetValue(PAYMENT_METHODS_ID).AttemptedValue;
+            PaymentMethods = GetValue(formCollection.GetValue(PAYMENT_METHODS_ID));
 
-            InitPaymentMethodsList(formCollection.GetValue(PAYMENT_METHODS_ID).AttemptedValue);
+            InitPaymentMethodsList(GetValue(formCollection.GetValue(PAYMENT_METHODS_ID)));
+        }
+
+        private static string GetValue(ValueProviderResult result)
+        {
+            if (result != null)
+                return result.AttemptedValue;
+            return string.Empty;
         }
 
         public void AddPaymentMethods(PaymentMethod method, SelectList list)
@@ -50,6 +57,11 @@ namespace ContactManager.Accounts
                 InitPaymentMethodsList(null);
             
             PaymentMethodsList.ItemsList.Add(method, list);
+        }
+
+        public string GetPymentMethodsValues(PaymentMethod method)
+        {
+            return PaymentMethodsList.ItemsList.GetValues(method, PaymentMethods);
         }
 
     }

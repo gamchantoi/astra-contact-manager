@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -87,10 +89,24 @@ namespace ContactManager.Accounts.ViewModels
                 {
                     var _str = str.Split('.');
                     if (_str[0].Equals(method.ToString()))
-                        storedValues.Add(_str[1]);
+                        storedValues.Add(str);
                 }
             }
             return storedValues;
+        }
+
+        public string GetValues(PaymentMethod method, string str)
+        {
+            var listVal = str.Split(',').Where(s => s.Contains(method.ToString())).ToList();
+            var retVal = string.Empty;
+            foreach (var item in listVal)
+            {
+                if (!string.IsNullOrEmpty(retVal))
+                    retVal += ",";
+                retVal += item.Split('.')[1];
+            }
+
+            return retVal;
         }
     }
 
